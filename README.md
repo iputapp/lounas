@@ -1,12 +1,18 @@
 # IMAP
 
-```
-create-next-app@13.4.6
+Bootstrapped with `create-next-app@13.4.6`.
+
+## Environment
+
+Install environment packages.
+
+```bash
+npm i
 ```
 
-## npm packages
+### npm packages
 
-Add.
+Added.
 
 - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
 - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
@@ -21,7 +27,7 @@ Add.
 - [stylelint-config-standard-scss](https://www.npmjs.com/package/stylelint-config-standard-scss)
 - [stylelint-config-recess-order](https://www.npmjs.com/package/stylelint-config-recess-order)
 
-## VS Code Extentions
+### VS Code Extentions
 
 - [TypeScript](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
@@ -55,6 +61,18 @@ module.exports = {
   },
 };
 ```
+
+## Material UI
+
+[Docs](https://mui.com/material-ui/getting-started/overview/)
+
+## Conventions
+
+`/_docs`
+
+- [コーディング規約](./_docs/CODING.md)
+
+- [ディレクトリ構成](./_docs/DIRECTORY.md)
 
 ---
 
