@@ -10,12 +10,27 @@ Bootstrapped with `create-next-app@13.4.6`.
 
 - [ディレクトリ構成](./_docs/DIRECTORY.md)
 
+> **Warning**
+>
+> `コーディング規約`の`環境変数`には特に注意すること。
+
 ## Environment
 
 Install environment packages.
 
 ```bash
 npm i
+```
+
+### Environment variables
+
+The below file and variables must be created in the root directory.
+
+#### `.env.local`
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your
 ```
 
 ### npm packages
