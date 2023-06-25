@@ -1,0 +1,118 @@
+@use "variables" as var;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main {
+  @apply w-full h-screen flex items-center justify-center overflow-clip;
+
+  position: relative;
+}
+
+.bg {
+  @apply -z-50;
+
+  .circle {
+    @apply aspect-square mix-blend-multiply;
+
+    position: absolute;
+    height: auto;
+    clip-path: circle(50% at 50% 50%);
+
+    &.blue {
+      top: -12vh;
+      left: -12vh;
+      width: 32vh;
+      background-color: var.$blue;
+    }
+
+    &.cyan {
+      top: -12vh;
+      left: 8vh;
+      width: 30vh;
+      background-color: var.$cyan;
+    }
+
+    &.green {
+      top: 5vh;
+      left: -10vh;
+      width: 25vh;
+      background-color: var.$green;
+    }
+  }
+
+  .triangle {
+    @apply aspect-square mix-blend-multiply;
+
+    position: absolute;
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="-18 22.5 225 225"><path fill="%23000" d="M80.794,34.063c4.6-11.979,21.545-11.979,26.141,0l73.5,191.537a14,14,0,0,1-13.071,19.016h-147A14,14,0,0,1,7.3,225.6Z"/></svg>');
+
+    &.blue {
+      right: -6vh;
+      bottom: -2px;
+      width: 20vh;
+      background-color: var.$blue;
+      transform: rotate(0deg) scale(1);
+    }
+
+    &.cyan {
+      right: -6vh;
+      bottom: -2vh;
+      width: 22vh;
+      background-color: var.$cyan;
+      transform: rotate(159deg) scale(1.1);
+    }
+
+    &.green {
+      right: 0;
+      bottom: -7vh;
+      width: 24vh;
+      background-color: var.$green;
+      transform: rotate(111deg) scale(1.2);
+    }
+  }
+}
+
+.flex-col-center {
+  @apply flex flex-col items-center justify-center;
+}
+
+h1 {
+  @apply text-4xl font-semibold;
+
+  color: var.$primary;
+}
+
+a {
+  @apply text-blue-600;
+}
+
+.button-submit {
+  @apply h-24 flex flex-col items-center justify-end space-y-4;
+
+  & > button {
+    @apply relative px-12 py-2 rounded-full bg-white;
+
+    &::before {
+      @apply -z-10 absolute top-[-5px] bottom-[-5px] right-[-5px] left-[-5px];
+
+      width: calc(100% + 10px);
+      height: calc(100% + 10px);
+      content: "";
+      background: linear-gradient(to right, var.$blue 0%, var.$green 100%);
+      border-radius: inherit;
+    }
+
+    & > span {
+      @apply text-2xl font-bold;
+
+      color: var.$primary;
+    }
+  }
+
+  & > p {
+    @apply text-xs text-red-600
+      transition-opacity duration-300 ease-in-out
+      animate-bounce;
+  }
+}
