@@ -2,7 +2,25 @@
 
 この規約に遵守すること。
 
-## `export`
+## ページ
+
+`src/app/`
+
+ページは `default export` を使うこと。
+
+```tsx
+export default function Home() {
+  return (
+    <main>
+      <div></div>
+    </main>
+  );
+}
+```
+
+## コンポーネント
+
+`src/components/`
 
 コンポーネントの `export` は `named export` を使うこと。
 
@@ -28,8 +46,12 @@ export function foo() {
 
 ## Pull Request
 
-**Pull Request**をする前に以下のコマンドを実行すること。
+**Pull Request**をする前に以下のコマンドを実行し、体裁を整えること。
 
 ```bash
 npm run format
 ```
+
+> **Note**
+>
+> `Warning`, `Error`も表示される。

@@ -2,6 +2,14 @@
 
 Bootstrapped with `create-next-app@13.4.6`.
 
+## Conventions
+
+`/_docs`
+
+- [コーディング規約](./_docs/CODING.md)
+
+- [ディレクトリ構成](./_docs/DIRECTORY.md)
+
 ## Environment
 
 Install environment packages.
@@ -66,13 +74,13 @@ module.exports = {
 
 [Docs](https://mui.com/material-ui/getting-started/overview/)
 
-## Conventions
+## Next.js
 
-`/_docs`
+[Docs](https://nextjs.org/docs)
 
-- [コーディング規約](./_docs/CODING.md)
+## Supabase
 
-- [ディレクトリ構成](./_docs/DIRECTORY.md)
+[Docs](https://supabase.com/docs/reference/javascript/)
 
 ---
 
