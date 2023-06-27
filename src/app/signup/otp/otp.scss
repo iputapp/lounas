@@ -1,0 +1,68 @@
+@use "variables" as var;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main {
+  @apply w-full h-screen flex items-center justify-center overflow-clip;
+
+  position: relative;
+}
+
+.flex-col-center {
+  @apply flex flex-col items-center justify-center;
+}
+
+h1 {
+  @apply text-2xl font-semibold;
+
+  color: var.$primary;
+}
+
+a {
+  @apply text-blue-600;
+}
+
+p {
+  color: var.$secondary;
+
+  & > span {
+    @apply decoration-dotted;
+
+    &.blue {
+      text-decoration: var.$blue;
+    }
+
+    &.cyan {
+      text-decoration: var.$cyan;
+    }
+
+    &.green {
+      text-decoration: var.$green;
+    }
+  }
+}
+
+.button-submit {
+  @apply h-16 flex flex-col items-end justify-end space-y-4;
+
+  & > button {
+    @apply relative px-6 py-1 rounded-full bg-white;
+
+    &::before {
+      @apply -z-10 absolute inset-[-5px];
+
+      width: calc(100% + 10px);
+      height: calc(100% + 10px);
+      content: "";
+      background: linear-gradient(to right, var.$blue 0%, var.$green 100%);
+      border-radius: inherit;
+    }
+
+    & > span {
+      @apply text-xl font-semibold;
+
+      color: var.$primary;
+    }
+  }
+}
