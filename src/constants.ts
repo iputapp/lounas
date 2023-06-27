@@ -18,3 +18,17 @@ export const STUDENT_ID_REGEX = /^[0-9]{6}$/;
  * Domain of `email`
  */
 export const EMAIL_DOMAIN = "tks.iput.ac.jp";
+
+/**
+ * @constant {number} VERIFY_DIGITS_LENGTH
+ *
+ * Length of `verify digits`
+ */
+export const VERIFY_DIGITS_LENGTH = 6;
+
+/**
+ * @constant {RegExp} VERIFY_DIGITS_REGEX
+ *
+ * Regex of `verify digits`
+ */
+export const VERIFY_DIGITS_REGEX = /^[0-9]{6}$/;
