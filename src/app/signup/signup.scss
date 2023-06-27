@@ -20,23 +20,23 @@ main {
     clip-path: circle(50% at 50% 50%);
 
     &.blue {
-      top: -12vh;
-      left: -12vh;
-      width: 32vh;
+      top: -12dvh;
+      left: -12dvh;
+      width: 32dvh;
       background-color: var.$blue;
     }
 
     &.cyan {
-      top: -12vh;
-      left: 8vh;
-      width: 30vh;
+      top: -12dvh;
+      left: 8dvh;
+      width: 30dvh;
       background-color: var.$cyan;
     }
 
     &.green {
-      top: 5vh;
-      left: -10vh;
-      width: 25vh;
+      top: 5dvh;
+      left: -10dvh;
+      width: 25dvh;
       background-color: var.$green;
     }
   }
@@ -46,29 +46,52 @@ main {
 
     position: absolute;
     mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="-18 22.5 225 225"><path fill="%23000" d="M80.794,34.063c4.6-11.979,21.545-11.979,26.141,0l73.5,191.537a14,14,0,0,1-13.071,19.016h-147A14,14,0,0,1,7.3,225.6Z"/></svg>');
+    transition: all 0.6s ease-in-out;
+
+    $blue-w: 20dvh;
+    $cyan-w: 22dvh;
+    $green-w: 24dvh;
 
     &.blue {
-      right: -6vh;
+      right: -6dvh;
       bottom: -2px;
-      width: 20vh;
+      width: $blue-w;
       background-color: var.$blue;
-      transform: rotate(0deg) scale(1);
+      transform: rotate(0deg);
     }
 
     &.cyan {
-      right: -6vh;
-      bottom: -2vh;
-      width: 22vh;
+      right: -7.5dvh;
+      bottom: -3dvh;
+      width: $cyan-w;
       background-color: var.$cyan;
-      transform: rotate(159deg) scale(1.1);
+      transform: rotate(155deg);
     }
 
     &.green {
-      right: 0;
-      bottom: -7vh;
-      width: 24vh;
+      right: -1.5dvh;
+      bottom: -7dvh;
+      width: $green-w;
       background-color: var.$green;
-      transform: rotate(111deg) scale(1.2);
+      transform: rotate(111deg);
+    }
+
+    &.blue.success {
+      right: calc(100% - $blue-w - 6.5dvh);
+      bottom: 1.5dvh;
+      transform: rotate(50deg);
+    }
+
+    &.cyan.success {
+      right: calc(100% - $cyan-w + 8dvh);
+      bottom: 2dvh;
+      transform: rotate(-45deg);
+    }
+
+    &.green.success {
+      right: calc(100% - $green-w + 5dvh);
+      bottom: -2px;
+      transform: rotate(0deg);
     }
   }
 }
@@ -94,7 +117,7 @@ a {
     @apply relative px-12 py-2 rounded-full bg-white;
 
     &::before {
-      @apply -z-10 absolute top-[-5px] bottom-[-5px] right-[-5px] left-[-5px];
+      @apply -z-10 absolute inset-[-5px];
 
       width: calc(100% + 10px);
       height: calc(100% + 10px);
@@ -111,8 +134,8 @@ a {
   }
 
   & > p {
-    @apply text-xs text-red-600
-      transition-opacity duration-300 ease-in-out
-      animate-bounce;
+    @apply text-xs text-red-600 animate-bounce;
+
+    transition: all 0.2s ease-in-out;
   }
 }

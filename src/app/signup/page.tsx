@@ -10,12 +10,13 @@ import FormGroup from "@mui/material/FormGroup";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import TextField from "@mui/material/TextField";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { STUDENT_ID_LENGTH, STUDENT_ID_REGEX } from "@/constants";
-import { onSignup } from "@/hooks/auth/Signup";
+import { onSignup } from "@/hooks/auth/signupClient";
 
 export default function Signup() {
   const router = useRouter();
@@ -40,7 +41,7 @@ export default function Signup() {
 
   /** @summary Signup */
   const [error, setError] = useState<boolean>(true);
-  const [success, setSuccess] = useState<boolean>(false);
+  const [working, setWorking] = useState<boolean>(false);
   useEffect(() => {
     if (!STUDENT_ID_REGEX.test(student) || !agreed) {
       setError(true);
@@ -48,31 +49,34 @@ export default function Signup() {
       setError(false);
     }
   }, [student, agreed]);
+  /** @function Fire sign up */
   const signup = () => {
     if (error) return;
+    setWorking(true);
     const data = onSignup(student);
     data
-      .then((data) => {
-        if (data) setSuccess(true);
+      .then(() => {
+        setWorking(false);
+        router.push("/signup/otp?pend");
       })
       .catch((e) => {
-        setSuccess(false);
         console.error(e);
+        setWorking(false);
       });
   };
 
   return (
-    <main>
+    <motion.div
+      key={"signup"}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+    >
       <div className="bg">
         <span className="circle blue"></span>
         <span className="circle cyan"></span>
         <span className="circle green"></span>
-        <span className="triangle blue"></span>
-        <span className="triangle cyan"></span>
-        <span className="triangle green"></span>
-        {/* <div className="w-[200%] overflow-clip">
-          <Image className="object-cover" src={"/blob.svg"} alt="blob" fill />
-        </div> */}
       </div>
       <div className="flex-col-center space-y-8">
         <h1>ようこそ</h1>
@@ -130,8 +134,10 @@ export default function Signup() {
             </FormHelperText>
           </FormControl>
           <div className="button-submit">
-            <button onClick={signup}>
-              <span>Sign up</span>
+            <button onClick={signup} disabled={working}>
+              <span className={`${working ? "animate-ping" : ""} ${error ? "" : "animate-pulse"}`}>
+                Sign up
+              </span>
             </button>
             <p className={error ? "opacity-100 visible" : "opacity-0 invisible"}>
               <span>必須項目*を入力してください</span>
@@ -139,6 +145,6 @@ export default function Signup() {
           </div>
         </Box>
       </div>
-    </main>
+    </motion.div>
   );
 }
