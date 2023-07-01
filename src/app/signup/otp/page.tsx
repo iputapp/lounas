@@ -5,15 +5,14 @@ import "./otp.scss";
 import Box from "@mui/material/Box";
 import FormHelperText from "@mui/material/FormHelperText";
 import TextField from "@mui/material/TextField";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 
 import { EMAIL_DOMAIN, VERIFY_DIGITS_LENGTH, VERIFY_DIGITS_REGEX } from "@/constants";
-import { onVerify } from "@/hooks/auth/signupClient";
+import { callVerify } from "@/hooks/verify";
 
 export default function Otp() {
-  /** @summary Digits */
+  /** @summary digits */
   const [digits, setDigits] = useState<string>("");
   const [digitsError, setDigitsError] = useState<boolean>(false);
   const digitsChange = (char: string) => {
@@ -22,14 +21,13 @@ export default function Otp() {
     setDigitsError(error);
   };
 
-  /** @summary Verify */
+  /** @summary verify */
   const [working, setWorking] = useState<boolean>(false);
-  /** @function Fire verify */
+  /** Fire verify */
   const verify = () => {
     if (digitsError) return;
     setWorking(true);
-    const data = onVerify(digits);
-    data
+    callVerify(digits)
       .then((data) => {
         console.log(data);
         setWorking(false);
@@ -41,24 +39,18 @@ export default function Otp() {
   };
 
   return (
-    <motion.div
-      key={"signup-otp"}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-    >
+    <>
       <div className="flex-col-center space-y-8">
         <div className="flex-col-center space-y-4">
           <h1>確認コードの入力</h1>
           <div className="flex-col-center max-w-[22rem]">
             <p>
               <span className="blue">{`@${EMAIL_DOMAIN} `}</span>
-              宛の認証メールに送付されている
+              <span>宛の認証メールに送付されている</span>
             </p>
             <p>
               <span className="cyan">{` ${VERIFY_DIGITS_LENGTH} `}</span>
-              桁のコードを入力してください
+              <span>桁のコードを入力してください</span>
             </p>
           </div>
         </div>
@@ -70,7 +62,7 @@ export default function Otp() {
           }}
         >
           <TextField
-            id="digits"
+            name="digits"
             label="確認コード"
             helperText="012345"
             variant="outlined"
@@ -92,15 +84,11 @@ export default function Otp() {
           </FormHelperText>
           <div className="button-submit">
             <button onClick={verify} disabled={working}>
-              <span
-                className={`${working ? "animate-ping" : ""} ${digitsError ? "" : "animate-pulse"}`}
-              >
-                次へ
-              </span>
+              <span className={digitsError ? "" : "animate-pulse"}>次へ</span>
             </button>
           </div>
         </Box>
       </div>
-    </motion.div>
+    </>
   );
 }
