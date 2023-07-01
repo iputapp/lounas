@@ -10,7 +10,7 @@ export const STUDENT_ID_LENGTH = 6;
  *
  * Regex of `student ID`
  */
-export const STUDENT_ID_REGEX = /^[0-9]{6}$/;
+export const STUDENT_ID_REGEX = /^2[0-9]{5}$/;
 
 /**
  * @constant {string} EMAIL_DOMAIN
