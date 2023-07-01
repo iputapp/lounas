@@ -10,18 +10,18 @@ import FormGroup from "@mui/material/FormGroup";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import TextField from "@mui/material/TextField";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { LoadingLayer } from "@/components/layouts/Loading";
 import { STUDENT_ID_LENGTH, STUDENT_ID_REGEX } from "@/constants";
-import { onSignup } from "@/hooks/auth/signupClient";
+import { callSignup } from "@/hooks/signup";
 
 export default function Signup() {
   const router = useRouter();
 
-  /** @summary Student */
+  /** @summary student */
   const [student, setStudent] = useState<string>("");
   const [studentError, setStudentError] = useState<boolean>(false);
   const studentChange = (text: string) => {
@@ -30,7 +30,7 @@ export default function Signup() {
     setStudentError(error);
   };
 
-  /** @summary Agreement */
+  /** @summary agreement */
   const [agreed, setAgreed] = useState<boolean>(false);
   const [agreedError, setAgreedError] = useState<boolean>(false);
   const agreedChange = (checked: boolean) => {
@@ -39,7 +39,7 @@ export default function Signup() {
     setAgreedError(error);
   };
 
-  /** @summary Signup */
+  /** @summary sign up */
   const [error, setError] = useState<boolean>(true);
   const [working, setWorking] = useState<boolean>(false);
   useEffect(() => {
@@ -49,15 +49,15 @@ export default function Signup() {
       setError(false);
     }
   }, [student, agreed]);
-  /** @function Fire sign up */
+  /** Fire sign up */
   const signup = () => {
     if (error) return;
     setWorking(true);
-    const data = onSignup(student);
-    data
-      .then(() => {
+    callSignup(student)
+      .then((data) => {
+        console.log(data);
         setWorking(false);
-        router.push("/signup/otp?pend");
+        router.push(`/signup/otp?${process.env.NEXT_PUBLIC_QUERY_SIGN_UP ?? "pending"}`);
       })
       .catch((e) => {
         console.error(e);
@@ -66,13 +66,7 @@ export default function Signup() {
   };
 
   return (
-    <motion.div
-      key={"signup"}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-    >
+    <>
       <div className="bg">
         <span className="circle blue"></span>
         <span className="circle cyan"></span>
@@ -88,7 +82,7 @@ export default function Signup() {
           }}
         >
           <TextField
-            id="student-id"
+            name="student"
             label="学籍番号"
             helperText="220123"
             variant="standard"
@@ -135,9 +129,7 @@ export default function Signup() {
           </FormControl>
           <div className="button-submit">
             <button onClick={signup} disabled={working}>
-              <span className={`${working ? "animate-ping" : ""} ${error ? "" : "animate-pulse"}`}>
-                Sign up
-              </span>
+              <span className={error ? "" : "animate-pulse"}>Sign up</span>
             </button>
             <p className={error ? "opacity-100 visible" : "opacity-0 invisible"}>
               <span>必須項目*を入力してください</span>
@@ -145,6 +137,7 @@ export default function Signup() {
           </div>
         </Box>
       </div>
-    </motion.div>
+      <LoadingLayer working={working} />
+    </>
   );
 }
