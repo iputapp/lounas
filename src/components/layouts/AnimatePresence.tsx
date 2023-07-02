@@ -23,9 +23,9 @@ export function AnimatePresenceLayer({
   const pathname = usePathname();
   return (
     <AnimatePresence mode="sync">
-      <motion.main className={className} key={pathname} {...motionProps}>
+      <motion.div className={className} key={pathname} {...motionProps}>
         {children}
-      </motion.main>
+      </motion.div>
     </AnimatePresence>
   );
 }
