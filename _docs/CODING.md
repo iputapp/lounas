@@ -19,8 +19,6 @@
 
 [環境変数](#環境変数)にするか、否かは慎重に判断する必要がある。
 
-## `server` と `client` コンポーネント
-
 ## 安全性
 
 セキュアにしたい処理は必ず `server` に近いコンポーネントで行うこと。
@@ -29,7 +27,7 @@
 
 ### `use server` と `use client`
 
-脆弱性となり得るため、安易に`use client`を使わず、必ず[Next.JS Docs](https://nextjs.org/docs/getting-started/react-essentials)を確認し、理解してから使用すること。
+脆弱性となり得るため、安易に `use client` を使わず、必ず[Next.JS Docs](https://nextjs.org/docs/getting-started/react-essentials)を確認し、理解してから使用すること。
 
 ## ページ
 
