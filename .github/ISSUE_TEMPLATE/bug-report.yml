@@ -54,7 +54,7 @@ body:
     id: terms
     attributes:
       label: 行動規範 (Code of Conduct)
-      description: この報告フォームを送信した時点で[行動規範(Code of Conduct)](../_docs/blob/develop/_docs/CODE_OF_CONDUCT.md)に同意したとみなします。
+      description: この報告フォームを送信した時点で[行動規範(Code of Conduct)](../blob/develop/_docs/CODE_OF_CONDUCT.md)に同意したとみなします。
       options:
         - label: このプロジェクトの行動規範に同意します。
           required: true
