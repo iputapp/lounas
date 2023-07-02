@@ -9,6 +9,50 @@ main {
   position: relative;
 }
 
+.flex-col-center {
+  @apply flex flex-col items-center justify-center;
+}
+
+h1 {
+  @apply text-4xl font-semibold;
+
+  color: var.$primary;
+}
+
+a {
+  @apply text-blue-600;
+}
+
+.button-submit {
+  @apply h-24 flex flex-col items-center justify-end space-y-4;
+
+  & > button {
+    @apply relative px-12 py-2 rounded-full bg-white;
+
+    &::before {
+      @apply -z-10 absolute inset-[-5px];
+
+      width: calc(100% + 10px);
+      height: calc(100% + 10px);
+      content: "";
+      background: linear-gradient(to right, var.$blue 0%, var.$green 100%);
+      border-radius: inherit;
+    }
+
+    & > span {
+      @apply text-2xl font-bold;
+
+      color: var.$primary;
+    }
+  }
+
+  & > p {
+    @apply text-xs text-red-600 animate-bounce;
+
+    transition: all 0.2s ease-in-out;
+  }
+}
+
 .bg {
   @apply -z-50;
 
@@ -93,49 +137,5 @@ main {
       bottom: -2px;
       transform: rotate(0deg);
     }
-  }
-}
-
-.flex-col-center {
-  @apply flex flex-col items-center justify-center;
-}
-
-h1 {
-  @apply text-4xl font-semibold;
-
-  color: var.$primary;
-}
-
-a {
-  @apply text-blue-600;
-}
-
-.button-submit {
-  @apply h-24 flex flex-col items-center justify-end space-y-4;
-
-  & > button {
-    @apply relative px-12 py-2 rounded-full bg-white;
-
-    &::before {
-      @apply -z-10 absolute inset-[-5px];
-
-      width: calc(100% + 10px);
-      height: calc(100% + 10px);
-      content: "";
-      background: linear-gradient(to right, var.$blue 0%, var.$green 100%);
-      border-radius: inherit;
-    }
-
-    & > span {
-      @apply text-2xl font-bold;
-
-      color: var.$primary;
-    }
-  }
-
-  & > p {
-    @apply text-xs text-red-600 animate-bounce;
-
-    transition: all 0.2s ease-in-out;
   }
 }
