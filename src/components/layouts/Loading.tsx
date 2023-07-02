@@ -14,7 +14,7 @@ export function LoadingLayer({ working = true }: LoadingIconProps) {
     <div
       className={styles.overlay + `${working ? " opacity-100 visible" : " opacity-0 invisible"}`}
     >
-      <div className="w-1/5 aspect-square">
+      <div className="w-1/5 max-w-[6rem] aspect-square">
         <LoadingPlayer />
       </div>
     </div>
