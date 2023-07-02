@@ -15,7 +15,6 @@ body:
       label: バグの詳細
       description: どのようなバグですか？できるだけ詳しくお願いします！🙇
       placeholder: 🙇🙇🙇
-      value: ""
     validations:
       required: true
   - type: dropdown
