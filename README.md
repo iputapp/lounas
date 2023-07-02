@@ -31,6 +31,10 @@ The below file and variables must be created in the root directory.
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=your
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your
+NEXT_PUBLIC_COOKIE_SIGN_UP_NAME=signup
+NEXT_PUBLIC_COOKIE_SIGN_UP_VALUE=success
+NEXT_PUBLIC_COOKIE_EMAIL_NAME=email
+NEXT_PUBLIC_QUERY_SIGN_UP=pending
 ```
 
 ### npm packages
