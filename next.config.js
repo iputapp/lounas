@@ -11,6 +11,32 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "src/styles")],
   },
+  /** @see {@link https://github.com/vercel/next.js/issues/48177#issuecomment-1506251112} */
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      use: [
+        {
+          loader: "@svgr/webpack",
+          /** @see {@link https://react-svgr.com/docs/options/} */
+          options: {
+            icon: "1.5em", // default size of icon
+            typescript: true,
+            svgo: false,
+            replaceAttrValues: {
+              "#000": "{props.color}",
+              "#000000": "{props.color}",
+              "#FFF": "{props.color}",
+              "#fff": "{props.color}",
+              "#FFFFFF": "{props.color}",
+              "#ffffff": "{props.color}",
+            },
+          },
+        },
+      ],
+    });
+    return config;
+  },
 };
 
 module.exports = nextConfig;
