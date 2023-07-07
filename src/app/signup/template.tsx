@@ -24,7 +24,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
         <span className={`triangle green${success ? " success" : ""}`}></span>
       </div>
       <AnimatePresenceLayer
-        className="w-full h-screen flex-col-center"
         motionProps={{
           initial: { opacity: 0 },
           animate: { opacity: 1 },
