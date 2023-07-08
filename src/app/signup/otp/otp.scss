@@ -1,7 +1,4 @@
 @use "variables" as var;
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 main {
   @apply w-full h-screen flex items-center justify-center overflow-clip;
