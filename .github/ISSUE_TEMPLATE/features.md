@@ -1,10 +1,10 @@
-# Task
+# Task (Features)
 
 TEAM PIPLUP
 
 @duke-imo @HIMA-HIMAZIN @kou-nagamine @nafell @Shvain @wiyco
 
-## Overview of Tasks(Features)
+## Overview of Tasks (Features)
 
 タスクの概要
 
