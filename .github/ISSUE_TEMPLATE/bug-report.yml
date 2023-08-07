@@ -14,7 +14,7 @@ body:
     attributes:
       label: バグの詳細
       description: どのようなバグですか？できるだけ詳しくお願いします！🙇
-      placeholder: 🙇🙇🙇
+      placeholder: スクリーンショットの添付もよろしくお願いします！
     validations:
       required: true
   - type: dropdown
@@ -39,15 +39,6 @@ body:
       label: ブラウザのバージョン
       description: ブラウザのバージョンを教えてください！🙇
       placeholder: ex. Chrome Version 114.0.5735.199 (Official Build) (64-bit)
-    validations:
-      required: false
-  - type: textarea
-    id: logs
-    attributes:
-      label: ログ
-      description: 右クリック > 検証(Inspect) > コンソール(Console)
-      placeholder: ログ等ありましたら貼り付けお願いします！
-      render: shell
     validations:
       required: false
   - type: checkboxes
