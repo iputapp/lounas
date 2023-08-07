@@ -14,6 +14,28 @@ Bootstrapped with `create-next-app@13.4.6`.
 >
 > `コーディング規約`の`環境変数`には特に注意すること。
 
+### Pull request (PR)
+
+PR を行う際は、体裁を統一するため、`Create pull request`を押した後、`URL`に`?template=task-feature.md`を追加して、テンプレートにアクセスする。
+
+> **Note**
+>
+> 通常の PR とテンプレート付き PR の例
+>
+> - PR の`URL`
+>
+> ```
+> https://github.com/wiyco/imap/compare/develop...feature/main-app-ui
+> ```
+>
+> - テンプレート付き PR の`URL`
+>
+> ```
+> https://github.com/wiyco/imap/compare/develop...feature/main-app-ui?template=task-feature.md
+> ```
+>
+> 詳細は[GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request)を参照。
+
 ## Environment
 
 Install environment packages.
@@ -29,8 +51,8 @@ The below file and variables must be created in the root directory.
 #### `.env.local`
 
 ```bash
-NEXT_PUBLIC_SUPABASE_URL=your
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your
+NEXT_PUBLIC_SUPABASE_URL=https://yourprojecturl.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=YourApiKey
 NEXT_PUBLIC_COOKIE_SIGN_UP_NAME=signup
 NEXT_PUBLIC_COOKIE_SIGN_UP_VALUE=success
 NEXT_PUBLIC_COOKIE_EMAIL_NAME=email
