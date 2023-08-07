@@ -8,11 +8,13 @@ TEAM PIPLUP
 
 タスクの概要
 
-例：
+例：`signup`ページ
 
 ## Todo
 
 想定される作業
+
+例：
 
 - [x] 補足説明のアイコン(三角形)を用意する。
 - [x] `_variables.scss`に Secondary Color `#525252`を追加する。
