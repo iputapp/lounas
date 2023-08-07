@@ -44,6 +44,8 @@ TEAM PIPLUP
 - [ ] Google Chrome (iPhone 12 Pro) で表示を確認しました。
 - [ ] iPhone Safari で表示を確認しました。
 
+- [x] [行動規範(Code of Conduct)](https://github.com/wiyco/imap/blob/develop/_docs/CODE_OF_CONDUCT.md)に同意します。
+
 ## Remark
 
 補足事項を記入してください。
