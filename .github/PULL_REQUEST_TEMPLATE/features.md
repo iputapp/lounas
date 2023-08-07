@@ -2,7 +2,7 @@
 
 TEAM PIPLUP
 
-## Issue(Task) number
+## Issue (Task) Number
 
 例：#25
 
