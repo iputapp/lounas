@@ -26,7 +26,7 @@ TEAM PIPLUP
 >
 > 以下はチェックのみ編集を許可する。(内容の追加および変更は禁じる)
 
-- [ ] この報告フォームを送信した時点で[行動規範(Code of Conduct)](https://github.com/wiyco/imap/blob/develop/_docs/CODE_OF_CONDUCT.md)に同意したとみなします。
+- [x] [行動規範(Code of Conduct)](https://github.com/wiyco/imap/blob/develop/_docs/CODE_OF_CONDUCT.md)に同意します。
 
 ## Remark
 
