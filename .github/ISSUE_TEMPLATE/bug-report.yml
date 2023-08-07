@@ -1,6 +1,6 @@
 name: Bug Report 🐞
 description: バグ報告フォーム 😎
-title: "[BUG]: {概要}"
+title: "[Bug]: {概要}"
 labels: ["bug", "triage"]
 # assignees:
 #   - wiyco
