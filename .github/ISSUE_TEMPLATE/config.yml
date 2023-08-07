@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Bug Report 🐞
+    url: https://github.com/wiyco/imap/issues/new?assignees=&labels=bug%2Ctriage&projects=4&template=bug-report.yml&title=%5BBug%5D%3A+
+    about: バグ報告フォーム 😎
+  - name: Tasks (Features) 🚀
+    url: https://github.com/wiyco/imap/issues/new?assignees=&labels=&projects=4&template=task-feature.md&title=%5BFeature%5D%3A+
+    about: For TEAM PIPLUP 🐧
