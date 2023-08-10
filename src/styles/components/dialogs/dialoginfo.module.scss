@@ -1,0 +1,45 @@
+.outercontainer {
+  padding: 10px;
+  margin: 3vw;
+  border: 1vw solid #07f; /* わかりやすくボーダーを引く */
+
+  @apply font-bold rounded-3xl;
+}
+
+.flex-center {
+  @apply flex   shadow-lg border-4
+   border-indigo-500/75 box-border 
+   h-32 w-32 p-4;
+}
+
+.header {
+  width: fit-content;
+  padding: 1vw;
+
+  h1 {
+    margin: 4vw;
+
+    @apply text-2xl;
+  }
+
+  xmark-image {
+    zoom: 1.5; /* 1.5倍の拡大 */
+  }
+
+  @apply flex items-center justify-center;
+}
+
+.main {
+  @apply overflow-y-auto flex items-center justify-center;
+
+  display: block;
+  align-items: center;
+  justify-content: center;
+  width: calc(90vw); /* 画面の水平方向の60%に設定 */
+  height: calc(60vh); /* 画面の垂直方向の60%に設定 */
+  overflow-y: auto; /* 縦方向にスクロール可能にする */
+
+  p {
+    margin: 2vw;
+  }
+}
