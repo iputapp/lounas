@@ -2,8 +2,8 @@
 
 .outercontainer {
   padding: 10px;
-  margin: 3vw;
-  border: 1vw solid var.$blue; /* わかりやすくボーダーを引く */
+  margin: 30px;
+  border: 10px solid var.$blue; /* わかりやすくボーダーを引く */
 
   @apply font-bold rounded-3xl backdrop-blur;
 }
