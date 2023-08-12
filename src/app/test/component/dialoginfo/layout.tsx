@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "test | IMAP ",
+  title: "Test DialogInfo | IMAP",
   description: "PROJECT PIPLUP",
 };
 

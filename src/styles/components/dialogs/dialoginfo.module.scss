@@ -24,8 +24,8 @@
     @apply text-2xl;
   }
 
-  xmark-image {
-    zoom: 1.5; /* 1.5倍の拡大 */
+  .xmark-image {
+    @apply text-5xl/* 1.5倍の拡大 */;
   }
 
   @apply flex items-center justify-center;
