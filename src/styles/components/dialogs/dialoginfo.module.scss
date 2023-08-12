@@ -37,8 +37,8 @@
   display: block;
   align-items: center;
   justify-content: center;
-  width: calc(90vw); /* 画面の水平方向の60%に設定 */
-  height: calc(60vh); /* 画面の垂直方向の60%に設定 */
+  width: 90vw; /* 画面の水平方向の60%に設定 */
+  height: 60vh; /* 画面の垂直方向の60%に設定 */
   overflow-y: auto; /* 縦方向にスクロール可能にする */
 
   p {
