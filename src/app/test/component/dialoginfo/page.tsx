@@ -6,7 +6,6 @@ import { DialogInfo } from "@/components/dialogs/DialogInfo";
 
 export default function TestDialogInfo() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
   return (
     <>
       <div className="w-full h-screen flex flex-col space-y-4">

@@ -1,4 +1,5 @@
 import Xmark from "@icons/xmark.svg";
+import { Dispatch, SetStateAction } from "react";
 
 import styles from "@/styles/components/dialogs/dialoginfo.module.scss";
 
@@ -6,7 +7,7 @@ type DialogInfoProps = {
   header: string;
   children?: React.ReactNode;
   isOpen: boolean;
-  setIsOpen: any;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 export function DialogInfo({ header, children, isOpen, setIsOpen }: DialogInfoProps) {
