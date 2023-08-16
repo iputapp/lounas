@@ -2,17 +2,13 @@ import Xmark from "@icons/xmark.svg";
 
 import styles from "@/styles/components/dialogs/dialoginfo.module.scss";
 
-export function DialogInfo({
-  header,
-  children,
-  isOpen,
-  setIsOpen,
-}: {
+type DialogInfoProps = {
   header: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   isOpen: boolean;
   setIsOpen: any;
-}) {
+};
+export function DialogInfo({ header, children, isOpen, setIsOpen }: DialogInfoProps) {
   return (
     <div className={styles.container + `${isOpen ? " visible" : " invisible"}`}>
       <div>
