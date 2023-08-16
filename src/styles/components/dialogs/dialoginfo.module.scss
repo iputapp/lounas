@@ -3,7 +3,7 @@
 .container {
   border: 5px solid var.$blue;
 
-  @apply fixed top-[20%]
+  @apply z-50 fixed top-[20%]
     p-4 w-full h-2/3
     rounded-3xl backdrop-blur;
 }
