@@ -3,6 +3,6 @@ export const metadata = {
   description: "PROJECT PIPLUP",
 };
 
-export default function TestLayout({ children }: { children: React.ReactNode }) {
+export default function TestDialogInfoLayout({ children }: { children: React.ReactNode }) {
   return children;
 }
