@@ -8,6 +8,7 @@ type DialogInfoProps = {
   isOpen: boolean;
   setIsOpen: any;
 };
+
 export function DialogInfo({ header, children, isOpen, setIsOpen }: DialogInfoProps) {
   return (
     <div className={styles.container + `${isOpen ? " visible" : " invisible"}`}>
