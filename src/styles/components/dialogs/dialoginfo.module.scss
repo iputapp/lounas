@@ -4,7 +4,7 @@
   border: 5px solid var.$blue;
 
   @apply z-50 fixed inset-0 h-fit
-  m-auto p-4 w-full max-w-prose
+  m-auto p-4 w-full max-w-sm
     rounded-3xl backdrop-blur;
 }
 
@@ -12,7 +12,7 @@
   @apply py-4 sticky w-full flex items-center space-x-6 text-2xl;
 
   & > h1 {
-    @apply flex items-center  font-bold;
+    @apply flex items-center text-xl font-bold;
   }
 }
 
