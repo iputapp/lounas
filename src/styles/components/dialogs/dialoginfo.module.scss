@@ -9,10 +9,10 @@
 }
 
 .header {
-  @apply py-4 sticky w-full flex items-center space-x-6;
+  @apply py-4 sticky w-full flex items-center space-x-6 text-2xl;
 
   & > h1 {
-    @apply flex items-center text-2xl font-bold;
+    @apply flex items-center  font-bold;
   }
 }
 

@@ -1,4 +1,4 @@
-import Xmark from "@icons/xmark.svg";
+import Cancel from "@icons/cancel.svg";
 import { Dispatch, SetStateAction } from "react";
 
 import styles from "@/styles/components/dialogs/dialoginfo.module.scss";
@@ -16,7 +16,7 @@ export function DialogInfo({ header, children, isOpen, setIsOpen }: DialogInfoPr
       <div>
         <div className={styles.header}>
           <button onClick={() => setIsOpen(!isOpen)}>
-            <Xmark />
+            <Cancel />
           </button>
           <h1>
             <span>{header}</span>
