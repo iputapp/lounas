@@ -3,13 +3,13 @@
 .main {
   color: var.$blue;
 
-  @apply p-5 text-4xl;
+  @apply text-4xl;
 }
 
 .button {
-  @apply flex items-center p-10;
+  @apply flex items-center p-5;
 }
 
 .heading {
-  @apply ml-1.5 text-sm;
+  @apply ml-1.5;
 }
