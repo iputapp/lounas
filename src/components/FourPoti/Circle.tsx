@@ -3,21 +3,17 @@ import React from "react";
 interface CircleProps {
   size: number; // 円の大きさ
   position: { x: number; y: number }; // 円の位置
-  color1: string; // 円の色
-  color2: string;
+  color: string; // 円の色
   label?: string; // 円のラベル（オプション）
-  angle?: number; // 円のグラデーション角度（オプション）
 }
 
-const Circle = (props: CircleProps) => {
-  const { size, position, color1, color2, label, angle = 0 } = props;
-
+const Circle: React.FC<CircleProps> = ({ size, position, color, label }) => {
   return (
     <div
       style={{
         width: `${size}px`,
         height: `${size}px`,
-        background: `linear-gradient(${angle}deg, ${color1}, ${color2})`, // backgroundプロパティを使用
+        backgroundColor: color,
         borderRadius: "50%",
         position: "absolute",
         left: `${position.x}px`,
@@ -25,6 +21,7 @@ const Circle = (props: CircleProps) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        color: "white",
         fontWeight: "bold",
       }}
     >
@@ -33,4 +30,4 @@ const Circle = (props: CircleProps) => {
   );
 };
 
-export { Circle };
+export default Circle;
