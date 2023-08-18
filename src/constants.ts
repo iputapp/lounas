@@ -32,3 +32,10 @@ export const VERIFY_DIGITS_LENGTH = 6;
  * Regex of `verify digits`
  */
 export const VERIFY_DIGITS_REGEX = /^[0-9]{6}$/;
+
+/**
+ * @constant {Array<string>} PAYMENTS
+ *
+ * List of `payment`
+ */
+export const PAYMENTS = ["現金", "PayPay", "交通系IC"];
