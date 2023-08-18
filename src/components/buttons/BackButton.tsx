@@ -1,11 +1,16 @@
+"use client";
+
 import Arrow from "@icons/nav-arrow-left.svg";
+import { useRouter } from "next/navigation";
 
 import styles from "@/styles/components/buttons/backbutton.module.scss";
 
 export function BackButton() {
+  const router = useRouter();
+
   return (
     <div className={styles.main}>
-      <button className={styles.button}>
+      <button className={styles.button} type="button" onClick={() => router.back()}>
         <Arrow />
         <h1>
           <span>戻る</span>
