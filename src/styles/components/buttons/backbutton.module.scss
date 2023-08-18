@@ -1,0 +1,15 @@
+@use "variables" as var;
+
+.main {
+  color: var.$blue;
+
+  @apply p-5 text-4xl;
+}
+
+.button {
+  @apply flex items-center p-10;
+}
+
+.heading {
+  @apply ml-1.5 text-sm;
+}
