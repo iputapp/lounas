@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 import { PaymentJugde } from "@/components/paymentJugde/PaymentJugde";
+import styles from "@/styles/components/cards/cardhorizontal.module.scss";
 
 type paymentMethod = {
   payment: string;
@@ -16,7 +17,7 @@ export function CardHorizontal({
   foodName: string;
 }) {
   return (
-    <div className="flex w-full h-32 rounded-2xl justify-between mb-4">
+    <div className={`flex w-full h-32 rounded-2xl justify-between mb-4 ${styles.neumorphism}`}>
       <div className="relative w-36">
         <Image
           className="absolute h-full object-cover rounded-2xl"
