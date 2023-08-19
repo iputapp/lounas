@@ -19,6 +19,6 @@
 .main {
   height: 40dvh;
 
-  @apply block p-2 w-full space-y-4
+  @apply block p-2 w-full space-y-4 
     overflow-y-auto;
 }
