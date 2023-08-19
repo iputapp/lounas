@@ -2,11 +2,16 @@ import CheckCircle from "@icons/check-circle.svg";
 import DeleteCircle from "@icons/delete-circle.svg";
 import React from "react";
 
-export function PaymentJugde(props) {
+type paymentMethod = {
+  payment: string;
+  accepted: boolean;
+};
+
+export function PaymentJugde({ paymentMethods }: { paymentMethods: paymentMethod[] }) {
   return (
     <>
       <ul className="text-xs">
-        {props.map((item) => (
+        {paymentMethods.map((item) => (
           <li key={item.payment}>
             <div className="flex justify-between">
               <span>{item.payment}</span>
