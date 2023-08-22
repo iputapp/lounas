@@ -10,3 +10,79 @@ datasource db {
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
+
+model CommunityRestaurant {
+  id           String     @id @default(uuid())
+  name         String
+  description  String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId String
+  community    Community  @relation(fields: [communityId], references: [id])
+  communityId  String
+
+  //route??
+}
+
+model Restaurant {
+  id                  String                @id @default(uuid())
+  name                String
+  description         String?
+  address             String?
+  website             String?
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  dishes              Dish[]
+  payments            PaymentMethod[] //n-to-n, intersection table is created automatically
+  communityRestaurant CommunityRestaurant[] //obligatory syntax
+}
+
+model Dish {
+  id           String         @id @default(uuid())
+  name         String
+  description  String?
+  price        Int?
+  photos       Photo[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  restaurant   Restaurant     @relation(fields: [restaurantId], references: [id])
+  restaurantId String
+  visitHistory VisitHistory[] //obligatory syntax
+}
+
+model PaymentMethod {
+  id          String       @id @default(uuid())
+  name        String
+  restaurants Restaurant[] //n-to-n, intersection table is created automatically
+}
+
+model Photo {
+  id        String   @id @default(uuid())
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  dish      Dish     @relation(fields: [dishId], references: [id])
+  dishId    String
+}
+
+model Community {
+  id                  String                @id @default(uuid())
+  name                String
+  description         String?
+  website             String?
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  //members     CommunityProfile[]
+  communityRestaurant CommunityRestaurant[]
+}
+
+model VisitHistory {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  dish      Dish     @relation(fields: [dishId], references: [id])
+  dishId    String
+  //communityProfile   CommunityProfile @relation(fields: [communityProfileId], references: [id])
+  //communityProfileId String
+}
