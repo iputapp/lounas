@@ -1,0 +1,28 @@
+.neumorphism {
+  box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #fff;
+}
+
+.card-content {
+  @apply flex w-full h-32 rounded-2xl justify-between mb-4 ;
+
+  & > .card-img {
+    @apply relative w-36;
+
+    & > .card-img-thumbnail {
+      @apply absolute h-full object-cover rounded-2xl;
+    }
+  }
+
+  & > .card-description {
+    @apply p-2 flex-auto flex-col space-y-2;
+  }
+
+  & > .card-number {
+    @apply px-1 flex items-center justify-center bg-blue-600 rounded-e-2xl;
+
+    & > .card-number-text {
+      @apply text-2xl font-bold text-white;
+    }
+  }
+}
+

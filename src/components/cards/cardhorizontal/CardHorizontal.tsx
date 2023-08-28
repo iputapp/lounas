@@ -2,7 +2,8 @@ import Image from "next/image";
 import React from "react";
 
 import { PaymentJugde } from "@/components/paymentJugde/PaymentJugde";
-import styles from "@/styles/components/cards/cardhorizontal.module.scss";
+
+import styles from "./cardhorizontal.module.scss";
 
 type paymentMethod = {
   payment: string;
@@ -17,10 +18,10 @@ export function CardHorizontal({
   foodName: string;
 }) {
   return (
-    <div className={`flex w-full h-32 rounded-2xl justify-between mb-4 ${styles.neumorphism}`}>
-      <div className="relative w-36">
+    <div className={`${styles['card-content']} ${styles.neumorphism}`}>
+      <div className={styles['card-img']}>
         <Image
-          className="absolute h-full object-cover rounded-2xl"
+          className={styles['card-img-thumbnail']}
           src="/test/oilnoodle.jpg"
           width={256}
           height={256}
@@ -28,15 +29,15 @@ export function CardHorizontal({
           alt={foodName}
         />
       </div>
-      <div className="p-2 flex-auto flex-col space-y-2">
+      <div className={styles['card-description']}>
         <h3 className="text-left">{foodName}</h3>
         <div className="text-sm">
           <p>決済方法:</p>
           <PaymentJugde paymentMethods={paymentMethods} />
         </div>
       </div>
-      <div className="px-1 flex items-center justify-center bg-blue-600 rounded-e-2xl">
-        <div className="text-2xl font-bold text-white">1</div>
+      <div className={styles['card-number']}>
+        <div className={styles['card-number-text']}>1</div>
       </div>
     </div>
   );

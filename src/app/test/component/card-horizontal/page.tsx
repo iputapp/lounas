@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CardHorizontal } from "@/components/cards/CardHorizontal";
+import { CardHorizontal } from "@/components/cards/cardhorizontal/CardHorizontal";
 
 export default function Test() {
   return (
