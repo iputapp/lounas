@@ -16,7 +16,9 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/inter": "^5.0.8",
     "@lottiefiles/react-lottie-player": "^3.5.3",
+    "@mui/joy": "^5.0.0-beta.4",
     "@mui/material": "^5.14.5",
     "@prisma/client": "^5.1.1",
     "@supabase/supabase-js": "^2.32.0",
