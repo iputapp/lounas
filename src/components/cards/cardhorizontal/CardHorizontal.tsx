@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 import { PaymentJugde } from "@/components/paymentJugde/PaymentJugde";
@@ -18,10 +19,10 @@ export function CardHorizontal({
   foodName: string;
 }) {
   return (
-    <div className={`${styles['card-content']} ${styles.neumorphism}`}>
-      <div className={styles['card-img']}>
+    <Link href="" className={`${styles.cardContent} ${styles.neumorphism}`}>
+      <div className={styles.cardImg}>
         <Image
-          className={styles['card-img-thumbnail']}
+          className={styles.cardImgThumbnail}
           src="/test/oilnoodle.jpg"
           width={256}
           height={256}
@@ -29,16 +30,16 @@ export function CardHorizontal({
           alt={foodName}
         />
       </div>
-      <div className={styles['card-description']}>
+      <div className={styles.cardDescription}>
         <h3 className="text-left">{foodName}</h3>
         <div className="text-sm">
           <p>決済方法:</p>
           <PaymentJugde paymentMethods={paymentMethods} />
         </div>
       </div>
-      <div className={styles['card-number']}>
-        <div className={styles['card-number-text']}>1</div>
+      <div className={styles.cardNumber}>
+        <div className={styles.cardNumberText}>1</div>
       </div>
-    </div>
+    </Link>
   );
 }

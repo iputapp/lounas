@@ -5,22 +5,22 @@
 .card-content {
   @apply flex w-full h-32 rounded-2xl justify-between mb-4 ;
 
-  & > .card-img {
+  &  .card-img {
     @apply relative w-36;
 
-    & > .card-img-thumbnail {
+    &  .card-img-thumbnail {
       @apply absolute h-full object-cover rounded-2xl;
     }
   }
 
-  & > .card-description {
+  &  .card-description {
     @apply p-2 flex-auto flex-col space-y-2;
   }
 
-  & > .card-number {
+  &  .card-number {
     @apply px-1 flex items-center justify-center bg-blue-600 rounded-e-2xl;
 
-    & > .card-number-text {
+    &  .card-number-text {
       @apply text-2xl font-bold text-white;
     }
   }
