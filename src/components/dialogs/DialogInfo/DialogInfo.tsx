@@ -32,7 +32,11 @@ export function DialogInfo({ header, children, isOpen, setIsOpen }: DialogInfoPr
           <IconButton aria-label="close" onClick={() => setIsOpen(!isOpen)}>
             <Cancel />
           </IconButton>
-          <DialogTitle sx={{ paddingLeft: 0 }} id="customized-dialog-title">
+          <DialogTitle
+            sx={{ paddingLeft: 0 }}
+            id="customized-dialog-title"
+            className="m-auto font-bold"
+          >
             {header}
           </DialogTitle>
         </Box>
