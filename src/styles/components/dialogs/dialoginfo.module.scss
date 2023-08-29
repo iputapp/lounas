@@ -1,11 +1,15 @@
 @use "variables" as var;
 
+.screen {
+  @apply h-full w-screen backdrop-brightness-75  flex  m-auto inset-0 fixed;
+}
+
 .container {
   max-width: 22rem;
   border: 5px solid var.$blue;
 
-  @apply z-50 fixed inset-0 h-fit m-auto p-5 w-full 
-    rounded-3xl backdrop-blur;
+  @apply inset-0 h-fit m-auto p-5
+    rounded-3xl backdrop-blur bg-white;
 }
 
 .header {
