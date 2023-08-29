@@ -1,4 +1,5 @@
-import path from "path";
+/** @see {@link https://nextjs.org/docs/app/building-your-application/styling/sass} */
+const path = require("path");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
