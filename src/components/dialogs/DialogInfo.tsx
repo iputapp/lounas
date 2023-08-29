@@ -1,7 +1,8 @@
+"use client";
 import Cancel from "@icons/cancel.svg";
 import React, { Dispatch, SetStateAction, useEffect } from "react";
 
-import styles from "@/styles/components/dialogs/dialoginfo.module.scss";
+import styles from "@/components/dialoginfo/dialoginfo.module.scss";
 
 type DialogInfoProps = {
   header: string;
