@@ -14,12 +14,10 @@
 
 .aqua {
   background-color: #0ff;
-
-  @apply flex items-center justify-center;
 }
 
 .god {
-  @apply flex items-center justify-center bg-gradient-to-r from-cyan-500 to-blue-500;
+  @apply bg-gradient-to-r from-cyan-500 to-blue-500;
 }
 
 .text {

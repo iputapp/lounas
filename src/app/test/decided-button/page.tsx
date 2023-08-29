@@ -3,5 +3,5 @@
 import { Button } from "@/components/buttons/DecidedButton";
 
 export default function TestDecidedButton() {
-  return <Button id="" text="行く！！！！" color="god" />;
+  return <Button id="" text="行く！！！！" color="red" />;
 }
