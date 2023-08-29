@@ -1,0 +1,27 @@
+@use "variables" as var;
+
+.blue {
+  background-color: #07f;
+
+  @apply flex items-center justify-center;
+}
+
+.red {
+  background-color: #f00;
+
+  @apply flex items-center justify-center;
+}
+
+.aqua {
+  background-color: #0ff;
+
+  @apply flex items-center justify-center;
+}
+
+.god {
+  @apply flex items-center justify-center bg-gradient-to-r from-cyan-500 to-blue-500;
+}
+
+.text {
+  @apply flex  items-center justify-center text-2xl font-bold text-white;
+}
