@@ -28,8 +28,8 @@ export function CardHorizontal({ title, image, tag, description }: CardHorizonta
         <h3 className={styles.cardTitle}>{title}</h3>
         <div className={styles.cardDescription}>{description}</div>
       </div>
-      <div className={styles.cardNumber}>
-        <span className={styles.cardNumberText}>{tag.toString()}</span>
+      <div className={styles.cardTag}>
+        <span>{tag.toString()}</span>
       </div>
     </Link>
   );
