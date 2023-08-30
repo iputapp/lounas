@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-import styles from "./cardhorizontal.module.scss";
+import styles from "./styles.module.scss";
 
 type CardHorizontalProps = {
   title: string;
   image: string;
-  tag: number | string;
+  tag?: number | string;
   description?: React.ReactNode;
 };
 
@@ -29,7 +28,7 @@ export function CardHorizontal({ title, image, tag, description }: CardHorizonta
         <div className={styles.cardDescription}>{description}</div>
       </div>
       <div className={styles.cardTag}>
-        <span>{tag.toString()}</span>
+        <span>{tag?.toString()}</span>
       </div>
     </Link>
   );
