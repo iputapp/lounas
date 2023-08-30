@@ -1,5 +1,5 @@
 import { CardHorizontal } from "@/components/cards/CardHorizontal";
-import { PaymentJugde } from "@/components/paymentJugde/PaymentJugde";
+import { Payment } from "@/components/lists/Payment";
 
 export default function Test() {
   const paymentMethods = [
@@ -20,27 +20,27 @@ export default function Test() {
     <div className="mx-auto grid max-w-3xl grid-cols-1 gap-5 p-4 md:grid-cols-2">
       <CardHorizontal
         title="赤味噌油そば"
-        image="/test/oilnoodle.jpg"
+        image="/icons/media-image.svg"
         tag={1}
-        description={<PaymentJugde paymentMethods={paymentMethods[0]} />}
+        description={<Payment payments={paymentMethods[0]} />}
       />
       <CardHorizontal
         title="赤味噌油そば"
-        image="/test/oilnoodle.jpg"
+        image="/icons/media-image.svg"
         tag={2}
-        description={<PaymentJugde paymentMethods={paymentMethods[1]} />}
+        description={<Payment payments={paymentMethods[1]} />}
       />
       <CardHorizontal
         title="赤味噌油そば"
-        image="/test/oilnoodle.jpg"
+        image="/icons/media-image.svg"
         tag={3}
-        description={<PaymentJugde paymentMethods={paymentMethods[0]} />}
+        description={<Payment payments={paymentMethods[0]} />}
       />
       <CardHorizontal
         title="赤味噌油そば"
-        image="/test/oilnoodle.jpg"
+        image="/icons/media-image.svg"
         tag={4}
-        description={<PaymentJugde paymentMethods={paymentMethods[1]} />}
+        description={<Payment payments={paymentMethods[1]} />}
       />
     </div>
   );

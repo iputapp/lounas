@@ -1,16 +1,16 @@
 import Cancel from "@icons/cancel.svg";
 import Check from "@icons/check.svg";
 
-type paymentMethod = {
+type PaymentProps = {
   payment: string;
   accepted: boolean;
 };
 
-export function PaymentJugde({ paymentMethods }: { paymentMethods: paymentMethod[] }) {
+export function Payment({ payments }: { payments: PaymentProps[] }) {
   return (
     <div className="flex items-center justify-end">
       <ul className="w-fit">
-        {paymentMethods.map((item) => (
+        {payments.map((item) => (
           <li key={item.payment}>
             <div className="flex items-center justify-end space-x-2">
               <span>{item.payment}</span>

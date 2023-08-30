@@ -21,11 +21,11 @@
       flex-col justify-between
       p-3;
 
-    & .card-title {
+    & > .card-title {
       @apply text-lg font-semibold;
     }
 
-    & .card-description {
+    & > .card-description {
       @apply text-xs;
 
       color: var.$secondary;
