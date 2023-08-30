@@ -1,5 +1,5 @@
-import CheckCircle from "@icons/check-circle.svg";
-import DeleteCircle from "@icons/delete-circle.svg";
+import Cancel from "@icons/cancel.svg";
+import Check from "@icons/check.svg";
 import React from "react";
 
 type paymentMethod = {
@@ -9,15 +9,25 @@ type paymentMethod = {
 
 export function PaymentJugde({ paymentMethods }: { paymentMethods: paymentMethod[] }) {
   return (
-    <ul className="w-fit">
-      {paymentMethods.map((item) => (
-        <li key={item.payment}>
-          <div className="flex items-center justify-between space-x-4">
-            <span>{item.payment}</span>
-            <span>{item.accepted ? <CheckCircle /> : <DeleteCircle />}</span>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <div className="flex items-center justify-end">
+      <ul className="w-fit">
+        {paymentMethods.map((item) => (
+          <li key={item.payment}>
+            <div className="flex items-center justify-end space-x-2">
+              <span>{item.payment}</span>
+              {item.accepted ? (
+                <span className="text-green-600">
+                  <Check />
+                </span>
+              ) : (
+                <span className="text-red-600">
+                  <Cancel />
+                </span>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
