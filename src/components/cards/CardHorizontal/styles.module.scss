@@ -1,0 +1,43 @@
+@use "variables" as var;
+
+.card-container {
+  @apply flex h-32 w-full
+    items-center justify-between
+    overflow-clip rounded-2xl
+    bg-zinc-50 shadow-lg;
+
+  & .card-image-parent {
+    @apply relative
+      aspect-square h-full;
+
+    & > .card-image {
+      @apply absolute
+        rounded-2xl object-cover;
+    }
+  }
+
+  & .card-content {
+    @apply flex h-full w-full
+      flex-col justify-between
+      p-3;
+
+    & > .card-title {
+      @apply text-lg font-semibold;
+    }
+
+    & > .card-description {
+      @apply text-xs;
+
+      color: var.$secondary;
+    }
+  }
+
+  & .card-tag {
+    @apply flex h-full
+      items-center justify-center
+      px-1
+      text-2xl font-bold text-white;
+
+    background-color: var.$blue;
+  }
+}
