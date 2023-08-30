@@ -15,13 +15,13 @@
 
 ## 定数
 
-セキュアにする必要のない定数は `src/constants.ts` で定義している。
+環境変数にする必要のない定数は `src/constants.ts` で定義している。
 
 [環境変数](#環境変数)にするか、否かは慎重に判断する必要がある。
 
 ## 安全性
 
-セキュアにしたい処理は必ず `server` に近いコンポーネントで行うこと。
+セキュアが伴う処理は必ず `server` で行うこと。
 
 リダイレクトは `src/middleware.ts` にて行う。`middleware` にて行えないリダイレクトは極力避けるべきである。
 
@@ -69,11 +69,11 @@ export function foo() {
 
 詳細は以下を参照すべし。
 
-- [なぜ default export を使うべきではないのか？ | LINE Engineering](https://engineering.linecorp.com/ja/blog/you-dont-need-default-export)
+- [なぜ default export を使うべきではないのか？ - LINE Engineering](https://engineering.linecorp.com/ja/blog/you-dont-need-default-export)
 
 ## スタイル
 
-共通するスタイル(色コードなど)は `src/styles/_variables.scss` で定義されている。
+共通するスタイル(色コードなど)は `src/styles/_variables.scss` にて定義している。
 
 これらの値は、以下のように `@use` をすることで他のファイルで使用できる。
 
@@ -87,7 +87,7 @@ p {
 
 ## Pull Request
 
-**Pull Request**をする前に以下のコマンドを実行し、体裁を整えること。
+PRをする前に以下のコマンドを実行し、体裁を整えること。
 
 ```bash
 npm run format
