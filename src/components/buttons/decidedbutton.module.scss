@@ -6,22 +6,25 @@
 
 .blue {
   background-color: #07f;
-
-  @apply flex items-center justify-center rounded-full;
 }
 
 .red {
-  @apply flex items-center justify-center rounded-full bg-gradient-to-r from-orange-500 to-red-600;
+  @apply bg-gradient-to-r from-orange-500 to-red-600;
 }
 
 .aqua {
   background-color: #0ff;
-
-  @apply flex items-center justify-center rounded-full;
 }
 
 .god {
-  @apply flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-500;
+  @apply bg-gradient-to-r from-cyan-500 to-blue-500;
+}
+
+.god,
+.aqua,
+.blue,
+.red {
+  @apply flex items-center justify-center rounded-full;
 }
 
 .text {
