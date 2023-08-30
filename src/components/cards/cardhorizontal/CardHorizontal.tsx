@@ -2,43 +2,34 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import { PaymentJugde } from "@/components/paymentJugde/PaymentJugde";
-
 import styles from "./cardhorizontal.module.scss";
 
-type paymentMethod = {
-  payment: string;
-  accepted: boolean;
+type CardHorizontalProps = {
+  title: string;
+  image: string;
+  tag: number | string;
+  description?: React.ReactNode;
 };
 
-export function CardHorizontal({
-  paymentMethods,
-  foodName,
-}: {
-  paymentMethods: paymentMethod[];
-  foodName: string;
-}) {
+export function CardHorizontal({ title, image, tag, description }: CardHorizontalProps) {
   return (
-    <Link href="" className={`${styles.cardContent} ${styles.neumorphism}`}>
-      <div className={styles.cardImg}>
+    <Link href="/" className={styles.cardContainer}>
+      <div className={styles.cardImageParent}>
         <Image
-          className={styles.cardImgThumbnail}
-          src="/test/oilnoodle.jpg"
-          width={256}
-          height={256}
-          sizes="100vw"
-          alt={foodName}
+          className={styles.cardImage}
+          src={image}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+          priority
         />
       </div>
-      <div className={styles.cardDescription}>
-        <h3 className="text-left">{foodName}</h3>
-        <div className="text-sm">
-          <p>決済方法:</p>
-          <PaymentJugde paymentMethods={paymentMethods} />
-        </div>
+      <div className={styles.cardContent}>
+        <h3 className={styles.cardTitle}>{title}</h3>
+        <div className={styles.cardDescription}>{description}</div>
       </div>
       <div className={styles.cardNumber}>
-        <div className={styles.cardNumberText}>1</div>
+        <span className={styles.cardNumberText}>{tag.toString()}</span>
       </div>
     </Link>
   );
