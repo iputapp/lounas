@@ -1,29 +1,18 @@
 @use "variables" as var;
 
 .box {
-  @apply items-center justify-center rounded-full;
+  @apply flex items-center justify-center rounded-full;
 }
 
 .blue {
-  background-color: #07f;
+  @apply bg-gradient-to-r from-cyan-500 to-blue-500;
 }
 
 .red {
   @apply bg-gradient-to-r from-orange-500 to-red-600;
 }
 
-.aqua {
-  background-color: #0ff;
-}
-
-.god {
-  @apply bg-gradient-to-r from-cyan-500 to-blue-500;
-}
-
-.god,
-.aqua,
-.blue,
-.red {
+.flex-center {
   @apply flex items-center justify-center rounded-full;
 }
 
