@@ -1,6 +1,6 @@
 # Features
 
-TEAM PIPLUP
+TEAM PIPLUP 🐧
 
 ## Issue (Task) Number
 
