@@ -1,16 +1,33 @@
-import React from "react";
+"use client";
 
-import { Circle as FourPotiCircle } from "@/components/FourPoti/Circle";
+import { useState } from "react";
 
-export default function SomeComponent() {
+import { Circle } from "@/components/buttons/Circle";
+
+export default function Test() {
+  const [title, setTitle] = useState("がっつり");
+  const clickHandler = () => {
+    if (title === "がっつり") {
+      setTitle("ふつう");
+    } else {
+      setTitle("がっつり");
+    }
+  };
+
   return (
-    <FourPotiCircle
-      title="95円"
-      size={100}
-      gradientStart="red"
-      gradientEnd="transparent"
-      gradientDirection="to right"
-      href="/"
-    />
+    <div className="relative h-screen w-full">
+      <Circle
+        title={title}
+        size={10}
+        posX="right"
+        posY="top"
+        x={5}
+        y={0}
+        gradientColorStart="#f5576c"
+        gradientColorEnd="#f093fb"
+        gradientDirection={180}
+        onClick={() => clickHandler()}
+      />
+    </div>
   );
 }
