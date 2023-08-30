@@ -11,7 +11,7 @@
 > 例）`Footer`
 >
 > - `src/components/navigations/Footer/index.tsx`
-> - `src/components/navigations/Footer/footer.module.scss`
+> - `src/components/navigations/Footer/styles.module.scss`
 
 ## **Client** のスクリプト
 
