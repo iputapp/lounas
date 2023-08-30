@@ -28,5 +28,5 @@
 }
 
 .text {
-  @apply p-5 text-xl font-bold text-white;
+  @apply p-2 text-xl font-bold text-white md:p-4 md:text-3xl;
 }
