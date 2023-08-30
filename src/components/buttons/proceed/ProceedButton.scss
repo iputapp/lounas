@@ -1,0 +1,15 @@
+.article {
+  @apply flex h-28 w-28 
+  flex-col  
+  items-center justify-center rounded-full bg-gradient-to-r
+  from-emerald-500 via-cyan-500 to-blue-500;
+
+  .section {
+    @apply flex h-24 w-24 flex-col 
+    items-center justify-center rounded-full bg-white;
+
+    .button {
+      @apply flex items-center justify-center font-bold;
+    }
+  }
+}
