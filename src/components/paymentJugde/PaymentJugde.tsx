@@ -1,6 +1,5 @@
 import Cancel from "@icons/cancel.svg";
 import Check from "@icons/check.svg";
-import React from "react";
 
 type paymentMethod = {
   payment: string;
