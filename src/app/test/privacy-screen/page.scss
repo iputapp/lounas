@@ -1,3 +1,7 @@
 .main {
-  @apply bg-white;
+  @apply relative flex h-screen w-screen flex-col items-center justify-center;
+}
+
+.animation {
+  @apply absolute w-2/3 overflow-clip;
 }
