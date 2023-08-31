@@ -27,6 +27,8 @@
   }
 
   .animation {
+    aspect-ratio: 1 / 1;
+
     @apply w-2/3 overflow-clip md:w-4/12;
   }
 
