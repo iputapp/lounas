@@ -14,10 +14,10 @@ type ExpandablePanelProps = {
 export function ExpandablePanel({ children, expandChildren }: ExpandablePanelProps) {
   const [expanded, setExpanded] = useState(false);
   return (
-    <div className={`${expanded && styles.backdrop}`}>
-      <div className={`${styles.container} ${expanded && styles.expanded}`}>
+    <div className={`${expanded ? styles.backdrop : ""}`}>
+      <div className={`${styles.container} ${expanded ? styles.expanded : ""}`}>
         <div className={styles.content}>
-          {children}
+          <div>{children}</div>
           {expanded && <div className={styles.content}>{expandChildren}</div>}
         </div>
         <button className={styles.icon} onClick={() => setExpanded(!expanded)}>

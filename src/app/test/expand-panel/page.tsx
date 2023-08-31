@@ -1,3 +1,6 @@
+import Cancel from "@icons/cancel.svg";
+import Check from "@icons/check.svg";
+
 import { CardHorizontal } from "@/components/cards/CardHorizontal";
 import { ExpandablePanel } from "@/components/layouts/ExpandablePanel";
 
@@ -38,10 +41,19 @@ export default function Test() {
           expandChildren={
             <div className="grid gap-5">
               <h4 className="text-2xl font-semibold">決済方法</h4>
-              <ul className="ms-5 list-disc">
+              <ul className="grid gap-1">
                 {data.payment.map((item) => (
-                  <li key={item.type}>
-                    {item.type}：{item.accepted ? "利用可能" : "利用不可"}
+                  <li key={item.type} className="grid grid-cols-2">
+                    <span>{item.type}</span>
+                    {item.accepted ? (
+                      <span className="text-green-600">
+                        <Check />
+                      </span>
+                    ) : (
+                      <span className="text-red-600">
+                        <Cancel />
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -50,7 +62,7 @@ export default function Test() {
         >
           <div className="grid gap-5">
             <h4 className="text-2xl font-semibold">店舗情報</h4>
-            <ul className="flex flex-col space-y-4">
+            <ul className="grid gap-4">
               <li>
                 <p>
                   全日：{data.timeOpen}～{data.timeClose}
