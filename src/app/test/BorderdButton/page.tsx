@@ -1,3 +1,5 @@
+"use client";
+
 import "./page.scss";
 
 import { BorderdButton } from "@/components/buttons/BorderdButton/BorderdButton";
