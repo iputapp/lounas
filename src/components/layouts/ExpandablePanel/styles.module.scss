@@ -1,0 +1,25 @@
+@use "variables" as var;
+
+.backdrop {
+  @apply fixed left-0 top-0 z-40
+    h-screen w-full
+    backdrop-brightness-50;
+}
+
+.container {
+  @apply flex w-full items-start justify-between rounded-2xl bg-white p-4 shadow-md;
+
+  height: fit-content;
+  transition: height 0.5s ease-in-out;
+
+  &.expanded {
+    @apply absolute inset-0 m-auto;
+
+    width: 90vw;
+    height: 60dvh;
+  }
+}
+
+.content {
+  @apply grid h-full w-full content-between py-2;
+}
