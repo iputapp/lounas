@@ -1,0 +1,25 @@
+@use "variables" as var;
+
+.main {
+  @apply flex h-screen flex-col items-center justify-center;
+}
+
+.title {
+  @apply m-10 text-4xl font-bold;
+}
+
+.icon {
+  color: var.$red;
+
+  @apply m-5 text-8xl;
+}
+
+.text {
+  color: var.$secondary;
+
+  @apply mx-20 w-1/2 break-words text-center text-base font-bold;
+}
+
+.please {
+  @apply mx-1 my-16 text-2xl font-bold;
+}
