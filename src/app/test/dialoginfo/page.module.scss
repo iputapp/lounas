@@ -1,0 +1,10 @@
+.rotate-animation {
+  & > .icon {
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg);
+  }
+
+  &:hover > .icon {
+    transform: rotate(90deg);
+  }
+}
