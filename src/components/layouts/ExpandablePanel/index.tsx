@@ -1,7 +1,7 @@
 "use client";
 
 import Cancel from "@icons/cancel.svg";
-import Expand from "@icons/expand.svg";
+import Enlarge from "@icons/enlarge.svg";
 import { useState } from "react";
 
 import styles from "./styles.module.scss";
@@ -13,17 +13,16 @@ type ExpandablePanelProps = {
 
 export function ExpandablePanel({ children, expandChildren }: ExpandablePanelProps) {
   const [expanded, setExpanded] = useState(false);
+
   return (
-    <div className={`${expanded ? styles.backdrop : ""}`}>
+    <button className={`${expanded ? styles.backdrop : ""}`} onClick={() => setExpanded(!expanded)}>
       <div className={`${styles.container} ${expanded ? styles.expanded : ""}`}>
         <div className={styles.content}>
           <div>{children}</div>
-          {expanded && <div className={styles.content}>{expandChildren}</div>}
+          {expanded && <div>{expandChildren}</div>}
         </div>
-        <button className={styles.icon} onClick={() => setExpanded(!expanded)}>
-          <span>{expanded ? <Cancel /> : <Expand />}</span>
-        </button>
+        <span>{expanded ? <Cancel /> : <Enlarge />}</span>
       </div>
-    </div>
+    </button>
   );
 }

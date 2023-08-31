@@ -1,8 +1,6 @@
-import Cancel from "@icons/cancel.svg";
-import Check from "@icons/check.svg";
-
 import { CardHorizontal } from "@/components/cards/CardHorizontal";
 import { ExpandablePanel } from "@/components/layouts/ExpandablePanel";
+import { PaymentGrid } from "@/components/lists/PaymentGrid";
 
 export default function Test() {
   const now = new Date();
@@ -12,21 +10,21 @@ export default function Test() {
     timeClose: now.toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" }),
     timeStay: 900, // seconds
     timeDuration: 300, // seconds
-    payment: [
+    payments: [
       {
-        type: "交通系電子マネー",
+        payment: "現金",
         accepted: true,
       },
       {
-        type: "クレジットカード",
+        payment: "PayPay",
         accepted: true,
       },
       {
-        type: "QRコード決済",
+        payment: "交通系IC",
         accepted: false,
       },
       {
-        type: "電子マネー",
+        payment: "クレジット",
         accepted: false,
       },
     ],
@@ -39,30 +37,15 @@ export default function Test() {
         <CardHorizontal title="カード" image="/icons/media-image.svg" tag={1} />
         <ExpandablePanel
           expandChildren={
-            <div className="grid gap-5">
+            <div className="grid justify-items-start gap-5">
               <h4 className="text-2xl font-semibold">決済方法</h4>
-              <ul className="grid gap-1">
-                {data.payment.map((item) => (
-                  <li key={item.type} className="grid grid-cols-2">
-                    <span>{item.type}</span>
-                    {item.accepted ? (
-                      <span className="text-green-600">
-                        <Check />
-                      </span>
-                    ) : (
-                      <span className="text-red-600">
-                        <Cancel />
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
+              <PaymentGrid payments={data.payments} />
             </div>
           }
         >
-          <div className="grid gap-5">
+          <div className="grid justify-items-start gap-5">
             <h4 className="text-2xl font-semibold">店舗情報</h4>
-            <ul className="grid gap-4">
+            <ul className="grid justify-items-start gap-4">
               <li>
                 <p>
                   全日：{data.timeOpen}～{data.timeClose}
@@ -70,7 +53,7 @@ export default function Test() {
               </li>
               <li>
                 <p>滞在時間：おおよそ{Math.floor(data.timeStay / 60)}分</p>
-                <small>※混雑状況により異なります。</small>
+                <small className="text-xs">※混雑状況により異なります。</small>
               </li>
               <li>
                 <p>片道：おおよそ{Math.floor(data.timeDuration / 60)}分</p>
