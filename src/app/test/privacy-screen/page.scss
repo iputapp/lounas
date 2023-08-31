@@ -1,7 +1,32 @@
 .main {
-  @apply relative flex h-screen w-screen flex-col items-center justify-center;
+  @apply flex h-screen w-screen flex-col items-center justify-center;
+}
+
+.privacy {
+  @apply flex flex-col items-center justify-center;
+
+  & > title {
+    @apply m-4 text-4xl font-bold;
+  }
+
+  & > p {
+    @apply m-4 flex flex-col items-center 
+    justify-center break-words from-neutral-400 text-sm;
+  }
+}
+
+.title {
+  @apply text-4xl font-bold;
+}
+
+.dialiginfo {
+  @apply from-neutral-400 text-sm;
 }
 
 .animation {
-  @apply absolute w-2/3 overflow-clip;
+  @apply w-2/3 overflow-clip md:w-4/12;
+}
+
+.choice {
+  @apply m-5 text-2xl font-bold;
 }
