@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 .main {
   @apply flex h-screen w-screen flex-col items-center justify-center;
 }
@@ -5,13 +7,13 @@
 .privacy {
   @apply flex flex-col items-center justify-center;
 
-  & > title {
-    @apply m-4 text-4xl font-bold;
+  & > h1 {
+    @apply p-8 text-4xl font-bold;
   }
 
   & > p {
     @apply m-4 flex flex-col items-center 
-    justify-center break-words from-neutral-400 text-sm;
+    justify-center break-words from-neutral-400 text-center text-sm;
   }
 }
 
@@ -20,7 +22,9 @@
 }
 
 .dialiginfo {
-  @apply from-neutral-400 text-sm;
+  @apply border-b-2 border-blue-500 from-neutral-400 text-xs;
+
+  color: var.$blue;
 }
 
 .animation {
