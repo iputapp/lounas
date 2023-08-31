@@ -1,0 +1,28 @@
+@use "variables" as var;
+
+.circle {
+  background: linear-gradient(
+    to right,
+    rgba(var.$lime, 20%),
+    rgba(var.$cyan, 20%),
+    rgba(var.$blue, 20%)
+  );
+}
+
+.article {
+  background: linear-gradient(to right, var.$lime, var.$cyan, var.$blue);
+}
+
+.section {
+  @apply flex  flex-col items-center justify-center rounded-full bg-white;
+}
+
+.text {
+  @apply flex items-center justify-center font-bold;
+}
+
+.main {
+  @apply flex 
+  flex-col  
+  items-center justify-center rounded-full;
+}
