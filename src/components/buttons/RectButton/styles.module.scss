@@ -1,0 +1,21 @@
+@use "variables" as var;
+
+.box {
+  @apply overflow-clip rounded-lg px-2 py-4;
+
+  &.blue {
+    background: linear-gradient(to right top, #1da1f2, #0e71c8);
+  }
+
+  &.red {
+    background: linear-gradient(to right top, var.$scarlet, var.$orange);
+  }
+
+  & .text {
+    @apply text-xl font-semibold text-white;
+  }
+}
+
+.flex-center-all {
+  @apply flex items-center justify-center;
+}
