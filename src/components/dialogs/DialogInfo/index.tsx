@@ -13,6 +13,7 @@ const StyledDialog = styled(Dialog)(() => ({
     border: "2px solid #07f", // border-2
     backdropFilter: "blur(8px) brightness(1.75)", // backdrop-blur backdrop-brightness-[1.75]
     backgroundColor: "rgb(255 255 255 / 50%)",
+    overflowX: "clip",
   },
   "& .MuiBox-root": {
     padding: "0.5rem", // p-2
@@ -26,8 +27,8 @@ const StyledDialog = styled(Dialog)(() => ({
   "& .MuiDialogTitle-root": {
     /** font-semibold */
     fontWeight: 600,
-    /** text-xl */
-    fontSize: "1.25rem",
+    /** text-lg */
+    fontSize: "1.125rem",
     lineHeight: "1.75rem",
     margin: 0, // m-0
     marginTop: "0.125rem", // mt-0.5
