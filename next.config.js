@@ -5,7 +5,7 @@ const path = require("path");
 const nextConfig = {
   /** @see {@link https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions#convention} */
   experimental: {
-    serverActions: true,
+    serverActions: false,
   },
   /** @see {@link https://nextjs.org/docs/app/building-your-application/styling/sass} */
   sassOptions: {
