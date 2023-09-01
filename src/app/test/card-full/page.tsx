@@ -1,22 +1,16 @@
-import { Cardfull } from "@/components/cards/CardFull";
+import { CardFull } from "@/components/cards/CardFull";
 
-export default function Home() {
+export default function Test() {
   return (
-    <main>
-      <div className="grid auto-rows-fr grid-cols-1 gap-8">
-        <Cardfull
-          explanation="目の前にセブンイレブンがあります"
-          supplement="今夜のみに行かないかい？"
-          thumbnail=""
-          icon=""
-          explanationStyle={{
-            transform: "translateY(50%)", // 下方向に50%移動して配置
-          }}
-          supplementStyle={{
-            transform: "translateY(50%)", // 下方向に50%移動して配置
-          }}
-        />
-      </div>
-    </main>
+    <div className="grid gap-9 p-6">
+      <CardFull image="/test/route.webp" description="右に曲がります" navigation="right" />
+      <CardFull image="/test/route.webp" description="まっすぐ進みます" navigation="straight" />
+      <CardFull image="/test/route.webp" description="左に曲がります" navigation="left" />
+      <CardFull image="/test/route.webp" description="道なり" navigation="sharpLeft" />
+      <CardFull image="/test/route.webp" description="道なり" navigation="sharpRight" />
+      <CardFull image="/test/route.webp" description="斜め左に進みます" navigation="slightLeft" />
+      <CardFull image="/test/route.webp" description="斜め右に進みます" navigation="slightRight" />
+      <CardFull image="/test/route.webp" description="右側に目的" navigation="pin" />
+    </div>
   );
 }

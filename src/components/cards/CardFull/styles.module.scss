@@ -1,42 +1,35 @@
 @use "variables" as var;
 
-.container {
-  @apply relative w-full rounded-md bg-white;
+.card {
+  @apply flex h-full w-full
+    items-center justify-between
+    overflow-clip rounded-3xl
+    shadow-lg;
 
-  z-index: 1;
-  height: 250px;
+  & .image-parent {
+    @apply relative w-full;
 
-  & .thumbnail-container {
-    @apply absolute left-0 top-0 h-full w-full rounded-md;
+    aspect-ratio: 4 / 3;
 
-    z-index: 2;
+    & > .image {
+      @apply absolute object-cover;
+    }
+
+    & > .description {
+      @apply absolute bottom-0
+        flex h-fit w-full
+        flex-col items-center justify-center
+        py-4 text-white backdrop-blur-sm;
+
+      background-color: rgb(0 0 0 / 50%);
+    }
   }
 
-  & .thumbnail-image {
-    @apply rounded-md object-contain;
-  }
+  & .tag {
+    @apply flex h-full
+      items-center justify-center
+      text-3xl text-white;
 
-  & .right-rectangle {
-    @apply absolute right-0 flex h-full w-20 items-center justify-center rounded-r-md;
-
-    z-index: 3;
     background-color: var.$blue;
-  }
-
-  & .description-section {
-    @apply absolute bottom-0 flex h-24 w-full flex-col rounded-b-md;
-
-    z-index: 2;
-    background-color: rgba(var.$primary, 0.5);
-
-    & .explanation-section {
-      font-size: 2.5vh;
-      color: var.$primary;
-    }
-
-    & .supplement-section {
-      font-size: 2.5vh;
-      color: var.$primary;
-    }
   }
 }
