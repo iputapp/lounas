@@ -10,7 +10,7 @@ export function PaymentGrid({ payments }: { payments: PaymentGridProps[] }) {
   return (
     <ul className="grid grid-cols-2 gap-x-6 gap-y-2">
       {payments.map((item) => (
-        <li key={item.payment} className="grid grid-cols-4 justify-items-center gap-1 text-sm">
+        <li key={item.payment} className="grid grid-cols-4 justify-items-center gap-1">
           <span className="col-span-3">{item.payment}</span>
           {item.accepted ? (
             <span className="text-green-600">
