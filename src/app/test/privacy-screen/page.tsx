@@ -17,7 +17,7 @@ export default function Privacy() {
           このアプリではユーザーがより便利にお使いいただける用に情報提供の協力をお願いしています。
         </p>
       </div>
-      <div className="dialiginfo">私たちが考えるプライバシーについて詳しく知る</div>
+      <div className="dialoginfo">私たちが考えるプライバシーについて詳しく知る</div>
       <div className="animation">
         <PrivacyPlayer />
       </div>
