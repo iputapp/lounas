@@ -21,12 +21,15 @@ model Restaurant {
   description String?
   address     String?
   website     String?
+  longtitude  Float
+  latitude    Float
+  travelTime  Int
 
   dishes   Dish[]
   payments PaymentMethod[] //n-to-n, intersection table is created automatically
   tags     TagRestaurant[]
 
-  RouteStep RouteStep[]
+  routeSteps RouteStep[]
 }
 
 model Dish {
@@ -38,12 +41,15 @@ model Dish {
   name         String
   description  String?
   price        Int
+  amount       Int
+  eatTime      Int
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
   restaurantId String
 
-  traits DishTraitScore[]
-  tags   TagDish[]
-  photos Photo[]
+  traits      DishTraitScore[]
+  tags        TagDish[]
+  photos      Photo[]
+  thumbnailId String
 
   visitHistory VisitHistory[] //obligatory syntax
 }
