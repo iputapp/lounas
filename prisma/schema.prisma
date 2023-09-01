@@ -13,6 +13,7 @@ datasource db {
 
 model Restaurant {
   id        String   @id @default(uuid())
+  urlId     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -30,6 +31,7 @@ model Restaurant {
 
 model Dish {
   id        String   @id @default(uuid())
+  urlId     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -54,7 +56,7 @@ model PaymentMethod {
 
 model Photo {
   id        String   @id @default(uuid())
-  url       String
+  urlId     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   dish      Dish     @relation(fields: [dishId], references: [id])
@@ -125,6 +127,7 @@ model TagDish {
 
 model User {
   id        String    @id @default(uuid())
+  urlId     String    @unique
   isStudent Boolean   @default(true)
   studentId Int?      @unique
   createdAt DateTime  @default(now())
