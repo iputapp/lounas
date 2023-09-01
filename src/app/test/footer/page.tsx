@@ -3,5 +3,9 @@
 import { Footer } from "@/components/navigations/NavigationBar";
 
 export default function Test() {
-  return <Footer />;
+  const Push = () => {
+    console.log("ここに行くわよ");
+  };
+
+  return <Footer onClick={Push} />;
 }
