@@ -31,5 +31,9 @@
       text-3xl text-white;
 
     background-color: var.$blue;
+
+    &.pin {
+      background-color: var.$green;
+    }
   }
 }

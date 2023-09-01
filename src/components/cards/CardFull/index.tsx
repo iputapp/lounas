@@ -51,7 +51,7 @@ export function CardFull({ image, description, navigation }: CardFullProps) {
           <p>{description}</p>
         </section>
       </div>
-      <div className={styles.tag}>
+      <div className={`${styles.tag} ${navigation == "pin" ? styles.pin : ""}`}>
         <span>{navigationIcons[navigation]}</span>
       </div>
     </article>
