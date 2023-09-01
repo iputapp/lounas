@@ -7,21 +7,17 @@
     @apply flex flex-col items-center justify-center;
 
     & > h1 {
-      @apply p-8 text-4xl font-bold;
+      @apply p-5 text-4xl font-bold;
     }
 
     & > p {
       @apply m-4 flex flex-col items-center 
-      justify-center break-words from-neutral-400 text-center text-sm;
+      justify-center break-words from-neutral-400 text-center;
     }
   }
 
-  .title {
-    @apply text-4xl font-bold;
-  }
-
   .dialoginfo {
-    @apply border-b-2 border-blue-500 from-neutral-400 text-xs;
+    @apply border-b-2 border-blue-500 from-neutral-400 text-sm;
 
     color: var.$blue;
   }
@@ -34,7 +30,7 @@
 
   .choice {
     & > h1 {
-      @apply m-5 text-xl font-bold;
+      @apply mb-5 text-xl font-bold;
     }
 
     & > .button {
