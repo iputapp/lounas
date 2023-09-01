@@ -1,0 +1,42 @@
+@use "variables" as var;
+
+.container {
+  @apply relative w-full rounded-md bg-white;
+
+  z-index: 1;
+  height: 250px;
+
+  & .thumbnail-container {
+    @apply absolute left-0 top-0 h-full w-full rounded-md;
+
+    z-index: 2;
+  }
+
+  & .thumbnail-image {
+    @apply rounded-md object-contain;
+  }
+
+  & .right-rectangle {
+    @apply absolute right-0 flex h-full w-20 items-center justify-center rounded-r-md;
+
+    z-index: 3;
+    background-color: var.$blue;
+  }
+
+  & .description-section {
+    @apply absolute bottom-0 flex h-24 w-full flex-col rounded-b-md;
+
+    z-index: 2;
+    background-color: rgba(var.$primary, 0.5);
+
+    & .explanation-section {
+      font-size: 2.5vh;
+      color: var.$primary;
+    }
+
+    & .supplement-section {
+      font-size: 2.5vh;
+      color: var.$primary;
+    }
+  }
+}
