@@ -1,4 +1,4 @@
-import { Cardfull } from "@/components/Cardfull";
+import { Cardfull } from "@/components/cards/CardFull";
 
 export default function Home() {
   return (
