@@ -1,11 +1,7 @@
 "use client";
 
-import { Footer } from "@/components/navigations/Footer";
+import { Footer } from "@/components/navigations/NavigationBar";
 
 export default function Test() {
-  return (
-    <main className="footer">
-      <Footer />
-    </main>
-  );
+  return <Footer />;
 }
