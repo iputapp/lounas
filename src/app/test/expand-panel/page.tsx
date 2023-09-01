@@ -36,30 +36,24 @@ export default function Test() {
         <CardHorizontal title="カード" image="/icons/media-image.svg" tag={1} />
         <CardHorizontal title="カード" image="/icons/media-image.svg" tag={1} />
         <ExpandablePanel
-          expandChildren={
-            <div className="grid justify-items-start gap-5">
-              <h4 className="text-2xl font-semibold">決済方法</h4>
-              <PaymentGrid payments={data.payments} />
-            </div>
-          }
+          title="店舗詳細"
+          titleEx="決済方法"
+          childrenEx={<PaymentGrid payments={data.payments} />}
         >
-          <div className="grid justify-items-start gap-5">
-            <h4 className="text-2xl font-semibold">店舗情報</h4>
-            <ul className="grid justify-items-start gap-4">
-              <li>
-                <p>
-                  全日：{data.timeOpen}～{data.timeClose}
-                </p>
-              </li>
-              <li>
-                <p>滞在時間：おおよそ{Math.floor(data.timeStay / 60)}分</p>
-                <small className="text-xs">※混雑状況により異なります。</small>
-              </li>
-              <li>
-                <p>片道：おおよそ{Math.floor(data.timeDuration / 60)}分</p>
-              </li>
-            </ul>
-          </div>
+          <ul className="grid justify-items-start gap-4">
+            <li>
+              <p>
+                全日：{data.timeOpen}～{data.timeClose}
+              </p>
+            </li>
+            <li>
+              <p>滞在時間：おおよそ{Math.floor(data.timeStay / 60)}分</p>
+              <small className="text-xs">※混雑状況により異なります。</small>
+            </li>
+            <li>
+              <p>片道：おおよそ{Math.floor(data.timeDuration / 60)}分</p>
+            </li>
+          </ul>
         </ExpandablePanel>
       </div>
     </div>
