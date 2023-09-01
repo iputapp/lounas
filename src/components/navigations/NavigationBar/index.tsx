@@ -8,7 +8,14 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useState } from "react";
 
-export function Footer() {
+type ButtonProps = {
+  homeClick: () => void;
+  rankingClick: () => void;
+  diaryClick: () => void;
+  userClick: () => void;
+};
+
+export function Footer({ homeClick, rankingClick, diaryClick, userClick }: ButtonProps) {
   const [value, setValue] = useState<string>("home");
 
   return (
@@ -25,32 +32,32 @@ export function Footer() {
       <BottomNavigationAction
         value="home"
         icon={
-          <span>
-            <Home />
+          <span onClick={homeClick}>
+            <Home className="text-xl" />
           </span>
         }
       />
       <BottomNavigationAction
         value="ranking"
         icon={
-          <span>
-            <Crown />
+          <span onClick={rankingClick}>
+            <Crown className="text-2xl" />
           </span>
         }
       />
       <BottomNavigationAction
         value="diary"
         icon={
-          <span>
-            <Calendar />
+          <span onClick={diaryClick}>
+            <Calendar className="text-xl" />
           </span>
         }
       />
       <BottomNavigationAction
         value="user"
         icon={
-          <span>
-            <Person />
+          <span onClick={userClick}>
+            <Person className="text-xl" />
           </span>
         }
       />
