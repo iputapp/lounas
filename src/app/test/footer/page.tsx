@@ -7,5 +7,5 @@ export default function Test() {
     console.log("ここに行くわよ");
   };
 
-  return <Footer onClick={Push} />;
+  return <Footer homeClick={Push} rankingClick={Push} diaryClick={Push} userClick={Push} />;
 }
