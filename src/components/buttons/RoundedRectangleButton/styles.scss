@@ -1,0 +1,19 @@
+@use "variables" as var;
+
+.button {
+  background: linear-gradient(to right, var.$blue, var.$cyan, var.$lime);
+
+  @apply w-fit overflow-clip rounded-lg;
+
+  & > .inside {
+    @apply m-2 flex w-fit flex-col items-center justify-center rounded-full bg-white;
+
+    & > .text {
+      @apply my-2 flex  items-center justify-center text-2xl font-bold;
+    }
+  }
+}
+
+.main {
+  @apply flex flex-col items-center justify-center rounded-full;
+}
