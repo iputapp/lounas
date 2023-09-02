@@ -3,7 +3,7 @@
 .title {
   @apply relative flex w-fit
     items-center justify-center
-    pb-3 text-4xl font-bold;
+    py-3 text-4xl font-bold;
 }
 
 .title::after {
