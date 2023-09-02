@@ -1,18 +1,18 @@
 /** @see {@link https://nextjs.org/docs/app/building-your-application/styling/sass} */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /** @see {@link https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions#convention} */
   experimental: {
-    serverActions: true,
+    serverActions: false,
   },
+  /** @see {@link https://nextjs.org/docs/app/building-your-application/styling/sass} */
   sassOptions: {
     includePaths: [path.join(__dirname, "src/styles")],
   },
-  /** @see {@link https://github.com/vercel/next.js/issues/48177#issuecomment-1506251112} */
   webpack: (config) => {
+    /** @see {@link https://github.com/vercel/next.js/issues/48177#issuecomment-1506251112} */
     config.module.rules.push({
       test: /\.svg$/i,
       use: [
@@ -35,6 +35,16 @@ const nextConfig = {
         },
       ],
     });
+    /** @see {@link https://github.com/vercel/next.js/discussions/11267#discussioncomment-2352225} */
+    config.module.rules
+      .find(({ oneOf }) => !!oneOf)
+      .oneOf.filter(({ use }) => JSON.stringify(use)?.includes("css-loader"))
+      .reduce((acc, { use }) => acc.concat(use), [])
+      .forEach(({ options }) => {
+        if (options.modules) {
+          options.modules.exportLocalsConvention = "camelCase";
+        }
+      });
     return config;
   },
 };

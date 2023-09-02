@@ -1,0 +1,31 @@
+# config
+.eslintrc.json
+next.config.js
+postcss.config.js
+prettier.config.js
+stylelint.config.js
+tailwind.config.js
+tsconfig.json
+
+# dependencies
+# /node_modules # default
+/.pnp
+.pnp.js
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

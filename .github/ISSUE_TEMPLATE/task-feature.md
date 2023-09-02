@@ -2,7 +2,7 @@
 
 TEAM PIPLUP
 
-@duke-imo @HIMA-HIMAZIN @kou-nagamine @nafell @Shvain @wiyco
+@duke-imo @HIMA-HIMAZIN @kou-nagamine @nafell @Shvain @YoshieYuushi @wiyco
 
 ## Overview of Tasks (Features)
 
