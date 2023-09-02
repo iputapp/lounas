@@ -2,31 +2,39 @@
 
 import styles from "./styles.module.scss";
 
-type BorderdButtonProps = {
-  text: string;
-  size: string;
-  outborderd: boolean;
-  decide: () => void;
+type BorderdCircleButtonProps = {
+  title: string;
+  fontSize?:
+    | "text-xs"
+    | "text-sm"
+    | "text-base"
+    | "text-lg"
+    | "text-xl"
+    | "text-2xl"
+    | "text-3xl"
+    | "text-4xl"
+    | "text-5xl"
+    | "text-6xl"
+    | "text-7xl"
+    | "text-8xl"
+    | "text-9xl";
+  outline?: boolean;
+  onClick: () => void;
 };
 
-export function BorderdCircleButton({ text, size, outborderd, decide }: BorderdButtonProps) {
-  const insize = Number(size) - Number(size) / 10;
-  const textsize = Number(size) / 5;
-  const outsize = Number(size) + (Number(size) / 5) * Number(outborderd);
-
+export function BorderdCircleButton({
+  title,
+  fontSize,
+  outline = false,
+  onClick,
+}: BorderdCircleButtonProps) {
   return (
-    <button
-      className={`${styles.main} ${styles.circle}`}
-      style={{ width: `${outsize}px`, height: `${outsize}px` }}
-      onClick={decide}
-    >
-      <div className={styles.main} style={{ width: `${size}px`, height: `${size}px` }}>
-        <div className={styles.section} style={{ width: `${insize}px`, height: `${insize}px` }}>
-          <div className={styles.text} style={{ fontSize: `${textsize}px` }}>
-            {text}
-          </div>
+    <div className={outline ? styles.circleOuter : ""}>
+      <button className={`${styles.circle} ${fontSize}`} onClick={onClick}>
+        <div className={styles.circleInner}>
+          <span className={styles.title}>{title}</span>
         </div>
-      </div>
-    </button>
+      </button>
+    </div>
   );
 }

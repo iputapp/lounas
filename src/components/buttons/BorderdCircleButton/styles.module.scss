@@ -1,28 +1,38 @@
 @use "variables" as var;
 
 .circle {
+  @apply relative w-full
+    overflow-clip rounded-full;
+
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(to right, var.$lime, var.$cyan, var.$blue);
+
+  & > .circle-inner {
+    @apply absolute inset-0 m-auto
+      flex items-center justify-center
+      rounded-full;
+
+    width: calc(100% - 0.375em);
+    aspect-ratio: 1 / 1;
+    content: "";
+    background-color: #fff;
+  }
+
+  & .title {
+    @apply font-semibold;
+
+    color: #414141;
+  }
+}
+
+.circle-outer {
+  @apply rounded-full;
+
+  padding: 6%;
   background: linear-gradient(
     to right,
-    rgba(var.$lime, 20%),
-    rgba(var.$cyan, 20%),
-    rgba(var.$blue, 20%)
+    rgb(var.$lime, 40%),
+    rgb(var.$cyan, 40%),
+    rgb(var.$blue, 40%)
   );
-}
-
-.article {
-  background: linear-gradient(to right, var.$lime, var.$cyan, var.$blue);
-}
-
-.section {
-  @apply flex  flex-col items-center justify-center rounded-full bg-white;
-}
-
-.text {
-  @apply flex items-center justify-center font-bold;
-}
-
-.main {
-  @apply flex 
-  flex-col  
-  items-center justify-center rounded-full;
 }
