@@ -3,10 +3,10 @@
 import styles from "./styles.module.scss";
 
 type BorderedTitleProps = {
-  text: string;
+  title: string;
   className?: string;
 };
 
-export function BorderedTitle({ text, className }: BorderedTitleProps) {
-  return <h1 className={`${styles.title} ${className}`}>{text}</h1>;
+export function BorderedTitle({ title, className }: BorderedTitleProps) {
+  return <span className={`${styles.title} ${className}`}>{title}</span>;
 }
