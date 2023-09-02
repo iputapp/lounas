@@ -2,7 +2,7 @@
 
 import "./page.scss";
 
-import { BorderdButton } from "@/components/buttons/BorderdButton/BorderdButton";
+import { BorderdButton } from "@/components/buttons/BorderdCircleButton";
 
 export default function Home() {
   const keep = () => {
