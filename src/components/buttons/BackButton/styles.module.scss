@@ -1,0 +1,7 @@
+@use "variables" as var;
+
+.button {
+  @apply flex items-center text-3xl font-semibold;
+
+  color: var.$blue;
+}
