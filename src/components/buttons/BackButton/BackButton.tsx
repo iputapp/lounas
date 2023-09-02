@@ -3,7 +3,7 @@
 import Arrow from "@icons/nav-arrow-left.svg";
 import { useRouter } from "next/navigation";
 
-import styles from "./backbutton.module.scss";
+import styles from "./styles.module.scss";
 
 export function BackButton() {
   const router = useRouter();
