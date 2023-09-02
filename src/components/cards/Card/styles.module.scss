@@ -1,0 +1,22 @@
+.card-container {
+  @apply flex w-full flex-col justify-center overflow-clip rounded-2xl bg-zinc-50 shadow-lg;
+
+  & .card-image-parent {
+    @apply relative
+      aspect-video border-b-4 border-slate-500;
+
+    & > .card-image {
+      @apply absolute
+      rounded-t-lg object-cover;
+    }
+  }
+
+  & .card-content {
+    @apply flex w-full flex-col
+      p-3;
+
+    & > .card-title {
+      @apply text-lg font-semibold;
+    }
+  }
+}
