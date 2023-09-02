@@ -11,6 +11,15 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+generator zod {
+  provider = "zod-prisma-types"
+  output   = "../src/zodschema"
+
+  createInputTypes                 = false // default is true, (keep generated types minimal)
+  createOptionalDefaultValuesTypes = true // default is false, (generate types for optional default() fields)
+  createRelationValuesTypes        = true // default is false, (generate types for relation fields)
+}
+
 model Restaurant {
   id        String   @id @default(uuid())
   urlId     String   @unique
@@ -21,7 +30,7 @@ model Restaurant {
   description String?
   address     String?
   website     String?
-  longtitude  Float
+  longtitude  Float /// @zod.number.lt(90).gt(-90)
   latitude    Float
   travelTime  Int
 
