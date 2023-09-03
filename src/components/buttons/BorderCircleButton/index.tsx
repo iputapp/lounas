@@ -2,7 +2,7 @@
 
 import styles from "./styles.module.scss";
 
-type BorderdCircleButtonProps = {
+type BorderCircleButtonProps = {
   title: string;
   fontSize?:
     | "text-xs"
@@ -22,12 +22,12 @@ type BorderdCircleButtonProps = {
   onClick: () => void;
 };
 
-export function BorderdCircleButton({
+export function BorderCircleButton({
   title,
   fontSize,
   outline = false,
   onClick,
-}: BorderdCircleButtonProps) {
+}: BorderCircleButtonProps) {
   return (
     <div className={outline ? styles.circleOuter : ""}>
       <button className={`${styles.circle} ${fontSize}`} onClick={onClick}>
