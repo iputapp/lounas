@@ -4,8 +4,8 @@ import "./style.scss";
 
 import { Noto_Sans_JP } from "next/font/google";
 
-import { BorderdCircleButton } from "@/components/buttons/BorderdCircleButton";
-import { BorderedTitle } from "@/components/headers/BorderedTitle";
+import { BorderCircleButton } from "@/components/buttons/BorderCircleButton";
+import { BorderTitle } from "@/components/headers/BorderTitle";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -34,11 +34,11 @@ export default function Test() {
         <div className="time">{`${month}月${day}日`}</div>
       </div>
       <section>
-        <BorderedTitle title="あなたへのおすすめ" className={`title ${notoSansJP.className}`} />
+        <BorderTitle title="あなたへのおすすめ" className={`title ${notoSansJP.className}`} />
         <div className="text">3つの質問からあなたにおすすめなお店を提案いたします。</div>
       </section>
-      <div className=" w-5/12 ">
-        <BorderdCircleButton title="GO!" fontSize="text-4xl" outline onClick={goGO} />
+      <div className="mx-auto w-5/12 ">
+        <BorderCircleButton title="GO!" fontSize="text-4xl" outline onClick={goGO} />
       </div>
     </article>
   );
