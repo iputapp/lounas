@@ -1,6 +1,6 @@
 "use client";
 
-import { BorderdCircleButton } from "@/components/buttons/BorderdCircleButton";
+import { BorderCircleButton } from "@/components/buttons/BorderCircleButton";
 
 export default function Test() {
   const goGO = () => {
@@ -10,10 +10,10 @@ export default function Test() {
   return (
     <div className="grid h-screen place-items-center gap-6 p-6">
       <div className="w-2/6">
-        <BorderdCircleButton title="Skip" fontSize="text-2xl" onClick={goGO} />
+        <BorderCircleButton title="Skip" fontSize="text-2xl" onClick={goGO} />
       </div>
       <div className="w-3/5">
-        <BorderdCircleButton title="GO!" fontSize="text-4xl" outline onClick={goGO} />
+        <BorderCircleButton title="GO!" fontSize="text-4xl" outline onClick={goGO} />
       </div>
     </div>
   );
