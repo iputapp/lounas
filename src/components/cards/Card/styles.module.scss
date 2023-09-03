@@ -1,22 +1,25 @@
-.card-container {
-  @apply flex w-full flex-col justify-center overflow-clip rounded-2xl bg-zinc-50 shadow-lg;
+.card {
+  @apply w-full
+    overflow-clip rounded-3xl
+    bg-zinc-50 shadow-lg;
 
-  & .card-image-parent {
-    @apply relative
-      aspect-video border-b-4 border-slate-500;
+  & .image-parent {
+    @apply relative w-full
+      border-b-2 border-zinc-500/80;
 
-    & > .card-image {
-      @apply absolute
-      rounded-t-lg object-cover;
+    aspect-ratio: 16 / 10;
+
+    & > .image {
+      @apply absolute object-cover;
     }
   }
 
-  & .card-content {
+  & .content {
     @apply flex w-full flex-col
-      p-3;
+      px-5 py-3;
 
-    & > .card-title {
-      @apply text-lg font-semibold;
+    & > .title {
+      @apply font-semibold;
     }
   }
 }

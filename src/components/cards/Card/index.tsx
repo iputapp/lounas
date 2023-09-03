@@ -9,10 +9,10 @@ type CardProps = {
 
 export function Card({ image, title }: CardProps) {
   return (
-    <div className={styles.cardContainer}>
-      <div className={styles.cardImageParent}>
+    <article className={styles.card}>
+      <div className={styles.imageParent}>
         <Image
-          className={styles.cardImage}
+          className={styles.image}
           src={image}
           alt={title}
           fill
@@ -20,9 +20,9 @@ export function Card({ image, title }: CardProps) {
           priority
         />
       </div>
-      <div className={styles.cardContent}>
-        <p className={styles.cardTitle}>{title}</p>
+      <div className={styles.content}>
+        <p className={styles.title}>{title}</p>
       </div>
-    </div>
+    </article>
   );
 }
