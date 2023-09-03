@@ -1,15 +1,16 @@
 import { BackButton } from "@/components/buttons/BackButton";
 import { CardHorizontal } from "@/components/cards/CardHorizontal";
 
-export default function TestBackButton() {
+export default function Test() {
   return (
-    <div className="grid w-full gap-5 px-1 py-5">
-      <div className="p-1">
-        <BackButton />
+    <div className="grid gap-6 px-3 py-6">
+      <div className="sticky">
+        <BackButton className="text-3xl" />
+        <BackButton title={"戻る"} className="text-2xl" />
       </div>
       <div className="grid gap-5 p-3">
-        <CardHorizontal title="カード" image="/icons/media-image.svg" tag={1} />
-        <CardHorizontal title="カード" image="/icons/media-image.svg" tag={2} />
+        <CardHorizontal title="カード" image="/test/ramen.webp" tag={1} />
+        <CardHorizontal title="カード" image="/test/ramen.webp" tag={2} />
       </div>
     </div>
   );
