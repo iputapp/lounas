@@ -2,7 +2,7 @@
 
 import styles from "./styles.module.scss";
 
-type BorderedRoundedButtonProps = {
+type BorderRoundButtonProps = {
   title: string;
   fontSize?:
     | "text-xs"
@@ -21,7 +21,7 @@ type BorderedRoundedButtonProps = {
   onClick: () => void;
 };
 
-export function BorderedRoundedButton({ title, fontSize, onClick }: BorderedRoundedButtonProps) {
+export function BorderRoundButton({ title, fontSize, onClick }: BorderRoundButtonProps) {
   return (
     <button className={`${styles.container} ${fontSize}`} onClick={onClick}>
       <div className={styles.inner}>
