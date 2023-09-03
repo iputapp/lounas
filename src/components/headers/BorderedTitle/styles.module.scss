@@ -1,0 +1,16 @@
+@use "variables" as var;
+
+.title {
+  @apply relative flex w-fit
+    items-center justify-center
+    py-3 text-4xl font-bold;
+}
+
+.title::after {
+  width: 40%;
+  height: 4px; // border-b-4
+  content: "";
+  background-color: var.$blue;
+
+  @apply absolute bottom-0 rounded-full;
+}

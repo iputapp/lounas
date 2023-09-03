@@ -12,10 +12,10 @@ type CardHorizontalProps = {
 
 export function CardHorizontal({ title, image, tag, description }: CardHorizontalProps) {
   return (
-    <Link href="/" className={styles.cardContainer}>
-      <div className={styles.cardImageParent}>
+    <Link href="/" className={styles.card}>
+      <div className={styles.imageParent}>
         <Image
-          className={styles.cardImage}
+          className={styles.image}
           src={image}
           alt={title}
           fill
@@ -23,11 +23,11 @@ export function CardHorizontal({ title, image, tag, description }: CardHorizonta
           priority
         />
       </div>
-      <div className={styles.cardContent}>
-        <h3 className={styles.cardTitle}>{title}</h3>
-        <div className={styles.cardDescription}>{description}</div>
-      </div>
-      <div className={styles.cardTag}>
+      <section className={styles.content}>
+        <h3 className={styles.title}>{title}</h3>
+        <section className={styles.description}>{description}</section>
+      </section>
+      <div className={tag ? styles.tag : ""}>
         <span>{tag?.toString()}</span>
       </div>
     </Link>
