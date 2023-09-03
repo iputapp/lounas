@@ -3,11 +3,11 @@ import Image from "next/image";
 import styles from "./styles.module.scss";
 
 type CardProps = {
-  image: string;
   title: string;
+  image: string;
 };
 
-export function Card({ image, title }: CardProps) {
+export function Card({ title, image }: CardProps) {
   return (
     <article className={styles.card}>
       <div className={styles.imageParent}>
