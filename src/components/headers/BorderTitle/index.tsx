@@ -7,6 +7,6 @@ type BorderTitleProps = {
   className?: string;
 };
 
-export function BorderTitle({ title, className }: BorderTitleProps) {
+export function BorderTitle({ title, className = "" }: BorderTitleProps) {
   return <span className={`${styles.title} ${className}`}>{title}</span>;
 }
