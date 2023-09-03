@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Circle } from "@/components/buttons/Circle";
+import { Circle } from "@/components/buttons/CircleButton";
 
 export default function Test() {
   const [title, setTitle] = useState("がっつり");
