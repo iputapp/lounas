@@ -17,29 +17,34 @@ export default function Test() {
   ];
 
   return (
-    <div className="mx-auto grid max-w-3xl grid-cols-1 gap-5 p-4 md:grid-cols-2">
+    <div className="mx-auto grid max-w-3xl grid-cols-1 gap-5 p-6 md:grid-cols-2">
       <CardHorizontal
         title="赤味噌油そば"
-        image="/icons/media-image.svg"
+        image="/test/ramen.webp"
         tag={1}
         description={<Payment payments={paymentMethods[0]} />}
       />
       <CardHorizontal
         title="赤味噌油そば"
-        image="/icons/media-image.svg"
+        image="/test/ramen.webp"
         tag={2}
         description={<Payment payments={paymentMethods[1]} />}
       />
       <CardHorizontal
         title="赤味噌油そば"
-        image="/icons/media-image.svg"
+        image="/test/ramen.webp"
         tag={3}
         description={<Payment payments={paymentMethods[0]} />}
       />
       <CardHorizontal
         title="赤味噌油そば"
-        image="/icons/media-image.svg"
+        image="/test/ramen.webp"
         tag={4}
+        description={<Payment payments={paymentMethods[1]} />}
+      />
+      <CardHorizontal
+        title="赤味噌油そば"
+        image="/test/ramen.webp"
         description={<Payment payments={paymentMethods[1]} />}
       />
     </div>
