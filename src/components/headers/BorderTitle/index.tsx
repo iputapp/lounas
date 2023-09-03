@@ -2,11 +2,11 @@
 
 import styles from "./styles.module.scss";
 
-type BorderedTitleProps = {
+type BorderTitleProps = {
   title: string;
   className?: string;
 };
 
-export function BorderedTitle({ title, className }: BorderedTitleProps) {
+export function BorderTitle({ title, className }: BorderTitleProps) {
   return <span className={`${styles.title} ${className}`}>{title}</span>;
 }
