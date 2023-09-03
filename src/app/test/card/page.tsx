@@ -1,6 +1,6 @@
 import { Card } from "@/components/cards/Card";
 
-export default function page() {
+export default function Test() {
   return (
     <div className="grid grid-cols-1 gap-8 bg-gradient-to-b from-sky-300 to-indigo-300 p-6">
       <Card
