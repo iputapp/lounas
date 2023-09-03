@@ -1,7 +1,7 @@
 import { BackButton } from "@/components/buttons/BackButton";
 import { CardHorizontal } from "@/components/cards/CardHorizontal";
 
-export default function TestBackButton() {
+export default function Test() {
   return (
     <div className="grid gap-6 px-3 py-6">
       <div className="sticky">
