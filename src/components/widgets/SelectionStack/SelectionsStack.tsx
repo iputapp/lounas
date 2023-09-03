@@ -10,22 +10,10 @@ export function SelectionStack({ selections }: SelectionStackProps) {
   return (
     <div className="page">
       <div className="main">
-        <button className="first circle" style="backgroundcolor">
-          {selections[0].text}
-        </button>
+        <button className={`first circle ${selections[0].color}`}>{selections[0].text}</button>
         <button className={`circle ${selections[1].color}`}>{selections[1].text}</button>
         <button className={`third circle ${selections[2].color}`}>{selections[2].text}</button>
       </div>
     </div>
   );
 }
-
-const SelectionStackButton = () => {
-  <>
-    {isSelected ? (
-      <button className={`first circle ${selection.color}`}>{selection.text}</button>
-    ) : (
-      <></>
-    )}
-  </>;
-};
