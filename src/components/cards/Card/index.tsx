@@ -20,9 +20,9 @@ export function Card({ title, image }: CardProps) {
           priority
         />
       </div>
-      <div className={styles.content}>
+      <section className={styles.content}>
         <p className={styles.title}>{title}</p>
-      </div>
+      </section>
     </article>
   );
 }
