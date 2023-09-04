@@ -42,18 +42,37 @@ export function Circle({
   useLayoutEffect(() => {
     const windowSize = { width: window.innerWidth, height: window.innerHeight };
 
+    /**
+     * circle size - convert `rem` to `px`
+     */
     const sizePixel = size * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    /**
+     * horizontal position
+     * 0% to 50% - `left`
+     * 50% to 100% - `right`
+     * 50% is the center of the window width
+     */
     if ((x / 100) * windowSize.width < windowSize.width - sizePixel) {
       setStyle({ left: `calc(${x}% - ${size / 2}rem)` });
     } else {
       setStyle({ right: `calc(${100 - x}% - ${size / 2}rem)` });
     }
+    /**
+     * vertical position
+     * 0% to 50% - `top`
+     * 50% to 100% - `bottom`
+     * 50% is the center of the window height
+     */
     if ((y / 100) * windowSize.height < windowSize.height - sizePixel) {
       setStyle((prev) => ({ ...prev, top: `calc(${y}% - ${size / 2}rem)` }));
     } else {
       setStyle((prev) => ({ ...prev, bottom: `calc(${100 - y}% - ${size / 2}rem)` }));
     }
 
+    /**
+     * `prev` is the position of the circle that is set above
+     * size, gradient, base font size
+     */
     setStyle((prev) => ({
       ...prev,
       width: `${size}rem`,
