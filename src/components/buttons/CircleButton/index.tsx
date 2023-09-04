@@ -1,38 +1,35 @@
 "use client";
 
+import { useLayoutEffect, useState } from "react";
+
 import styles from "./styles.module.scss";
 
 type CircleProps = {
   title: string;
   size: number;
-  posX: "left" | "right";
-  posY: "top" | "bottom";
   x: number;
   y: number;
   gradientColorStart?: string;
   gradientColorEnd?: string;
   gradientDirection?: number;
-  onClick?: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 /**
  *
  * @param {string} title Title of the circle
- * @param {number} size Size of the circle
- * @param {"left" | "right"} posX Position of the circle - `left` or `right`
- * @param {"top" | "bottom"} posY Position of the circle - `top` or `bottom`
- * @param {number} x Position from `posX`
- * @param {number} y Position from `posY`
- * @param {string} gradientColorStart Start color of the gradient - Default `#f5576c`
- * @param {string} gradientColorEnd End color of the gradient - Default `#f093fb`
- * @param {number} gradientDirection Direction of the gradient - Default `180deg`
- * @param {() => void} onClick Function to be called when the circle is clicked
+ * @param {number} size Size of the circle in `rem`
+ * @param {number} x Horizontal position of the circle `0` to `100` (converted to `%`)
+ * @param {number} y Vertical position of the circle `0` to `100` (converted to `%`)
+ * @param {string} gradientColorStart Start color of the gradient (default `#f5576c`)
+ * @param {string} gradientColorEnd End color of the gradient (default `#f093fb`)
+ * @param {number} gradientDirection Direction of the gradient in degrees (default `180`)
+ * @param {(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void} onClick Function to be called when the circle is clicked
+ *    `(React.MouseEvent<HTMLButtonElement, MouseEvent>) => void`
  */
 export function Circle({
   title,
   size,
-  posX,
-  posY,
   x = 0,
   y = 0,
   gradientColorStart = "#f5576c",
@@ -40,28 +37,34 @@ export function Circle({
   gradientDirection = 180,
   onClick,
 }: CircleProps) {
-  const gradient = `linear-gradient(${gradientDirection}deg, ${gradientColorStart}, ${gradientColorEnd})`;
+  const [style, setStyle] = useState<React.CSSProperties>({});
 
-  let style;
+  useLayoutEffect(() => {
+    const windowSize = { width: window.innerWidth, height: window.innerHeight };
 
-  if (posY === "top" && posX === "left") {
-    style = { top: `${y}rem`, left: `${x}rem`, width: `${size}rem`, background: gradient };
-  }
-  if (posY === "top" && posX === "right") {
-    style = { top: `${y}rem`, right: `${x}rem`, width: `${size}rem`, background: gradient };
-  }
-  if (posY === "bottom" && posX === "left") {
-    style = { bottom: `${y}rem`, left: `${x}rem`, width: `${size}rem`, background: gradient };
-  }
-  if (posY === "bottom" && posX === "right") {
-    style = { bottom: `${y}rem`, right: `${x}rem`, width: `${size}rem`, background: gradient };
-  }
+    const sizePixel = size * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    if ((x / 100) * windowSize.width < windowSize.width - sizePixel) {
+      setStyle({ left: `calc(${x}% - ${size / 2}rem)` });
+    } else {
+      setStyle({ right: `calc(${100 - x}% - ${size / 2}rem)` });
+    }
+    if ((y / 100) * windowSize.height < windowSize.height - sizePixel) {
+      setStyle((prev) => ({ ...prev, top: `calc(${y}% - ${size / 2}rem)` }));
+    } else {
+      setStyle((prev) => ({ ...prev, bottom: `calc(${100 - y}% - ${size / 2}rem)` }));
+    }
+
+    setStyle((prev) => ({
+      ...prev,
+      width: `${size}rem`,
+      background: `linear-gradient(${gradientDirection}deg, ${gradientColorStart}, ${gradientColorEnd})`,
+      fontSize: `${size / 4}rem`,
+    }));
+  }, [size, x, y, gradientColorStart, gradientColorEnd, gradientDirection]);
 
   return (
-    <button className={styles.circle} style={style} onClick={onClick}>
-      <span className={styles.title} style={{ fontSize: `${size * 0.2}rem` }}>
-        {title}
-      </span>
+    <button className={styles.circle} style={style} onClick={(e) => onClick(e)}>
+      <span className={styles.title}>{title}</span>
     </button>
   );
 }

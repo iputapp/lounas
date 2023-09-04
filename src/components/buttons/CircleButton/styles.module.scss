@@ -1,12 +1,15 @@
 @use "variables" as var;
 
 .circle {
-  @apply absolute flex items-center justify-center
+  @apply absolute
+    flex items-center justify-center
     rounded-full;
 
   aspect-ratio: 1 / 1;
 
   & .title {
     @apply font-semibold text-white;
+
+    font-size: 0.75em;
   }
 }
