@@ -12,12 +12,6 @@ article {
   section {
     @apply mx-3 flex flex-col items-center;
 
-    .title {
-      font-size: calc(100dvw / 12);
-
-      @apply p-5;
-    }
-
     .text {
       font-size: calc(100dvw / 25);
 
