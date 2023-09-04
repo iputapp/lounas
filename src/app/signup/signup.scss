@@ -1,7 +1,7 @@
 @use "variables" as var;
 
 main {
-  @apply w-full h-screen flex items-center justify-center overflow-clip;
+  @apply flex h-screen w-full items-center justify-center overflow-clip;
 
   position: relative;
 }
@@ -21,18 +21,18 @@ a {
 }
 
 .button-submit {
-  @apply h-24 flex flex-col items-center justify-end space-y-4;
+  @apply flex h-24 flex-col items-center justify-end space-y-4;
 
   & > button {
-    @apply relative px-12 py-2 rounded-full bg-white;
+    @apply relative rounded-full bg-white px-12 py-2;
 
     &::before {
-      @apply -z-10 absolute inset-[-5px];
+      @apply absolute inset-[-5px] -z-10;
 
       width: calc(100% + 10px);
       height: calc(100% + 10px);
       content: "";
-      background: linear-gradient(to right, var.$blue 0%, var.$green 100%);
+      background: linear-gradient(to right, var.$blue 0%, var.$lime 100%);
       border-radius: inherit;
     }
 
@@ -44,7 +44,7 @@ a {
   }
 
   & > p {
-    @apply text-xs text-red-600 animate-bounce;
+    @apply animate-bounce text-xs text-red-600;
 
     transition: all 0.2s ease-in-out;
   }
@@ -78,7 +78,7 @@ a {
       top: 5dvh;
       left: -10dvh;
       width: 25dvh;
-      background-color: var.$green;
+      background-color: var.$lime;
     }
   }
 
@@ -113,7 +113,7 @@ a {
       right: -1.5dvh;
       bottom: -7dvh;
       width: $green-w;
-      background-color: var.$green;
+      background-color: var.$lime;
       transform: rotate(111deg);
     }
 

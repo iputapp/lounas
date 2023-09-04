@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { EMAIL_DOMAIN, VERIFY_DIGITS_LENGTH, VERIFY_DIGITS_REGEX } from "@/constants";
-import { callVerify } from "@/hooks/verify";
+// import { callVerify } from "@/hooks/verify";
 
 export default function Otp() {
   /** @summary digits */
@@ -27,15 +27,15 @@ export default function Otp() {
   const verify = () => {
     if (digitsError) return;
     setWorking(true);
-    callVerify(digits)
-      .then((data) => {
-        console.log(data);
-        setWorking(false);
-      })
-      .catch((e) => {
-        console.error(e);
-        setWorking(false);
-      });
+    // callVerify(digits)
+    //   .then((data) => {
+    //     console.log(data);
+    //     setWorking(false);
+    //   })
+    //   .catch((e) => {
+    //     console.error(e);
+    //     setWorking(false);
+    //   });
   };
 
   return (
