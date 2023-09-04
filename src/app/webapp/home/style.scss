@@ -1,0 +1,61 @@
+@use "variables" as var;
+
+article {
+  @apply absolute grid px-2 py-10;
+
+  h1 {
+    font-size: calc(100dvw / 10);
+
+    @apply m-3 font-bold text-white;
+  }
+
+  section {
+    @apply mx-3 flex flex-col items-center;
+
+    .text {
+      font-size: calc(100dvw / 25);
+
+      @apply px-10 py-5 text-center;
+    }
+  }
+
+  .date {
+    height: calc(100dvw / 3);
+    font-size: calc(100dvw / 17);
+
+    @apply m-5 flex rounded-2xl bg-white p-3 font-bold shadow-2xl;
+  }
+}
+
+.bg {
+  @apply relative -z-50;
+
+  .circle {
+    @apply aspect-square mix-blend-multiply;
+
+    position: absolute;
+    height: auto;
+    clip-path: circle(50% at 50% 50%);
+
+    &.blue {
+      top: -12dvh;
+      left: -12dvh;
+      width: 32dvh;
+      background-color: rgb(var.$blue, 100%);
+    }
+
+    &.cyan {
+      top: -12dvh;
+      left: 8dvh;
+      width: 30dvh;
+      background-color: rgb(var.$cyan, 80%);
+    }
+
+    &.green {
+      top: 5dvh;
+      left: -10dvh;
+      width: 25dvh;
+      background-color: rgb(var.$spring, 70%);
+    }
+  }
+}
