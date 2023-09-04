@@ -2,8 +2,7 @@
 
 .title {
   @apply relative flex w-fit
-    items-center justify-center
-    py-3 text-4xl font-bold;
+    items-center justify-center;
 }
 
 .title::after {
