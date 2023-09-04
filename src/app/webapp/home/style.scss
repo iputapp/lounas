@@ -40,7 +40,7 @@ article {
     .objective {
       font-size: calc(100dvw / 20);
 
-      @apply flex items-center justify-around pb-0;
+      @apply my-3 flex items-end justify-around;
     }
   }
 }
