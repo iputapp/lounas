@@ -29,9 +29,12 @@ export default function Test() {
         <span className="circle green"></span>
       </div>
       <h1>こんにちは</h1>
-      <div className="date">
-        <div className="year">{`${year}年`}</div>
-        <div className="time">{`${month}月${day}日`}</div>
+      <div className="record">
+        <div className="date">{`${year}年${month}月${day}日`}</div>
+        <div className="objective">
+          <div>今月の開拓数：</div>
+          <div>3件</div>
+        </div>
       </div>
       <section>
         <BorderTitle title="あなたへのおすすめ" className={`title ${notoSansJP.className}`} />
