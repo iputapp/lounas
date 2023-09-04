@@ -12,6 +12,12 @@ article {
   section {
     @apply mx-3 flex flex-col items-center;
 
+    .title {
+      font-size: calc(100dvw / 12);
+
+      @apply p-5;
+    }
+
     .text {
       font-size: calc(100dvw / 25);
 
@@ -19,11 +25,23 @@ article {
     }
   }
 
-  .date {
-    height: calc(100dvw / 3);
-    font-size: calc(100dvw / 17);
+  .record {
+    height: calc(100dvh / 5);
 
-    @apply m-5 flex rounded-2xl bg-white p-3 font-bold shadow-2xl;
+    @apply mx-5 rounded-2xl bg-white p-3 font-bold shadow-2xl;
+
+    .date {
+      font-size: calc(100dvw / 17);
+      color: var.$secondary;
+
+      @apply m-2;
+    }
+
+    .objective {
+      font-size: calc(100dvw / 20);
+
+      @apply flex items-center justify-around pb-0;
+    }
   }
 }
 
