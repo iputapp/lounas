@@ -6,6 +6,7 @@ import { Noto_Sans_JP } from "next/font/google";
 
 import { BorderCircleButton } from "@/components/buttons/BorderCircleButton";
 import { BorderTitle } from "@/components/headers/BorderTitle";
+import { BottomNavigationBar } from "@/components/navigations/BottomNavigationBar";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -37,9 +38,10 @@ export default function Test() {
         <BorderTitle title="あなたへのおすすめ" className={`title ${notoSansJP.className}`} />
         <div className="text">3つの質問からあなたにおすすめなお店を提案いたします。</div>
       </section>
-      <div className="mx-auto w-5/12 ">
+      <div className="mx-auto w-5/12">
         <BorderCircleButton title="GO!" fontSize="text-4xl" outline onClick={goGO} />
       </div>
+      <BottomNavigationBar pathname="" />
     </article>
   );
 }
