@@ -1,7 +1,9 @@
 @use "variables" as var;
 
-article {
-  @apply absolute grid px-2 py-10;
+.container {
+  height: calc(100dvh - 5rem);
+
+  @apply mb-5 grid px-2 py-10;
 
   h1 {
     font-size: calc(100dvw / 10);
@@ -9,7 +11,7 @@ article {
     @apply m-3 font-bold text-white;
   }
 
-  section {
+  .section {
     @apply mx-3 flex flex-col items-center;
 
     .text {
@@ -34,7 +36,11 @@ article {
     .objective {
       font-size: calc(100dvw / 20);
 
-      @apply my-3 flex items-end justify-around;
+      @apply m-auto my-3 flex items-end justify-around;
+    }
+
+    .bar {
+      @apply m-auto w-5/6;
     }
   }
 }
