@@ -5,13 +5,13 @@
 }
 
 .title {
-  @apply m-10 text-4xl font-bold;
+  @apply m-10 text-5xl font-bold;
 }
 
-.icon {
-  color: var.$red;
+.animation {
+  aspect-ratio: 1 / 1;
 
-  @apply m-5 text-8xl;
+  @apply w-2/3 overflow-clip md:w-4/12;
 }
 
 .text {
