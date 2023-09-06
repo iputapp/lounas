@@ -30,8 +30,8 @@ model Restaurant {
   description String?
   address     String?
   website     String?
-  longtitude  Float /// @zod.number.gt(-180).lte(180)
-  latitude    Float /// @zod.number.gte(-90).lte(90)
+  longtitude  Float /// zod.number.min(-180).max(180) //disabled validation because of bug: negative value is rejected by zod-schema-types
+  latitude    Float /// zod.number.min(-90).max(90) //disabled validation because of bug: negative value is rejected by zod-schema-types
   travelTime  Int /// @zod.number.nonnegative()
 
   dishes   Dish[]
