@@ -13,7 +13,7 @@ datasource db {
 
 generator zod {
   provider = "zod-prisma-types"
-  output   = "../src/zodschema"
+  output   = "../src/lib/zod"
 
   createInputTypes                 = false // default is true, (keep generated types minimal)
   createOptionalDefaultValuesTypes = true // default is false, (generate types for optional default() fields)
@@ -22,17 +22,17 @@ generator zod {
 
 model Restaurant {
   id        String   @id @default(uuid())
-  urlId     String   @unique
+  urlId     String   @unique //////////omit?optional?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  name        String
+  name        String /// @zod.string.min(1)
   description String?
   address     String?
   website     String?
-  longtitude  Float /// @zod.number.lt(90).gt(-90)
-  latitude    Float
-  travelTime  Int
+  longtitude  Float /// @zod.number.gt(-180).lte(180)
+  latitude    Float /// @zod.number.gte(-90).lte(90)
+  travelTime  Int /// @zod.number.nonnegative()
 
   dishes   Dish[]
   payments PaymentMethod[] //n-to-n, intersection table is created automatically
@@ -47,11 +47,11 @@ model Dish {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  name         String
+  name         String /// @zod.string.min(1)
   description  String?
-  price        Int
-  amount       Int
-  eatTime      Int
+  price        Int /// @zod.number.nonnegative()
+  amount       Int /// @zod.number.positive()
+  eatTime      Int /// @zod.number.positive()
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
   restaurantId String
 
@@ -93,13 +93,14 @@ model VisitHistory {
 
 model Trait {
   id        String   @id @default(uuid())
-  name      String
+  name      String /// @zod.string.min(1)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   dishScores DishTraitScore[] //obligatory syntax
 }
 
+// 個性的vs定番 あっさりvsこってり
 model DishTraitScore {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
@@ -110,7 +111,7 @@ model DishTraitScore {
   trait   Trait  @relation(fields: [traidId], references: [id])
   traidId String
 
-  score Int
+  score Int /// @zod.number.gte(0).lte(99)
 }
 
 model RouteStep {
@@ -128,14 +129,14 @@ model RouteStep {
 
 model TagRestaurant {
   id    String @id @default(uuid())
-  label String
+  label String /// @zod.string.min(1)
 
   restaurants Restaurant[]
 }
 
 model TagDish {
   id    String @id @default(uuid())
-  label String
+  label String /// @zod.string.min(1)
 
   dishes Dish[]
 }
@@ -144,7 +145,7 @@ model User {
   id        String    @id @default(uuid())
   urlId     String    @unique
   isStudent Boolean   @default(true)
-  studentId Int?      @unique
+  studentId Int?      @unique /// @zod.number.gte(200000).lte(999999)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   lastLogin DateTime?
@@ -159,7 +160,7 @@ model AuthMethod {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  name      String
+  name      String /// @zod.string.min(1)
 
   SigninMethodUserVerified AuthMethodUserVerified[]
 }
