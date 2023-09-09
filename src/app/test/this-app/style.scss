@@ -1,0 +1,119 @@
+@use "variables" as var;
+
+.main {
+  @apply overflow-hidden;
+
+  & > .title {
+    font-size: calc(100dvw / 12);
+
+    @apply mx-5 font-bold;
+  }
+
+  & > .go > .text {
+    color: var.$secondary;
+
+    @apply mb-5 flex items-center justify-center text-base font-bold;
+  }
+
+  & > .go > .button {
+    @apply flex items-center justify-center;
+  }
+}
+
+.bg {
+  @apply -z-50;
+
+  .circle {
+    @apply aspect-square mix-blend-multiply;
+
+    position: absolute;
+    height: auto;
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+
+    &.blue {
+      top: 30dvh;
+      left: -12dvh;
+      width: 100dvh;
+      background-color: var.$blue;
+      transform: rotate(-120deg);
+    }
+
+    &.cyan {
+      top: 10dvh;
+      left: 8dvh;
+      width: 100dvh;
+      background-color: var.$cyan;
+      transform: rotate(45deg);
+    }
+
+    &.green1 {
+      top: 40dvh;
+      left: -40dvh;
+      width: 90dvh;
+      background-color: var.$lime;
+      transform: rotate(80deg);
+    }
+
+    &.green2 {
+      top: -30dvh;
+      left: -10dvh;
+      width: 100dvh;
+      background-color: var.$lime;
+      transform: rotate(20deg);
+    }
+  }
+
+  .triangle {
+    @apply aspect-square mix-blend-multiply;
+
+    position: absolute;
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="-18 22.5 225 225"><path fill="%23000" d="M80.794,34.063c4.6-11.979,21.545-11.979,26.141,0l73.5,191.537a14,14,0,0,1-13.071,19.016h-147A14,14,0,0,1,7.3,225.6Z"/></svg>');
+    transition: all 0.6s ease-in-out;
+
+    $blue-w: 20dvh;
+    $cyan-w: 22dvh;
+    $green-w: 24dvh;
+
+    &.blue {
+      right: -6dvh;
+      bottom: -2px;
+      width: $blue-w;
+      background-color: var.$blue;
+      transform: rotate(0deg);
+    }
+
+    &.cyan {
+      right: -7.5dvh;
+      bottom: -3dvh;
+      width: $cyan-w;
+      background-color: var.$cyan;
+      transform: rotate(155deg);
+    }
+
+    &.green {
+      right: -1.5dvh;
+      bottom: -7dvh;
+      width: $green-w;
+      background-color: var.$lime;
+      transform: rotate(-45deg);
+    }
+
+    &.blue.success {
+      right: calc(100% - $blue-w - 6.5dvh);
+      bottom: 1.5dvh;
+      transform: rotate(50deg);
+    }
+
+    &.cyan.success {
+      right: calc(100% - $cyan-w + 8dvh);
+      bottom: 2dvh;
+      transform: rotate(-45deg);
+    }
+
+    &.green.success {
+      right: calc(100% - $green-w + 5dvh);
+      bottom: -2px;
+      transform: rotate(0deg);
+    }
+  }
+}
