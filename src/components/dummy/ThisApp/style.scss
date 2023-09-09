@@ -1,0 +1,43 @@
+@use "variables" as var;
+
+.container {
+  min-height: calc((100vh - 5rem) / 2);
+  background-color: rgb(255 255 255 / 50%);
+  border: 1px solid #000;
+
+  @apply m-5 w-3/4 rounded-xl backdrop-blur-md;
+
+  .header {
+    min-height: calc(100dvh / 20);
+
+    @apply my-2 flex items-center justify-center;
+
+    & > .logo {
+      @apply text-lg;
+    }
+
+    & > .title {
+      color: var.$blue;
+
+      @apply text-3xl;
+    }
+  }
+
+  .main {
+    @apply text-sm;
+  }
+
+  .footer {
+    @apply flex items-center justify-center text-sm;
+
+    .make {
+      @apply text-sm;
+    }
+
+    .developer {
+      font-size: 1px;
+
+      @apply fixed bottom-0 m-2;
+    }
+  }
+}
