@@ -1,13 +1,23 @@
 "use client";
+import "./style.scss";
 
-export function ThisApp() {
+import LogoFill from "@icons/logo-fill.svg";
+
+export function Thisapp({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <div className="container">
       <div className="header">
-        <div className="title"></div>
+        <div className="logo">
+          <LogoFill />
+        </div>
+        <div className="title">IMAP</div>
       </div>
-      <div className="main"></div>
-      <div className="footer"></div>
+      <div>
+        <div className="main">{children}</div>
+      </div>
+      <div className="footer">
+        <div className="developer">PROJECT RIPLUP アプリ開発サークル</div>
+      </div>
     </div>
   );
 }
