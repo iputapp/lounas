@@ -3,7 +3,6 @@
 .container {
   min-height: calc((100vh - 5rem) / 2);
   background-color: rgb(255 255 255 / 50%);
-  border: 1px solid #000;
 
   @apply m-5 w-3/4 rounded-xl backdrop-blur-md;
 

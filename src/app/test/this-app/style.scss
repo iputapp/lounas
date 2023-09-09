@@ -1,8 +1,6 @@
 @use "variables" as var;
 
 .main {
-  @apply overflow-hidden;
-
   & > .title {
     font-size: calc(100dvw / 12);
 
@@ -21,10 +19,12 @@
 }
 
 .bg {
+  overflow: hidden;
+
   @apply -z-50;
 
   .circle {
-    @apply aspect-square mix-blend-multiply;
+    @apply -z-40 aspect-square mix-blend-multiply backdrop-blur-xl;
 
     position: absolute;
     height: auto;
