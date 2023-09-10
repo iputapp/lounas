@@ -22,7 +22,7 @@ export default function Test() {
         <div className="go">
           <div className="text">IMAP会員へようこそ !</div>
           <div className="button">
-            <BorderRoundButton title="Sign IN" fontSize="text-2xl" onClick={onClick} />
+            <BorderRoundButton title="&emsp;Sign IN&emsp;" fontSize="text-2xl" onClick={onClick} />
           </div>
         </div>
         <div className="flex items-center justify-center">
