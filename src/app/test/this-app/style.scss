@@ -19,12 +19,10 @@
 }
 
 .bg {
-  overflow: hidden;
+  @apply blur-lg;
 
-  @apply -z-50;
-
-  .circle {
-    @apply -z-40 aspect-square mix-blend-multiply backdrop-blur-xl;
+  .triangle {
+    @apply -z-50 aspect-square mix-blend-multiply;
 
     position: absolute;
     height: auto;
