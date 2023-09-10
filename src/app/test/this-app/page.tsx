@@ -12,10 +12,10 @@ export default function Test() {
   return (
     <>
       <div className="bg">
-        <span className="circle blue"></span>
-        <span className="circle cyan"></span>
-        <span className="circle green1"></span>
-        <span className="circle green2"></span>
+        <span className="triangle blue"></span>
+        <span className="triangle cyan"></span>
+        <span className="triangle green1"></span>
+        <span className="triangle green2"></span>
       </div>
       <div className="main">
         <div className="title">アカウント</div>
