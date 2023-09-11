@@ -12,6 +12,7 @@ export default function RestaurantsPage() {
   const onclick = () => {
     console.log("click");
   };
+
   return (
     <div className="container">
       <div className="header">
@@ -34,11 +35,11 @@ export default function RestaurantsPage() {
         </div>
       </div>
       <div className="main">
-        <CardFull image="" description="こんにちは" navigation="straight" />
-        <CardFull image="" description="こんにちは" navigation="straight" />
-        <CardFull image="" description="こんにちは" navigation="straight" />
-        <CardFull image="" description="こんにちは" navigation="straight" />
-        <CardFull image="" description="こんにちは" navigation="straight" />
+        <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
+        <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
+        <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
+        <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
+        <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
       </div>
       <div className="footer">
         <RectButton text="終了する" color="red" onClick={onclick} />
