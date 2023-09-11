@@ -23,7 +23,13 @@
   }
 
   .main {
-    @apply text-sm;
+    .about {
+      @apply flex items-center justify-center text-sm font-bold;
+    }
+
+    .box {
+      @apply text-sm;
+    }
   }
 
   .footer {
