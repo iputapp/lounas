@@ -12,8 +12,9 @@ export function Thisapp({ children }: { children: React.ReactNode }) {
         </div>
         <div className="title">IMAP</div>
       </div>
-      <div>
-        <div className="main">{children}</div>
+      <div className="main">
+        <div className="about">このアプリについて</div>
+        <div className="box">{children}</div>
       </div>
       <div className="footer">
         <div className="developer">PROJECT RIPLUP アプリ開発サークル</div>
