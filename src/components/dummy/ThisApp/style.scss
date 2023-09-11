@@ -18,17 +18,19 @@
     & > .title {
       color: var.$blue;
 
-      @apply text-3xl;
+      @apply mx-2 text-3xl font-bold;
     }
   }
 
   .main {
+    @apply flex flex-col items-center justify-center;
+
     .about {
       @apply flex items-center justify-center text-sm font-bold;
     }
 
     .box {
-      @apply text-sm;
+      @apply m-2 text-sm;
     }
   }
 
