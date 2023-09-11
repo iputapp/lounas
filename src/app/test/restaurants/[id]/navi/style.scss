@@ -2,7 +2,7 @@
 
 .container {
   .header {
-    @apply fixed top-0 z-50 flex w-full flex-col bg-white shadow-xl;
+    @apply sticky top-0 z-50 flex w-full flex-col bg-white shadow-xl;
 
     .title {
       @apply mx-5 my-2 text-4xl font-bold;
