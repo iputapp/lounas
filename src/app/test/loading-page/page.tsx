@@ -16,21 +16,21 @@ function Media() {
             sx={{ bgcolor: "grey.400" }}
             animation="wave"
             variant="rounded"
-            width={50}
-            height={50}
+            width={30}
+            height={30}
           />
         }
         title={
           <Skeleton
             sx={{ bgcolor: "grey.400" }}
             animation="wave"
-            height={20}
-            width="50%"
-            style={{ marginBottom: 10 }}
+            height={10}
+            width="20%"
+            style={{ marginBottom: 5 }}
           />
         }
         subheader={
-          <Skeleton sx={{ bgcolor: "grey.400" }} animation="wave" height={20} width={200} />
+          <Skeleton sx={{ bgcolor: "grey.400" }} animation="wave" height={10} width={100} />
         }
       />
 
@@ -40,21 +40,21 @@ function Media() {
             sx={{ bgcolor: "grey.400" }}
             animation="wave"
             variant="rounded"
-            width={50}
-            height={50}
+            width={40}
+            height={40}
           />
         }
         title={
           <Skeleton
             sx={{ bgcolor: "grey.400" }}
             animation="wave"
-            height={20}
-            width="50%"
-            style={{ marginBottom: 10 }}
+            height={15}
+            width="40%"
+            style={{ marginBottom: 6 }}
           />
         }
         subheader={
-          <Skeleton sx={{ bgcolor: "grey.400" }} animation="wave" height={20} width={200} />
+          <Skeleton sx={{ bgcolor: "grey.400" }} animation="wave" height={15} width={150} />
         }
       />
 
@@ -95,7 +95,7 @@ export default function LoadingPage() {
       <div className="m-5 flex items-center justify-center text-center">
         <BorderTitle title="あなたの候補をもとに検索しています" />
       </div>
-      <div className="m-5 ">
+      <div className="m-5 flex flex-col items-center">
         <Media />
       </div>
       <div className="flex items-center justify-center">
