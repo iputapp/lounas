@@ -41,7 +41,11 @@
         @apply flex basis-5/12 flex-col items-center justify-center;
 
         .map-img {
-          @apply aspect-video bg-white blur-sm;
+          @apply -z-10 aspect-video rounded-lg bg-white blur-sm;
+
+          .preview {
+            @apply flex items-center justify-center;
+          }
         }
 
         .link {
