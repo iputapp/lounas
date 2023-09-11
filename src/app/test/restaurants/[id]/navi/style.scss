@@ -55,6 +55,18 @@
 
   .main {
     @apply m-5 flex flex-col items-center justify-center gap-5;
+
+    .warning {
+      @apply flex items-center justify-center;
+
+      .icon {
+        @apply mx-1 text-yellow-500;
+      }
+
+      .request {
+        @apply text-sm font-semibold;
+      }
+    }
   }
 
   .footer {
