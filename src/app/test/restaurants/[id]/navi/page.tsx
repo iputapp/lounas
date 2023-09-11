@@ -1,12 +1,17 @@
 "use client";
 import "./style.scss";
 
-import { CardFull } from "@components/cards/CardFull";
 import ArrowDown from "@icons/nav-arrow-down.svg";
+
+import { RectButton } from "@/components/buttons/RectButton";
+import { CardFull } from "@/components/cards/CardFull";
 
 export default function RestaurantsPage() {
   const start = "コクーンタワー地下出口";
   const destination = "らーめん新宿西口店";
+  const onclick = () => {
+    console.log("click");
+  };
   return (
     <div className="container">
       <div className="header">
@@ -30,6 +35,13 @@ export default function RestaurantsPage() {
       </div>
       <div className="main">
         <CardFull image="" description="こんにちは" navigation="straight" />
+        <CardFull image="" description="こんにちは" navigation="straight" />
+        <CardFull image="" description="こんにちは" navigation="straight" />
+        <CardFull image="" description="こんにちは" navigation="straight" />
+        <CardFull image="" description="こんにちは" navigation="straight" />
+      </div>
+      <div className="footer">
+        <RectButton text="終了する" color="red" onClick={onclick} />
       </div>
     </div>
   );
