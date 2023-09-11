@@ -10,7 +10,7 @@ export default function Test() {
   };
 
   return (
-    <>
+    <div className="h-full overflow-hidden">
       <div className="bg">
         <span className="triangle blue"></span>
         <span className="triangle cyan"></span>
@@ -33,6 +33,6 @@ export default function Test() {
           </Thisapp>
         </div>
       </div>
-    </>
+    </div>
   );
 }
