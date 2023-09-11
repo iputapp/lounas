@@ -2,7 +2,7 @@
 
 .container {
   .header {
-    @apply flex flex-col shadow-xl;
+    @apply fixed top-0 z-50 flex w-full flex-col bg-white shadow-xl;
 
     .title {
       @apply mx-5 my-2 text-4xl font-bold;
@@ -51,5 +51,13 @@
         }
       }
     }
+  }
+
+  .main {
+    @apply m-5 flex flex-col items-center justify-center gap-5;
+  }
+
+  .footer {
+    @apply my-10 flex items-center justify-center;
   }
 }
