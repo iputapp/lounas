@@ -10,7 +10,7 @@ export function Thisapp({ children }: { children: React.ReactNode }) {
         <div className="logo">
           <LogoFill />
         </div>
-        <div className="title">IMAP</div>
+        <div className="title">IMΛP</div>
       </div>
       <div className="main">
         <div className="about">このアプリについて</div>
