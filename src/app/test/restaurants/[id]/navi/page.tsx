@@ -1,19 +1,25 @@
 "use client";
+import "./style.scss";
 
+import { CardFull } from "@components/cards/CardFull";
 import ArrowDown from "@icons/nav-arrow-down.svg";
 
 export default function RestaurantsPage() {
+  const start = "コクーンタワー地下出口";
+  const destination = "らーめん新宿西口店";
   return (
     <div className="container">
       <div className="header">
         <div className="title">ルート案内</div>
         <div className="guide">
           <div className="information">
-            <div className="distance">約 1.5km</div>
+            <div className="distance">約5分(300m)</div>
             <div className="route">
-              <div className="start">徒歩 20分</div>
-              <ArrowDown />
-              <div className="destination">バス 5分</div>
+              <div className="start">{start}</div>
+              <div className="arrow-down">
+                <ArrowDown />
+              </div>
+              <div className="destination">{destination}</div>
             </div>
           </div>
           <div className="external">
@@ -22,7 +28,9 @@ export default function RestaurantsPage() {
           </div>
         </div>
       </div>
-      <div className="main"></div>
+      <div className="main">
+        <CardFull image="" description="こんにちは" navigation="straight" />
+      </div>
     </div>
   );
 }
