@@ -1,0 +1,55 @@
+@use "variables" as var;
+
+.container {
+  .header {
+    @apply flex flex-col shadow-xl;
+
+    .title {
+      @apply mx-5 my-2 text-4xl font-bold;
+    }
+
+    .guide {
+      @apply mx-5 flex items-center justify-center;
+
+      .information {
+        @apply my-2 basis-7/12;
+
+        .distance {
+          @apply mb-5 text-2xl;
+        }
+
+        .route {
+          @apply flex  flex-col items-center justify-center;
+
+          .start {
+            @apply text-base font-bold;
+          }
+
+          .arrow-down {
+            color: var.$blue;
+
+            @apply text-2xl font-bold;
+          }
+
+          .destination {
+            @apply text-base font-bold;
+          }
+        }
+      }
+
+      .external {
+        @apply flex basis-5/12 flex-col items-center justify-center;
+
+        .map-img {
+          @apply h-32 w-32 bg-black;
+        }
+
+        .link {
+          color: var.$blue;
+
+          @apply text-xs font-bold;
+        }
+      }
+    }
+  }
+}
