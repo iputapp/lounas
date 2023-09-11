@@ -2,6 +2,8 @@
 import "./style.scss";
 
 import ArrowDown from "@icons/nav-arrow-down.svg";
+import Image from "next/image";
+import Map from "public/test/map.webp";
 
 import { RectButton } from "@/components/buttons/RectButton";
 import { CardFull } from "@/components/cards/CardFull";
@@ -29,12 +31,18 @@ export default function RestaurantsPage() {
             </div>
           </div>
           <div className="external">
-            <div className="map-img"></div>
-            <div className="link">アプリでルートを確認する →</div>
+            <div className="map-img">
+              <Image className="img" src={Map} alt="map" sizes="w-fit" />
+            </div>
+            <div className="link">アプリでルートを確認する→</div>
           </div>
         </div>
       </div>
       <div className="main">
+        <div className="warning">
+          <div></div>
+          <div>歩きながらの使用はお控えください。</div>
+        </div>
         <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
         <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
         <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
