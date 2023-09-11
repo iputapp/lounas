@@ -41,7 +41,7 @@
         @apply flex basis-5/12 flex-col items-center justify-center;
 
         .map-img {
-          @apply h-32 w-32 bg-black;
+          @apply aspect-video bg-white blur-sm;
         }
 
         .link {
