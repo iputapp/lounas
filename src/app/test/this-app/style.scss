@@ -25,7 +25,7 @@
 }
 
 .bg {
-  @apply blur-lg;
+  @apply blur-3xl;
 
   .triangle {
     @apply -z-50 aspect-square mix-blend-multiply;
@@ -62,7 +62,7 @@
       top: -30dvh;
       left: -10dvh;
       width: 100dvh;
-      background-color: var.$lime;
+      background-color: var.$cyan;
       transform: rotate(20deg);
     }
   }
