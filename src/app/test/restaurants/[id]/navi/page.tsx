@@ -53,11 +53,34 @@ export default function RestaurantsPage() {
           </div>
           <div className="request">歩きながらの使用はお控えください。</div>
         </div>
-        <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
-        <CardFull image="/test/route.webp" description="こんにちは" navigation="sharpLeft" />
-        <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
-        <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
-        <CardFull image="/test/route.webp" description="こんにちは" navigation="slightLeft" />
+        <div className="isolation m-5 grid gap-9">
+          <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
+          <CardFull image="/test/route.webp" description="こんにちは" navigation="sharpLeft" />
+          <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
+          <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
+          <CardFull image="/test/route.webp" description="こんにちは" navigation="slightLeft" />
+          <CardFull image="/test/route.webp" description="右に曲がります" navigation="right" />
+          <CardFull image="/test/route.webp" description="まっすぐ進みます" navigation="straight" />
+          <CardFull image="/test/route.webp" description="左に曲がります" navigation="left" />
+          <CardFull image="/test/route.webp" description="道なり" navigation="sharpLeft" />
+          <CardFull image="/test/route.webp" description="道なり" navigation="sharpRight" />
+          <CardFull
+            image="/test/route.webp"
+            description="斜め左に進みます"
+            navigation="slightLeft"
+          />
+          <CardFull
+            image="/test/route.webp"
+            description="斜め右に進みます"
+            navigation="slightRight"
+          />
+          <CardFull
+            image="/test/route.webp"
+            description="目の前にセブンイレブンがあります。
+            今夜飲みに行かないかい？（イケボ）目の前にセブンイレブンがあります"
+            navigation="pin"
+          />
+        </div>
       </div>
       <div className="footer">
         <RectButton text="終了する" color="red" onClick={onclick} />
