@@ -10,7 +10,9 @@
   }
 
   section {
-    @apply flex flex-col items-center justify-center py-64;
+    margin-top: calc(100dvh / 5);
+
+    @apply flex flex-col items-center justify-center;
 
     .cs {
       @apply m-5 text-4xl font-bold;
