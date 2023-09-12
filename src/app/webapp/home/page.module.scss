@@ -24,7 +24,7 @@
   .record {
     height: calc(100dvh / 5);
 
-    @apply mx-5 rounded-2xl bg-white p-3 font-bold shadow-2xl;
+    @apply mx-5 rounded-3xl bg-white p-3 font-bold shadow-lg;
 
     .date {
       font-size: calc(100dvw / 17);
