@@ -1,5 +1,5 @@
 "use client";
-import "./style.scss";
+import "./page.scss";
 
 import { BorderRoundButton } from "@/components/buttons/BorderRoundButton";
 import { Thisapp } from "@/components/dummy/ThisApp";
