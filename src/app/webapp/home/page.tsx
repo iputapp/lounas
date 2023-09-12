@@ -34,6 +34,13 @@ export default function Test() {
   const year = d.getFullYear();
   const month = d.getMonth() + 1;
   const day = d.getDate();
+  const count = 4;
+  let percent = 0;
+  if (count > 5) {
+    percent = 100;
+  } else {
+    percent = count * 20;
+  }
 
   return (
     <div className={styles.container}>
@@ -45,11 +52,12 @@ export default function Test() {
       <h1>こんにちは</h1>
       <div className={styles.record}>
         <div className={styles.date}>{`${year}年${month}月${day}日`}</div>
+
         <div className={styles.objective}>
           <div>今月の開拓数：</div>
-          <div>3件</div>
+          <div>{count}件</div>
         </div>
-        <BorderLinearProgress variant="determinate" value={70} className={styles.bar} />
+        <BorderLinearProgress variant="determinate" value={percent} className={styles.bar} />
       </div>
       <div className={styles.section}>
         <BorderTitle
