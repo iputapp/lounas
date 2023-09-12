@@ -1,9 +1,9 @@
 "use client";
-import "./page.scss";
-
 import { BorderRoundButton } from "@/components/buttons/BorderRoundButton";
 import { Thisapp } from "@/components/dummy/ThisApp";
 import { BottomNavigationBar } from "@/components/navigations/BottomNavigationBar";
+
+import styles from "./page.module.scss";
 
 export default function Test() {
   const onClick = () => {
@@ -12,17 +12,17 @@ export default function Test() {
 
   return (
     <div className="h-full overflow-hidden">
-      <div className="bg">
-        <span className="triangle blue"></span>
-        <span className="triangle cyan"></span>
-        <span className="triangle green1"></span>
-        <span className="triangle green2"></span>
+      <div className={styles.bg}>
+        <span className={`${styles.triangle} ${styles.blue}`}></span>
+        <span className={`${styles.triangle} ${styles.cyan1}`}></span>
+        <span className={`${styles.triangle} ${styles.green}`}></span>
+        <span className={`${styles.triangle} ${styles.cyan2}`}></span>
       </div>
-      <div className="main">
-        <div className="title">アカウント</div>
-        <div className="go">
-          <div className="text">IMAP会員へようこそ !</div>
-          <div className="button">
+      <div className={styles.main}>
+        <div className={styles.title}>アカウント</div>
+        <div className={styles.go}>
+          <div className={styles.text}>IMAP会員へようこそ !</div>
+          <div className={styles.button}>
             <BorderRoundButton title="&emsp;Sign IN&emsp;" fontSize="text-2xl" onClick={onClick} />
           </div>
         </div>
