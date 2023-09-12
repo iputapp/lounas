@@ -1,12 +1,12 @@
 "use client";
 
-import "./page.scss";
-
 import { useState } from "react";
 
 import { RectButton } from "@/components/buttons/RectButton";
 import { DialogInfo } from "@/components/dialogs/DialogInfo";
 import { PrivacyPlayer } from "@/components/lottie/Privacy";
+
+import styles from "./page.module.scss";
 
 export default function Privacy() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -16,15 +16,15 @@ export default function Privacy() {
   };
 
   return (
-    <main className="main">
-      <div className="privacy">
+    <main className={styles.main}>
+      <div className={styles.privacy}>
         <h1>プライバシー</h1>
         <p>
           このアプリではユーザーがより便利にお使いいただける用に情報提供の協力をお願いしています。
         </p>
       </div>
       <button onClick={() => setIsOpen(!isOpen)}>
-        <span className="dialoginfo">私たちが考えるプライバシーについて詳しく知る</span>
+        <span className={styles.dialoginfo}>私たちが考えるプライバシーについて詳しく知る</span>
       </button>
       <DialogInfo header="確認コードが届きません" isOpen={isOpen} setIsOpen={setIsOpen}>
         <div className="flex flex-col space-y-5">
@@ -63,12 +63,12 @@ export default function Privacy() {
         </div>
       </DialogInfo>
 
-      <div className="animation">
+      <div className={styles.animation}>
         <PrivacyPlayer />
       </div>
-      <div className="choice">
+      <div className={styles.choice}>
         <h1>トラッキングを許可しますか？</h1>
-        <div className="button">
+        <div className={styles.button}>
           <RectButton text="拒否する" color="red" onClick={onClick}></RectButton>
           <RectButton text="許可する" color="blue" onClick={onClick}></RectButton>
         </div>
