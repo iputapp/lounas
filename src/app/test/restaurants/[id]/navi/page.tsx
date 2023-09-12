@@ -53,7 +53,7 @@ export default function RestaurantsPage() {
           </div>
           <div className="request">歩きながらの使用はお控えください。</div>
         </div>
-        <div className="isolation m-5 grid gap-9">
+        <div className="card-full">
           <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
           <CardFull image="/test/route.webp" description="こんにちは" navigation="sharpLeft" />
           <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
