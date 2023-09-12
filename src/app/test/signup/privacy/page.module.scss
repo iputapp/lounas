@@ -12,12 +12,12 @@
 
     & > p {
       @apply m-4 flex flex-col items-center 
-      justify-center break-words from-neutral-400 text-center;
+      justify-center break-words from-neutral-400 text-center text-sm;
     }
   }
 
   .dialoginfo {
-    @apply border-b-2 border-blue-500 from-neutral-400 text-sm;
+    @apply border-b-2 border-blue-500 from-neutral-400 text-xs;
 
     color: var.$blue;
   }
