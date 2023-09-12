@@ -3,7 +3,7 @@
 .container {
   height: calc(100dvh - 5rem);
 
-  @apply mb-5 grid px-2 py-10;
+  @apply mb-5 grid px-2 py-6;
 
   h1 {
     font-size: calc(100dvw / 10);
