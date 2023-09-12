@@ -41,14 +41,18 @@
         @apply flex basis-5/12 flex-col items-center justify-center;
 
         .map-img {
-          @apply aspect-video rounded-lg bg-white;
+          @apply relative aspect-video rounded-lg bg-white;
 
           .img {
-            @apply rounded-lg blur-sm;
+            @apply block rounded-lg blur-sm;
           }
 
           .preview {
-            @apply flex items-center justify-center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            @apply absolute;
           }
         }
 
