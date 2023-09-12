@@ -54,10 +54,10 @@ export default function RestaurantsPage() {
           <div className="request">歩きながらの使用はお控えください。</div>
         </div>
         <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
+        <CardFull image="/test/route.webp" description="こんにちは" navigation="sharpLeft" />
         <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
         <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
-        <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
-        <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
+        <CardFull image="/test/route.webp" description="こんにちは" navigation="slightLeft" />
       </div>
       <div className="footer">
         <RectButton text="終了する" color="red" onClick={onclick} />
