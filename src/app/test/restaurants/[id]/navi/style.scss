@@ -67,7 +67,7 @@
   }
 
   .main {
-    @apply m-5 flex flex-col items-center justify-center gap-5;
+    @apply m-5;
 
     .warning {
       @apply flex items-center justify-center;
@@ -79,6 +79,13 @@
       .request {
         @apply text-sm font-semibold;
       }
+    }
+
+    .card-full {
+      position: relative;
+      z-index: 1;
+
+      @apply m-5 grid gap-9;
     }
   }
 
