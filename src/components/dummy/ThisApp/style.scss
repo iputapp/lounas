@@ -35,11 +35,7 @@
   }
 
   .footer {
-    @apply flex items-center justify-center text-sm;
-
-    .make {
-      @apply text-sm;
-    }
+    @apply flex flex-col items-center justify-center text-sm;
 
     .developer {
       font-size: 1px;
