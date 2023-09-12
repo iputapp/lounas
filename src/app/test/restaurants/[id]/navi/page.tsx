@@ -38,7 +38,7 @@ export default function RestaurantsPage() {
           <div className="external">
             <div className="map-img">
               <Image className="img" src={Map} alt="map" sizes="w-fit" />
-              <div className="preview">Coming Soon!</div>
+              <div className="preview">Coming&nbsp;Soon!</div>
             </div>
             <Link href={link} className="link">
               アプリでルートを確認する→
