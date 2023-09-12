@@ -13,7 +13,7 @@ function Media() {
       <CardHeader
         avatar={
           <Skeleton
-            sx={{ bgcolor: "grey.400" }}
+            sx={{ bgcolor: "grey.500" }}
             animation="wave"
             variant="rounded"
             width={30}
@@ -22,7 +22,7 @@ function Media() {
         }
         title={
           <Skeleton
-            sx={{ bgcolor: "grey.400" }}
+            sx={{ bgcolor: "grey.500" }}
             animation="wave"
             height={10}
             width="20%"
@@ -30,14 +30,14 @@ function Media() {
           />
         }
         subheader={
-          <Skeleton sx={{ bgcolor: "grey.400" }} animation="wave" height={10} width={100} />
+          <Skeleton sx={{ bgcolor: "grey.500" }} animation="wave" height={10} width={100} />
         }
       />
 
       <CardHeader
         avatar={
           <Skeleton
-            sx={{ bgcolor: "grey.400" }}
+            sx={{ bgcolor: "grey.500" }}
             animation="wave"
             variant="rounded"
             width={40}
@@ -46,7 +46,7 @@ function Media() {
         }
         title={
           <Skeleton
-            sx={{ bgcolor: "grey.400" }}
+            sx={{ bgcolor: "grey.500" }}
             animation="wave"
             height={15}
             width="40%"
@@ -54,14 +54,14 @@ function Media() {
           />
         }
         subheader={
-          <Skeleton sx={{ bgcolor: "grey.400" }} animation="wave" height={15} width={150} />
+          <Skeleton sx={{ bgcolor: "grey.500" }} animation="wave" height={15} width={150} />
         }
       />
 
       <CardHeader
         avatar={
           <Skeleton
-            sx={{ bgcolor: "grey.400" }}
+            sx={{ bgcolor: "grey.500" }}
             animation="wave"
             variant="rounded"
             width={50}
@@ -70,7 +70,7 @@ function Media() {
         }
         title={
           <Skeleton
-            sx={{ bgcolor: "grey.400" }}
+            sx={{ bgcolor: "grey.500" }}
             animation="wave"
             height={20}
             width="50%"
@@ -78,7 +78,7 @@ function Media() {
           />
         }
         subheader={
-          <Skeleton sx={{ bgcolor: "grey.400" }} animation="wave" height={20} width={200} />
+          <Skeleton sx={{ bgcolor: "grey.500" }} animation="wave" height={20} width={200} />
         }
       />
     </>
