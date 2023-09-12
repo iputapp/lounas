@@ -53,9 +53,10 @@
         }
 
         .link {
+          font-size: 10px;
           color: var.$blue;
 
-          @apply text-xs font-bold;
+          @apply font-bold;
         }
       }
     }
