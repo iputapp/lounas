@@ -91,14 +91,14 @@ export default function LoadingPage() {
   };
 
   return (
-    <div className="container grid gap-5 ">
-      <div className="m-5 flex items-center justify-center text-center">
+    <div className="container grid h-screen items-center justify-center">
+      <div className="flex items-center justify-center text-center">
         <BorderTitle title="あなたの候補をもとに検索しています" />
       </div>
-      <div className="m-5 flex flex-col items-center">
+      <div className="m-5 flex  flex-col items-center">
         <Media />
       </div>
-      <div className="flex items-center justify-center">
+      <div className="m-5 flex items-center justify-center">
         <RectButton text="キャンセル" color="red" onClick={onClick} />
       </div>
     </div>
