@@ -4,6 +4,7 @@ import "./style.scss";
 import ArrowDown from "@icons/nav-arrow-down.svg";
 import Warning from "@icons/warning-circle.svg";
 import Image from "next/image";
+import Link from "next/link";
 import Map from "public/test/map.webp";
 
 import { RectButton } from "@/components/buttons/RectButton";
@@ -12,6 +13,7 @@ import { CardFull } from "@/components/cards/CardFull";
 export default function RestaurantsPage() {
   const start = "コクーンタワー地下出口";
   const destination = "らーめん新宿西口店";
+  const link = "https://www.google.com/?hl=ja";
   const time = "3分";
   const far = "300m";
   const onclick = () => {
@@ -38,7 +40,9 @@ export default function RestaurantsPage() {
               <Image className="img" src={Map} alt="map" sizes="w-fit" />
               <div className="preview">Coming Soon!</div>
             </div>
-            <div className="link">アプリでルートを確認する→</div>
+            <Link href={link} className="link">
+              アプリでルートを確認する→
+            </Link>
           </div>
         </div>
       </div>
