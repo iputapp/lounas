@@ -13,6 +13,20 @@ export default function Test() {
       <BorderTitle title="Quantity" className={notoSansJP.className} />
       <BorderTitle title="Price" className={notoSansJP.className} />
       <BorderTitle title="Taste" className={notoSansJP.className} />
+      <BorderTitle
+        title="あなたへのおすすめ"
+        fontSize="text-3xl"
+        fontWeight="font-semibold"
+        boderPadding="py-6"
+        className={notoSansJP.className}
+      />
+      <BorderTitle
+        title="あなたの候補をもとに検索しています"
+        fontSize="text-3xl"
+        fontWeight="font-bold"
+        boderPadding="py-6"
+        className={`${notoSansJP.className} text-center`}
+      />
     </div>
   );
 }
