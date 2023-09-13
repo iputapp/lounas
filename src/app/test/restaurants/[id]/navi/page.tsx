@@ -37,7 +37,7 @@ export default function RestaurantsPage() {
           </div>
           <div className="external">
             <div className="map-img">
-              <Image className="img" src={Map} alt="map" sizes="w-fit" />
+              <Image className="img" src={Map} alt="map" fill />
               <div className="preview">Coming&nbsp;Soon!</div>
             </div>
             <Link href={link} className="link">
