@@ -2,7 +2,7 @@
 
 .container {
   .header {
-    @apply sticky top-0 z-50 flex w-full flex-col bg-white shadow-xl;
+    @apply sticky top-0 z-50 flex w-full flex-col bg-white pt-14 shadow-xl;
 
     .title {
       @apply mx-5 my-2 text-4xl font-bold;
@@ -38,21 +38,23 @@
       }
 
       .external {
-        @apply flex basis-5/12 flex-col items-center justify-center;
+        @apply flex basis-5/12 flex-col items-center justify-center space-y-4;
 
         .map-img {
-          @apply relative aspect-video rounded-lg bg-white;
+          @apply relative w-full overflow-clip rounded-lg bg-white;
+
+          aspect-ratio: 4 / 3;
 
           .img {
-            @apply block rounded-lg blur-sm;
+            @apply absolute object-cover blur-sm;
           }
 
           .preview {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            // top: 50%;
+            // left: 50%;
+            // transform: translate(-50%, -50%);
 
-            @apply absolute;
+            @apply absolute inset-0 m-auto h-fit w-fit;
           }
         }
 
