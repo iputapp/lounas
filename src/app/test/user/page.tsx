@@ -11,7 +11,7 @@ export default function Test() {
   };
 
   return (
-    <div className="h-full overflow-hidden">
+    <div className="relative h-full overflow-hidden">
       <div className={styles.bg}>
         <span className={`${styles.triangle} ${styles.blue}`}></span>
         <span className={`${styles.triangle} ${styles.cyan1}`}></span>

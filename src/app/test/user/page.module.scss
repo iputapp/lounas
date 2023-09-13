@@ -25,7 +25,7 @@
 }
 
 .bg {
-  @apply blur-3xl;
+  @apply absolute blur-3xl;
 
   .triangle {
     @apply -z-50 aspect-square mix-blend-multiply;
