@@ -1,6 +1,6 @@
 // "use server";
 
-// import { cookies } from "next/headers";
+import { cookies } from "next/headers";
 
 // /**
 //  * Set `signup` completion to cookie
@@ -42,24 +42,24 @@
 //  * Set `email` to cookie
 //  * @param {string} email student email
 //  */
-// export async function setEmailToCookie(email: string) {
-//   cookies().set({
-//     name: process.env.NEXT_PUBLIC_COOKIE_EMAIL_NAME ?? "email",
-//     value: email,
-//     maxAge: 60 * 60,
-//     path: "/",
-//     httpOnly: true,
-//     // secure: true,
-//   });
-// }
+export function setEmailToCookie(email: string) {
+  cookies().set({
+    name: process.env.NEXT_PUBLIC_COOKIE_EMAIL_NAME ?? "email",
+    value: email,
+    maxAge: 60 * 60,
+    path: "/",
+    httpOnly: true,
+    // secure: true,
+  });
+}
 
-// /**
-//  * Get `email` from cookie
-//  * @returns {string}
-//  */
-// export async function getEmailFromCookie() {
-//   const cookieStore = cookies();
-//   const email = cookieStore.get(process.env.NEXT_PUBLIC_COOKIE_EMAIL_NAME ?? "email")?.value;
-//   if (!email) throw new Error("email not found.");
-//   return email;
-// }
+/**
+ * Get `email` from cookie
+ * @returns {string}
+ */
+export function getEmailFromCookie() {
+  const cookieStore = cookies();
+  const email = cookieStore.get(process.env.NEXT_PUBLIC_COOKIE_EMAIL_NAME ?? "email")?.value;
+  if (!email) throw new Error("email not found.");
+  return email;
+}

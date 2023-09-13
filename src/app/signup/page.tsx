@@ -10,16 +10,19 @@ import FormGroup from "@mui/material/FormGroup";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import TextField from "@mui/material/TextField";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { LoadingLayer } from "@/components/layouts/Loading";
 import { STUDENT_ID_LENGTH, STUDENT_ID_REGEX } from "@/constants";
+import { callOtpSignin } from "@/hooks/callOtpSignin";
 // import { callSignup } from "@/hooks/signup";
 
 export default function Signup() {
   const router = useRouter();
+  const supabase = createClientComponentClient();
 
   /** @summary student */
   const [student, setStudent] = useState<string>("");
@@ -50,19 +53,20 @@ export default function Signup() {
     }
   }, [student, agreed]);
   /** Fire sign up */
-  const signup = () => {
+  const signup = async () => {
     if (error) return;
     setWorking(true);
-    // callSignup(student)
-    //   .then((data) => {
-    //     console.log(data);
-    //     setWorking(false);
-    //     router.push(`/signup/otp?${process.env.NEXT_PUBLIC_QUERY_SIGN_UP ?? "pending"}`);
-    //   })
-    //   .catch((e) => {
-    //     console.error(e);
-    //     setWorking(false);
-    //   });
+
+    await callOtpSignin(student)
+      .then(() => {
+        router.push(`/signup/otp?${process.env.NEXT_PUBLIC_QUERY_SIGN_UP ?? "pending"}`);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+      .finally(() => {
+        setWorking(false);
+      });
   };
 
   return (
@@ -84,7 +88,7 @@ export default function Signup() {
           <TextField
             name="student"
             label="学籍番号"
-            helperText="220123"
+            helperText="例: 220123"
             variant="standard"
             value={student}
             onChange={(e) => studentChange(e.target.value)}
