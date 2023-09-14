@@ -10,11 +10,7 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-type BottomNavigationBarProps = {
-  pathname?: string;
-};
-
-export function BottomNavigationBar({ pathname = "" }: BottomNavigationBarProps) {
+export function BottomNavigationBar() {
   const router = useRouter();
   const [value, setValue] = useState("home");
 
@@ -24,7 +20,7 @@ export function BottomNavigationBar({ pathname = "" }: BottomNavigationBarProps)
         value={value}
         onChange={(event, value: string) => {
           setValue(value);
-          router.push(`${pathname}/${value}`);
+          router.push(`${value}`);
         }}
         sx={{
           "&": {
