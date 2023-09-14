@@ -34,7 +34,12 @@ export const metadata = {
       type: "image/png",
     },
   },
-  themeColor: "#696969",
+  themeColor: [
+    {
+      media: "(prefers-color-scheme: light)",
+      color: "#696969",
+    },
+  ],
   manifest: "/favicon/site.webmanifest",
   appleWebApp: {
     title: "IMAP",
