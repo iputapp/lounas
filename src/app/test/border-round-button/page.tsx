@@ -9,8 +9,14 @@ export default function Test() {
 
   return (
     <div className="grid h-screen place-items-center gap-6 p-6">
-      <BorderRoundButton title="Sign In" fontSize="text-2xl" onClick={check} />
-      <BorderRoundButton title="次へ" onClick={check} />
+      <div className="w-3/4">
+        <BorderRoundButton fontSize="text-3xl" onClick={check}>
+          Sign In
+        </BorderRoundButton>
+      </div>
+      <div className="w-24">
+        <BorderRoundButton onClick={check}>次へ</BorderRoundButton>
+      </div>
     </div>
   );
 }
