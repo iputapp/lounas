@@ -29,7 +29,7 @@ export function BottomNavigationBar({ pathname = "" }: BottomNavigationBarProps)
         sx={{
           "&": {
             backdropFilter: "blur(8px)", // backdrop-blur
-            backgroundColor: "transparent",
+            backgroundColor: "rgb(255 255 255 / 50%)",
             height: "5rem", // 3.5rem(default) + paddingBottom
           },
           "& .MuiBottomNavigationAction-root": {
