@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 
 import { LoadingLayer } from "@/components/layouts/Loading";
 import { STUDENT_ID_LENGTH, STUDENT_ID_REGEX } from "@/constants";
-import { callSignup } from "@/hooks/signup";
+// import { callSignup } from "@/hooks/signup";
 
 export default function Signup() {
   const router = useRouter();
@@ -53,16 +53,16 @@ export default function Signup() {
   const signup = () => {
     if (error) return;
     setWorking(true);
-    callSignup(student)
-      .then((data) => {
-        console.log(data);
-        setWorking(false);
-        router.push(`/signup/otp?${process.env.NEXT_PUBLIC_QUERY_SIGN_UP ?? "pending"}`);
-      })
-      .catch((e) => {
-        console.error(e);
-        setWorking(false);
-      });
+    // callSignup(student)
+    //   .then((data) => {
+    //     console.log(data);
+    //     setWorking(false);
+    //     router.push(`/signup/otp?${process.env.NEXT_PUBLIC_QUERY_SIGN_UP ?? "pending"}`);
+    //   })
+    //   .catch((e) => {
+    //     console.error(e);
+    //     setWorking(false);
+    //   });
   };
 
   return (
@@ -131,7 +131,7 @@ export default function Signup() {
             <button onClick={signup} disabled={working}>
               <span className={error ? "" : "animate-pulse"}>Sign up</span>
             </button>
-            <p className={error ? "opacity-100 visible" : "opacity-0 invisible"}>
+            <p className={error ? "visible opacity-100" : "invisible opacity-0"}>
               <span>必須項目*を入力してください</span>
             </p>
           </div>

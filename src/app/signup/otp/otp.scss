@@ -1,7 +1,7 @@
 @use "variables" as var;
 
 main {
-  @apply w-full h-screen flex items-center justify-center overflow-clip;
+  @apply flex h-screen w-full items-center justify-center overflow-clip;
 
   position: relative;
 }
@@ -35,24 +35,24 @@ p {
     }
 
     &.green {
-      text-decoration: var.$green;
+      text-decoration: var.$lime;
     }
   }
 }
 
 .button-submit {
-  @apply h-16 flex flex-col items-end justify-end space-y-4;
+  @apply flex h-16 flex-col items-end justify-end space-y-4;
 
   & > button {
-    @apply relative px-6 py-1 rounded-full bg-white;
+    @apply relative rounded-full bg-white px-6 py-1;
 
     &::before {
-      @apply -z-10 absolute inset-[-5px];
+      @apply absolute inset-[-5px] -z-10;
 
       width: calc(100% + 10px);
       height: calc(100% + 10px);
       content: "";
-      background: linear-gradient(to right, var.$blue 0%, var.$green 100%);
+      background: linear-gradient(to right, var.$blue 0%, var.$lime 100%);
       border-radius: inherit;
     }
 
