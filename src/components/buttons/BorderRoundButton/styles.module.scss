@@ -1,7 +1,7 @@
 @use "variables" as var;
 
 .container {
-  @apply relative h-fit w-fit
+  @apply relative h-fit w-full
     overflow-clip;
 
   padding: 0.25em; // p-1
@@ -9,8 +9,7 @@
   border-radius: 1.5em; // rounded-3xl
 
   & > .inner {
-    @apply flex items-center justify-center
-      rounded-3xl;
+    @apply flex items-center justify-center;
 
     padding: 0.25em 1.5em; // py-1 px-6
     background-color: #fff;
