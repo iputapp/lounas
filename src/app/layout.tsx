@@ -33,6 +33,13 @@ export const metadata = {
       sizes: "180x180",
       type: "image/png",
     },
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/favicon/safari-pinned-tab.svg",
+        color: "#0077ff",
+      },
+    ],
   },
   themeColor: [
     {
@@ -45,12 +52,6 @@ export const metadata = {
     title: "IMAP",
     statusBarStyle: "black-translucent",
     startupImage: "/favicon/android-chrome-512x512.png",
-  },
-  alternates: {
-    maskIcon: "/favicon/safari-pinned-tab.svg",
-  },
-  other: {
-    msapplicationConfig: "/favicon/browserconfig.xml",
   },
 };
 
