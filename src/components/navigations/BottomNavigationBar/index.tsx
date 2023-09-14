@@ -2,7 +2,8 @@
 
 import Calendar from "@icons/calendar.svg";
 import Crown from "@icons/crown.svg";
-import Home from "@icons/home.svg";
+import LogoFill from "@icons/logo-fill.svg";
+import LogoOutline from "@icons/logo-outline.svg";
 import User from "@icons/user.svg";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -28,7 +29,7 @@ export function BottomNavigationBar({ pathname = "" }: BottomNavigationBarProps)
         sx={{
           "&": {
             backdropFilter: "blur(8px)", // backdrop-blur
-            backgroundColor: "transparent",
+            backgroundColor: "rgb(255 255 255 / 50%)",
             height: "5rem", // 3.5rem(default) + paddingBottom
           },
           "& .MuiBottomNavigationAction-root": {
@@ -41,32 +42,30 @@ export function BottomNavigationBar({ pathname = "" }: BottomNavigationBarProps)
         <BottomNavigationAction
           value="home"
           icon={
-            <span>
-              <Home className="text-xl" />
-            </span>
+            <span className="text-xl">{value === "home" ? <LogoFill /> : <LogoOutline />}</span>
           }
         />
         <BottomNavigationAction
           value="ranking"
           icon={
-            <span>
-              <Crown className="text-2xl" />
+            <span className="text-2xl">
+              <Crown />
             </span>
           }
         />
         <BottomNavigationAction
           value="diary"
           icon={
-            <span>
-              <Calendar className="text-xl" />
+            <span className="text-xl">
+              <Calendar />
             </span>
           }
         />
         <BottomNavigationAction
           value="user"
           icon={
-            <span>
-              <User className="text-xl" />
+            <span className="text-xl">
+              <User />
             </span>
           }
         />

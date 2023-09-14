@@ -85,6 +85,28 @@ p {
 }
 ```
 
+## Prisma
+
+#### `schema.prisma`に**変更を加える前**:
+
+以下のコマンドを実行する
+
+1. Sync fork & pull
+2. `npx prisma migrate dev` //他の人が行った変更を反映
+
+注意: `schema.prisma`を**編集しない場合でも**schemaに変更があった場合、影響範囲のある部分でコーディング/テストを行う際は**実行する必要**がある。
+
+#### `schema.prisma`に**変更を加えた後**:
+
+以下のコマンドを実行する
+
+1. `npx prisma generate` //型生成
+2. `npx prisma migrate dev --name XXX` //XXXには分かりやすいタイトルを入れる。 例:dish_added_field_xyz等
+3. `npm run format` //zod-prisma-typesの自動生成ファイルにESLintのフォーマットをかける
+
+注意：`migrate`で生成されたファイル(`日付_name/migration.sql`, `migration_lock.toml`)も**コミットに含める**
+（[その理由: Prisma Docs, Team development with Prisma Migrate](https://www.prisma.io/docs/guides/migrate/developing-with-prisma-migrate/team-development)）
+
 ## Pull Request
 
 PRをする前に以下のコマンドを実行し、体裁を整えること。
