@@ -1,10 +1,26 @@
+import { Noto_Sans_JP } from "next/font/google";
+
 import { BottomNavigationBar } from "@/components/navigations/BottomNavigationBar";
 
-export default function webapp({ children }: { children: React.ReactNode }) {
+import styles from "./layout.module.scss";
+
+export const metadata = {
+  title: "App",
+};
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
-      {children}
-      <BottomNavigationBar pathname="/webapp" />
-    </div>
+    <>
+      <header></header>
+      <main className={`${styles.main} ${notoSansJP.className}`}>{children}</main>
+      <footer>
+        <BottomNavigationBar />
+      </footer>
+    </>
   );
 }
