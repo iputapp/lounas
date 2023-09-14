@@ -1,0 +1,34 @@
+@use "variables" as var;
+
+.main {
+  @apply sticky;
+
+  .title {
+    margin-top: calc(100dvh / 20);
+    font-size: calc(100dvw / 12);
+
+    @apply mx-5 font-bold;
+  }
+
+  .container {
+    @apply relative flex h-fit
+      w-fit items-center justify-center overflow-clip
+      bg-black text-2xl text-white;
+
+    padding: 0.25em; // p-1
+    border-radius: 1.5em; // rounded-3xl
+
+    & > .inner {
+      @apply flex items-center justify-center
+        rounded-3xl;
+
+      padding: 0.25em 1.5em; // py-1 px-6
+    }
+
+    & > .title {
+      @apply font-semibold;
+
+      color: var.$primary;
+    }
+  }
+}
