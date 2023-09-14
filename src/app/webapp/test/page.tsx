@@ -2,9 +2,9 @@ import { CardHorizontal } from "@/components/cards/CardHorizontal";
 
 export default function Page() {
   return (
-    <div className="grid gap-7">
+    <div className="grid gap-11">
       <div>
-        <h1 className="text-4xl font-bold">あなたへのおすすめ</h1>
+        <h1 className="text-3xl font-bold">あなたへのおすすめ</h1>
       </div>
       <div className="grid grid-cols-1 gap-6 px-3 sm:grid-cols-2">
         <CardHorizontal title="赤味噌油そば" image="/test/ramen.webp" tag={1} />
