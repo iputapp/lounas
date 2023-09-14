@@ -1,0 +1,8 @@
+@use "variables" as var;
+
+.main {
+  @apply min-h-screen w-full px-5;
+
+  padding-top: 3rem; // pt-12
+  padding-bottom: calc(5rem + 1.5rem); // pb-20 (bottom-navigation-bar) + 1.5rem
+}
