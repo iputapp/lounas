@@ -1,0 +1,7 @@
+@use "variables" as var;
+
+.main {
+  @apply min-h-screen w-full px-5;
+
+  padding-top: 1.625rem; // 26px
+}
