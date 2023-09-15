@@ -1,13 +1,11 @@
 import { Noto_Sans_JP } from "next/font/google";
 
-import { BottomNavigationBar } from "@/components/navigations/BottomNavigationBar";
-
 import styles from "./layout.module.scss";
 
 export const metadata = {
   title: {
-    default: "App",
-    template: "%s - App | IMAP",
+    default: "Recommend",
+    template: "%s - Recommend | IMAP",
   },
 };
 
@@ -21,9 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <header></header>
       <main className={`${styles.main} ${notoSansJP.className}`}>{children}</main>
-      <footer>
-        <BottomNavigationBar />
-      </footer>
+      <footer></footer>
     </>
   );
 }
