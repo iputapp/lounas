@@ -30,7 +30,7 @@ export default function LoadingPage() {
   };
 
   return (
-    <div className="container grid h-screen items-center justify-center">
+    <div className="container grid h-full w-full items-center justify-center">
       <div className="mx-5 flex items-center justify-center text-center">
         <BorderTitle title="あなたの候補をもとに検索しています" fontSize="text-3xl" />
       </div>
@@ -38,7 +38,9 @@ export default function LoadingPage() {
         <Media />
       </div>
       <div className="m-5 flex items-center justify-center">
-        <RectButton text="キャンセル" color="red" onClick={onClick} />
+        <RectButton color="red" onClick={onClick}>
+          キャンセル
+        </RectButton>
       </div>
     </div>
   );
