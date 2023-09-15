@@ -1,7 +1,7 @@
 @use "variables" as var;
 
 .main {
-  @apply flex h-screen w-screen flex-col items-center justify-center;
+  @apply flex h-full w-full flex-col items-center justify-center;
 
   .privacy {
     @apply flex flex-col items-center justify-center;
