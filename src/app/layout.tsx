@@ -3,7 +3,7 @@ import "./globals.scss";
 export const metadata = {
   title: {
     default: "IMAP",
-    template: "%s - IMAP",
+    template: "%s | IMAP",
   },
   applicationName: "IMAP",
   description: "The Lunch Recommendation App for IPUT Students",
