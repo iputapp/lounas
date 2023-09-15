@@ -1,0 +1,71 @@
+@use "variables" as var;
+
+.main {
+  @apply sticky;
+
+  .title {
+    margin-top: calc(100dvh / 15);
+    font-size: calc(100dvw / 10);
+
+    @apply mx-5 font-bold;
+  }
+
+  .container {
+    margin-top: calc(100dvh / 10);
+    margin-bottom: calc(100dvh / 10);
+
+    @apply flex items-center;
+
+    .button {
+      padding: 0.25em; // p-1
+      border-radius: 1.5em; // rounded-3xl
+
+      @apply relative m-auto 
+      flex h-fit w-fit items-center justify-center
+      overflow-clip bg-black text-2xl text-white;
+
+      & > .inner {
+        @apply flex items-center justify-center
+        rounded-3xl;
+
+        padding: 0.25em 1.5em; // py-1 px-6
+      }
+    }
+  }
+
+  .select {
+    width: calc(100dvw / 5 * 4);
+
+    @apply m-auto rounded-2xl bg-white/30 backdrop-blur-lg;
+
+    .lock {
+      border-bottom: 1px solid rgb(255 255 255 / 50%);
+
+      @apply flex w-full justify-between p-5;
+
+      .privacy {
+        @apply flex items-center;
+
+        .privacytext {
+          @apply mx-5;
+        }
+      }
+
+      .arrow {
+        @apply font-bold;
+      }
+    }
+
+    .mail {
+      @apply flex w-full justify-between p-5;
+
+      .inquiry {
+        @apply flex items-center;
+
+        .inquirytext {
+          @apply mx-5;
+        }
+      }
+    }
+  }
+}
