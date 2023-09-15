@@ -1,6 +1,4 @@
 "use client";
-import "./style.scss";
-
 import ArrowDown from "@icons/nav-arrow-down.svg";
 import Warning from "@icons/warning-circle.svg";
 import Image from "next/image";
@@ -9,6 +7,8 @@ import Map from "public/test/map.webp";
 
 import { RectButton } from "@/components/buttons/RectButton";
 import { CardFull } from "@/components/cards/CardFull";
+
+import styles from "./page.module.scss";
 
 export default function RestaurantsPage() {
   const start = "コクーンタワー地下出口";
@@ -21,39 +21,39 @@ export default function RestaurantsPage() {
   };
 
   return (
-    <div className="container">
-      <div className="header">
-        <div className="title">ルート案内</div>
-        <div className="guide">
-          <div className="information">
-            <div className="distance">{`${time}(${far})`}</div>
-            <div className="route">
-              <div className="start">{start}</div>
-              <div className="arrow-down">
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.title}>ルート案内</div>
+        <div className={styles.guide}>
+          <div className={styles.information}>
+            <div className={styles.distance}>{`${time}(${far})`}</div>
+            <div className={styles.route}>
+              <div className={styles.start}>{start}</div>
+              <div className={styles.arrowdown}>
                 <ArrowDown />
               </div>
-              <div className="destination">{destination}</div>
+              <div className={styles.destination}>{destination}</div>
             </div>
           </div>
-          <div className="external">
-            <div className="map-img">
-              <Image className="img" src={Map} alt="map" fill />
-              <div className="preview">Coming&nbsp;Soon!</div>
+          <div className={styles.external}>
+            <div className={styles.mapimg}>
+              <Image className={styles.img} src={Map} alt="map" fill />
+              <div className={styles.preview}>Coming&nbsp;Soon!</div>
             </div>
-            <Link href={link} className="link">
+            <Link href={link} className={styles.link}>
               アプリでルートを確認する→
             </Link>
           </div>
         </div>
       </div>
-      <div className="main">
-        <div className="warning">
-          <div className="icon">
+      <div className={styles.main}>
+        <div className={styles.warning}>
+          <div className={styles.icon}>
             <Warning />
           </div>
-          <div className="request">歩きながらの使用はお控えください。</div>
+          <div className={styles.request}>歩きながらの使用はお控えください。</div>
         </div>
-        <div className="card-full">
+        <div className={styles.cardfull}>
           <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
           <CardFull image="/test/route.webp" description="こんにちは" navigation="sharpLeft" />
           <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
@@ -82,8 +82,10 @@ export default function RestaurantsPage() {
           />
         </div>
       </div>
-      <div className="footer">
-        <RectButton text="終了する" color="red" onClick={onclick} />
+      <div className={styles.footer}>
+        <RectButton color="red" onClick={onclick}>
+          終了する
+        </RectButton>
       </div>
     </div>
   );

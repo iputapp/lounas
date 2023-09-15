@@ -2,7 +2,7 @@
 
 .container {
   .header {
-    @apply sticky top-0 z-50 flex w-full flex-col bg-white pt-14 shadow-xl;
+    @apply sticky top-0 z-50 flex h-full w-full flex-col bg-white pt-14 shadow-xl;
 
     .title {
       @apply mx-5 my-2 text-4xl font-bold;
@@ -25,7 +25,7 @@
             @apply text-base font-bold;
           }
 
-          .arrow-down {
+          .arrowdown {
             color: var.$blue;
 
             @apply text-2xl font-bold;
@@ -40,7 +40,7 @@
       .external {
         @apply flex basis-5/12 flex-col items-center justify-center space-y-4;
 
-        .map-img {
+        .mapimg {
           @apply relative w-full overflow-clip rounded-lg bg-white;
 
           aspect-ratio: 4 / 3;
@@ -83,7 +83,7 @@
       }
     }
 
-    .card-full {
+    .cardfull {
       position: relative;
       z-index: 1;
 
