@@ -1,7 +1,7 @@
 @use "variables" as var;
 
 .bg {
-  @apply absolute blur-xl;
+  @apply fixed h-screen blur-xl;
 
   .triangle {
     @apply -z-50 aspect-square mix-blend-multiply;
