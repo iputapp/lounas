@@ -45,14 +45,14 @@ export default function RestaurantsPage() {
             </Link>
           </div>
         </div>
-      </div>
-      <div className={styles.main}>
         <div className={styles.warning}>
           <div className={styles.icon}>
             <Warning />
           </div>
           <div className={styles.request}>歩きながらの使用はお控えください。</div>
         </div>
+      </div>
+      <div className={styles.main}>
         <div className={styles.cardfull}>
           <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
           <CardFull image="/test/route.webp" description="こんにちは" navigation="sharpLeft" />
@@ -80,13 +80,13 @@ export default function RestaurantsPage() {
             今夜飲みに行かないかい？（イケボ）目の前にセブンイレブンがあります"
             navigation="pin"
           />
-        </div>
-      </div>
-      <div className={styles.footer}>
-        <div className="w-1/2">
-          <RectButton color="red" onClick={onclick}>
-            終了する
-          </RectButton>
+          <div className={styles.footer}>
+            <div className="w-1/2">
+              <RectButton color="red" onClick={onclick}>
+                終了する
+              </RectButton>
+            </div>
+          </div>
         </div>
       </div>
     </div>
