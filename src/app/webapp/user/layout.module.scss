@@ -1,7 +1,7 @@
 @use "variables" as var;
 
 .bg {
-  @apply fixed h-screen blur-xl;
+  @apply fixed h-screen scale-105 blur-xl brightness-110;
 
   .triangle {
     @apply -z-50 aspect-square mix-blend-multiply;
@@ -14,32 +14,32 @@
       top: 30dvh;
       left: -12dvh;
       width: 100dvh;
-      background-color: var.$blue;
+      background-color: #0072f5;
       transform: rotate(-120deg);
     }
 
     &.cyan1 {
-      top: 10dvh;
-      left: 8dvh;
-      width: 100dvh;
-      background-color: var.$cyan;
-      transform: rotate(45deg);
+      top: -15dvh;
+      left: -15dvh;
+      width: 75dvh;
+      background-color: #00d3f5;
+      transform: rotate(70deg);
     }
 
     &.green {
-      top: 40dvh;
-      left: -40dvh;
+      top: 50dvh;
+      left: -45dvh;
       width: 90dvh;
-      background-color: var.$lime;
+      background-color: #00f5aa;
       transform: rotate(80deg);
     }
 
     &.cyan2 {
-      top: -30dvh;
-      left: -10dvh;
-      width: 100dvh;
-      background-color: var.$cyan;
-      transform: rotate(20deg);
+      top: -20dvh;
+      left: -5dvh;
+      width: 105dvh;
+      background-color: #00f5cb;
+      transform: rotate(10deg);
     }
   }
 }
