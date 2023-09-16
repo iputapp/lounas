@@ -4,18 +4,18 @@
   min-height: calc((100vh - 5rem) / 2);
   background-color: rgb(255 255 255 / 50%);
 
-  @apply m-5 w-3/4 rounded-xl backdrop-blur-md;
+  @apply w-full rounded-xl backdrop-blur-md;
 
   .header {
     min-height: calc(100dvh / 20);
 
     @apply my-2 flex items-center justify-center;
 
-    & > .logo {
+    .logo {
       @apply text-lg;
     }
 
-    & > .title {
+    .title {
       color: var.$blue;
 
       @apply mx-2 text-3xl font-bold;
