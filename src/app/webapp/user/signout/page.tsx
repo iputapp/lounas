@@ -12,7 +12,7 @@ export default function SignOut() {
   };
 
   return (
-    <div className="h-screen w-full overflow-hidden">
+    <>
       <div className={styles.main}>
         <div className={styles.title}>アカウント</div>
         <div className={styles.container}>
@@ -42,6 +42,6 @@ export default function SignOut() {
           </a>
         </div>
       </div>
-    </div>
+    </>
   );
 }
