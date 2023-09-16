@@ -1,23 +1,26 @@
 .main {
   @apply sticky;
 
-  & > .title {
+  .title {
     margin-top: calc(100dvh / 20);
-    font-size: calc(100dvw / 12);
+    font-size: calc(100dvw / 10);
 
     @apply mx-5 font-bold;
   }
 
-  & > .go > .text {
-    margin: calc(100dvh / 50);
-    color: var.$secondary;
+  .text {
+    height: calc(100dvh / 12);
+    font-size: calc(100dvh / 35);
+    color: #464646;
 
-    @apply flex items-center justify-center text-base font-bold;
+    @apply flex items-center justify-center font-bold opacity-60;
   }
 
-  & > .go > .button {
-    margin-bottom: calc(100dvh / 50);
+  .button {
+    @apply mb-5 flex items-center justify-center;
 
-    @apply flex items-center justify-center;
+    .size {
+      width: calc(100dvw / 3 * 2);
+    }
   }
 }
