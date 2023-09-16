@@ -83,9 +83,11 @@ export default function RestaurantsPage() {
         </div>
       </div>
       <div className={styles.footer}>
-        <RectButton color="red" onClick={onclick}>
-          終了する
-        </RectButton>
+        <div className="w-1/2">
+          <RectButton color="red" onClick={onclick}>
+            終了する
+          </RectButton>
+        </div>
       </div>
     </div>
   );

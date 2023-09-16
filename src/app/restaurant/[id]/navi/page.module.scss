@@ -1,8 +1,10 @@
 @use "variables" as var;
 
 .container {
+  @apply pb-10;
+
   .header {
-    @apply sticky top-0 z-50 flex h-full w-full flex-col bg-white pt-14 shadow-xl;
+    @apply sticky top-0 z-50 flex h-full w-full flex-col bg-white pb-5 pt-14 shadow-xl;
 
     .title {
       @apply mx-5 my-2 text-4xl font-bold;
@@ -87,11 +89,11 @@
       position: relative;
       z-index: 1;
 
-      @apply m-5 grid gap-9;
+      @apply my-5 grid gap-9;
     }
   }
 
   .footer {
-    @apply my-10 flex items-center justify-center;
+    @apply flex items-center justify-center;
   }
 }
