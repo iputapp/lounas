@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { RectButton } from "@/components/buttons/RectButton";
@@ -10,9 +11,12 @@ import styles from "./page.module.scss";
 
 export default function Privacy() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const onClick = () => {
-    console.log("button clicked");
+  const router = useRouter();
+  const refuse = () => {
+    router.push("/signup");
+  };
+  const permission = () => {
+    router.push(`webapp/home`);
   };
 
   return (
@@ -69,10 +73,10 @@ export default function Privacy() {
       <div className={styles.choice}>
         <h1>トラッキングを許可しますか？</h1>
         <div className={styles.button}>
-          <RectButton color="red" onClick={onClick}>
+          <RectButton color="red" onClick={refuse}>
             拒否する
           </RectButton>
-          <RectButton color="blue" onClick={onClick}>
+          <RectButton color="blue" onClick={permission}>
             許可する
           </RectButton>
         </div>
