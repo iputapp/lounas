@@ -2,6 +2,7 @@
 
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
+import { useRouter } from "next/navigation";
 import * as React from "react";
 
 import { RectButton } from "@/components/buttons/RectButton";
@@ -25,8 +26,9 @@ function Media() {
 }
 
 export default function LoadingPage() {
-  const onClick = () => {
-    console.log("click");
+  const router = useRouter();
+  const cancel = () => {
+    router.back();
   };
 
   return (
@@ -38,7 +40,7 @@ export default function LoadingPage() {
         <Media />
       </div>
       <div className="m-5 flex items-center justify-center">
-        <RectButton color="red" onClick={onClick}>
+        <RectButton color="red" onClick={cancel}>
           キャンセル
         </RectButton>
       </div>
