@@ -8,7 +8,7 @@ import styles from "./page.module.scss";
 export default function User() {
   const router = useRouter();
   const onClick = () => {
-    router.push("/signup");
+    router.push("/webapp/user/signout");
   };
 
   return (
