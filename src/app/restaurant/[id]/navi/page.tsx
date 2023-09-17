@@ -3,6 +3,7 @@ import ArrowDown from "@icons/nav-arrow-down.svg";
 import Warning from "@icons/warning-circle.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Map from "public/test/map.webp";
 
 import { RectButton } from "@/components/buttons/RectButton";
@@ -11,13 +12,14 @@ import { CardFull } from "@/components/cards/CardFull";
 import styles from "./page.module.scss";
 
 export default function RestaurantsPage() {
+  const router = useRouter();
   const start = "コクーンタワー地下出口";
   const destination = "らーめん新宿西口店";
   const link = "https://www.google.com/?hl=ja";
   const time = "3分";
   const far = "300m";
   const onclick = () => {
-    console.log("click");
+    router.push("/webapp/home");
   };
 
   return (
