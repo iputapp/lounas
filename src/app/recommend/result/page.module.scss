@@ -1,0 +1,19 @@
+@use "variables" as var;
+
+.container {
+  @apply flex w-full flex-col;
+
+  .header {
+    font-size: calc(100dvw / 11);
+
+    @apply my-10 font-bold;
+  }
+
+  .main {
+    @apply grid grid-cols-1 gap-10;
+  }
+
+  .footer {
+    @apply mx-auto my-10 w-1/2;
+  }
+}
