@@ -1,11 +1,14 @@
 "use client";
+import { useRouter } from "next/navigation";
+
 import { BorderRoundButton } from "@/components/buttons/BorderRoundButton";
 
 import styles from "./page.module.scss";
 
-export default function Test() {
+export default function User() {
+  const router = useRouter();
   const onClick = () => {
-    console.log("clicked");
+    router.push("/signup");
   };
 
   return (

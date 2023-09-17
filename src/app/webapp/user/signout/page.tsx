@@ -3,12 +3,14 @@
 import Lock from "@icons/lock.svg";
 import NavArrowRight from "@icons/nav-arrow-right.svg";
 import Send from "@icons/send.svg";
+import { useRouter } from "next/navigation";
 
 import styles from "./page.module.scss";
 
 export default function SignOut() {
+  const router = useRouter();
   const onClick = () => {
-    console.log("clicked");
+    router.push("/webapp/user/signin");
   };
 
   return (
