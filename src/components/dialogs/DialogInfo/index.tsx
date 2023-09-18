@@ -50,26 +50,24 @@ type DialogInfoProps = {
 
 export function DialogInfo({ title, children, isOpen, setIsOpen }: DialogInfoProps) {
   return (
-    <div>
-      <StyledDialog
-        onClose={() => setIsOpen(!isOpen)}
-        aria-labelledby="info-dialog-title"
-        open={isOpen}
-        scroll="paper"
+    <StyledDialog
+      onClose={() => setIsOpen(!isOpen)}
+      aria-labelledby="info-dialog-title"
+      open={isOpen}
+      scroll="paper"
+    >
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+        }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <IconButton aria-label="close" onClick={() => setIsOpen(!isOpen)}>
-            <Cancel />
-          </IconButton>
-          <DialogTitle id="info-dialog-title">{title}</DialogTitle>
-        </Box>
-        <DialogContent>{children}</DialogContent>
-      </StyledDialog>
-    </div>
+        <IconButton aria-label="close" onClick={() => setIsOpen(!isOpen)}>
+          <Cancel />
+        </IconButton>
+        <DialogTitle id="info-dialog-title">{title}</DialogTitle>
+      </Box>
+      <DialogContent>{children}</DialogContent>
+    </StyledDialog>
   );
 }
