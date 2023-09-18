@@ -10,13 +10,14 @@ import { PrivacyPlayer } from "@/components/lottie/Privacy";
 import styles from "./page.module.scss";
 
 export default function Page() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const router = useRouter();
-  const refuse = () => {
-    router.replace("/signup");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const disAgree = () => {
+    router.push("/webapp/home");
   };
-  const permission = () => {
-    router.replace(`webapp/home`);
+  const agree = () => {
+    router.push("/webapp/home");
   };
 
   return (
@@ -38,10 +39,10 @@ export default function Page() {
             <span>ランキング機能のみのご利用になります。</span>
           </div>
           <div className={styles.button}>
-            <RectButton color="red" onClick={refuse}>
+            <RectButton color="red" onClick={disAgree}>
               同意しない
             </RectButton>
-            <RectButton color="blue" onClick={permission}>
+            <RectButton color="blue" onClick={agree}>
               同意する
             </RectButton>
           </div>
