@@ -13,10 +13,10 @@ export default function Privacy() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const router = useRouter();
   const refuse = () => {
-    router.push("/signup");
+    router.replace("/signup");
   };
   const permission = () => {
-    router.push(`webapp/home`);
+    router.replace(`webapp/home`);
   };
 
   return (
