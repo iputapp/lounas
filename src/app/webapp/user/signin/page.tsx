@@ -13,7 +13,7 @@ export default function User() {
 
   return (
     <div className={styles.main}>
-      <div className={styles.title}>アカウント</div>
+      <h1 className={styles.title}>アカウント</h1>
       <div className={styles.text}>IMAP会員へようこそ !</div>
       <div className={styles.button}>
         <div className={styles.size}>

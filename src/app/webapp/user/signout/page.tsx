@@ -16,7 +16,7 @@ export default function SignOut() {
   return (
     <>
       <div className={styles.main}>
-        <div className={styles.title}>アカウント</div>
+        <h1 className={styles.title}>アカウント</h1>
         <div className={styles.container}>
           <button className={styles.button} onClick={onClick}>
             <div className={styles.inner}>&emsp;Sign Out&emsp;</div>
