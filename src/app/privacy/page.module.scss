@@ -29,11 +29,11 @@
   }
 
   .choice {
-    & > h1 {
+    .query {
       @apply mb-5 text-xl font-bold;
     }
 
-    & > .button {
+    .button {
       @apply grid grid-cols-2 gap-5 py-5;
     }
   }

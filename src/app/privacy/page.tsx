@@ -71,7 +71,7 @@ export default function Privacy() {
         <PrivacyPlayer />
       </div>
       <div className={styles.choice}>
-        <h1>トラッキングを許可しますか？</h1>
+        <h1 className={styles.query}>トラッキングを許可しますか？</h1>
         <div className={styles.button}>
           <RectButton color="red" onClick={refuse}>
             拒否する
