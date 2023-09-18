@@ -3,25 +3,26 @@ import Image from "next/image";
 import styles from "./styles.module.scss";
 
 type CardProps = {
-  title: string;
+  children: React.ReactNode;
+  alt: string;
   image: string;
 };
 
-export function Card({ title, image }: CardProps) {
+export function Card({ children, alt, image }: CardProps) {
   return (
     <article className={styles.card}>
       <div className={styles.imageParent}>
         <Image
           className={styles.image}
           src={image}
-          alt={title}
+          alt={alt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
           priority
         />
       </div>
       <section className={styles.content}>
-        <p className={styles.title}>{title}</p>
+        <p className={styles.title}>{children}</p>
       </section>
     </article>
   );
