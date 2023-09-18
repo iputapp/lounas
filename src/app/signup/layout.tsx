@@ -1,9 +1,9 @@
 export const metadata = {
-  title: "Sign up | IMAP",
+  title: "Sign up",
   description: "This is a sign up page. You can create an account from this page.",
 };
 
-export default function SignupLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <header></header>
