@@ -6,11 +6,11 @@
   .privacy {
     @apply flex flex-col items-center justify-center;
 
-    & > h1 {
+    .title {
       @apply p-5 text-4xl font-bold;
     }
 
-    & > p {
+    .text {
       @apply m-4 flex flex-col items-center 
       justify-center break-words from-neutral-400 text-center text-sm;
     }
@@ -34,7 +34,7 @@
     }
 
     & > .button {
-      @apply grid grid-cols-2 gap-5 py-5 pl-5;
+      @apply grid grid-cols-2 gap-5 py-5;
     }
   }
 }

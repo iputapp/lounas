@@ -22,8 +22,8 @@ export default function Privacy() {
   return (
     <main className={styles.main}>
       <div className={styles.privacy}>
-        <h1>プライバシー</h1>
-        <p>
+        <h1 className={styles.title}>プライバシー</h1>
+        <p className={styles.text}>
           このアプリではユーザーがより便利にお使いいただける用に情報提供の協力をお願いしています。
         </p>
       </div>
