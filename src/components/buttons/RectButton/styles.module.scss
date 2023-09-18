@@ -12,10 +12,6 @@
   }
 
   & .text {
-    @apply text-xl font-semibold text-white;
+    @apply text-lg font-semibold text-white;
   }
-}
-
-.flex-center-all {
-  @apply flex items-center justify-center;
 }
