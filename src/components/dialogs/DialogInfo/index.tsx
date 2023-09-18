@@ -11,8 +11,8 @@ const StyledDialog = styled(Dialog)(() => ({
   "& .MuiDialog-paper": {
     borderRadius: "1.5rem", // rounded-3xl
     border: "2px solid #07f", // border-2
-    backdropFilter: "blur(8px) brightness(1.75)", // backdrop-blur backdrop-brightness-[1.75]
-    backgroundColor: "rgb(255 255 255 / 50%)",
+    backdropFilter: "blur(12px) brightness(2)", // backdrop-blur-md backdrop-brightness-200
+    backgroundColor: "rgb(255 255 255 / 80%)",
     overflowX: "clip",
   },
   "& .MuiBox-root": {
@@ -25,6 +25,7 @@ const StyledDialog = styled(Dialog)(() => ({
     padding: "0.5rem", // p-2
   },
   "& .MuiDialogTitle-root": {
+    color: "#262626",
     /** font-semibold */
     fontWeight: 600,
     /** text-lg */
@@ -41,13 +42,13 @@ const StyledDialog = styled(Dialog)(() => ({
 }));
 
 type DialogInfoProps = {
-  header: string;
+  title: string;
   children?: React.ReactNode;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-export function DialogInfo({ header, children, isOpen, setIsOpen }: DialogInfoProps) {
+export function DialogInfo({ title, children, isOpen, setIsOpen }: DialogInfoProps) {
   return (
     <div>
       <StyledDialog
@@ -65,7 +66,7 @@ export function DialogInfo({ header, children, isOpen, setIsOpen }: DialogInfoPr
           <IconButton aria-label="close" onClick={() => setIsOpen(!isOpen)}>
             <Cancel />
           </IconButton>
-          <DialogTitle id="info-dialog-title">{header}</DialogTitle>
+          <DialogTitle id="info-dialog-title">{title}</DialogTitle>
         </Box>
         <DialogContent>{children}</DialogContent>
       </StyledDialog>
