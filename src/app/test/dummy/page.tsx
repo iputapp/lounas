@@ -1,46 +1,38 @@
-"use client";
-import { BorderRoundButton } from "@/components/buttons/BorderRoundButton";
-import { Thisapp } from "@/components/dummy/ThisApp";
-import { BottomNavigationBar } from "@/components/navigations/BottomNavigationBar";
-
-import styles from "./page.module.scss";
+import { DummyPanel } from "@/components/layouts/DummyPanel";
 
 export default function Test() {
-  const onClick = () => {
-    console.log("clicked");
-  };
-
   return (
-    <div className="relative h-full overflow-hidden">
-      <div className={styles.bg}>
-        <span className={`${styles.triangle} ${styles.blue}`}></span>
-        <span className={`${styles.triangle} ${styles.cyan1}`}></span>
-        <span className={`${styles.triangle} ${styles.green}`}></span>
-        <span className={`${styles.triangle} ${styles.cyan2}`}></span>
-      </div>
-      <div className={styles.main}>
-        <div className={styles.title}>アカウント</div>
-        <div className={styles.go}>
-          <div className={styles.text}>IMAP会員へようこそ !</div>
-          <div className={styles.button}>
-            <BorderRoundButton fontSize="text-2xl" onClick={onClick}>
-              &emsp;Sign IN&emsp;
-            </BorderRoundButton>
-          </div>
+    <>
+      <div className="grid h-screen w-full grid-rows-6 bg-gradient-to-b from-blue-500 to-cyan-500 px-4">
+        <div className="row-span-1 self-center">
+          <h1 className="text-3xl font-bold">アカウント</h1>
         </div>
-        <div className="flex items-center justify-center">
-          <div className="w-5/6">
-            <Thisapp>
-              <p className=" break-words">
-                こんにちは!!!!! 僕の名前は、、、、
-                ピカソのフルネームはパブロ・ディエーゴ・ホセ・フランシスコ・デ・パウラ・ホアン・ネポムセーノ・マリーア・デ・ロス・レメディオス・クリスピーン・クリスピアーノ・デ・ラ・サンティシマ・トリニダード・ルイス・イ・ピカソ。
-                です。。。 よろしくお願いします！！明日からよろしくお願いします！！
-              </p>
-            </Thisapp>
-          </div>
+        <div className="row-span-1 justify-self-center">
+          <span className="text-lg font-semibold text-[#464646]">IMAP会員へようこそ！</span>
+        </div>
+        <div className="row-span-3 w-11/12 place-self-center">
+          <DummyPanel>
+            <div className="grid place-items-center gap-4">
+              <h2 className="text-base font-semibold">このアプリについて</h2>
+              <div className="text-sm">
+                <p>こんにちは!!!!! 僕の名前は、、、、</p>
+                <p>
+                  ピカソのフルネームはパブロ・ディエーゴ・ホセ・フランシスコ・デ・パウラ・ホアン・ネポムセーノ・マリーア・デ・ロス・レメディオス・クリスピーン・クリスピアーノ・デ・ラ・サンティシマ・トリニダード・ルイス・イ・ピカソ。
+                </p>
+                <p>です。。。 よろしくお願いします！！明日からよろしくお願いします！！</p>
+              </div>
+            </div>
+          </DummyPanel>
         </div>
       </div>
-      <BottomNavigationBar />
-    </div>
+      {
+        /* Overlay */
+        <div className="fixed inset-0 grid h-screen w-full place-items-center bg-black/30">
+          <div className="w-10/12">
+            <DummyPanel />
+          </div>
+        </div>
+      }
+    </>
   );
 }
