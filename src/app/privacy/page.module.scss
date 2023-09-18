@@ -8,6 +8,8 @@
 
   .title {
     @apply text-4xl font-bold;
+
+    color: var.$primary;
   }
 
   .description {
@@ -49,6 +51,8 @@
         place-items-center text-center
         text-base font-semibold
         sm:text-lg;
+
+      color: var.$primary;
     }
 
     .button {
