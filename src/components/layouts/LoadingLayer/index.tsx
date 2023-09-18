@@ -1,5 +1,6 @@
 import { LoadingPlayer } from "@/components/lottie/Loading";
-import styles from "@/styles/components/layouts/loading.module.scss";
+
+import styles from "./styles.module.scss";
 
 interface LoadingIconProps {
   working?: boolean;
@@ -7,14 +8,14 @@ interface LoadingIconProps {
 
 /**
  * Loading icon
- * @param working Set `useState()` param (Display if `true`)
+ * @param working set `useState()` param (Display if `true`)
  */
 export function LoadingLayer({ working = true }: LoadingIconProps) {
   return (
     <div
-      className={styles.overlay + `${working ? " opacity-100 visible" : " opacity-0 invisible"}`}
+      className={styles.overlay + `${working ? " visible opacity-100" : " invisible opacity-0"}`}
     >
-      <div className="w-1/5 max-w-[6rem] aspect-square">
+      <div className="aspect-square w-1/5 max-w-[6rem]">
         <LoadingPlayer />
       </div>
     </div>
