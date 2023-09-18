@@ -10,7 +10,7 @@ type RectButtonProps = {
 
 export function RectButton({ children, color, onClick }: RectButtonProps) {
   return (
-    <button className={`${styles.box} ${styles[color]} ${styles.flexCenterAll}`} onClick={onClick}>
+    <button className={`${styles.box} ${styles[color]}`} onClick={onClick}>
       <span className={styles.text}>{children}</span>
     </button>
   );
