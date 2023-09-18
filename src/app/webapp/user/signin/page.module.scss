@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 .main {
   @apply sticky;
 
@@ -9,10 +11,9 @@
 
   .text {
     height: calc(100dvh / 12);
-    font-size: calc(100dvh / 35);
     color: #464646;
 
-    @apply flex items-center justify-center font-bold opacity-60;
+    @apply flex items-center justify-center text-lg font-semibold opacity-60;
   }
 
   .button {
@@ -20,6 +21,14 @@
 
     .size {
       width: calc(100dvw / 3 * 2);
+    }
+  }
+
+  .dummy {
+    @apply flex items-center justify-center;
+
+    .panelsize {
+      @apply h-full w-5/6;
     }
   }
 }

@@ -9,9 +9,14 @@
     @apply mx-5 font-bold;
   }
 
-  .container {
-    margin-top: calc(100dvh / 12);
+  .text {
+    height: calc(100dvh / 12);
+    color: #464646;
 
+    @apply flex items-center justify-center text-lg font-semibold opacity-60;
+  }
+
+  .container {
     @apply mb-5;
 
     .button {

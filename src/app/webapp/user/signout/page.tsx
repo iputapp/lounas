@@ -20,6 +20,7 @@ export default function SignOut() {
     <>
       <div className={styles.main}>
         <h1 className={styles.title}>アカウント</h1>
+        <div className={styles.text}>日々のご愛顧ありがとうございます。</div>
         <div className={styles.container}>
           <button className={styles.button} onClick={onClick}>
             <div className={styles.inner}>&emsp;Sign Out&emsp;</div>

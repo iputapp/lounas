@@ -15,7 +15,9 @@ export default function User() {
   return (
     <div className={styles.main}>
       <h1 className={styles.title}>アカウント</h1>
+
       <div className={styles.text}>IMAP会員へようこそ !</div>
+
       <div className={styles.button}>
         <div className={styles.size}>
           <BorderRoundButton fontSize="text-2xl" onClick={onClick}>
@@ -24,8 +26,8 @@ export default function User() {
         </div>
       </div>
 
-      <div className="flex items-center justify-center">
-        <div className="h-full w-5/6">
+      <div className={styles.dummy}>
+        <div className={styles.panelsize}>
           <DummyPanel>
             <p className="break-words">
               こんにちは!!!!! 僕の名前は、、、、
