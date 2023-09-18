@@ -12,6 +12,9 @@ export default function SignOut() {
   const onClick = () => {
     router.push("/webapp/user/signin");
   };
+  const privacyPage = () => {
+    router.replace("/privacy");
+  };
 
   return (
     <>
@@ -24,7 +27,7 @@ export default function SignOut() {
         </div>
 
         <div className={styles.select}>
-          <button className={styles.lock}>
+          <button className={styles.lock} onClick={privacyPage}>
             <span className={styles.privacy}>
               <Lock />
               <div className={styles.privacytext}>プライバシー</div>
