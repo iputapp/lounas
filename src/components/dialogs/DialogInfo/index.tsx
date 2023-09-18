@@ -10,19 +10,22 @@ import { Dispatch, SetStateAction } from "react";
 const StyledDialog = styled(Dialog)(() => ({
   "& .MuiDialog-paper": {
     borderRadius: "1.5rem", // rounded-3xl
-    border: "2px solid #07f", // border-2
+    border: "2px solid rgb(0 119 255 / 80%)", // border-2
     backdropFilter: "blur(12px) brightness(2)", // backdrop-blur-md backdrop-brightness-200
     backgroundColor: "rgb(255 255 255 / 80%)",
     overflowX: "clip",
   },
   "& .MuiBox-root": {
-    padding: "0.5rem", // p-2
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    padding: "0.75rem", // p-3
   },
   "& .MuiIconButton-root": {
-    /** text-xl */
-    fontSize: "1.25rem",
+    /** text-lg */
+    fontSize: "1.125rem",
     lineHeight: "1.75rem",
-    padding: "0.5rem", // p-2
+    padding: 0,
   },
   "& .MuiDialogTitle-root": {
     color: "#262626",
@@ -31,13 +34,14 @@ const StyledDialog = styled(Dialog)(() => ({
     /** text-lg */
     fontSize: "1.125rem",
     lineHeight: "1.75rem",
-    margin: 0, // m-0
     marginTop: "0.125rem", // mt-0.5
-    padding: "0.5rem", // p-2
+    marginLeft: "auto", // mx-auto
+    marginRight: "auto", // mx-auto
+    padding: 0,
   },
   "& .MuiDialogContent-root": {
-    height: "60dvh",
-    maxHeight: "24rem", // max-h-96
+    maxHeight: "50dvh",
+    color: "#404040",
   },
 }));
 
