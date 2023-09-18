@@ -8,6 +8,8 @@ import * as React from "react";
 import { RectButton } from "@/components/buttons/RectButton";
 import { BorderTitle } from "@/components/headers/BorderTitle";
 
+import styles from "./page.module.scss";
+
 function Media() {
   return (
     <div className="grid gap-5">
@@ -32,14 +34,14 @@ export default function LoadingPage() {
   };
 
   return (
-    <div className="container grid h-full w-full items-center justify-center">
-      <div className="mx-5 flex items-center justify-center text-center">
+    <div className={styles.container}>
+      <h1 className={styles.title}>
         <BorderTitle title="あなたの候補をもとに検索しています" fontSize="text-3xl" />
-      </div>
-      <div className="m-5 flex  flex-col items-center">
+      </h1>
+      <div className={styles.media}>
         <Media />
       </div>
-      <div className="m-5 flex items-center justify-center">
+      <div className={styles.button}>
         <RectButton color="red" onClick={cancel}>
           キャンセル
         </RectButton>

@@ -1,0 +1,15 @@
+.container {
+  @apply grid h-full w-full items-center justify-center;
+
+  .title {
+    @apply mx-5 flex items-center justify-center text-center;
+  }
+
+  .media {
+    @apply m-5 flex  flex-col items-center;
+  }
+
+  .button {
+    @apply m-5 mx-auto flex w-1/2 items-center justify-center;
+  }
+}
