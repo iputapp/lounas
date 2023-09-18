@@ -19,7 +19,7 @@ export default function RestaurantsPage() {
   const time = "3分";
   const far = "300m";
   const onclick = () => {
-    router.push("/webapp/home");
+    router.replace("/webapp/home");
   };
 
   return (
