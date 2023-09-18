@@ -3,6 +3,7 @@
 import LinearProgress, { linearProgressClasses } from "@mui/material/LinearProgress";
 import { styled } from "@mui/material/styles";
 import { Noto_Sans_JP } from "next/font/google";
+import { useRouter } from "next/navigation";
 import * as React from "react";
 
 import { BorderCircleButton } from "@/components/buttons/BorderCircleButton";
@@ -27,8 +28,9 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export default function Test() {
+  const router = useRouter();
   const goGO = () => {
-    console.log("GO!!");
+    router.push("/recommend/explore");
   };
   const d = new Date();
   const year = d.getFullYear();
