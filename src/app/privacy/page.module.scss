@@ -1,40 +1,58 @@
 @use "variables" as var;
 
-.main {
-  @apply flex h-full w-full flex-col items-center justify-center;
+.container {
+  @apply grid h-full w-full
+    place-content-center
+    place-items-center
+    gap-8;
 
-  .privacy {
-    @apply flex flex-col items-center justify-center;
+  .title {
+    @apply text-4xl font-bold;
+  }
 
-    .title {
-      @apply p-5 text-4xl font-bold;
-    }
+  .description {
+    @apply grid place-items-center gap-4 font-semibold;
 
-    .text {
-      @apply m-4 flex flex-col items-center 
-      justify-center break-words from-neutral-400 text-center text-sm;
+    & > p {
+      @apply text-center
+        text-sm font-semibold
+        leading-6;
+
+      color: var.$secondary;
     }
   }
 
   .dialoginfo {
-    @apply border-b-2 border-blue-500 from-neutral-400 text-xs;
+    @apply text-xs;
 
     color: var.$blue;
+    border-bottom: 1px solid var.$blue;
   }
 
   .animation {
-    aspect-ratio: 1 / 1;
+    & div {
+      @apply w-full overflow-clip;
 
-    @apply w-2/3 overflow-clip md:w-4/12;
+      aspect-ratio: 16 / 10;
+
+      & div {
+        @apply object-cover;
+      }
+    }
   }
 
   .choice {
+    @apply grid gap-6;
+
     .query {
-      @apply mb-5 text-xl font-bold;
+      @apply grid
+        place-items-center text-center
+        text-base font-semibold
+        sm:text-lg;
     }
 
     .button {
-      @apply grid grid-cols-2 gap-5 py-5;
+      @apply grid grid-cols-2 gap-12;
     }
   }
 }
