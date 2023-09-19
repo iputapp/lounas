@@ -1,6 +1,12 @@
+import { Metadata } from "next";
+
 import { ErrorPlayer } from "@/components/lottie/Error";
 
 import styles from "./page.module.scss";
+
+export const metadata: Metadata = {
+  title: "Error",
+};
 
 export default function Error() {
   return (
