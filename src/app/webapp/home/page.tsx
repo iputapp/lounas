@@ -18,13 +18,12 @@ export default function Page() {
   const visitCount = 5; // テスト用 件数
 
   useEffect(() => {
+    /** today */
     setDate(new Date());
-  }, []);
 
-  useEffect(() => {
+    /** progress bar */
     const mod = visitCount % visitPer;
     const percent = (mod || !visitCount ? mod : visitPer) * (100 / visitPer);
-    console.log(percent);
     setBar(percent);
   }, []);
 
