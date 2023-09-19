@@ -1,79 +1,62 @@
 @use "variables" as var;
 
 .container {
-  height: calc(100dvh - 5rem);
+  @apply grid h-full w-full place-content-center
+    gap-12;
 
-  @apply mb-5 grid px-2 py-6;
-
-  h1 {
-    font-size: calc(100dvw / 10);
-
-    @apply m-3 font-bold text-white;
+  & > .title {
+    @apply text-4xl font-bold text-white;
   }
 
-  .section {
-    @apply mx-3 flex flex-col items-center;
+  .panel {
+    @apply mx-auto grid
+      h-40
+      content-between
+      rounded-3xl px-5 py-3
+      shadow-lg;
 
-    .text {
-      font-size: calc(100dvw / 25);
-
-      @apply px-10 py-5 text-center;
-    }
-  }
-
-  .record {
-    height: calc(100dvh / 5);
-
-    @apply mx-5 rounded-3xl bg-white p-3 font-bold shadow-lg;
+    aspect-ratio: 1.85 / 1;
+    background-color: #fff;
 
     .date {
-      font-size: calc(100dvw / 17);
-      color: var.$secondary;
+      @apply text-xl font-bold;
 
-      @apply m-2;
+      color: var.$tertiary;
     }
 
-    .objective {
-      font-size: calc(100dvw / 20);
+    .exp {
+      @apply mx-auto grid
+        w-11/12 gap-2;
 
-      @apply m-auto my-3 flex items-end justify-around;
-    }
+      .text {
+        @apply flex
+          items-center justify-between
+          font-semibold;
 
-    .bar {
-      @apply m-auto w-5/6;
+        color: var.$primary;
+      }
     }
   }
-}
 
-.bg {
-  @apply relative -z-50;
+  .content {
+    @apply grid w-full gap-6;
 
-  .circle {
-    @apply aspect-square mix-blend-multiply;
+    .title {
+      @apply mx-auto;
 
-    position: absolute;
-    height: auto;
-    clip-path: circle(50% at 50% 50%);
-
-    &.blue {
-      top: -12dvh;
-      left: -12dvh;
-      width: 32dvh;
-      background-color: rgb(var.$blue, 100%);
+      color: var.$primary;
     }
 
-    &.cyan {
-      top: -12dvh;
-      left: 8dvh;
-      width: 30dvh;
-      background-color: rgb(var.$cyan, 80%);
+    .description {
+      @apply mx-auto w-10/12
+        text-center
+        text-base;
+
+      color: var.$tertiary;
     }
 
-    &.green {
-      top: 5dvh;
-      left: -10dvh;
-      width: 25dvh;
-      background-color: rgb(var.$spring, 70%);
+    .button {
+      @apply mx-auto w-5/12;
     }
   }
 }
