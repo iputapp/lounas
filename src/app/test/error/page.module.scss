@@ -1,25 +1,45 @@
 @use "variables" as var;
 
-.main {
-  @apply flex h-screen flex-col items-center justify-center;
-}
+.container {
+  @apply grid h-full w-full
+    place-content-center
+    place-items-center
+    gap-8;
 
-.title {
-  @apply m-10 text-5xl font-bold;
-}
+  .title {
+    @apply text-4xl font-bold;
 
-.animation {
-  aspect-ratio: 1 / 1;
+    color: var.$primary;
+  }
 
-  @apply w-2/3 overflow-clip md:w-4/12;
-}
+  .animation {
+    & div {
+      @apply w-full overflow-clip;
 
-.text {
-  color: var.$secondary;
+      aspect-ratio: 16 / 10;
 
-  @apply mx-20 w-1/2 break-words text-center text-base font-bold;
-}
+      & div {
+        @apply object-cover;
+      }
+    }
+  }
 
-.please {
-  @apply my-16 text-xl font-bold;
+  .description {
+    @apply grid gap-12;
+
+    .secondary {
+      @apply text-center
+        text-base font-semibold;
+
+      color: var.$secondary;
+    }
+
+    .primary {
+      @apply text-center
+        text-xl font-semibold
+        sm:text-2xl;
+
+      color: var.$primary;
+    }
+  }
 }
