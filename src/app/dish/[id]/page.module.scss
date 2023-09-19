@@ -1,0 +1,18 @@
+.container {
+  @apply grid grid-rows-6 gap-5;
+
+  .card {
+    width: calc(100dvw / 10 * 8);
+    height: calc(100dvh / 11 * 4);
+
+    @apply row-span-3 mx-auto;
+  }
+
+  .panel {
+    @apply row-span-2 flex items-center justify-center;
+  }
+
+  .rectbutton {
+    @apply row-span-1 mx-auto mb-5 flex w-1/2 items-center justify-center;
+  }
+}
