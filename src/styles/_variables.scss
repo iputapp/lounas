@@ -1,6 +1,7 @@
 // Colors
 $primary: #262626;
-$secondary: #525252;
+$secondary: #525252; // #5B5B5B
+$tertiary: #404040; // #414141 or #464646
 $blue: #07f;
 $cyan: #00dcff;
 $lime: #00ffb1;
@@ -14,3 +15,9 @@ $indigo: #0d32ff;
 $green: #00b523;
 $leaf: #36ba64;
 $spring: #04e67e;
+
+// Safe area
+$safe-area-top: 1.625rem; // 26px
+$safe-area-bottom: 2rem; // 32px
+$safe-area-nav-bar: 5rem; // height of bottom navigation bar
+$safe-area-x: 1.25rem; // px-5
