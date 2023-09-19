@@ -14,16 +14,16 @@ export default function Page() {
   const [date, setDate] = useState(new Date());
   const [bar, setBar] = useState(0);
 
-  const visitPer = 5; // 100%
-  const visitCount = 9; // テスト用 件数 (20%/件)
+  const visitPer = 5; // 100%/5件
+  const visitCount = 5; // テスト用 件数
 
   useEffect(() => {
     setDate(new Date());
   }, []);
 
   useEffect(() => {
-    // const percent = Math.floor(visitCount / visitPer) * 100;
-    const percent = (visitCount % visitPer) * Math.floor(100 / visitPer);
+    const mod = visitCount % visitPer;
+    const percent = (mod || !visitCount ? mod : visitPer) * (100 / visitPer);
     console.log(percent);
     setBar(percent);
   }, []);
