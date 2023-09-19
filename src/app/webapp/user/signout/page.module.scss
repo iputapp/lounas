@@ -4,16 +4,13 @@
   @apply sticky;
 
   .title {
-    font-size: calc(100dvw / 10);
-
-    @apply mx-5 font-bold;
+    @apply mx-5 text-4xl font-bold;
   }
 
   .text {
-    height: calc(100dvh / 12);
     color: #464646;
 
-    @apply flex items-center justify-center text-lg font-semibold opacity-60;
+    @apply my-5 flex items-center justify-center text-lg font-semibold opacity-60;
   }
 
   .container {
