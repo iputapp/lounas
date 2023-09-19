@@ -1,6 +1,6 @@
 @use "variables" as var;
 
-$blue-size: 33dvh;
+$blue-size: 34dvh;
 $cyan-size: 30dvh;
 $green-size: 28dvh;
 
@@ -19,7 +19,7 @@ $green-size: 28dvh;
     mix-blend-mode: multiply;
 
     &.blue {
-      top: -10dvh;
+      top: -9dvh;
       left: -10dvh;
       height: $blue-size;
       background-color: var.$blue;
