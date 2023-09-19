@@ -25,7 +25,7 @@
   }
 
   .description {
-    @apply grid gap-12;
+    @apply grid gap-10;
 
     .secondary {
       @apply text-center
@@ -41,5 +41,9 @@
 
       color: var.$primary;
     }
+  }
+
+  .button {
+    @apply mx-auto w-32;
   }
 }
