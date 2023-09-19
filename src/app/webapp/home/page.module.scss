@@ -1,7 +1,8 @@
 @use "variables" as var;
 
 .container {
-  @apply grid h-full w-full place-content-center
+  @apply grid h-full w-full
+    place-content-center
     gap-12;
 
   & > .title {

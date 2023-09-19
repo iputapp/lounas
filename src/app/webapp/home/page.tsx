@@ -22,6 +22,7 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
+    // const percent = Math.floor(visitCount / visitPer) * 100;
     const percent = (visitCount % visitPer) * Math.floor(100 / visitPer);
     console.log(percent);
     setBar(percent);
