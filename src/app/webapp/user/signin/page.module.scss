@@ -14,11 +14,9 @@
   }
 
   .button {
-    @apply mb-5 flex items-center justify-center;
+    width: calc(100dvw / 3 * 2);
 
-    .size {
-      width: calc(100dvw / 3 * 2);
-    }
+    @apply m-auto;
   }
 
   .dummy {
