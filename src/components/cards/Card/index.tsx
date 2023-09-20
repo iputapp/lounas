@@ -21,8 +21,8 @@ export function Card({ children, image, alt }: CardProps) {
           priority
         />
       </div>
-      <section className={styles.content}>
-        <p className={styles.title}>{children}</p>
+      <section className={styles.description}>
+        <div>{children}</div>
       </section>
     </article>
   );
