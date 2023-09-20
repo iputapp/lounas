@@ -8,7 +8,7 @@ import { PaymentShort, PaymentType } from "@/components/lists/PaymentShort";
 
 import styles from "./page.module.scss";
 
-export default function RecommendedResult() {
+export default function Page() {
   const router = useRouter();
 
   /** テスト用 支払方法 */
