@@ -15,7 +15,7 @@ export function BackButton({ title = "", className = "" }: BackButtonProps) {
 
   return (
     <button className={`${styles.button} ${className}`} type="button" onClick={() => router.back()}>
-      <span>
+      <span className={styles.icon}>
         <ArrowSemibold />
       </span>
       <span>{title}</span>
