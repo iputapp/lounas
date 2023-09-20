@@ -49,12 +49,14 @@ export default function Page() {
     <>
       <div className={styles.container}>
         <BackButton title="戻る" className="text-3xl" />
-        <div className={styles.card}>
-          <Card alt="横浜家系らーめん塩ラーメン" image="/test/ramen.webp">
+
+        <Card alt="横浜家系らーめん塩ラーメン" image="/test/ramen.webp">
+          <div className="grid">
             <p>横浜家系らーめん</p>
             <p>塩ラーメン</p>
-          </Card>
-        </div>
+          </div>
+        </Card>
+
         <button className={styles.panel} onClick={() => setExpanded(!expanded)}>
           <ul className={styles.panelContent}>
             <li>
