@@ -20,8 +20,10 @@
     gap-24;
 
   .title {
-    @apply text-center;
+    @apply mx-auto
+      text-center;
 
+    width: 90%;
     color: var.$primary;
   }
 
