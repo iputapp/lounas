@@ -1,7 +1,7 @@
 // Colors
-$primary: #262626;
-$secondary: #525252; // #5B5B5B
-$tertiary: #404040; // #414141 or #464646
+$primary: #262626; // neutral-800 (xd: #2b2b2b)
+$secondary: #525252; // neutral-600 (xd: #5b5b5b)
+$tertiary: #404040; // neutral-700 (xd: #414141 or #464646)
 $blue: #07f;
 $cyan: #00dcff;
 $lime: #00ffb1;
@@ -15,6 +15,8 @@ $indigo: #0d32ff;
 $green: #00b523;
 $leaf: #36ba64;
 $spring: #04e67e;
+$bg-primary: #f5f5f5; // neutral-100
+$bg-secondary: #e5e5e5; // neutral-200
 
 // Safe area
 $safe-area-top: 1.625rem; // 26px
