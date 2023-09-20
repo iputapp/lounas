@@ -1,8 +1,9 @@
+import { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 
 import styles from "./layout.module.scss";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     default: "Privacy",
     template: "%s - Privacy | IMAP",
