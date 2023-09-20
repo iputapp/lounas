@@ -1,6 +1,8 @@
 "use client";
 
+import Drag from "@icons/drag.svg";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { BackButton } from "@/components/buttons/BackButton";
 import { RectButton } from "@/components/buttons/RectButton";
@@ -17,7 +19,7 @@ export default function Dishes() {
   };
 
   const now = new Date();
-
+  const [expanded, setExpanded] = useState(false);
   const data = {
     timeOpen: now.toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" }),
     timeClose: now.toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" }),
@@ -46,42 +48,57 @@ export default function Dishes() {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.backbutton}>
-          <BackButton title="戻る" className="text-3xl" />
-        </div>
+        <BackButton title="戻る" className="text-3xl" />
         <div className={styles.card}>
           <Card alt="横浜家系らーめん塩ラーメン" image="/test/ramen.webp">
             <p>横浜家系らーめん</p>
             <p>塩ラーメン</p>
           </Card>
         </div>
-        <div className={styles.panel}>
-          <ExpandablePanel
-            title="店舗詳細"
-            titleEx="決済方法"
-            childrenEx={<PaymentGrid payments={data.payments} />}
-          >
-            <ul className="grid justify-items-start gap-4">
-              <li>
-                <p>
-                  全日：{data.timeOpen}～{data.timeClose}
-                </p>
-              </li>
-              <li>
-                <p>滞在時間：おおよそ{Math.floor(data.timeStay / 60)}分</p>
-                <small className="text-xs">※混雑状況により異なります。</small>
-              </li>
-              <li>
-                <p>片道：おおよそ{Math.floor(data.timeDuration / 60)}分</p>
-              </li>
-            </ul>
-          </ExpandablePanel>
-        </div>
-        <div className={styles.rectbutton}>
+        <button className={styles.panel} onClick={() => setExpanded(!expanded)}>
+          <ul className={styles.panelContent}>
+            <li>
+              <p>
+                全日：{data.timeOpen}～{data.timeClose}
+              </p>
+            </li>
+            <li>
+              <p>滞在時間：おおよそ{Math.floor(data.timeStay / 60)}分</p>
+              <small className="text-xs">※混雑状況により異なります。</small>
+            </li>
+            <li>
+              <p>片道：おおよそ{Math.floor(data.timeDuration / 60)}分</p>
+            </li>
+          </ul>
+          <Drag />
+        </button>
+        <div className={styles.button}>
           <RectButton color="blue" onClick={decision}>
             ここに行く
           </RectButton>
         </div>
+        <ExpandablePanel
+          title="店舗詳細"
+          titleEx="決済方法"
+          childrenEx={<PaymentGrid payments={data.payments} />}
+          setExpanded={setExpanded}
+          expanded={expanded}
+        >
+          <ul className="grid justify-items-start gap-4">
+            <li>
+              <p>
+                全日：{data.timeOpen}～{data.timeClose}
+              </p>
+            </li>
+            <li>
+              <p>滞在時間：おおよそ{Math.floor(data.timeStay / 60)}分</p>
+              <small className="text-xs">※混雑状況により異なります。</small>
+            </li>
+            <li>
+              <p>片道：おおよそ{Math.floor(data.timeDuration / 60)}分</p>
+            </li>
+          </ul>
+        </ExpandablePanel>
       </div>
     </>
   );
