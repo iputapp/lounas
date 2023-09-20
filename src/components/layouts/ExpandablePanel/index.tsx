@@ -1,8 +1,6 @@
 "use client";
 
 import Cancel from "@icons/cancel.svg";
-import Enlarge from "@icons/enlarge.svg";
-import { useState } from "react";
 
 import styles from "./styles.module.scss";
 
@@ -11,25 +9,35 @@ type ExpandablePanelProps = {
   title: string;
   childrenEx?: React.ReactNode;
   titleEx?: string;
+  expanded: boolean;
+  setExpanded: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export function ExpandablePanel({ children, title, childrenEx, titleEx }: ExpandablePanelProps) {
-  const [expanded, setExpanded] = useState(false);
-
+export function ExpandablePanel({
+  children,
+  title,
+  childrenEx,
+  titleEx,
+  expanded,
+  setExpanded,
+}: ExpandablePanelProps) {
   return (
-    <button className={expanded ? `${styles.backdrop}` : ""} onClick={() => setExpanded(!expanded)}>
-      <div className={`${styles.container} ${expanded ? styles.expanded : ""}`}>
+    <button
+      className={expanded ? `${styles.backdrop}` : "hidden"}
+      onClick={() => setExpanded(!expanded)}
+    >
+      <div className={`${styles.container} ${styles.expanded}`}>
         <div className={styles.content}>
-          <div className={`${styles.overview} ${expanded ? styles.expanded : ""}`}>
-            <h2 className={`${styles.title} ${expanded ? styles.expanded : ""}`}>{title}</h2>
+          <div className={`${styles.overview} ${styles.expanded}`}>
+            <h2 className={`${styles.title} ${styles.expanded}`}>{title}</h2>
             {children}
           </div>
-          <div className={`${styles.details} ${expanded ? styles.expanded : ""}`}>
+          <div className={`${styles.details} ${styles.expanded}`}>
             <h2 className={styles.title}>{titleEx}</h2>
             {childrenEx}
           </div>
         </div>
-        <span>{expanded ? <Cancel /> : <Enlarge />}</span>
+        <Cancel />
       </div>
     </button>
   );
