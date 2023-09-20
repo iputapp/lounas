@@ -56,9 +56,9 @@ export default function Page() {
         <div></div>
       </section>
       <section className={styles.content}>
-        <div className={styles.title}>
-          <BorderTitle title="あなたへのおすすめ" fontSize="text-3xl" />
-        </div>
+        <BorderTitle fontSize="text-3xl" className={styles.title}>
+          <h2>あなたへのおすすめ</h2>
+        </BorderTitle>
         <div className={styles.description}>
           <span>3つの質問からあなたにおすすめなお店を提案いたします。</span>
         </div>
