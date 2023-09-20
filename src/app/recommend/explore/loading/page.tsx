@@ -48,7 +48,12 @@ export default function Page() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
-        <BorderTitle title="あなたの候補をもとに検索しています" fontSize="text-3xl" />
+        <BorderTitle
+          title="あなたの候補をもとに検索しています"
+          fontSize="text-3xl"
+          boderPadding="py-5"
+          lineHeight="leading-normal"
+        />
       </h1>
       <div className={styles.skeleton}>
         <BasicSkeleton />
