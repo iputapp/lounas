@@ -2,16 +2,14 @@
   @apply grid h-full gap-5;
 
   .panel {
-    background: linear-gradient(to left top, rgb(42 245 152 / 40%), rgb(5 167 242 / 40%));
-
     @apply flex h-fit justify-between rounded-3xl p-5 shadow-lg;
 
     .panel-content {
-      @apply grid justify-items-start gap-4 font-bold;
+      @apply my-auto grid justify-items-start gap-4 text-base font-bold;
     }
   }
 
-  .button {
-    @apply mx-auto flex w-1/2 items-center justify-center;
+  .rectbutton {
+    @apply row-span-1 mx-auto mb-5 flex w-1/2 items-center justify-center;
   }
 }
