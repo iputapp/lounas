@@ -19,14 +19,12 @@ export default function Page() {
       <div className={styles.text}>IMAP会員へようこそ !</div>
 
       <div className={styles.button}>
-        <div className={styles.size}>
-          <BorderRoundButton fontSize="text-2xl" onClick={signOut}>
-            &emsp;Sign IN&emsp;
-          </BorderRoundButton>
-        </div>
+        <BorderRoundButton fontSize="text-2xl" onClick={signOut}>
+          &emsp;Sign IN&emsp;
+        </BorderRoundButton>
       </div>
 
-      <div className={styles.dummy}>
+      <div className={styles.dummyPanel}>
         <div className={styles.panelsize}>
           <DummyPanel>
             <p className="break-words">
