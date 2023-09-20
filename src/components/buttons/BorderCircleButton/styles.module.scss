@@ -20,7 +20,7 @@
   & .title {
     @apply font-semibold;
 
-    color: #414141;
+    color: var.$tertiary;
   }
 }
 
