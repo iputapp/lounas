@@ -6,7 +6,7 @@ import { DummyPanel } from "@/components/layouts/DummyPanel";
 
 import styles from "./page.module.scss";
 
-export default function User() {
+export default function Page() {
   const router = useRouter();
   const onClick = () => {
     router.push("/webapp/user/signout");

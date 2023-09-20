@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 import styles from "./page.module.scss";
 
-export default function SignOut() {
+export default function Page() {
   const router = useRouter();
   const onClick = () => {
     router.push("/webapp/user/signin");
