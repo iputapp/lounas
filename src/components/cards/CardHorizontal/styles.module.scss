@@ -4,9 +4,9 @@
   @apply flex w-full
     items-center justify-between
     overflow-clip rounded-3xl
-    bg-zinc-50 shadow-lg;
+    bg-white shadow-lg;
 
-  aspect-ratio: 2.35 / 1;
+  aspect-ratio: 2.2 / 1;
 
   & .image-parent {
     @apply relative h-full;
@@ -22,14 +22,28 @@
   & .content {
     @apply flex h-full w-full
       flex-col justify-between
-      px-4 py-3;
+      p-3;
 
     & > .title {
-      @apply font-semibold;
+      @apply grid h-[3rem]
+        content-center
+        sm:h-[3.5rem];
+
+      // 3rem = line-height of text-base * 2 (line-clamp-2)
+      // 3.5rem = line-height of text-lg * 2 (line-clamp-2)
+
+      & > span {
+        @apply line-clamp-2
+          w-fit
+          text-base font-semibold
+          sm:text-lg;
+
+        color: var.$primary;
+      }
     }
 
     & > .description {
-      @apply text-xs;
+      @apply text-xs font-semibold;
 
       color: var.$secondary;
     }
