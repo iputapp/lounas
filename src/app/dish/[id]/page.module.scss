@@ -1,5 +1,5 @@
 .container {
-  @apply grid  h-full gap-5;
+  @apply grid h-full gap-5;
 
   .panel {
     background: linear-gradient(to left top, rgb(42 245 152 / 40%), rgb(5 167 242 / 40%));
@@ -7,7 +7,7 @@
     @apply flex h-fit justify-between rounded-3xl p-5 shadow-lg;
 
     .panel-content {
-      @apply my-auto grid justify-items-start gap-4 text-base font-bold;
+      @apply grid justify-items-start gap-4 font-bold;
     }
   }
 
