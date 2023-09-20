@@ -29,8 +29,8 @@
         content-center
         sm:h-[3.5rem];
 
-      // 3rem = line-height * 2(line-clamp-2) of text-base
-      // 3.5rem = line-height * 2(line-clamp-2) of text-lg
+      // 3rem = line-height of text-base * 2 (line-clamp-2)
+      // 3.5rem = line-height of text-lg * 2 (line-clamp-2)
 
       & > span {
         @apply line-clamp-2
