@@ -1,5 +1,19 @@
 @use "variables" as var;
 
+@keyframes scale-wave {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.975);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .container {
   @apply grid h-full w-full
     place-content-center
@@ -13,6 +27,16 @@
 
   .skeleton {
     @apply grid gap-8;
+
+    & > :nth-child(odd) {
+      animation: scale-wave 4s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+
+    & > :nth-child(even) {
+      animation: scale-wave 4s ease-in-out infinite;
+      animation-delay: 1s;
+    }
   }
 
   .button {
