@@ -4,11 +4,11 @@
   @apply grid h-full w-full gap-12;
 
   .header {
-    @apply sticky top-0 z-30
-      w-full;
+    @apply w-full;
 
     .title {
-      @apply text-3xl font-bold;
+      @apply w-fit
+        text-3xl font-bold;
 
       color: var.$primary;
     }
