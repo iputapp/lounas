@@ -1,0 +1,9 @@
+.panel {
+  background: linear-gradient(to left top, rgb(42 245 152 / 40%), rgb(5 167 242 / 40%));
+
+  @apply flex h-fit items-start justify-between rounded-3xl bg-white p-5 shadow-lg;
+
+  .panel-content {
+    @apply my-auto grid justify-items-start gap-4 text-base font-bold;
+  }
+}
