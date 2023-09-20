@@ -17,11 +17,19 @@
 
     .title {
       @apply text-xl font-semibold;
+
+      color: var.$primary;
     }
 
     .description {
       @apply px-1;
+
+      color: var.$tertiary;
     }
+  }
+
+  .icon {
+    color: var.$secondary;
   }
 }
 
