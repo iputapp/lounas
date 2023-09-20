@@ -27,20 +27,20 @@ export default function Page() {
           </button>
         </div>
 
-        <div className={styles.select}>
-          <button className={styles.lock} onClick={privacyPage}>
-            <span className={styles.privacy}>
+        <div className={styles.supportContent}>
+          <button className={`${styles.supportItem} ${styles.border}`} onClick={privacyPage}>
+            <span className={styles.category}>
               <Lock />
-              <div className={styles.privacytext}>プライバシー</div>
+              <div className={styles.categoryName}>プライバシー</div>
             </span>
-            <span className={styles.arrow}>
+            <span>
               <NavArrowRight />
             </span>
           </button>
-          <a href="mailto:info&#64;example.com" className={styles.mail}>
-            <span className={styles.inquiry}>
+          <a href="mailto:info&#64;example.com" className={styles.supportItem}>
+            <span className={styles.category}>
               <Send />
-              <div className={styles.inquirytext}>お問い合わせ</div>
+              <div className={styles.categoryName}>お問い合わせ</div>
             </span>
             <span>
               <NavArrowRight />
