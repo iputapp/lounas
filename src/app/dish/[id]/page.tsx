@@ -12,7 +12,7 @@ import { PaymentGrid } from "@/components/lists/PaymentGrid";
 
 import styles from "./page.module.scss";
 
-export default function Dishes() {
+export default function Dishe() {
   const router = useRouter();
   const decision = () => {
     router.push("/restaurants/[id]/navi");
