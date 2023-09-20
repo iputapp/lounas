@@ -24,17 +24,13 @@ export default function Page() {
         </BorderRoundButton>
       </div>
 
-      <div className={styles.dummyPanel}>
-        <div className={styles.panelsize}>
-          <DummyPanel>
-            <p className="break-words">
-              こんにちは!!!!! 僕の名前は、、、、
-              ピカソのフルネームはパブロ・ディエーゴ・ホセ・フランシスコ・デ・パウラ・ホアン・ネポムセーノ・マリーア・デ・ロス・レメディオス・クリスピーン・クリスピアーノ・デ・ラ・サンティシマ・トリニダード・ルイス・イ・ピカソ。
-              です。。。 よろしくお願いします！！明日からよろしくお願いします！！
-            </p>
-          </DummyPanel>
-        </div>
-      </div>
+      <DummyPanel>
+        <p className="break-words">
+          こんにちは!!!!! 僕の名前は、、、、
+          ピカソのフルネームはパブロ・ディエーゴ・ホセ・フランシスコ・デ・パウラ・ホアン・ネポムセーノ・マリーア・デ・ロス・レメディオス・クリスピーン・クリスピアーノ・デ・ラ・サンティシマ・トリニダード・ルイス・イ・ピカソ。
+          です。。。 よろしくお願いします！！明日からよろしくお願いします！！
+        </p>
+      </DummyPanel>
     </div>
   );
 }

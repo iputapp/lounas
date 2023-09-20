@@ -16,14 +16,6 @@
   .button {
     width: calc(100dvw / 3 * 2);
 
-    @apply m-auto;
-  }
-
-  .dummy {
-    @apply flex items-center justify-center;
-
-    .panelsize {
-      @apply h-full w-5/6;
-    }
+    @apply mx-auto my-5;
   }
 }
