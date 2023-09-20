@@ -31,7 +31,7 @@ export default function RecommendedResult() {
       <div className={styles.content}>
         <CardHorizontal
           url="/"
-          title="かつ丼"
+          title="フランス産フォアグラのテリーヌ　トリュフとブッフサレ　リ・ド・ヴォとレンズ豆のガトー仕立て"
           tag={1}
           image="/test/ramen.webp"
           description={<PaymentShort payments={payments} />}
