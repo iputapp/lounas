@@ -14,12 +14,9 @@
     }
   }
 
-  & .content {
+  & .description {
     @apply flex w-full flex-col
-      px-5 py-3;
-
-    & > .title {
-      @apply font-semibold;
-    }
+      px-5 py-3
+      font-semibold;
   }
 }

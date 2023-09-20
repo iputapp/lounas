@@ -4,11 +4,11 @@ import styles from "./styles.module.scss";
 
 type CardProps = {
   children: React.ReactNode;
-  alt: string;
   image: string;
+  alt: string;
 };
 
-export function Card({ children, alt, image }: CardProps) {
+export function Card({ children, image, alt }: CardProps) {
   return (
     <article className={styles.card}>
       <div className={styles.imageParent}>
