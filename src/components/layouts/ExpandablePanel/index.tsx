@@ -1,7 +1,7 @@
 "use client";
 
 import Cancel from "@icons/cancel.svg";
-import Enlarge from "@icons/enlarge.svg";
+import Expand from "@icons/expand.svg";
 import { useState } from "react";
 
 import styles from "./styles.module.scss";
@@ -9,28 +9,50 @@ import styles from "./styles.module.scss";
 type ExpandablePanelProps = {
   children: React.ReactNode;
   title: string;
+  showTitle?: boolean;
   childrenEx?: React.ReactNode;
   titleEx?: string;
 };
 
-export function ExpandablePanel({ children, title, childrenEx, titleEx }: ExpandablePanelProps) {
+export function ExpandablePanel({
+  children,
+  title,
+  showTitle = false,
+  childrenEx,
+  titleEx,
+}: ExpandablePanelProps) {
   const [expanded, setExpanded] = useState(false);
 
+  const expand = () => {
+    setExpanded((prev) => !prev);
+  };
+
   return (
-    <button className={expanded ? `${styles.backdrop}` : ""} onClick={() => setExpanded(!expanded)}>
-      <div className={`${styles.container} ${expanded ? styles.expanded : ""}`}>
+    <>
+      {/* overview panel */}
+      <button className={`${styles.overview} ${styles.panel}`} onClick={expand}>
         <div className={styles.content}>
-          <div className={`${styles.overview} ${expanded ? styles.expanded : ""}`}>
-            <h2 className={`${styles.title} ${expanded ? styles.expanded : ""}`}>{title}</h2>
-            {children}
-          </div>
-          <div className={`${styles.details} ${expanded ? styles.expanded : ""}`}>
-            <h2 className={styles.title}>{titleEx}</h2>
-            {childrenEx}
-          </div>
+          {showTitle && <span className={styles.title}>{title}</span>}
+          <section className={styles.description}>{children}</section>
         </div>
-        <span>{expanded ? <Cancel /> : <Enlarge />}</span>
-      </div>
-    </button>
+        <span>{expanded ? <Cancel /> : <Expand />}</span>
+      </button>
+      {/* expanded panel */}
+      <button className={`${styles.full} ${expanded ? styles.expanded : ""}`} onClick={expand}>
+        <div className={`${styles.panel} ${expanded ? styles.expanded : ""}`}>
+          <div className={styles.content}>
+            <section>
+              <span className={styles.title}>{title}</span>
+              <div className={styles.description}>{children}</div>
+            </section>
+            <section>
+              <span className={styles.title}>{titleEx}</span>
+              <div className={styles.description}>{childrenEx}</div>
+            </section>
+          </div>
+          <span>{expanded ? <Cancel /> : <Expand />}</span>
+        </div>
+      </button>
+    </>
   );
 }
