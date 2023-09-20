@@ -1,7 +1,9 @@
 @use "variables" as var;
 
 .container {
-  @apply grid h-screen w-full content-start gap-12;
+  @apply grid h-full w-full
+    content-start gap-12
+    overflow-clip;
 
   .header {
     @apply w-fit
