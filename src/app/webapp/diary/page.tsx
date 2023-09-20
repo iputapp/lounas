@@ -5,7 +5,7 @@ import Calender from "public/test/calendar-mock.webp";
 
 import { BottomNavigationBar } from "@/components/navigations/BottomNavigationBar";
 
-export default function DiaryPage() {
+export default function Page() {
   return (
     <>
       <div className="diary">
