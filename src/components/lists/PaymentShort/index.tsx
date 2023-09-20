@@ -35,7 +35,7 @@ export function PaymentShort({ payments }: { payments: PaymentShortProps[] }) {
                   <Check />
                 </span>
               ) : (
-                <span className="text-red-600">
+                <span className="mt-px text-red-600">
                   <Cancel />
                 </span>
               )}
