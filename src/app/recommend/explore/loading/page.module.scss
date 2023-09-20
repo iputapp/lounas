@@ -20,7 +20,7 @@
     gap-24;
 
   .title {
-    @apply mx-5 flex items-center justify-center text-center;
+    @apply text-center;
 
     color: var.$primary;
   }
