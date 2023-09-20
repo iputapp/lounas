@@ -4,7 +4,7 @@
   @apply flex w-full
     items-center justify-between
     overflow-clip rounded-3xl
-    bg-zinc-50 shadow-lg;
+    bg-neutral-50 shadow-lg;
 
   aspect-ratio: 2.35 / 1;
 
@@ -25,7 +25,9 @@
       px-4 py-3;
 
     & > .title {
-      @apply font-semibold;
+      @apply text-lg font-semibold;
+
+      color: var.$primary;
     }
 
     & > .description {
