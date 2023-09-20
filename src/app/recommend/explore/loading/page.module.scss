@@ -23,8 +23,12 @@
     @apply mx-auto
       text-center;
 
-    width: 90%;
     color: var.$primary;
+
+    & > h1 {
+      @apply grid
+        place-items-center;
+    }
   }
 
   .skeleton {

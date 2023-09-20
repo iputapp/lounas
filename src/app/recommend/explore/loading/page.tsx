@@ -23,7 +23,10 @@ export default function Page() {
         lineHeight="leading-normal"
         className={styles.title}
       >
-        <h1>あなたの候補をもとに検索しています</h1>
+        <h1>
+          <span>あなたの候補をもとに</span>
+          <span>検索しています</span>
+        </h1>
       </BorderTitle>
       <div className={styles.skeleton}>
         <BasicSkeleton />
