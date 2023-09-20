@@ -25,7 +25,9 @@ export function CardHorizontal({ url, title, image, tag, description }: CardHori
         />
       </div>
       <section className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
+        <div className={styles.title}>
+          <span>{title}</span>
+        </div>
         <section className={styles.description}>{description}</section>
       </section>
       <div className={tag ? styles.tag : ""}>
