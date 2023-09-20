@@ -11,7 +11,7 @@ import { CardFull } from "@/components/cards/CardFull";
 
 import styles from "./page.module.scss";
 
-export default function RestaurantsPage() {
+export default function Page() {
   const router = useRouter();
   const start = "コクーンタワー地下出口";
   const destination = "らーめん新宿西口店";
