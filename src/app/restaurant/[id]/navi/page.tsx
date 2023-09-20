@@ -18,7 +18,7 @@ export default function Page() {
   const link = "https://www.google.com/?hl=ja";
   const time = "3分";
   const far = "300m";
-  const onclick = () => {
+  const close = () => {
     router.replace("/webapp/home");
   };
 
@@ -84,7 +84,7 @@ export default function Page() {
           />
           <div className={styles.footer}>
             <div className="w-1/2">
-              <RectButton color="red" onClick={onclick}>
+              <RectButton color="red" onClick={close}>
                 終了する
               </RectButton>
             </div>
