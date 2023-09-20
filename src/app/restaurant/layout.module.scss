@@ -3,5 +3,6 @@
 .main {
   @apply min-h-screen w-full;
 
-  padding-top: 1.625rem; // 26px
+  padding-top: var.$safe-area-top;
+  padding-bottom: var.$safe-area-bottom;
 }
