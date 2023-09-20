@@ -3,7 +3,7 @@
 import styles from "./styles.module.scss";
 
 type BorderCircleButtonProps = {
-  title: string;
+  children?: React.ReactNode;
   fontSize?:
     | "text-xs"
     | "text-sm"
@@ -23,7 +23,7 @@ type BorderCircleButtonProps = {
 };
 
 export function BorderCircleButton({
-  title,
+  children,
   fontSize,
   outline = false,
   onClick,
@@ -32,7 +32,7 @@ export function BorderCircleButton({
     <div className={outline ? styles.circleOuter : ""}>
       <button className={`${styles.circle} ${fontSize}`} onClick={onClick}>
         <div className={styles.circleInner}>
-          <span className={styles.title}>{title}</span>
+          <span className={styles.title}>{children}</span>
         </div>
       </button>
     </div>
