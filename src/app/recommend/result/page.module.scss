@@ -1,19 +1,31 @@
 @use "variables" as var;
 
 .container {
-  @apply flex w-full flex-col;
+  @apply grid h-full w-full gap-12;
 
   .header {
-    font-size: calc(100dvw / 11);
+    @apply sticky top-0 z-30
+      w-full;
 
-    @apply my-10 font-bold;
+    .title {
+      @apply text-3xl font-bold;
+
+      color: var.$primary;
+    }
   }
 
-  .main {
-    @apply grid grid-cols-1 gap-10;
+  .content {
+    @apply grid
+      grid-cols-1 gap-7
+      px-1
+      md:grid-cols-2;
   }
 
   .footer {
-    @apply mx-auto my-10 w-1/2;
+    @apply w-full;
+
+    .button {
+      @apply mx-auto w-fit;
+    }
   }
 }
