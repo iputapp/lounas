@@ -29,15 +29,15 @@ export function PaymentShort({ payments }: { payments: PaymentShortProps[] }) {
         {payments.map((item) => (
           <li key={item.payment}>
             <div className="flex items-center justify-end space-x-1">
-              <span>{getPaymentName(item.payment)}</span>
+              <small>{getPaymentName(item.payment)}</small>
               {item.accepted ? (
-                <span className="text-green-600">
+                <small className="text-green-600">
                   <Check />
-                </span>
+                </small>
               ) : (
-                <span className="mt-px text-red-600">
+                <small className="mt-px text-red-600">
                   <Cancel />
-                </span>
+                </small>
               )}
             </div>
           </li>
