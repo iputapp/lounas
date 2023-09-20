@@ -35,7 +35,7 @@ export function ExpandablePanel({
           {showTitle && <span className={styles.title}>{title}</span>}
           <section className={styles.description}>{children}</section>
         </div>
-        <span>{expanded ? <Cancel /> : <Expand />}</span>
+        <span className={styles.icon}>{expanded ? <Cancel /> : <Expand />}</span>
       </button>
       {/* expanded panel */}
       <button className={`${styles.full} ${expanded ? styles.expanded : ""}`} onClick={expand}>
@@ -50,7 +50,7 @@ export function ExpandablePanel({
               <div className={styles.description}>{childrenEx}</div>
             </section>
           </div>
-          <span>{expanded ? <Cancel /> : <Expand />}</span>
+          <span className={styles.icon}>{expanded ? <Cancel /> : <Expand />}</span>
         </div>
       </button>
     </>
