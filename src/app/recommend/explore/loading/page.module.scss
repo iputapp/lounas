@@ -1,15 +1,21 @@
+@use "variables" as var;
+
 .container {
-  @apply grid h-full w-full items-center justify-center;
+  @apply grid h-full w-full
+    place-content-center
+    gap-24;
 
   .title {
     @apply mx-5 flex items-center justify-center text-center;
+
+    color: var.$primary;
   }
 
-  .media {
-    @apply m-5 flex  flex-col items-center;
+  .skeleton {
+    @apply grid gap-8;
   }
 
   .button {
-    @apply m-5 mx-auto flex w-1/2 items-center justify-center;
+    @apply mx-auto w-fit;
   }
 }
