@@ -2,8 +2,7 @@
 
 .container {
   @apply grid h-full w-full
-    content-start gap-12
-    overflow-clip;
+    content-start gap-12;
 
   .header {
     @apply w-fit
