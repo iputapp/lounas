@@ -1,10 +1,11 @@
+import { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 
 import { BottomNavigationBar } from "@/components/navigations/BottomNavigationBar";
 
 import styles from "./layout.module.scss";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     default: "App",
     template: "%s - App | IMAP",
