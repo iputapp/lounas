@@ -22,5 +22,7 @@
     @apply flex w-full flex-col
       px-5 py-3
       font-semibold;
+
+    color: var.$primary;
   }
 }
