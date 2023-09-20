@@ -9,7 +9,7 @@ import styles from "./page.module.scss";
 
 export default function Page() {
   const router = useRouter();
-  const onClick = () => {
+  const signIn = () => {
     router.push("/webapp/user/signin");
   };
   const privacyPage = () => {
@@ -22,7 +22,7 @@ export default function Page() {
         <h1 className={styles.title}>アカウント</h1>
         <div className={styles.text}>日々のご愛顧ありがとうございます。</div>
         <div className={styles.container}>
-          <button className={styles.button} onClick={onClick}>
+          <button className={styles.button} onClick={signIn}>
             <div className={styles.inner}>&emsp;Sign Out&emsp;</div>
           </button>
         </div>

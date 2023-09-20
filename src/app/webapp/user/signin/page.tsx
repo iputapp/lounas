@@ -8,7 +8,7 @@ import styles from "./page.module.scss";
 
 export default function Page() {
   const router = useRouter();
-  const onClick = () => {
+  const signOut = () => {
     router.push("/webapp/user/signout");
   };
 
@@ -20,7 +20,7 @@ export default function Page() {
 
       <div className={styles.button}>
         <div className={styles.size}>
-          <BorderRoundButton fontSize="text-2xl" onClick={onClick}>
+          <BorderRoundButton fontSize="text-2xl" onClick={signOut}>
             &emsp;Sign IN&emsp;
           </BorderRoundButton>
         </div>
