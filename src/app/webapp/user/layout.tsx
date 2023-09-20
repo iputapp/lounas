@@ -1,8 +1,8 @@
-import React from "react";
+import { Metadata } from "next";
 
 import styles from "./layout.module.scss";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "User",
 };
 
