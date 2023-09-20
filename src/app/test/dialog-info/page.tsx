@@ -26,7 +26,7 @@ export default function TestDialogInfo() {
         <span>利用規約はこちら</span>
       </button>
 
-      <DialogInfo header="確認コードが届きません" isOpen={isOpen} setIsOpen={setIsOpen}>
+      <DialogInfo title="確認コードが届きません" isOpen={isOpen} setIsOpen={setIsOpen}>
         <div className="flex flex-col space-y-5">
           <h4>１．利用目的</h4>
           <p>本校は、収集した個人情報について、以下の目的のために利用いたします。</p>
