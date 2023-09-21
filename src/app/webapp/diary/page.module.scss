@@ -10,6 +10,11 @@
     background-color: var.$bg-primary;
   }
 
+  .overlay {
+    @apply fixed inset-0 z-30
+      h-screen w-full backdrop-blur;
+  }
+
   .image-parent {
     @apply fixed inset-0
       mx-auto

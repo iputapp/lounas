@@ -15,6 +15,7 @@ export default function Page() {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         />
       </div>
+      <div className={styles.overlay}></div>
     </div>
   );
 }
