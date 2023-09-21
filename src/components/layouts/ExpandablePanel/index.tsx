@@ -9,6 +9,7 @@ import styles from "./styles.module.scss";
 type ExpandablePanelProps = {
   children: React.ReactNode;
   title: string;
+  bgImage?: string;
   showTitle?: boolean;
   childrenEx?: React.ReactNode;
   titleEx?: string;
@@ -17,6 +18,7 @@ type ExpandablePanelProps = {
 export function ExpandablePanel({
   children,
   title,
+  bgImage,
   showTitle = false,
   childrenEx,
   titleEx,
@@ -31,6 +33,10 @@ export function ExpandablePanel({
     <>
       {/* overview panel */}
       <button className={`${styles.overview} ${styles.panel}`} onClick={expand}>
+        <div
+          className={styles.panelBg}
+          style={bgImage ? { background: `url(${bgImage}) no-repeat center` } : {}}
+        ></div>
         <div className={styles.content}>
           {showTitle && <span className={styles.title}>{title}</span>}
           <section className={styles.description}>{children}</section>

@@ -6,7 +6,7 @@
     items-start justify-between
     overflow-clip rounded-2xl
     p-3
-    shadow-lg backdrop-blur-md backdrop-brightness-200;
+    backdrop-blur-md backdrop-brightness-200;
 
   background-color: rgb(255 255 255 / 80%);
 
@@ -35,10 +35,25 @@
 
 // overview panel
 .overview {
-  @apply w-full;
+  @apply relative w-full;
 
   .content {
     @apply gap-5;
+
+    .description {
+      @apply font-semibold;
+
+      color: var.$primary;
+    }
+  }
+
+  .panel-bg {
+    @apply absolute inset-0 -z-10
+      -m-4;
+
+    // background: url("/test/katsudon.webp") no-repeat center; // set in html
+    filter: blur(12px) brightness(1.25); // blur brightness-125
+    background-size: 175%;
   }
 }
 
@@ -74,7 +89,7 @@
   }
 
   .content {
-    @apply grid gap-8;
+    @apply gap-8;
 
     & > section {
       @apply grid h-fit w-full
