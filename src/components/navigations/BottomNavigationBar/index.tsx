@@ -15,7 +15,7 @@ export function BottomNavigationBar() {
   const [value, setValue] = useState("home");
 
   return (
-    <div className="fixed inset-x-0 bottom-0">
+    <div className="fixed inset-x-0 bottom-0 z-50">
       <BottomNavigation
         value={value}
         onChange={(event, value: string) => {
