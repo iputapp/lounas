@@ -30,7 +30,7 @@ export default function Page({ params }: { params: { id: string } }) {
     urlId: "a1199e64-f208-4300-a83e-8d5484d3ea3c",
     createdAt: new Date("2023-09-21T01:02:34.069Z"),
     updatedAt: new Date("2023-09-21T01:23:45.069Z"),
-    name: "横浜家系ラーメン 壱角家 西新宿店 14文字文字文字文字文字文字 ふお",
+    name: "横浜家系ラーメン 壱角家 西新宿店",
     description: "トッピングし放題！ネギの入れすぎに注意！\nカウンター・テーブルあり。",
     address: "東京都新宿区西新宿1-14-5 新和ビル 1F",
     website: "https://ichikakuya.com/",
@@ -90,17 +90,23 @@ export default function Page({ params }: { params: { id: string } }) {
     ],
   };
 
-  const removeSpace = (str: string): React.ReactNode => {
-    const lineLength = 14; // 1行の文字数
+  /**
+   * 1行の文字数を指定して、文字列を改行する (空白を単語の区切りとする)
+   * @param {string} str 文字列
+   * @param {number} lineLength 1行の文字数
+   * @returns {React.ReactNode} `[<p>{string}</p>, ...]`
+   */
+  const normalizeText = (str: string, lineLength: number): React.ReactNode => {
+    lineLength = 14; // 1行の文字数
     let line: string[] = []; // 1行分の単語を格納する配列
 
     if (str.length < lineLength) return <p>{str}</p>;
 
     const htmls = str.split(/\s+/g).map((word, index) => {
-      const joined = line.join(word); // 前回までの文字列と今回の単語を結合した文字列
-      /** 単語を結合したときに1行の文字数を超えないか */
-      if (joined.length >= lineLength) {
-        const html = <p key={index}>{joined}</p>; // 1行分の文字列をpタグで囲む
+      const nextString = [...line, word].join(""); // 1行の文字数に満たない文字列 + 単語
+      /** 文字列と単語を結合した際に1行の文字数を超えないか */
+      if (nextString.length >= lineLength) {
+        const html = <p key={index}>{nextString}</p>; // 1行分の文字列をpタグで囲む
         line = []; // 1行分の単語を格納する配列を初期化
         return html;
       } else {
@@ -108,8 +114,8 @@ export default function Page({ params }: { params: { id: string } }) {
       }
     });
 
-    const filtered = htmls.filter((html) => html !== undefined);
-    const res = [...filtered, <p key={str.length}>{...line}</p>];
+    const filtered = htmls.filter((html) => html !== undefined); // undefinedを除外
+    const res = [...filtered, <p key={str.length}>{...line}</p>]; // 入り切らなかった単語を1行にまとめて追加
     return res;
   };
 
@@ -128,11 +134,11 @@ export default function Page({ params }: { params: { id: string } }) {
               <span>{`(${data.restaurant.travelDistance}m)`}</span>
             </div>
             <div className={styles.route}>
-              <div className={styles.origin}>{removeSpace(data.origin)}</div>
+              <div className={styles.origin}>{normalizeText(data.origin, 14)}</div>
               <span className={styles.icon}>
                 <NavArrowDown />
               </span>
-              <div className={styles.destination}>{removeSpace(data.restaurant.name)}</div>
+              <div className={styles.destination}>{normalizeText(data.restaurant.name, 14)}</div>
             </div>
           </section>
           <section>
