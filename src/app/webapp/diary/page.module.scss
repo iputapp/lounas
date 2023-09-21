@@ -1,0 +1,23 @@
+@use "variables" as var;
+
+.container {
+  @apply grid h-full w-full;
+
+  .bg {
+    @apply fixed inset-0 -z-50
+      h-screen w-full;
+
+    background-color: var.$bg-primary;
+  }
+
+  .image-parent {
+    @apply fixed inset-0
+      mx-auto
+      h-screen max-w-md
+      overflow-clip;
+
+    & > .image {
+      @apply absolute object-cover;
+    }
+  }
+}

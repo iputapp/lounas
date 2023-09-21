@@ -1,28 +1,20 @@
-import "./style.scss";
-
 import Image from "next/image";
-import Calender from "public/test/calendar-mock.webp";
 
-import { BottomNavigationBar } from "@/components/navigations/BottomNavigationBar";
+import styles from "./page.module.scss";
 
 export default function Page() {
   return (
-    <>
-      <div className="diary">
+    <div className={styles.container}>
+      <div className={styles.bg}></div>
+      <div className={styles.imageParent}>
         <Image
-          className="img"
-          src={Calender}
+          className={styles.image}
+          src="/mockup/diary.webp"
           alt="calender"
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         />
-        <section>
-          <div className="cs">Coming Soon!</div>
-          <div className="development">現在開発中です。</div>
-          <div className="caveat">(訪問履歴は現在も記録されています)</div>
-        </section>
       </div>
-      <BottomNavigationBar />
-    </>
+    </div>
   );
 }
