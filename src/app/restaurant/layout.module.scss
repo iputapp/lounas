@@ -4,6 +4,6 @@
   @apply min-h-screen w-full;
 
   padding-top: var.$safe-area-top;
-  padding-bottom: var.$safe-area-bottom;
+  padding-bottom: var.$safe-area-scroll-bottom;
   background-color: var.$bg-primary;
 }
