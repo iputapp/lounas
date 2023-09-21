@@ -4,17 +4,17 @@ import styles from "./styles.module.scss";
 
 export function DummyPanel({ children }: { children?: React.ReactNode }) {
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
+    <article className={styles.container}>
+      <section className={styles.header}>
         <span className={styles.logo}>
           <LogoFill />
         </span>
         <span className={styles.title}>IMΛP</span>
-      </div>
-      <div className={styles.main}>{children}</div>
-      <div className={styles.footer}>
-        <span>&copy; {new Date().getFullYear()} PROJECT PIPLUP</span>
-      </div>
-    </div>
+      </section>
+      <section className={styles.main}>{children}</section>
+      <section className={styles.footer}>
+        <small>&copy; {new Date().getFullYear()} PROJECT PIPLUP</small>
+      </section>
+    </article>
   );
 }
