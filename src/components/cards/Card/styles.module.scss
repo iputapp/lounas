@@ -6,12 +6,12 @@
     bg-white shadow-lg;
 
   & .image-parent {
-    @apply relative w-full
-      border-b-2 border-neutral-400/50;
+    @apply relative w-full;
 
     aspect-ratio: 16 / 10;
-    border-image: linear-gradient(to right, rgb(var.$red, 60%), rgb(var.$rose, 60%));
-    border-image-slice: 1;
+
+    // border-image: linear-gradient(to right, rgb(var.$red, 60%), rgb(var.$rose, 60%));
+    // border-image-slice: 1;
 
     & > .image {
       @apply absolute object-cover;
