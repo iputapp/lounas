@@ -13,7 +13,7 @@ export function DummyPanel({ children }: { children?: React.ReactNode }) {
       </div>
       <div className={styles.main}>{children}</div>
       <div className={styles.footer}>
-        <span>&copy; {new Date().getFullYear()} PROJECT PIPLUP</span>
+        <small>&copy; {new Date().getFullYear()} PROJECT PIPLUP</small>
       </div>
     </div>
   );
