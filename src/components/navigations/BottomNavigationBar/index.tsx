@@ -24,7 +24,7 @@ export function BottomNavigationBar() {
         }}
         sx={{
           "&": {
-            backdropFilter: "blur(8px)", // backdrop-blur
+            backdropFilter: "blur(8px) brightness(1.25)", // backdrop-blur, backdrop-brightness-125
             backgroundColor: "rgb(255 255 255 / 50%)",
             height: "5rem", // 3.5rem(default) + paddingBottom
           },
