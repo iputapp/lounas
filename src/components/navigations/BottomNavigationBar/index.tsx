@@ -15,7 +15,7 @@ export function BottomNavigationBar() {
   const [value, setValue] = useState("home");
 
   return (
-    <div className="fixed inset-x-0 bottom-0">
+    <div className="fixed inset-x-0 bottom-0 z-50">
       <BottomNavigation
         value={value}
         onChange={(event, value: string) => {
@@ -24,7 +24,7 @@ export function BottomNavigationBar() {
         }}
         sx={{
           "&": {
-            backdropFilter: "blur(8px)", // backdrop-blur
+            backdropFilter: "blur(8px) brightness(1.25)", // backdrop-blur, backdrop-brightness-125
             backgroundColor: "rgb(255 255 255 / 50%)",
             height: "5rem", // 3.5rem(default) + paddingBottom
           },
