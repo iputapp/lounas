@@ -1,24 +1,119 @@
 "use client";
-import ArrowDown from "@icons/nav-arrow-down.svg";
-import Warning from "@icons/warning-circle.svg";
+
+import NavArrowDown from "@icons/nav-arrow-down.svg";
+import WarningCircle from "@icons/warning-circle.svg";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Map from "public/test/map.webp";
+import { useEffect } from "react";
 
 import { RectButton } from "@/components/buttons/RectButton";
-import { CardFull } from "@/components/cards/CardFull";
+import { CardFull, NavigationType } from "@/components/cards/CardFull";
+import type { Restaurant } from "@/lib/zod";
 
 import styles from "./page.module.scss";
 
-export default function Page() {
+export default function Page({ params }: { params: { id: string } }) {
   const router = useRouter();
-  const start = "コクーンタワー地下出口";
-  const destination = "らーめん新宿西口店";
-  const link = "https://www.google.com/?hl=ja";
-  const time = "3分";
-  const far = "300m";
-  const close = () => {
+
+  useEffect(() => {
+    console.log("お店ID:", params.id);
+  }, [params]);
+
+  /** テスト用 お店データ */
+  type RestaurantExtend = Restaurant & {
+    timeOpen: Date;
+    timeClose: Date;
+    travelDistance: number;
+  };
+  const restaurant: RestaurantExtend = {
+    id: "a1199e64-f208-4300-a83e-8d5484d3ea3c",
+    urlId: "a1199e64-f208-4300-a83e-8d5484d3ea3c",
+    createdAt: new Date("2023-09-21T01:02:34.069Z"),
+    updatedAt: new Date("2023-09-21T01:23:45.069Z"),
+    name: "横浜家系ラーメン 壱角家 西新宿店 14文字文字文字文字文字文字 ふお",
+    description: "トッピングし放題！ネギの入れすぎに注意！\nカウンター・テーブルあり。",
+    address: "東京都新宿区西新宿1-14-5 新和ビル 1F",
+    website: "https://ichikakuya.com/",
+    longtitude: 139.696993,
+    latitude: 35.6887057,
+    travelTime: 300, // 5分
+    timeOpen: new Date("1900-01-01T02:00:00.000Z"),
+    timeClose: new Date("1900-01-01T15:00:00.000Z"),
+    travelDistance: 300, // 300m
+  };
+
+  /** テスト用 api route から返ってくるデータ (予定) */
+  const data = {
+    origin: "コクーンタワー地下出口",
+    restaurant: restaurant,
+    routes: [
+      {
+        image: "/test/route-2.webp",
+        description: "右に曲がります",
+        navigation: "right",
+      },
+      {
+        image: "/test/route.webp",
+        description: "まっすぐ進みます",
+        navigation: "straight",
+      },
+      {
+        image: "/test/route.webp",
+        description: "左に曲がります",
+        navigation: "left",
+      },
+      {
+        image: "/test/route-2.webp",
+        description: "道なり",
+        navigation: "sharpLeft",
+      },
+      {
+        image: "/test/route.webp",
+        description: "道なり",
+        navigation: "sharpRight",
+      },
+      {
+        image: "/test/route-2.webp",
+        description: "斜め左に進みます",
+        navigation: "slightLeft",
+      },
+      {
+        image: "/test/route.webp",
+        description: "斜め右に進みます",
+        navigation: "slightRight",
+      },
+      {
+        image: "/test/route.webp",
+        description: `目の前にセブンイレブンがあります\n今夜飲みに行かないかい？（イケボ）`,
+        navigation: "pin",
+      },
+    ],
+  };
+
+  const removeSpace = (str: string): React.ReactNode => {
+    const lineLength = 14; // 1行の文字数
+    let line: string[] = []; // 1行分の単語を格納する配列
+
+    if (str.length < lineLength) return <p>{str}</p>;
+
+    const htmls = str.split(/\s+/g).map((word, index) => {
+      const joined = line.join(word); // 前回までの文字列と今回の単語を結合した文字列
+      /** 単語を結合したときに1行の文字数を超えないか */
+      if (joined.length >= lineLength) {
+        const html = <p key={index}>{joined}</p>; // 1行分の文字列をpタグで囲む
+        line = []; // 1行分の単語を格納する配列を初期化
+        return html;
+      } else {
+        line.push(word); // 1行分の単語を格納する配列に単語を追加
+      }
+    });
+
+    const filtered = htmls.filter((html) => html !== undefined);
+    const res = [...filtered, <p key={str.length}>{...line}</p>];
+    return res;
+  };
+
+  const exit = () => {
     router.replace("/webapp/home");
   };
 
@@ -26,69 +121,57 @@ export default function Page() {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.title}>ルート案内</div>
-        <div className={styles.guide}>
-          <div className={styles.information}>
-            <div className={styles.distance}>{`${time}(${far})`}</div>
+        <div className={styles.info}>
+          <section>
+            <div className={styles.distance}>
+              <span>{`約${Math.floor(data.restaurant.travelTime / 60)}分`}</span>
+              <span>{`(${data.restaurant.travelDistance}m)`}</span>
+            </div>
             <div className={styles.route}>
-              <div className={styles.start}>{start}</div>
-              <div className={styles.arrowdown}>
-                <ArrowDown />
-              </div>
-              <div className={styles.destination}>{destination}</div>
+              <div className={styles.origin}>{removeSpace(data.origin)}</div>
+              <span className={styles.icon}>
+                <NavArrowDown />
+              </span>
+              <div className={styles.destination}>{removeSpace(data.restaurant.name)}</div>
             </div>
-          </div>
-          <div className={styles.external}>
-            <div className={styles.mapimg}>
-              <Image className={styles.img} src={Map} alt="map" fill />
-              <div className={styles.preview}>Coming&nbsp;Soon!</div>
+          </section>
+          <section>
+            <div className={styles.mapParent}>
+              <Image className={styles.map} src="/mockup/map.webp" alt="map" fill />
+              <span className={styles.preview}>Coming Soon!</span>
             </div>
-            <Link href={link} className={styles.link}>
-              アプリでルートを確認する→
-            </Link>
-          </div>
+            <a
+              className={styles.link}
+              href={`https://www.google.com/maps/place/${data.restaurant.address}/@${data.restaurant.latitude},${data.restaurant.longtitude},17.5z`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              アプリを開く
+            </a>
+          </section>
         </div>
-        <div className={styles.warning}>
-          <div className={styles.icon}>
-            <Warning />
-          </div>
-          <div className={styles.request}>歩きながらの使用はお控えください。</div>
+        <div className={styles.message}>
+          <span className={styles.warn}>
+            <WarningCircle />
+          </span>
+          <span className={styles.text}>歩きながらの使用はお控えください。</span>
         </div>
       </div>
       <div className={styles.main}>
-        <div className={styles.cardfull}>
-          <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
-          <CardFull image="/test/route.webp" description="こんにちは" navigation="sharpLeft" />
-          <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
-          <CardFull image="/test/route.webp" description="こんにちは" navigation="straight" />
-          <CardFull image="/test/route.webp" description="こんにちは" navigation="slightLeft" />
-          <CardFull image="/test/route.webp" description="右に曲がります" navigation="right" />
-          <CardFull image="/test/route.webp" description="まっすぐ進みます" navigation="straight" />
-          <CardFull image="/test/route.webp" description="左に曲がります" navigation="left" />
-          <CardFull image="/test/route.webp" description="道なり" navigation="sharpLeft" />
-          <CardFull image="/test/route.webp" description="道なり" navigation="sharpRight" />
+        {data.routes.map((route, index) => (
           <CardFull
-            image="/test/route.webp"
-            description="斜め左に進みます"
-            navigation="slightLeft"
+            key={index}
+            image={route.image}
+            description={route.description}
+            navigation={route.navigation as NavigationType}
           />
-          <CardFull
-            image="/test/route.webp"
-            description="斜め右に進みます"
-            navigation="slightRight"
-          />
-          <CardFull
-            image="/test/route.webp"
-            description="目の前にセブンイレブンがあります。
-            今夜飲みに行かないかい？（イケボ）目の前にセブンイレブンがあります"
-            navigation="pin"
-          />
-          <div className={styles.footer}>
-            <div className="w-1/2">
-              <RectButton color="red" onClick={close}>
-                終了する
-              </RectButton>
-            </div>
-          </div>
+        ))}
+      </div>
+      <div className={styles.footer}>
+        <div className={styles.button}>
+          <RectButton color="red" onClick={exit}>
+            終了する
+          </RectButton>
         </div>
       </div>
     </div>

@@ -1,67 +1,115 @@
 @use "variables" as var;
 
+// common styles
+.message {
+  @apply mx-auto flex
+    items-center
+    space-x-1.5;
+
+  .text {
+    @apply text-sm font-bold;
+
+    color: var.$tertiary;
+  }
+
+  .warn {
+    @apply text-sm text-amber-500;
+  }
+}
+
+// page styles
 .container {
-  @apply grid h-full
-    grid-rows-6;
+  @apply grid w-full gap-12;
 
   .header {
-    @apply row-span-2 grid w-full gap-4 
-      bg-white
-      px-5 pb-3
-      shadow-xl;
+    @apply sticky top-0 z-30
+      grid w-full
+      gap-5 px-5 py-[1.125rem]
+      shadow-lg;
+
+    background-color: var.$bg-primary;
 
     .title {
-      @apply my-2
-        text-4xl font-bold;
+      @apply text-4xl font-bold;
+
+      color: var.$primary;
     }
 
-    .guide {
-      @apply grid grid-cols-12 grid-rows-1 gap-2;
+    .info {
+      @apply grid w-full
+        grid-cols-5;
 
-      .information {
-        @apply col-span-7 grid place-items-center;
+      // left side (distance & route)
+      & > :nth-child(1) {
+        @apply col-span-3
+          grid
+          justify-items-start
+          gap-4;
 
+        // time & distance
         .distance {
-          @apply text-2xl;
+          @apply flex
+            items-center justify-between
+            space-x-1
+            text-2xl;
+
+          color: var.$primary;
         }
 
+        // origin & destination
         .route {
-          @apply flex flex-col items-center justify-center;
+          @apply grid min-h-[5rem]
+            content-between justify-items-center
+            gap-2;
 
-          .start {
-            @apply text-base font-bold;
-          }
+          .origin {
+            @apply text-center
+              text-sm font-semibold;
 
-          .arrowdown {
-            color: var.$blue;
-
-            @apply text-2xl font-bold;
+            color: var.$secondary;
           }
 
           .destination {
-            @apply text-base font-bold;
+            @apply text-center
+              text-sm font-semibold;
+
+            color: var.$secondary;
+          }
+
+          // down arrow
+          .icon {
+            @apply -my-1.5
+              text-2xl;
+
+            color: var.$blue;
           }
         }
       }
 
-      .external {
-        @apply col-span-5 grid place-items-center;
+      // right side (map & link)
+      & > :nth-child(2) {
+        @apply col-span-2
+          grid content-end
+          justify-items-center gap-1;
 
-        .mapimg {
-          @apply relative w-full overflow-clip rounded-lg bg-white;
+        .map-parent {
+          @apply relative w-full
+            overflow-clip rounded-lg;
 
-          aspect-ratio: 4 / 3;
+          aspect-ratio: 5 / 4;
+          border: 2px solid rgb(255 255 255 / 80%);
 
-          .img {
-            @apply absolute object-cover blur-sm;
+          .map {
+            @apply absolute
+              scale-105
+              object-cover
+              blur-sm brightness-50;
           }
 
           .preview {
-            // top: 50%;
-            // left: 50%;
-            // transform: translate(-50%, -50%);
-
-            @apply absolute inset-0 m-auto h-fit w-fit;
+            @apply absolute inset-0
+              m-auto h-fit w-fit
+              font-semibold text-white;
           }
         }
 
@@ -73,34 +121,22 @@
         }
       }
     }
-
-    .warning {
-      @apply flex items-center justify-center;
-
-      .icon {
-        @apply mx-1 text-yellow-500;
-      }
-
-      .request {
-        @apply text-sm font-semibold;
-      }
-    }
   }
 
+  // cards
   .main {
-    height: calc(100vh / 6 * 4);
+    @apply grid w-full
+      grid-cols-1
+      gap-8 px-6
+      md:grid-cols-2;
+  }
 
-    @apply row-span-4 overflow-y-auto p-5;
+  // button
+  .footer {
+    @apply w-full;
 
-    .cardfull {
-      position: relative;
-      z-index: 1;
-
-      @apply my-5 grid gap-9;
-    }
-
-    .footer {
-      @apply flex items-center justify-center;
+    .button {
+      @apply mx-auto w-fit;
     }
   }
 }
