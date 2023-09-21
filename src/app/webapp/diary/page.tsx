@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { DummyPanel } from "@/components/layouts/DummyPanel";
+
 import styles from "./page.module.scss";
 
 export default function Page() {
@@ -15,7 +17,11 @@ export default function Page() {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         />
       </div>
-      <div className={styles.overlay}></div>
+      <div className={styles.overlay}>
+        <div className={styles.panel}>
+          <DummyPanel />
+        </div>
+      </div>
     </div>
   );
 }

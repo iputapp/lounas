@@ -12,7 +12,17 @@
 
   .overlay {
     @apply fixed inset-0 z-30
-      h-screen w-full backdrop-blur;
+      h-screen w-full
+      bg-black/30;
+
+    & > .panel {
+      @apply absolute inset-0
+        m-auto grid
+        h-full max-w-md
+        place-items-center;
+
+      width: 90%;
+    }
   }
 
   .image-parent {
