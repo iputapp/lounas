@@ -3,7 +3,7 @@
 .card {
   @apply flex h-full w-full
     items-center justify-between
-    overflow-clip rounded-3xl
+    overflow-clip rounded-[2.25rem]
     shadow-lg;
 
   & .image-parent {
@@ -17,16 +17,20 @@
 
     & > .description {
       @apply absolute bottom-0
-        flex h-fit
-        w-full flex-col items-center
-        justify-center rounded-bl-3xl p-3 text-sm font-semibold text-white backdrop-blur-sm;
+        grid h-fit w-full
+        justify-items-center
+        gap-0.5
+        rounded-bl-3xl p-3
+        text-sm font-semibold text-white
+        backdrop-blur-sm backdrop-brightness-125;
 
-      background-color: rgb(0 0 0 / 50%);
+      background-color: rgb(0 0 0 / 60%);
     }
   }
 
   & .tag {
-    @apply flex h-full
+    @apply -mx-1
+      flex h-full
       items-center justify-center
       text-3xl text-white;
 
