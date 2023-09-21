@@ -32,7 +32,7 @@ export default function Page({ params }: { params: { id: string } }) {
     amount: 75,
     eatTime: 360, // 6分
     restaurantId: "a1199e64-f208-4300-a83e-8d5484d3ea3c",
-    thumbnailId: params.id,
+    thumbnailId: "katsudon", // params.id
   };
 
   /** テスト用 お店データ */
@@ -46,7 +46,7 @@ export default function Page({ params }: { params: { id: string } }) {
     createdAt: new Date("2023-09-21T01:02:34.069Z"),
     updatedAt: new Date("2023-09-21T01:23:45.069Z"),
     name: "横浜家系ラーメン 壱角家 西新宿店",
-    description: "トッピングし放題！中でも、ネギは超お得。カウンター・テーブルあり。",
+    description: "トッピングし放題！ネギの入れすぎに注意！\nカウンター・テーブルあり。",
     address: "東京都新宿区西新宿1-14-5 新和ビル 1F",
     website: "https://ichikakuya.com/",
     longtitude: 139.691706,
@@ -72,7 +72,7 @@ export default function Page({ params }: { params: { id: string } }) {
   };
 
   const decide = () => {
-    router.push("/restaurants/[id]/navi");
+    router.push(`/restaurant/${data.restaurant.urlId}/navi`);
   };
 
   return (
@@ -81,12 +81,13 @@ export default function Page({ params }: { params: { id: string } }) {
         <BackButton title="戻る" />
       </div>
       <div className={styles.content}>
-        <Card image="/test/ramen.webp" alt={data.dish.name}>
+        <Card image={`/test/${data.dish.thumbnailId}.webp`} alt={data.dish.name}>
           <p>{data.dish.name}</p>
           <p>{data.restaurant.name}</p>
         </Card>
         <ExpandablePanel
           title="店舗詳細"
+          bgImage={`/test/${data.dish.thumbnailId}.webp`}
           titleEx="決済方法"
           childrenEx={<PaymentLong payments={data.payments} />}
         >
