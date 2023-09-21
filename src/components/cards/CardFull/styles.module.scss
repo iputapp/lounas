@@ -17,10 +17,9 @@
 
     & > .description {
       @apply absolute bottom-0
-        grid h-fit w-full
-        justify-items-center
-        gap-0.5
-        rounded-bl-3xl p-3
+        flex h-fit w-full
+        items-center justify-center
+        rounded-bl-3xl px-4 py-3
         text-sm font-semibold text-white
         backdrop-blur-sm backdrop-brightness-125;
 
