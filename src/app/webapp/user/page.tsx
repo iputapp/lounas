@@ -5,7 +5,7 @@ import { useLayoutEffect } from "react";
 
 /**
  * This file is for testing purposes.
- * Delete it in production.
+ * Delete in production.
  */
 
 export default function Page() {
