@@ -1,21 +1,35 @@
 @use "variables" as var;
 
-.main {
-  @apply sticky;
+.container {
+  @apply grid h-full w-full
+    content-center
+    gap-12;
 
-  .title {
-    @apply mx-5 text-4xl font-bold;
+  & > .title {
+    @apply w-fit
+      text-4xl font-bold;
+
+    color: var.$primary;
   }
 
-  .text {
-    color: #464646;
+  .sub {
+    @apply mx-auto grid w-56
+      justify-items-center
+      gap-2;
 
-    @apply my-5 flex items-center justify-center text-lg font-semibold opacity-60;
+    .text {
+      @apply text-lg font-semibold;
+
+      color: var.$tertiary;
+      mix-blend-mode: hard-light;
+    }
+
+    .button {
+      @apply w-full;
+    }
   }
 
-  .button {
-    width: calc(100dvw / 3 * 2);
-
-    @apply mx-auto my-5;
+  .panel {
+    @apply px-2.5;
   }
 }
