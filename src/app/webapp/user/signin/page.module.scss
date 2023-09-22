@@ -35,7 +35,7 @@
       @apply text-lg font-semibold;
 
       color: transparent;
-      background: linear-gradient(135deg, #fff 50%, var.$tertiary 50%);
+      background: linear-gradient(135deg, var.$tertiary 50%, #fff 50%);
       background-clip: text;
       background-size: 250% auto;
       mix-blend-mode: hard-light;
