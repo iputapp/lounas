@@ -18,7 +18,7 @@ export default function Page() {
     <div className={styles.container}>
       <h1 className={styles.title}>アカウント</h1>
       <div className={styles.sub}>
-        <span className={styles.text}>IMAP会員へようこそ !</span>
+        <span className={styles.text}>IMAP会員へようこそ！</span>
         <div className={styles.button}>
           <BorderRoundButton fontSize="text-2xl" onClick={signOut}>
             Sign In
