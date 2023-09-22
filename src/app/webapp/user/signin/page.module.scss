@@ -1,8 +1,18 @@
 @use "variables" as var;
 
+@keyframes gradient-slide {
+  from {
+    background-position: left;
+  }
+
+  to {
+    background-position: right;
+  }
+}
+
 .container {
   @apply grid h-full w-full
-    content-center
+    place-content-center
     gap-12;
 
   & > .title {
@@ -20,8 +30,12 @@
     .text {
       @apply text-lg font-semibold;
 
-      color: var.$tertiary;
+      color: transparent;
+      background: linear-gradient(135deg, #fff 50%, var.$tertiary 50%);
+      background-clip: text;
+      background-size: 250% auto;
       mix-blend-mode: hard-light;
+      animation: gradient-slide 2.5s infinite alternate both cubic-bezier(0.83, 0, 0.17, 1); // easeInOutQuint
     }
 
     .button {
@@ -30,6 +44,8 @@
   }
 
   .panel {
-    @apply px-2.5;
+    @apply mx-auto max-w-md;
+
+    width: 95%;
   }
 }
