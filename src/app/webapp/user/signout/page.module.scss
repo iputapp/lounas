@@ -1,56 +1,87 @@
 @use "variables" as var;
 
-.main {
-  @apply sticky;
-
-  .title {
-    @apply mx-5 text-4xl font-bold;
+@keyframes gradient-slide {
+  from {
+    background-position: left;
   }
 
-  .text {
-    color: #464646;
+  to {
+    background-position: right;
+  }
+}
 
-    @apply my-5 flex items-center justify-center text-lg font-semibold opacity-60;
+.container {
+  @apply grid h-full w-full
+    content-center
+    gap-12;
+
+  & > .title {
+    @apply w-fit
+      text-4xl font-bold;
+
+    color: transparent;
+    background: linear-gradient(-135deg, #fff 50%, var.$primary 50%);
+    background-clip: text;
+    background-size: 250% auto;
+    animation: gradient-slide 2.5s infinite alternate both cubic-bezier(0.83, 0, 0.17, 1); // easeInOutQuint
   }
 
-  .container {
-    @apply mb-5;
+  .sub {
+    @apply mx-auto grid w-full
+      justify-items-center
+      gap-2.5;
+
+    .text {
+      @apply text-lg font-semibold;
+
+      color: transparent;
+      background: linear-gradient(-135deg, var.$tertiary 50%, #fff 50%);
+      background-clip: text;
+      background-size: 250% auto;
+      mix-blend-mode: hard-light;
+      animation: gradient-slide 2.5s infinite alternate-reverse both cubic-bezier(0.83, 0, 0.17, 1); // easeInOutQuint
+    }
 
     .button {
-      width: calc(100dvw / 3 * 2);
-      padding: 0.25em; // p-1
-      border-radius: 1.5em; // rounded-3xl
+      width: 14.25rem;
 
-      @apply relative mx-auto my-5
-      flex h-fit items-center justify-center
-      overflow-clip bg-black text-2xl text-white;
+      & > button {
+        @apply mx-auto w-full
+          overflow-clip rounded-full
+          py-3.5
+          text-2xl font-semibold text-white;
 
-      .inner {
-        @apply flex items-center justify-center
-        rounded-3xl;
-
-        padding: 0.25em 1.5em; // py-1 px-6
+        background-color: #000;
       }
     }
   }
 
-  .support-content {
-    @apply my-10 rounded-2xl bg-white/30 backdrop-blur-lg;
+  .panel {
+    @apply mx-auto max-w-md;
 
-    .support-item {
-      @apply flex w-full justify-between p-5;
+    width: 95%;
+    min-height: 48dvh;
 
-      .category {
-        @apply flex items-center;
+    & > article {
+      @apply grid w-full
+      divide-y divide-white/50
+      rounded-xl
+      backdrop-blur-md;
 
-        .category-name {
-          @apply mx-5;
+      background-color: rgb(255 255 255 / 30%);
+
+      & > section {
+        @apply flex w-full
+          items-center justify-between
+          p-4
+          text-base;
+
+        color: var.$primary;
+
+        & > div {
+          @apply flex items-center space-x-3;
         }
       }
     }
   }
-}
-
-.border {
-  border-bottom: 1px solid rgb(255 255 255 / 50%);
 }
