@@ -19,7 +19,11 @@
     @apply w-fit
       text-4xl font-bold;
 
-    color: var.$primary;
+    color: transparent;
+    background: linear-gradient(135deg, #fff 50%, var.$primary 50%);
+    background-clip: text;
+    background-size: 250% auto;
+    animation: gradient-slide 2.5s infinite alternate-reverse both cubic-bezier(0.83, 0, 0.17, 1); // easeInOutQuint
   }
 
   .sub {
