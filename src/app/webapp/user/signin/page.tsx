@@ -9,6 +9,7 @@ import styles from "./page.module.scss";
 
 export default function Page() {
   const router = useRouter();
+
   const signOut = () => {
     router.replace("/webapp/user/signout");
   };
