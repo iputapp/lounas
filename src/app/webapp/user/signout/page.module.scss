@@ -70,7 +70,7 @@
 
       background-color: rgb(255 255 255 / 30%);
 
-      & > section {
+      & > * {
         @apply flex w-full
           items-center justify-between
           p-4
