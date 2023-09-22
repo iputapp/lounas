@@ -3,12 +3,17 @@
 import { useRouter } from "next/navigation";
 import { useLayoutEffect } from "react";
 
-export default function Template({ children }: { children: React.ReactNode }) {
+/**
+ * This file is for testing purposes.
+ * Delete it in production.
+ */
+
+export default function Page() {
   const router = useRouter();
 
   useLayoutEffect(() => {
-    router.replace("signout");
+    router.replace("user/signout");
   }, [router]);
 
-  return children;
+  return;
 }
