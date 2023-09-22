@@ -19,7 +19,8 @@ export function BottomNavigationBar() {
       <BottomNavigation
         value={value}
         onChange={(event, value: string) => {
-          setValue(value);
+          const page = value.split("/").pop() as string;
+          setValue(page);
           router.push(`${value}`);
         }}
         sx={{
