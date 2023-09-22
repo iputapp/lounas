@@ -39,19 +39,39 @@ const listItems = [
   },
 ];
 
-/** ユーザへのメッセージ */
+/** ユーザへのメッセージ - 確率: 0-100 (低い順) */
 const messages = [
-  "ご利用ありがとうございます。",
-  "日々のご愛顧ありがとうございます。",
-  "おおきに。",
+  {
+    message: "おおきに。",
+    prob: 10,
+  },
+  {
+    message: "日々のご愛顧ありがとうございます。",
+    prob: 75,
+  },
+
+  {
+    message: "ご利用ありがとうございます。",
+    prob: 100,
+  },
 ];
 
 export default function Page() {
   const router = useRouter();
   const [messageToUser, setMessageToUser] = useState("");
 
+  const messageGacha = () => {
+    const rand = Math.floor(Math.random() * 100);
+    for (const message of messages) {
+      if (rand < message.prob) {
+        console.log(message.message);
+        return message.message;
+      }
+    }
+  };
+
   useLayoutEffect(() => {
-    const message = messages[Math.floor(Math.random() * messages.length)];
+    const message = messageGacha() as string;
     setMessageToUser(message);
   }, []);
 
