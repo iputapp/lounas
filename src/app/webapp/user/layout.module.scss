@@ -1,7 +1,13 @@
 @use "variables" as var;
 
+$blue-size: 100dvh;
+$cyan-size: 80dvh;
+$green-size: 90dvh;
+$lime-size: 110dvh;
+
 .bg {
-  @apply fixed h-screen scale-105 blur-xl brightness-110;
+  @apply fixed h-screen w-full
+    scale-105 blur-xl brightness-110;
 
   .triangle {
     @apply -z-50 aspect-square mix-blend-multiply;
@@ -13,7 +19,7 @@
     &.blue {
       top: 30dvh;
       left: -12dvh;
-      width: 100dvh;
+      width: $blue-size;
       background-color: #0072f5;
       transform: rotate(-120deg);
     }
@@ -21,7 +27,7 @@
     &.cyan {
       top: -15dvh;
       left: -13dvh;
-      width: 80dvh;
+      width: $cyan-size;
       background-color: #00d3f5;
       transform: rotate(70deg);
     }
@@ -29,7 +35,7 @@
     &.green {
       top: 50dvh;
       left: -45dvh;
-      width: 90dvh;
+      width: $green-size;
       background-color: #00f5aa;
       transform: rotate(80deg);
     }
@@ -37,7 +43,7 @@
     &.lime {
       top: -25dvh;
       left: -5dvh;
-      width: 110dvh;
+      width: $lime-size;
       background-color: #00f5cb;
       transform: rotate(10deg);
     }
