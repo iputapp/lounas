@@ -27,7 +27,7 @@
   }
 
   .sub {
-    @apply mx-auto grid w-56
+    @apply mx-auto grid w-full
       justify-items-center
       gap-2;
 
@@ -43,7 +43,7 @@
     }
 
     .button {
-      @apply w-full;
+      width: 14.25rem;
     }
   }
 
