@@ -1,53 +1,52 @@
 @use "variables" as var;
 
-$blue-size: 100dvh;
-$cyan-size: 80dvh;
-$green-size: 90dvh;
-$lime-size: 110dvh;
+$triangle-width: 100vw;
+$center: 50%;
 
 .bg {
   @apply fixed inset-0 -z-50
     h-screen w-full
-    scale-105
-    overflow-clip;
+    scale-105 overflow-clip
+    blur-xl brightness-[1.175];
 
   .triangle {
     @apply absolute;
 
-    aspect-ratio: 1 / 1;
-    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    width: $triangle-width;
+    clip-path: polygon(50% 0, 100% 100%, 0% 100%);
     mix-blend-mode: multiply;
+    transform-origin: top left;
 
     &.blue {
-      top: 30dvh;
-      left: -12dvh;
-      width: $blue-size;
+      right: -75%;
+      bottom: -7.5%;
+      height: calc(tan(63deg) * $triangle-width / 2);
       background-color: #0072f5;
-      transform: rotate(-120deg);
+      transform: scale(1.75) rotate(-26deg) translate(-$center, -$center);
     }
 
     &.cyan {
-      top: -15dvh;
-      left: -13dvh;
-      width: $cyan-size;
+      top: 5%;
+      right: -69%;
+      height: calc(tan(61deg) * $triangle-width / 2);
       background-color: #00d3f5;
-      transform: rotate(70deg);
+      transform: scale(1.3) rotate(47deg) translate(-$center, -$center);
     }
 
     &.green {
-      top: 50dvh;
-      left: -45dvh;
-      width: $green-size;
+      bottom: -3%;
+      left: 25%;
+      height: calc(tan(61.5deg) * $triangle-width / 2);
       background-color: #00f5aa;
-      transform: rotate(80deg);
+      transform: scale(1.6) rotate(44deg) translate(-$center, -$center);
     }
 
     &.lime {
-      top: -25dvh;
-      left: -5dvh;
-      width: $lime-size;
+      top: 25%;
+      left: 50%;
+      height: calc(tan(63deg) * $triangle-width / 2);
       background-color: #00f5cb;
-      transform: rotate(10deg);
+      transform: scale(2.5) rotate(-125deg) translate(-$center, -$center);
     }
   }
 }
