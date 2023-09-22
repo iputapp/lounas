@@ -6,15 +6,17 @@ $green-size: 90dvh;
 $lime-size: 110dvh;
 
 .bg {
-  @apply fixed h-screen w-full
-    scale-105 blur-xl brightness-110;
+  @apply fixed inset-0 -z-50
+    h-screen w-full
+    scale-105
+    overflow-clip;
 
   .triangle {
-    @apply -z-50 aspect-square mix-blend-multiply;
+    @apply absolute;
 
-    position: absolute;
-    height: auto;
+    aspect-ratio: 1 / 1;
     clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    mix-blend-mode: multiply;
 
     &.blue {
       top: 30dvh;
