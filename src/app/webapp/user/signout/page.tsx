@@ -7,7 +7,7 @@ import NavArrowRight from "@icons/nav-arrow-right.svg";
 import Twitter from "@icons/twitter.svg";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 import styles from "./page.module.scss";
 
@@ -50,8 +50,9 @@ export default function Page() {
   const router = useRouter();
   const [messageToUser, setMessageToUser] = useState("");
 
-  useEffect(() => {
-    setMessageToUser(messages[Math.floor(Math.random() * messages.length)]);
+  useLayoutEffect(() => {
+    const message = messages[Math.floor(Math.random() * messages.length)];
+    setMessageToUser(message);
   }, []);
 
   const signIn = () => {
