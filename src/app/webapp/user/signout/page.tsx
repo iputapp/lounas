@@ -28,7 +28,7 @@ const listItems = [
   {
     title: "Instagram",
     icon: <Instagram />,
-    url: "https://www.instagram.com/imap_bq/",
+    url: "https://www.instagram.com/imap.bq/",
     isInternal: false,
   },
   {
