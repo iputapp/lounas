@@ -11,7 +11,7 @@
 }
 
 .container {
-  @apply grid h-full w-full
+  @apply mx-auto grid h-full w-full max-w-md
     content-center
     gap-12;
 
@@ -64,7 +64,7 @@
 
     & > article {
       @apply grid w-full
-      divide-y divide-white/50
+      divide-y divide-white/40
       rounded-xl
       backdrop-blur-md;
 
