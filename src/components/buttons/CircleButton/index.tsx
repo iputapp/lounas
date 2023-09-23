@@ -50,7 +50,7 @@ export function CircleButton({
     direction: 180,
   },
   animation = {
-    delay: Math.random() * 0.6,
+    delay: Math.random() * 0.6969,
     stiffness: 80,
     damping: 8,
   },
