@@ -10,14 +10,15 @@ type Selection = {
   isSelected: boolean;
 };
 
-type Selections = {
+type SelectionType = {
   quantity?: Selection;
   price?: Selection;
   taste?: Selection;
 };
 
-export type { Selection, Selections };
+export type { SelectionType };
 
+/** 指定なし(おまかせ)は`random`として用意する */
 const selections = {
   quantity: [
     {
@@ -29,7 +30,6 @@ const selections = {
         start: "#f5576c",
         end: "#f093fb",
       },
-      isSelected: false,
     },
     {
       title: "普通",
@@ -40,7 +40,6 @@ const selections = {
         start: "#36ba64",
         end: "#04e67e",
       },
-      isSelected: false,
     },
     {
       title: "少なめ",
@@ -51,7 +50,16 @@ const selections = {
         start: "#0d32ff",
         end: "#667eea",
       },
-      isSelected: false,
+    },
+    {
+      title: "おまかせ",
+      value: "random",
+      size: 5,
+      gradient: {
+        direction: 0,
+        start: "#fff",
+        end: "#fff",
+      },
     },
   ],
   price: [
@@ -64,7 +72,6 @@ const selections = {
         start: "#f5576c",
         end: "#f093fb",
       },
-      isSelected: false,
     },
     {
       title: "750円",
@@ -75,7 +82,6 @@ const selections = {
         start: "#36ba64",
         end: "#04e67e",
       },
-      isSelected: false,
     },
     {
       title: "~500円",
@@ -86,7 +92,16 @@ const selections = {
         start: "#0d32ff",
         end: "#667eea",
       },
-      isSelected: false,
+    },
+    {
+      title: "おまかせ",
+      value: "random",
+      size: 5,
+      gradient: {
+        direction: 0,
+        start: "#fff",
+        end: "#fff",
+      },
     },
   ],
   taste: [
@@ -99,7 +114,6 @@ const selections = {
         start: "#f5576c",
         end: "#f093fb",
       },
-      isSelected: false,
     },
     {
       title: "定番",
@@ -110,7 +124,6 @@ const selections = {
         start: "#36ba64",
         end: "#04e67e",
       },
-      isSelected: false,
     },
     {
       title: "個性的",
@@ -121,7 +134,16 @@ const selections = {
         start: "#0d32ff",
         end: "#667eea",
       },
-      isSelected: false,
+    },
+    {
+      title: "おまかせ",
+      value: "random",
+      size: 5,
+      gradient: {
+        direction: 0,
+        start: "#fff",
+        end: "#fff",
+      },
     },
   ],
 };

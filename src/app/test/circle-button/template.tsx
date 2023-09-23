@@ -1,17 +1,18 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Selections, selections } from "./constants";
+import { CircleButton } from "@/components/buttons/CircleButton";
+
+import { selections, SelectionType } from "./constants";
 import styles from "./template.module.scss";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [selected, setSelected] = useState<Selections>();
+  const [selected, setSelected] = useState<SelectionType>();
 
   useEffect(() => {
     /** ex. [["quantity", "low"], ["price", "medium"], ["taste", "medium"]] */
@@ -31,82 +32,55 @@ export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <>
       {children}
-      {/* selection stack (skipは`constants.ts`に属性として設定する) */}
+      {/* selection stack */}
       <div
-        className={`fixed bottom-10 left-0 right-0 z-30 mx-auto aspect-[32/9] w-[75%] overflow-clip rounded-full bg-neutral-100/80 backdrop-blur ${styles.neumo}`}
+        className={`fixed inset-x-0 bottom-10 z-30 mx-auto aspect-[32/9] w-[75%] max-w-sm overflow-clip rounded-full bg-neutral-100/80 backdrop-blur ${styles.neumo}`}
       >
-        <div className="grid h-full grid-cols-3 grid-rows-1 place-items-center content-center gap-2 px-0.5 py-1.5">
+        <div className="grid h-full grid-cols-3 grid-rows-1 place-items-center content-center gap-2 px-0.5 py-1.5 text-xl">
           {/* quantity */}
           {selected?.quantity && (
-            <motion.button
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: 0,
-                type: "spring",
-                stiffness: 200,
-                damping: 20,
-              }}
-              className="flex aspect-square h-full items-center justify-center rounded-full"
-              style={{
-                background: `linear-gradient(${selected?.quantity.gradient.direction}deg, ${selected?.quantity.gradient.start}, ${selected?.quantity.gradient.end})`,
-              }}
+            <CircleButton
+              title={selected.quantity.title}
+              value={selected.quantity.value}
+              position="relative"
+              gradient={selected.quantity.gradient}
+              animation={{ delay: 0, stiffness: 200, damping: 20 }}
               onClick={() =>
                 router.push(
                   `quantity?${new URLSearchParams(Array.from(searchParams.entries())).toString()}`
                 )
               }
-            >
-              <span className="font-semibold text-white">{selected?.quantity.title}</span>
-            </motion.button>
+            />
           )}
           {/* price */}
           {selected?.price && (
-            <motion.button
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: 0.1,
-                type: "spring",
-                stiffness: 200,
-                damping: 20,
-              }}
-              className="flex aspect-square h-full items-center justify-center rounded-full"
-              style={{
-                background: `linear-gradient(${selected?.price.gradient.direction}deg, ${selected?.price.gradient.start}, ${selected?.price.gradient.end})`,
-              }}
+            <CircleButton
+              title={selected.price.title}
+              value={selected.price.value}
+              position="relative"
+              gradient={selected.price.gradient}
+              animation={{ delay: 0.1, stiffness: 200, damping: 20 }}
               onClick={() =>
                 router.push(
                   `price?${new URLSearchParams(Array.from(searchParams.entries())).toString()}`
                 )
               }
-            >
-              <span className="font-semibold text-white">{selected?.price.title}</span>
-            </motion.button>
+            />
           )}
           {/* taste */}
           {selected?.taste && (
-            <motion.button
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: 0.2,
-                type: "spring",
-                stiffness: 200,
-                damping: 20,
-              }}
-              className="flex aspect-square h-full items-center justify-center rounded-full"
-              style={{
-                background: `linear-gradient(${selected?.taste.gradient.direction}deg, ${selected?.taste.gradient.start}, ${selected?.taste.gradient.end})`,
-              }}
+            <CircleButton
+              title={selected.taste.title}
+              value={selected.taste.value}
+              position="relative"
+              gradient={selected.taste.gradient}
+              animation={{ delay: 0.2, stiffness: 200, damping: 20 }}
               onClick={() =>
                 router.push(
                   `taste?${new URLSearchParams(Array.from(searchParams.entries())).toString()}`
                 )
               }
-            >
-              <span className="font-semibold text-white">{selected?.taste.title}</span>
-            </motion.button>
+            />
           )}
         </div>
       </div>

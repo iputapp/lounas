@@ -2,43 +2,42 @@
 
 import { motion } from "framer-motion";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useLayoutEffect, useRef, useState } from "react";
 
-import { Circle } from "@/components/buttons/CircleButton";
+import { CircleButton } from "@/components/buttons/CircleButton";
 
 import { selections } from "../constants";
 
-type Position = {
-  x: number;
-  y: number;
-};
-
 export default function Test() {
-  const constraintsRef = useRef(null);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [positions, setPositions] = useState<Position[]>([]);
 
-  const currentSelections = selections["price"];
+  /** circle position */
+  const positions = [
+    {
+      x: 30,
+      y: 36,
+    },
+    {
+      x: 35,
+      y: 64,
+    },
+    {
+      x: 75,
+      y: 50,
+    },
+    {
+      x: 75,
+      y: 72,
+    },
+  ];
 
-  useLayoutEffect(() => {
-    for (let i = 0; i < currentSelections.length; i++) {
-      setPositions((prev) => [
-        ...prev,
-        {
-          x: Math.random() * 0.6 * window.innerWidth,
-          y: (Math.random() * 0.6 + 0.08) * window.innerHeight,
-        },
-      ]);
-    }
-  }, [currentSelections]);
+  const currentPathname = pathname.split("/").pop() as string; // ex. "quantity"
+  const currentSelections = selections[currentPathname as keyof typeof selections];
 
   const clickHandler = (e: React.MouseEvent) => {
     if (!e.currentTarget.getAttribute("value")) return;
     const value = e.currentTarget.getAttribute("value");
-
-    const currentPathname = pathname.split("/").pop() as string; // ex. "quantity"
     const currentParams = new URLSearchParams(Array.from(searchParams.entries())); // ex. "size=medium&price=medium"
     currentParams.set(currentPathname, value as string); // set new query param (when exists, overwrite)
     console.log(currentParams.toString());
@@ -46,18 +45,21 @@ export default function Test() {
   };
 
   return (
-    <div className="grid h-screen w-full grid-rows-6 bg-neutral-100">
+    <div className="grid h-full w-full content-start">
+      {/* title */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="row-span-1 grid place-items-center"
       >
-        <h1 className="w-fit border-b-2 border-blue-500 pb-4 text-4xl font-semibold">Price</h1>
+        <h1 className="mx-auto w-fit border-b-2 border-blue-500 py-4 text-4xl font-semibold">
+          Price
+        </h1>
       </motion.div>
-      <motion.div ref={constraintsRef} className="fixed h-full w-full overflow-clip">
+      {/* main feature */}
+      <motion.div className="fixed inset-0 h-full w-full overflow-clip">
         {currentSelections.map((selection, index) => (
-          <Circle
+          <CircleButton
             key={index}
             title={selection.title}
             value={selection.value}
@@ -70,7 +72,6 @@ export default function Test() {
               direction: selection.gradient.direction,
             }}
             onClick={clickHandler}
-            constraintsRef={constraintsRef}
           />
         ))}
       </motion.div>

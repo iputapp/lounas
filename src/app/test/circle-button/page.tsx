@@ -16,7 +16,7 @@ export default function Test() {
   }, [router]);
 
   return (
-    <div className="grid h-screen w-full place-items-center">
+    <div className="fixed inset-0 grid h-full w-full place-items-center">
       <h1 className="text-xl">loading...</h1>
     </div>
   );

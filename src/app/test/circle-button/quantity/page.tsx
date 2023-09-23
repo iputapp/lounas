@@ -2,83 +2,42 @@
 
 import { motion } from "framer-motion";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useLayoutEffect, useRef, useState } from "react";
 
-import { Circle } from "@/components/buttons/CircleButton";
+import { CircleButton } from "@/components/buttons/CircleButton";
 
 import { selections } from "../constants";
-
-type Position = {
-  x: number;
-  y: number;
-};
 
 export default function Test() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const constraintsRef = useRef(null);
-  const [positions, setPositions] = useState<Position[]>([]);
+
+  /** circle position */
+  const positions = [
+    {
+      x: 30,
+      y: 36,
+    },
+    {
+      x: 35,
+      y: 64,
+    },
+    {
+      x: 75,
+      y: 50,
+    },
+    {
+      x: 75,
+      y: 72,
+    },
+  ];
 
   const currentPathname = pathname.split("/").pop() as string; // ex. "quantity"
   const currentSelections = selections[currentPathname as keyof typeof selections];
 
-  useLayoutEffect(() => {
-    /** rem to px */
-    const remToPx = (rem: number) => {
-      return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-    };
-    /** ratio to px of target(px) */
-    const ratioToPx = (ratio: number, targetPx: number) => {
-      return ratio * targetPx;
-    };
-    /** random positions (px) */
-    const positions = currentSelections.map((item) => {
-      {
-        /** random position in window (px) */
-        const pos = {
-          x: ratioToPx(Math.random(), window.innerWidth),
-          y: ratioToPx(Math.random(), window.innerHeight),
-        };
-        if (pos.x < window.innerWidth / 2) {
-          if (pos.y < window.innerHeight / 2) {
-            /** top left */
-            return {
-              x: pos.x + remToPx(item.size),
-              y: pos.y + remToPx(item.size),
-            };
-          } else {
-            /** bottom left */
-            return {
-              x: pos.x + remToPx(item.size),
-              y: pos.y - remToPx(item.size),
-            };
-          }
-        } else {
-          if (pos.y < window.innerHeight / 2) {
-            /** top right */
-            return {
-              x: pos.x - remToPx(item.size),
-              y: pos.y + remToPx(item.size),
-            };
-          } else {
-            /** bottom right */
-            return {
-              x: pos.x - remToPx(item.size),
-              y: pos.y - remToPx(item.size),
-            };
-          }
-        }
-      }
-    });
-    setPositions(positions);
-  }, [currentSelections]);
-
   const clickHandler = (e: React.MouseEvent) => {
     if (!e.currentTarget.getAttribute("value")) return;
     const value = e.currentTarget.getAttribute("value");
-
-    const currentPathname = pathname.split("/").pop() as string; // ex. "quantity"
     const currentParams = new URLSearchParams(Array.from(searchParams.entries())); // ex. "size=medium&price=medium"
     currentParams.set(currentPathname, value as string); // set new query param (when exists, overwrite)
     console.log(currentParams.toString());
@@ -98,9 +57,9 @@ export default function Test() {
         </h1>
       </motion.div>
       {/* main feature */}
-      <motion.div ref={constraintsRef} className="fixed inset-0 h-full w-full overflow-clip">
+      <motion.div className="fixed inset-0 h-full w-full overflow-clip">
         {currentSelections.map((selection, index) => (
-          <Circle
+          <CircleButton
             key={index}
             title={selection.title}
             value={selection.value}
@@ -113,7 +72,6 @@ export default function Test() {
               direction: selection.gradient.direction,
             }}
             onClick={clickHandler}
-            constraintsRef={constraintsRef}
           />
         ))}
       </motion.div>
