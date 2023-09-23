@@ -4,15 +4,16 @@ import Link from "next/link";
 import styles from "./styles.module.scss";
 
 type CardHorizontalProps = {
+  url: string;
   title: string;
   image: string;
   tag?: number | string;
   description?: React.ReactNode;
 };
 
-export function CardHorizontal({ title, image, tag, description }: CardHorizontalProps) {
+export function CardHorizontal({ url, title, image, tag, description }: CardHorizontalProps) {
   return (
-    <Link href="/" className={styles.card}>
+    <Link href={url} className={styles.card}>
       <div className={styles.imageParent}>
         <Image
           className={styles.image}
@@ -24,7 +25,9 @@ export function CardHorizontal({ title, image, tag, description }: CardHorizonta
         />
       </div>
       <section className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
+        <div className={styles.title}>
+          <span>{title}</span>
+        </div>
         <section className={styles.description}>{description}</section>
       </section>
       <div className={tag ? styles.tag : ""}>

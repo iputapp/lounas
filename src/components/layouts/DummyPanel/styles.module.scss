@@ -1,0 +1,42 @@
+@use "variables" as var;
+
+.container {
+  @apply relative w-full
+    rounded-xl px-4 pb-3.5 pt-5
+    backdrop-blur-md;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  gap: 0.875rem; // gap-3.5
+  min-height: 48dvh;
+  background-color: rgb(255 255 255 / 30%);
+
+  .header {
+    @apply flex items-center justify-center
+      space-x-1 pr-3;
+
+    .logo {
+      @apply text-xl;
+    }
+
+    .title {
+      @apply text-3xl font-bold;
+
+      color: transparent;
+      background: linear-gradient(135deg, #0014ff, var.$blue);
+      background-clip: text;
+    }
+  }
+
+  .main {
+    @apply p-2 text-sm;
+  }
+
+  .footer {
+    @apply flex items-center justify-center;
+
+    font-size: 0.75rem; // 12px
+    line-height: 1.125rem; // 18px
+  }
+}

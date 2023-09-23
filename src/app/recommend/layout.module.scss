@@ -3,5 +3,7 @@
 .main {
   @apply min-h-screen w-full px-5;
 
-  padding-top: 1.625rem; // 26px
+  padding-top: var.$safe-area-scroll-top;
+  padding-bottom: var.$safe-area-scroll-bottom;
+  background-color: var.$bg-primary;
 }

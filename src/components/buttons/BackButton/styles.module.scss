@@ -1,8 +1,13 @@
 @use "variables" as var;
 
 .button {
-  @apply flex items-center
+  @apply -ms-2.5
+    flex items-start -space-x-1
     font-semibold;
 
   color: var.$blue;
+
+  .icon {
+    font-size: 0.875em;
+  }
 }
