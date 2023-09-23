@@ -96,7 +96,7 @@ export function Circle({
 
   return (
     <motion.button
-      initial={{ scale: 0, x: "100%", y: "100%" }}
+      initial={{ scale: 0, x: "-50%", y: "-50%" }}
       animate={{ scale: 1, x: x, y: y }}
       exit={{ scale: 0 }}
       transition={{

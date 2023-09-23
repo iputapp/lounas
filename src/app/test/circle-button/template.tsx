@@ -14,15 +14,14 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const [selected, setSelected] = useState<Selections>();
 
   useEffect(() => {
+    /** ex. [["quantity", "low"], ["price", "medium"], ["taste", "medium"]] */
     const currentParams = Array.from(searchParams.entries());
 
-    if (!currentParams.length) return;
-
     currentParams.map((param) => {
-      const key = param[0];
-      const value = param[1];
+      const key = param[0]; // ex. quantity, price, taste
+      const value = param[1]; // ex. low, medium, high
+      /** ex. selections[quantity].find(item => item.value === "low") */
       const target = selections[key as keyof Selections].find((item) => item.value === value);
-      console.log(target);
       setSelected((prev) => ({ ...prev, [key as keyof Selections]: target }));
     });
   }, [pathname, searchParams]);
@@ -30,11 +29,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <>
       {children}
+      {/* selection stack (skipは`constants.ts`に属性として設定する) */}
       <div
         className={`fixed bottom-10 left-0 right-0 z-30 mx-auto aspect-[32/9] w-[75%] overflow-clip rounded-full bg-neutral-100/80 backdrop-blur ${styles.neumo}`}
       >
         <div className="grid h-full grid-cols-3 grid-rows-1 place-items-center content-center gap-2 px-0.5 py-1.5">
-          {selected?.quantity ? (
+          {/* quantity */}
+          {selected?.quantity && (
             <motion.button
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -56,17 +57,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
             >
               <span className="font-semibold text-white">{selected?.quantity.title}</span>
             </motion.button>
-          ) : (
-            <button
-              className="flex aspect-square h-full items-center justify-center rounded-full"
-              onClick={() =>
-                router.push(
-                  `quantity?${new URLSearchParams(Array.from(searchParams.entries())).toString()}`
-                )
-              }
-            ></button>
           )}
-          {selected?.price ? (
+          {/* price */}
+          {selected?.price && (
             <motion.button
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -88,17 +81,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
             >
               <span className="font-semibold text-white">{selected?.price.title}</span>
             </motion.button>
-          ) : (
-            <button
-              className="flex aspect-square h-full items-center justify-center rounded-full"
-              onClick={() =>
-                router.push(
-                  `price?${new URLSearchParams(Array.from(searchParams.entries())).toString()}`
-                )
-              }
-            ></button>
           )}
-          {selected?.taste ? (
+          {/* taste */}
+          {selected?.taste && (
             <motion.button
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -120,15 +105,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
             >
               <span className="font-semibold text-white">{selected?.taste.title}</span>
             </motion.button>
-          ) : (
-            <button
-              className="flex aspect-square h-full items-center justify-center rounded-full"
-              onClick={() =>
-                router.push(
-                  `taste?${new URLSearchParams(Array.from(searchParams.entries())).toString()}`
-                )
-              }
-            ></button>
           )}
         </div>
       </div>

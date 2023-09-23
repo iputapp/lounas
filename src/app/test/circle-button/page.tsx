@@ -3,6 +3,11 @@
 import { useRouter } from "next/navigation";
 import { useLayoutEffect } from "react";
 
+/**
+ * This page is used to redirect to the first page of the test.
+ * First page is `quantity`.
+ */
+
 export default function Test() {
   const router = useRouter();
 

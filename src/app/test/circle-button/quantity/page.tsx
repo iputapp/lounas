@@ -14,10 +14,10 @@ type Position = {
 };
 
 export default function Test() {
-  const constraintsRef = useRef(null);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const constraintsRef = useRef(null);
   const [positions, setPositions] = useState<Position[]>([]);
 
   const currentSelections = selections["quantity"];
@@ -46,7 +46,8 @@ export default function Test() {
   };
 
   return (
-    <div className="grid h-screen w-full grid-rows-6 bg-neutral-100">
+    <div className="grid h-full w-full grid-rows-6">
+      {/* title */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -55,7 +56,8 @@ export default function Test() {
       >
         <h1 className="w-fit border-b-2 border-blue-500 pb-4 text-4xl font-semibold">Quantity</h1>
       </motion.div>
-      <motion.div ref={constraintsRef} className="fixed h-full w-full overflow-clip">
+      {/* main feature */}
+      <motion.div ref={constraintsRef} className="fixed inset-0 h-full w-full overflow-clip">
         {currentSelections.map((selection, index) => (
           <Circle
             key={index}
