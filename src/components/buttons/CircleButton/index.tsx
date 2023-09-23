@@ -59,8 +59,8 @@ export function Circle({
 
   return (
     <motion.button
-      initial={{ scale: 0, x: `calc(100% - ${size / 2}rem)`, y: `calc(100% - ${size / 2}rem)` }}
-      animate={{ scale: 1, x: `calc(100% - ${size / 2}rem)`, y: `calc(100% - ${size / 2}rem)` }}
+      initial={{ scale: 0, x: `100%`, y: `100%` }}
+      animate={{ scale: 1, x: `${x}px`, y: `${y}px` }}
       exit={{ scale: 0 }}
       transition={{
         delay: Math.random(),
