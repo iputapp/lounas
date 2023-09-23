@@ -24,15 +24,54 @@ export default function Test() {
   const currentSelections = selections[currentPathname as keyof typeof selections];
 
   useLayoutEffect(() => {
-    for (let i = 0; i < currentSelections.length; i++) {
-      setPositions((prev) => [
-        ...prev,
-        {
-          x: Math.random() * 0.6 * window.innerWidth,
-          y: (Math.random() * 0.6 + 0.08) * window.innerHeight,
-        },
-      ]);
-    }
+    /** rem to px */
+    const remToPx = (rem: number) => {
+      return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    };
+    /** ratio to px of target(px) */
+    const ratioToPx = (ratio: number, targetPx: number) => {
+      return ratio * targetPx;
+    };
+    /** random positions (px) */
+    const positions = currentSelections.map((item) => {
+      {
+        /** random position in window (px) */
+        const pos = {
+          x: ratioToPx(Math.random(), window.innerWidth),
+          y: ratioToPx(Math.random(), window.innerHeight),
+        };
+        if (pos.x < window.innerWidth / 2) {
+          if (pos.y < window.innerHeight / 2) {
+            /** top left */
+            return {
+              x: pos.x + remToPx(item.size),
+              y: pos.y + remToPx(item.size),
+            };
+          } else {
+            /** bottom left */
+            return {
+              x: pos.x + remToPx(item.size),
+              y: pos.y - remToPx(item.size),
+            };
+          }
+        } else {
+          if (pos.y < window.innerHeight / 2) {
+            /** top right */
+            return {
+              x: pos.x - remToPx(item.size),
+              y: pos.y + remToPx(item.size),
+            };
+          } else {
+            /** bottom right */
+            return {
+              x: pos.x - remToPx(item.size),
+              y: pos.y - remToPx(item.size),
+            };
+          }
+        }
+      }
+    });
+    setPositions(positions);
   }, [currentSelections]);
 
   const clickHandler = (e: React.MouseEvent) => {
