@@ -34,7 +34,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       {children}
       {/* selection stack */}
       <div
-        className={`fixed inset-x-0 bottom-12 z-30 mx-auto aspect-[4/1] w-[80%] max-w-sm overflow-clip rounded-full bg-neutral-100/80 backdrop-blur ${styles.neumo}`}
+        className={`fixed inset-x-0 bottom-12 z-30 mx-auto aspect-[3.64/1] w-[80%] max-w-sm overflow-clip rounded-full bg-neutral-100/80 backdrop-blur ${styles.neumo}`}
       >
         <div className="grid h-full w-full grid-cols-3 place-items-center py-2 text-xl">
           {/* quantity */}
