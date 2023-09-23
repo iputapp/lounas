@@ -3,7 +3,7 @@
 import styles from "./styles.module.scss";
 
 type BorderTitleProps = {
-  title: string;
+  children: React.ReactNode;
   className?: string;
   fontSize?:
     | "text-xs"
@@ -43,18 +43,34 @@ type BorderTitleProps = {
     | "py-10"
     | "py-11"
     | "py-12";
+  lineHeight?:
+    | ""
+    | "leading-3"
+    | "leading-4"
+    | "leading-5"
+    | "leading-6"
+    | "leading-7"
+    | "leading-8"
+    | "leading-9"
+    | "leading-10"
+    | "leading-normal"
+    | "leading-relaxed"
+    | "leading-loose";
 };
 
 export function BorderTitle({
-  title,
+  children,
   className = "",
   fontSize = "text-4xl",
   fontWeight = "font-bold",
   boderPadding = "py-4",
+  lineHeight = "",
 }: BorderTitleProps) {
   return (
-    <div className={`${className}`}>
-      <span className={`${styles.title} ${boderPadding} ${fontSize} ${fontWeight}`}>{title}</span>
+    <div
+      className={`${styles.title} ${boderPadding} ${fontSize} ${fontWeight} ${lineHeight} ${className}`}
+    >
+      {children}
     </div>
   );
 }

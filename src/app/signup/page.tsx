@@ -11,15 +11,15 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import TextField from "@mui/material/TextField";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { LoadingLayer } from "@/components/layouts/Loading";
+import { LoadingLayer } from "@/components/layouts/LoadingLayer";
 import { STUDENT_ID_LENGTH, STUDENT_ID_REGEX } from "@/constants";
 // import { callSignup } from "@/hooks/signup";
 
 export default function Signup() {
-  const router = useRouter();
+  // const router = useRouter();
 
   /** @summary student */
   const [student, setStudent] = useState<string>("");

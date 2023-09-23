@@ -10,18 +10,12 @@ import Image from "next/image";
 
 import styles from "./styles.module.scss";
 
+export type NavigationType = "straight" | "left" | "right" | "pin";
+
 type CardFullProps = {
   image: string;
   description: string;
-  navigation:
-    | "straight"
-    | "left"
-    | "right"
-    | "sharpLeft"
-    | "sharpRight"
-    | "slightLeft"
-    | "slightRight"
-    | "pin";
+  navigation: NavigationType;
 };
 
 export function CardFull({ image, description, navigation }: CardFullProps) {

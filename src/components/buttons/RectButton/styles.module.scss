@@ -1,7 +1,10 @@
 @use "variables" as var;
 
 .box {
-  @apply w-full overflow-clip rounded-lg px-5 py-4;
+  @apply w-full
+    overflow-clip rounded-lg
+    px-5 py-3.5
+    shadow-lg;
 
   &.blue {
     background: linear-gradient(to right top, #1da1f2, #0e71c8);
@@ -12,10 +15,6 @@
   }
 
   & .text {
-    @apply text-xl font-semibold text-white;
+    @apply text-lg font-semibold text-white;
   }
-}
-
-.flex-center-all {
-  @apply flex items-center justify-center;
 }

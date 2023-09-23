@@ -1,6 +1,9 @@
+"use client";
+
+import { RectButton } from "@/components/buttons/RectButton";
 import { CardHorizontal } from "@/components/cards/CardHorizontal";
 import { ExpandablePanel } from "@/components/layouts/ExpandablePanel";
-import { PaymentGrid } from "@/components/lists/PaymentGrid";
+import { PaymentLong, PaymentType } from "@/components/lists/PaymentLong";
 
 export default function Test() {
   const now = new Date();
@@ -11,50 +14,43 @@ export default function Test() {
     timeStay: 900, // seconds
     timeDuration: 300, // seconds
     payments: [
-      {
-        payment: "現金",
-        accepted: true,
-      },
-      {
-        payment: "PayPay",
-        accepted: true,
-      },
-      {
-        payment: "交通系IC",
-        accepted: false,
-      },
-      {
-        payment: "クレジット",
-        accepted: false,
-      },
+      { payment: "cash" as PaymentType, accepted: true },
+      { payment: "credit" as PaymentType, accepted: true },
+      { payment: "transport" as PaymentType, accepted: true },
+      { payment: "qr" as PaymentType, accepted: true },
     ],
   };
 
   return (
     <div className="h-screen w-full bg-gradient-to-b from-indigo-300 to-sky-300 p-4">
       <div className="grid gap-5">
-        <CardHorizontal title="カード" image="/icons/media-image.svg" tag={1} />
-        <CardHorizontal title="カード" image="/icons/media-image.svg" tag={1} />
+        <CardHorizontal url="/" title="カード" image="/icons/media-image.svg" tag={1} />
+        <CardHorizontal url="/" title="カード" image="/icons/media-image.svg" tag={1} />
         <ExpandablePanel
           title="店舗詳細"
           titleEx="決済方法"
-          childrenEx={<PaymentGrid payments={data.payments} />}
+          childrenEx={<PaymentLong payments={data.payments} />}
         >
           <ul className="grid justify-items-start gap-4">
             <li>
-              <p>
+              <span>
                 全日：{data.timeOpen}～{data.timeClose}
-              </p>
+              </span>
             </li>
-            <li>
-              <p>滞在時間：おおよそ{Math.floor(data.timeStay / 60)}分</p>
+            <li className="grid">
+              <span>滞在時間：おおよそ{Math.floor(data.timeStay / 60)}分</span>
               <small className="text-xs">※混雑状況により異なります。</small>
             </li>
             <li>
-              <p>片道：おおよそ{Math.floor(data.timeDuration / 60)}分</p>
+              <span>片道：おおよそ{Math.floor(data.timeDuration / 60)}分</span>
             </li>
           </ul>
         </ExpandablePanel>
+        <div className="mx-auto w-fit">
+          <RectButton color="blue" onClick={() => console.log("ここに行く")}>
+            ここに行く
+          </RectButton>
+        </div>
       </div>
     </div>
   );
