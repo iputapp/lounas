@@ -49,69 +49,31 @@ export function Circle({
   const [style, setStyle] = useState<React.CSSProperties>({});
 
   useLayoutEffect(() => {
-    // const windowSize = { width: window.innerWidth, height: window.innerHeight };
-
-    // /**
-    //  * circle size - convert `rem` to `px`
-    //  */
-    // const sizePixel = size * parseFloat(getComputedStyle(document.documentElement).fontSize);
-    // /**
-    //  * horizontal position
-    //  * 0% to 50% - `left`
-    //  * 50% to 100% - `right`
-    //  * 50% is the center of the window width
-    //  */
-    // if ((x / 100) * windowSize.width < windowSize.width - sizePixel) {
-    //   setStyle({ left: `calc(${x}% - ${size / 2}rem + ${size / 2}rem)` });
-    // } else {
-    //   setStyle({ right: `calc(${100 - x}% - ${size / 2}rem + ${size / 2}rem)` });
-    // }
-    // /**
-    //  * vertical position
-    //  * 0% to 50% - `top`
-    //  * 50% to 100% - `bottom`
-    //  * 50% is the center of the window height
-    //  */
-    // if ((y / 100) * windowSize.height < windowSize.height - sizePixel) {
-    //   setStyle((prev) => ({ ...prev, top: `calc(${y}% - ${size / 2}rem + ${size / 2}rem)` }));
-    // } else {
-    //   setStyle((prev) => ({
-    //     ...prev,
-    //     bottom: `calc(${100 - y}% - ${size / 2}rem + ${size / 2}rem)`,
-    //   }));
-    // }
-
-    /**
-     * `prev` is the position of the circle that is set above
-     * size, gradient, base font size
-     */
-    setStyle((prev) => ({
-      // ...prev,
+    /** set styles */
+    setStyle({
       width: `${size}rem`,
-      background: `linear-gradient(${gradient.direction}deg, ${gradient.start}, ${gradient.end})`,
       fontSize: `${size / 4}rem`,
-      transformOrigin: "center",
-    }));
-  }, [size, x, y, gradient]);
+      background: `linear-gradient(${gradient.direction}deg, ${gradient.start}, ${gradient.end})`,
+    });
+  }, [size, gradient]);
 
   return (
     <motion.button
-      initial={{ scale: 0, x: "-50%", y: "-50%" }}
-      animate={{ scale: 1, x: x, y: y }}
+      initial={{ scale: 0, x: `calc(100% - ${size / 2}rem)`, y: `calc(100% - ${size / 2}rem)` }}
+      animate={{ scale: 1, x: `calc(100% - ${size / 2}rem)`, y: `calc(100% - ${size / 2}rem)` }}
       exit={{ scale: 0 }}
       transition={{
         delay: Math.random(),
         type: "spring",
         stiffness: 50,
         damping: 8,
-        power: 0.1,
       }}
       drag={true}
       dragConstraints={constraintsRef}
       dragTransition={{
         bounceStiffness: 100,
         bounceDamping: 10,
-        power: 0.5,
+        power: 0.75,
       }}
       // onDrag={(event, info) => console.log(info.point.y, info.point.y)}
       className={styles.circle}

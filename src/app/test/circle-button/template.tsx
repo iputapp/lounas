@@ -21,8 +21,10 @@ export default function Template({ children }: { children: React.ReactNode }) {
       const key = param[0]; // ex. quantity, price, taste
       const value = param[1]; // ex. low, medium, high
       /** ex. selections[quantity].find(item => item.value === "low") */
-      const target = selections[key as keyof Selections].find((item) => item.value === value);
-      setSelected((prev) => ({ ...prev, [key as keyof Selections]: target }));
+      const target = selections[key as keyof typeof selections].find(
+        (item) => item.value === value
+      );
+      setSelected((prev) => ({ ...prev, [key as keyof typeof selections]: target }));
     });
   }, [pathname, searchParams]);
 

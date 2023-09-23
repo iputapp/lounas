@@ -20,7 +20,8 @@ export default function Test() {
   const constraintsRef = useRef(null);
   const [positions, setPositions] = useState<Position[]>([]);
 
-  const currentSelections = selections["quantity"];
+  const currentPathname = pathname.split("/").pop() as string; // ex. "quantity"
+  const currentSelections = selections[currentPathname as keyof typeof selections];
 
   useLayoutEffect(() => {
     for (let i = 0; i < currentSelections.length; i++) {
@@ -46,7 +47,7 @@ export default function Test() {
   };
 
   return (
-    <div className="grid h-full w-full grid-rows-6">
+    <div className="grid h-full w-full content-start">
       {/* title */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -54,7 +55,7 @@ export default function Test() {
         transition={{ duration: 0.5, ease: "easeInOut" }}
         className="row-span-1 grid place-items-center"
       >
-        <h1 className="w-fit border-b-2 border-blue-500 pb-4 text-4xl font-semibold">Quantity</h1>
+        <h1 className="w-fit border-b-2 border-blue-500 py-4 text-4xl font-semibold">Quantity</h1>
       </motion.div>
       {/* main feature */}
       <motion.div ref={constraintsRef} className="fixed inset-0 h-full w-full overflow-clip">
