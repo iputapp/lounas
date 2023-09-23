@@ -1,25 +1,28 @@
+@use "variables" as var;
+
 .card {
   @apply w-full
     overflow-clip rounded-3xl
-    bg-zinc-50 shadow-lg;
+    bg-white shadow-lg;
 
   & .image-parent {
-    @apply relative w-full
-      border-b-2 border-zinc-500/50;
+    @apply relative w-full;
 
     aspect-ratio: 16 / 10;
+
+    // border-image: linear-gradient(to right, rgb(var.$red, 60%), rgb(var.$rose, 60%));
+    // border-image-slice: 1;
 
     & > .image {
       @apply absolute object-cover;
     }
   }
 
-  & .content {
+  & .description {
     @apply flex w-full flex-col
-      px-5 py-3;
+      px-5 py-3
+      font-semibold;
 
-    & > .title {
-      @apply font-semibold;
-    }
+    color: var.$primary;
   }
 }

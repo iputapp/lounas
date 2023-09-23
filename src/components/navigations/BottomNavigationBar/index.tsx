@@ -15,16 +15,17 @@ export function BottomNavigationBar() {
   const [value, setValue] = useState("home");
 
   return (
-    <div className="fixed inset-x-0 bottom-0">
+    <div className="fixed inset-x-0 bottom-0 z-50">
       <BottomNavigation
         value={value}
         onChange={(event, value: string) => {
-          setValue(value);
+          const page = value.split("/").pop() as string;
+          setValue(page);
           router.push(`${value}`);
         }}
         sx={{
           "&": {
-            backdropFilter: "blur(8px)", // backdrop-blur
+            backdropFilter: "blur(8px) brightness(1.25)", // backdrop-blur, backdrop-brightness-125
             backgroundColor: "rgb(255 255 255 / 50%)",
             height: "5rem", // 3.5rem(default) + paddingBottom
           },
@@ -36,13 +37,13 @@ export function BottomNavigationBar() {
         }}
       >
         <BottomNavigationAction
-          value="home"
+          value="/webapp/home"
           icon={
             <span className="text-xl">{value === "home" ? <LogoFill /> : <LogoOutline />}</span>
           }
         />
         <BottomNavigationAction
-          value="ranking"
+          value="/webapp/ranking"
           icon={
             <span className="text-2xl">
               <Crown />
@@ -50,7 +51,7 @@ export function BottomNavigationBar() {
           }
         />
         <BottomNavigationAction
-          value="diary"
+          value="/webapp/diary"
           icon={
             <span className="text-xl">
               <Calendar />
@@ -58,7 +59,7 @@ export function BottomNavigationBar() {
           }
         />
         <BottomNavigationAction
-          value="user"
+          value="/webapp/user"
           icon={
             <span className="text-xl">
               <User />
