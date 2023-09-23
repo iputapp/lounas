@@ -34,9 +34,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
       {children}
       {/* selection stack */}
       <div
-        className={`fixed inset-x-0 bottom-10 z-30 mx-auto aspect-[32/9] w-[75%] max-w-sm overflow-clip rounded-full bg-neutral-100/80 backdrop-blur ${styles.neumo}`}
+        className={`fixed inset-x-0 bottom-12 z-30 mx-auto aspect-[4/1] w-[80%] max-w-sm overflow-clip rounded-full bg-neutral-100/80 backdrop-blur ${styles.neumo}`}
       >
-        <div className="grid h-full grid-cols-3 grid-rows-1 place-items-center content-center gap-2 px-0.5 py-1.5 text-xl">
+        <div className="grid h-full w-full grid-cols-3 place-items-center py-2 text-xl">
           {/* quantity */}
           {selected?.quantity && (
             <CircleButton
