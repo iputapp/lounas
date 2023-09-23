@@ -1,0 +1,55 @@
+@use "variables" as var;
+
+@keyframes gradient-slide {
+  from {
+    background-position: left;
+  }
+
+  to {
+    background-position: right;
+  }
+}
+
+.container {
+  @apply grid h-full w-full
+    place-content-center
+    gap-12;
+
+  & > .title {
+    @apply w-fit
+      text-4xl font-bold;
+
+    color: transparent;
+    background: linear-gradient(135deg, #fff 50%, var.$primary 50%);
+    background-clip: text;
+    background-size: 250% auto;
+    animation: gradient-slide 2.5s infinite alternate-reverse both cubic-bezier(0.83, 0, 0.17, 1); // easeInOutQuint
+  }
+
+  .sub {
+    @apply mx-auto grid w-full
+      justify-items-center
+      gap-2;
+
+    .text {
+      @apply text-lg font-semibold;
+
+      color: transparent;
+      background: linear-gradient(135deg, var.$tertiary 50%, #fff 50%);
+      background-clip: text;
+      background-size: 250% auto;
+      mix-blend-mode: hard-light;
+      animation: gradient-slide 2.5s infinite alternate both cubic-bezier(0.83, 0, 0.17, 1); // easeInOutQuint
+    }
+
+    .button {
+      width: 14.25rem;
+    }
+  }
+
+  .panel {
+    @apply mx-auto max-w-md;
+
+    width: 95%;
+  }
+}
