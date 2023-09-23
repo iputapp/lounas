@@ -8,7 +8,8 @@
   aspect-ratio: 1 / 1;
 
   & .title {
-    @apply font-semibold text-white;
+    @apply text-center
+      font-semibold text-white;
 
     font-size: 0.75em;
   }
