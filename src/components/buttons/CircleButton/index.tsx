@@ -31,9 +31,13 @@ type CircleButtonProps = {
  * @param {number} size Size in `rem`
  * @param {number} x Horizontal position `%` or ratio (1-100 or 0-1)
  * @param {number} y Vertical position `%` or ratio (1-100 or 0-1)
+ * @param {string} position Position of the button `absolute` or `relative` (default `absolute`)
  * @param {string} gradient.start Start color of the gradient (default `#fff`)
  * @param {string} gradient.end End color of the gradient (default `#fff`)
  * @param {number} gradient.direction Direction of the gradient in `deg` (default `180`)
+ * @param {number} animation.delay Delay of the animation in `s` (default `Math.random() * 0.6969`)
+ * @param {number} animation.stiffness Stiffness of the animation (default `80`)
+ * @param {number} animation.damping Damping of the animation (default `8`)
  * @param {(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void} onClick Function to be called when clicked
  *    `(React.MouseEvent<HTMLButtonElement, MouseEvent>) => void`
  */
