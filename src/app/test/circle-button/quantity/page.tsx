@@ -53,9 +53,10 @@ export default function Test() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="row-span-1 grid place-items-center"
       >
-        <h1 className="w-fit border-b-2 border-blue-500 py-4 text-4xl font-semibold">Quantity</h1>
+        <h1 className="mx-auto w-fit border-b-2 border-blue-500 py-4 text-4xl font-semibold">
+          Quantity
+        </h1>
       </motion.div>
       {/* main feature */}
       <motion.div ref={constraintsRef} className="fixed inset-0 h-full w-full overflow-clip">
