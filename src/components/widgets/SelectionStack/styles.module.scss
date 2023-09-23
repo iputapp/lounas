@@ -1,0 +1,35 @@
+@use "variables" as var;
+
+// common styles
+.neumo {
+  /* neumorphism */
+  --neumo-shadow: 0 -10px 15px -3px rgb(255 255 255 / 10%), 0 -4px 6px -4px rgb(255 255 255 / 10%);
+  --neumo-shadow-colored: 0 -10px 15px -3px rgb(255 255 255), 0 -4px 6px -4px rgb(255 255 255);
+
+  /* shadow-lg-xl */
+  --tw-shadow: 0 15px 20px -4px rgb(0 0 0 / 10%), 0 6px 8px -5px rgb(0 0 0 / 10%);
+  --tw-shadow-colored: 0 15px 20px -4px var(--tw-shadow-color),
+    0 6px 8px -5px var(--tw-shadow-color);
+
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow), var(--neumo-shadow), var(--neumo-shadow-colored);
+}
+
+.container {
+  @apply fixed inset-x-0 bottom-12 z-30
+    mx-auto max-w-sm
+    overflow-clip rounded-full
+    backdrop-blur;
+
+  width: 80%;
+  aspect-ratio: 3.64 / 1;
+  background-color: rgb(var.$bg-primary, 80%);
+
+  & > .spacer {
+    @apply grid h-full w-full
+      grid-cols-3
+      place-items-center
+      py-2
+      text-xl;
+  }
+}
