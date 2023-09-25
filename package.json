@@ -11,7 +11,9 @@
     "eslint:fix": "eslint ./src --ext .js,jsx,.ts,.tsx --fix",
     "stylelint:fix": "stylelint ./src/**/*.{css,scss} --fix",
     "prettier:fix": "prettier --check --write './src/**/*.{js,jsx,ts,tsx,css,scss,md,mdx}'",
-    "format": "npm run eslint:fix && npm run stylelint:fix && npm run prettier:fix"
+    "format": "npm run eslint:fix && npm run stylelint:fix && npm run prettier:fix",
+    "db:gen": "prisma generate",
+    "db:mig:dev": "dotenv -e .env.local prisma migrate dev"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -24,6 +26,7 @@
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "^10.4.15",
+    "dotenv-cli": "^7.3.0",
     "eslint": "^8.47.0",
     "framer-motion": "^10.16.1",
     "next": "^13.4.19",
