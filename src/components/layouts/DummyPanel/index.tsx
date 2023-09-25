@@ -1,4 +1,4 @@
-import LogoFill from "@icons/logo-fill.svg";
+import LogoFullColor from "@icons/logo-full-color.svg";
 
 import styles from "./styles.module.scss";
 
@@ -7,9 +7,8 @@ export function DummyPanel({ children }: { children?: React.ReactNode }) {
     <article className={styles.container}>
       <section className={styles.header}>
         <span className={styles.logo}>
-          <LogoFill />
+          <LogoFullColor />
         </span>
-        <span className={styles.title}>IMΛP</span>
       </section>
       <section className={styles.main}>{children}</section>
       <section className={styles.footer}>
