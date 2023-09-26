@@ -81,7 +81,7 @@ model WeekType {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  type String /// @zod.string.min(1)
+  type String @unique /// @zod.string.min(1)
   name String /// @zod.string.min(1)
 
   restaurantOpens RestaurantOpen[]
@@ -114,7 +114,7 @@ model RouteType {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  type String /// @zod.string.min(1)
+  type String @unique /// @zod.string.min(1)
   name String /// @zod.string.min(1)
 
   routes Route[]
@@ -145,7 +145,7 @@ model PaymentType {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  type String /// @zod.string.min(1)
+  type String @unique /// @zod.string.min(1)
   name String /// @zod.string.min(1)
 
   payments Payment[]
@@ -208,7 +208,7 @@ model DishTrait {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  type        String /// @zod.string.min(1)
+  type        String  @unique /// @zod.string.min(1)
   name        String /// @zod.string.min(1)
   description String?
 
