@@ -1,0 +1,15 @@
+@use "variables" as var;
+
+.container {
+  @apply grid h-full w-full;
+
+  .title {
+    @apply mx-auto self-start;
+  }
+
+  .circles {
+    @apply fixed inset-0
+      h-full w-full
+      overflow-clip;
+  }
+}
