@@ -114,9 +114,10 @@ model RouteType {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  name        String /// @zod.string.min(1)
-  description String?
-  routes      Route[]
+  type String /// @zod.string.min(1)
+  name String /// @zod.string.min(1)
+
+  routes Route[]
 
   @@map("route_types")
 }
