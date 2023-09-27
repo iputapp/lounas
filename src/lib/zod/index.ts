@@ -38,7 +38,7 @@ export const DishTraitScalarFieldEnumSchema = z.enum(['id','createdAt','updatedA
 
 export const VisitHistoryScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','userId','restaurantId','dishId']);
 
-export const UserScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','email','username','lastLogin','dataUsageAgreed']);
+export const UserScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','email','username','lastLogin']);
 
 export const SortOrderSchema = z.enum(['asc','desc']);
 
@@ -807,7 +807,6 @@ export const UserSchema = z.object({
   email: z.string().email(),
   username: z.string().min(6),
   lastLogin: z.coerce.date().nullable(),
-  dataUsageAgreed: z.boolean(),
 })
 
 export type User = z.infer<typeof UserSchema>
