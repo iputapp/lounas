@@ -11,7 +11,7 @@ import styles from "./page.module.scss";
 
 type SelectionType = DishTrait & CircleThemeType;
 
-export default function Test() {
+export default function Page() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
