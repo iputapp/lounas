@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { AnimatePresenceLayer } from "@/components/layouts/AnimatePresence";
+import { AnimatePresenceLayer } from "@/components/layouts/AnimatePresenceLayer";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

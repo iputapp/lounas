@@ -10,10 +10,14 @@ export default function Test() {
   return (
     <div className="grid h-screen place-items-center gap-6 p-6">
       <div className="w-2/6">
-        <BorderCircleButton title="Skip" fontSize="text-2xl" onClick={goGO} />
+        <BorderCircleButton fontSize="text-2xl" onClick={goGO}>
+          Skip
+        </BorderCircleButton>
       </div>
       <div className="w-3/5">
-        <BorderCircleButton title="GO!" fontSize="text-4xl" outline onClick={goGO} />
+        <BorderCircleButton fontSize="text-4xl" outline onClick={goGO}>
+          GO!
+        </BorderCircleButton>
       </div>
     </div>
   );

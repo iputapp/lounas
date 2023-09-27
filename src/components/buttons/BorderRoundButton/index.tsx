@@ -3,7 +3,7 @@
 import styles from "./styles.module.scss";
 
 type BorderRoundButtonProps = {
-  title: string;
+  children: React.ReactNode;
   fontSize?:
     | "text-xs"
     | "text-sm"
@@ -21,11 +21,11 @@ type BorderRoundButtonProps = {
   onClick: () => void;
 };
 
-export function BorderRoundButton({ title, fontSize, onClick }: BorderRoundButtonProps) {
+export function BorderRoundButton({ children, fontSize, onClick }: BorderRoundButtonProps) {
   return (
     <button className={`${styles.container} ${fontSize}`} onClick={onClick}>
       <div className={styles.inner}>
-        <span className={styles.title}>{title}</span>
+        <span className={styles.title}>{children}</span>
       </div>
     </button>
   );

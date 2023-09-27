@@ -1,73 +1,99 @@
 @use "variables" as var;
 
-.backdrop {
-  @apply fixed inset-0 z-40
-    h-screen w-full;
+// common styles
+.panel {
+  @apply flex
+    items-start justify-between
+    overflow-clip rounded-2xl
+    p-3
+    backdrop-blur-md backdrop-brightness-200;
 
-  background-color: rgb(0 0 0 / 50%);
-  transition: background 0.3s ease-in-out;
+  background-color: rgb(255 255 255 / 80%);
+
+  .content {
+    @apply grid w-full
+      justify-items-start
+      px-1.5 pb-1.5 pt-1;
+
+    .title {
+      @apply text-xl font-semibold;
+
+      color: var.$primary;
+    }
+
+    .description {
+      @apply px-1;
+
+      color: var.$tertiary;
+    }
+  }
+
+  .icon {
+    color: var.$secondary;
+  }
 }
 
-.container {
-  @apply relative
-    flex items-start justify-between
-    overflow-clip rounded-2xl
-    p-3 shadow-lg
-    backdrop-blur backdrop-brightness-200;
+// overview panel
+.overview {
+  @apply relative w-full;
 
-  width: 100%;
-  background-color: rgb(255 255 255 / 80%);
+  .content {
+    @apply gap-5;
+
+    .description {
+      @apply font-semibold;
+
+      color: var.$primary;
+    }
+  }
+
+  .panel-bg {
+    @apply absolute inset-0 -z-10
+      -m-4;
+
+    // background: url("/test/katsudon.webp") no-repeat center; // set in html
+    filter: blur(12px) brightness(1.25); // blur brightness-125
+    background-size: 175%;
+  }
+}
+
+// expanded panel
+.full {
+  @apply fixed inset-0 z-30
+      h-screen w-full;
+
+  visibility: hidden;
+  background-color: rgb(0 0 0 / 50%);
+  opacity: 0;
   transition:
-    background 0.3s ease-in-out,
-    backdrop-filter 0.3s ease-in-out;
+    visibility 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
 
   &.expanded {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  & > * {
     @apply absolute inset-0
       m-auto;
 
-    width: 90vw;
-    max-height: 22rem;
-  }
-}
-
-.content {
-  @apply grid h-full w-full
-    content-between
-    overflow-clip p-3;
-
-  & .overview {
-    @apply grid justify-items-start gap-0 text-sm;
+    width: 90%;
+    height: fit-content;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1); // easeInOutCubic
+    transform: scale(0);
 
     &.expanded {
-      @apply gap-3;
-    }
-
-    & .title {
-      @apply text-xl font-semibold;
-
-      height: 0;
-      visibility: hidden;
-
-      &.expanded {
-        height: 100%;
-        visibility: visible;
-      }
+      transform: scale(1);
     }
   }
 
-  & .details {
-    @apply grid justify-items-start gap-3 text-sm;
+  .content {
+    @apply gap-8;
 
-    height: 0;
-    transform: scaleY(0);
-
-    &.expanded {
-      height: 100%;
-      transform: scaleY(1);
-    }
-
-    & .title {
-      @apply text-xl font-semibold;
+    & > section {
+      @apply grid h-fit w-full
+      justify-items-start gap-4;
     }
   }
 }
