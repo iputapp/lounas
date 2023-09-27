@@ -239,12 +239,12 @@ model User {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  email     String    @unique /// @zod.string.email()
-  username  String    @unique /// @zod.string.min(6)
-  lastLogin DateTime? @map("last_login")
+  email           String    @unique /// @zod.string.email()
+  username        String    @unique /// @zod.string.min(6)
+  lastLogin       DateTime? @map("last_login")
+  dataUsageAgreed Boolean   @map("data_usage_agreed")
 
-  visitHistories  VisitHistory[]
-  dataUsageAgreed Boolean
+  visitHistories VisitHistory[]
 
   @@index([lastLogin], name: "users_last_login_idx")
   @@map("users")
