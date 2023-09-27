@@ -192,7 +192,7 @@ model DishScore {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  score Int /// @zod.number.gte(0).lte(99)
+  score Int /// @zod.number
 
   dish    Dish      @relation(fields: [dishId], references: [id])
   dishId  String    @map("dish_id") @db.Uuid
@@ -211,6 +211,7 @@ model DishTrait {
   type        String  @unique /// @zod.string.min(1)
   name        String /// @zod.string.min(1)
   description String?
+  threshold   Int /// @zod.number
 
   dishScores DishScore[]
 
