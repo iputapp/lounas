@@ -31,8 +31,8 @@ CREATE TABLE "restaurant_opens" (
     "id" UUID NOT NULL,
     "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "time_open" TIMETZ(6) NOT NULL,
-    "time_close" TIMETZ(6) NOT NULL,
+    "time_open" TIMETZ NOT NULL,
+    "time_close" TIMETZ NOT NULL,
     "week_type_id" INTEGER NOT NULL,
     "restaurant_id" UUID NOT NULL,
 
@@ -172,6 +172,7 @@ CREATE TABLE "users" (
     "email" TEXT NOT NULL,
     "username" TEXT NOT NULL,
     "last_login" TIMESTAMP(3),
+    "data_usage_agreed" BOOLEAN NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -214,9 +215,6 @@ CREATE INDEX "dishes_price_idx" ON "dishes"("price");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "dish_scores_dish_id_trait_id_key" ON "dish_scores"("dish_id", "trait_id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "dish_traits_type_key" ON "dish_traits"("type");
 
 -- CreateIndex
 CREATE INDEX "visit_histories_created_at_idx" ON "visit_histories"("created_at");
