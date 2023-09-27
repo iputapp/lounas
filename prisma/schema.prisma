@@ -64,8 +64,8 @@ model RestaurantOpen {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  timeOpen  DateTime @map("time_open") @db.Timetz(6) /// @zod.date
-  timeClose DateTime @map("time_close") @db.Timetz(6) /// @zod.date
+  timeOpen  DateTime @map("time_open") @db.Timetz() /// @zod.date
+  timeClose DateTime @map("time_close") @db.Timetz() /// @zod.date
 
   weekType     WeekType   @relation(fields: [weekTypeId], references: [id])
   weekTypeId   Int        @map("week_type_id")
@@ -243,7 +243,8 @@ model User {
   username  String    @unique /// @zod.string.min(6)
   lastLogin DateTime? @map("last_login")
 
-  visitHistories VisitHistory[]
+  visitHistories  VisitHistory[]
+  dataUsageAgreed Boolean
 
   @@index([lastLogin], name: "users_last_login_idx")
   @@map("users")
