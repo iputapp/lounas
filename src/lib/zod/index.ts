@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import type { Prisma } from '@prisma/client';
 
 /////////////////////////////////////////
 // HELPER FUNCTIONS
@@ -33,7 +34,7 @@ export const DishTagScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt'
 
 export const DishScoreScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','score','dishId','traitId']);
 
-export const DishTraitScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','type','name','description']);
+export const DishTraitScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','type','name','description','threshold']);
 
 export const VisitHistoryScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','userId','restaurantId','dishId']);
 
@@ -634,7 +635,7 @@ export const DishScoreSchema = z.object({
   id: z.string().uuid(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
-  score: z.number().gte(0).lte(99),
+  score: z.number(),
   dishId: z.string(),
   traitId: z.string(),
 })
@@ -693,6 +694,7 @@ export const DishTraitSchema = z.object({
   type: z.string().min(1),
   name: z.string().min(1),
   description: z.string().nullable(),
+  threshold: z.number(),
 })
 
 export type DishTrait = z.infer<typeof DishTraitSchema>
