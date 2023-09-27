@@ -57,7 +57,7 @@ export default function Page() {
     const currentParams = new URLSearchParams(Array.from(searchParams.entries())); // all current params
     currentParams.set(currentPathname, value); // set new query param (when exists, overwrite)
 
-    router.push(`/recommend/loading?${currentParams.toString()}`); // next section
+    router.push(`loading?${currentParams.toString()}`); // next section
   };
 
   return (
