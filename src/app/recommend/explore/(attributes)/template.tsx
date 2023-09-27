@@ -55,8 +55,10 @@ export default function Template({ children }: { children: React.ReactNode }) {
     console.log(selectedDict);
     /** set current selections */
     setSelected(selectedDict);
+
+    /** Warning: `React Hook useEffect has a missing dependency: 'traits'` | 本番は async-await を使うため、この Warning は無視 (`traits`がmappingされるたびにuseEffectが実行されてしまう) */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
-  /** Warning: `React Hook useEffect has a missing dependency: 'traits'` | 本番は async-await を使うため、この Warning は無視 (`traits`がmappingされるたびにuseEffectが実行されてしまう) */
 
   return (
     <>
