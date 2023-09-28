@@ -19,7 +19,11 @@ export default function Page() {
       </div>
       <div className={styles.overlay}>
         <div className={styles.panel}>
-          <DummyPanel />
+          <DummyPanel>
+            <div className="grid h-full w-full place-content-center gap-4 pb-4">
+              <span className="text-3xl font-semibold text-neutral-800">Coming Soon!</span>
+            </div>
+          </DummyPanel>
         </div>
       </div>
     </div>
