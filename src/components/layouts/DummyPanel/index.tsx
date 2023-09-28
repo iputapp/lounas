@@ -12,7 +12,7 @@ export function DummyPanel({ children }: { children?: React.ReactNode }) {
       </section>
       <section className={styles.main}>{children}</section>
       <section className={styles.footer}>
-        <small>&copy; {new Date().getFullYear()} PROJECT PIPLUP</small>
+        <small>&copy; {new Date().getFullYear()} lounas App Dev. Co.</small>
       </section>
     </article>
   );
