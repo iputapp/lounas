@@ -12,9 +12,8 @@ export function middleware(request: NextRequest) {
     request.nextUrl.pathname.endsWith("/otp") &&
     request.nextUrl.searchParams.has(process.env.NEXT_PUBLIC_QUERY_SIGN_UP ?? "pending")
   ) {
-    const value = request.cookies.get(
-      process.env.NEXT_PUBLIC_COOKIE_SIGN_UP_NAME ?? "sign-up"
-    )?.value;
+    const value = request.cookies.get(process.env.NEXT_PUBLIC_COOKIE_SIGN_UP_NAME ?? "sign-up")
+      ?.value;
     if (value === process.env.NEXT_PUBLIC_COOKIE_SIGN_UP_VALUE ?? "sign-up-success") {
       request.cookies.delete(process.env.NEXT_PUBLIC_COOKIE_SIGN_UP_NAME ?? "sign-up");
       return NextResponse.rewrite(new URL("/signup/otp", request.url));
