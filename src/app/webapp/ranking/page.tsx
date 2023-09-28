@@ -11,8 +11,8 @@ export default function Page() {
       <div className={styles.imageParent}>
         <Image
           className={styles.image}
-          src="/mockup/diary.webp"
-          alt="calender"
+          src="/mockup/ranking.webp"
+          alt="ranking"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         />
