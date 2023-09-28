@@ -1,10 +1,27 @@
 @use "variables" as var;
 
 .container {
-  @apply grid h-full w-full;
+  @apply mx-auto grid
+    h-full w-full max-w-lg;
 
-  .title {
-    @apply mx-auto self-start;
+  .header {
+    @apply relative z-10
+      w-full
+      self-start;
+
+    .button {
+      @apply absolute left-0 top-0
+        flex h-full items-center
+        text-3xl;
+
+      .icon {
+        font-size: 0.625em;
+      }
+    }
+
+    .title {
+      @apply mx-auto;
+    }
   }
 
   .circles {

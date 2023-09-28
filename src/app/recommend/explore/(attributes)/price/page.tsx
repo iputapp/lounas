@@ -1,7 +1,9 @@
 "use client";
 
+import LogoFill from "@icons/logo-fill.svg";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
+import { BackButton } from "@/components/buttons/BackButton";
 import { CircleButton } from "@/components/buttons/CircleButton";
 import { BorderTitle } from "@/components/headers/BorderTitle";
 
@@ -62,9 +64,20 @@ export default function Page() {
 
   return (
     <div className={styles.container}>
-      <BorderTitle fontSize="text-4xl" fontWeight="font-semibold" className={styles.title}>
-        <h1>Price</h1>
-      </BorderTitle>
+      <div className={styles.header}>
+        <BackButton
+          title={
+            <span className={styles.icon}>
+              <LogoFill />
+            </span>
+          }
+          onClick={() => router.push("/webapp/home")}
+          className={styles.button}
+        />
+        <BorderTitle fontSize="text-4xl" fontWeight="font-semibold" className={styles.title}>
+          <h1>Price</h1>
+        </BorderTitle>
+      </div>
       <div className={styles.circles}>
         {currentSelections.map((item, index) => (
           <CircleButton
