@@ -7,34 +7,21 @@ import LogoOutline from "@icons/logo-outline.svg";
 import User from "@icons/user.svg";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export function BottomNavigationBar() {
   const router = useRouter();
-  const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
   const [value, setValue] = useState("home");
-
-  const rootPath = "/webapp";
-
-  const init = (pathname: string) => {
-    pathname.includes("user") ? setValue("user") : setValue(pathname.split("/").pop() as string);
-  };
-
-  useLayoutEffect(() => {
-    init(pathname);
-  }, [pathname]);
-
-  useEffect(() => setMounted(true), []);
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-50">
       <BottomNavigation
         value={value}
         onChange={(event, value: string) => {
-          setValue(value);
-          router.push(`${rootPath}/${value}`);
+          const page = value.split("/").pop() as string;
+          setValue(page);
+          router.push(`${value}`);
         }}
         sx={{
           "&": {
@@ -50,15 +37,13 @@ export function BottomNavigationBar() {
         }}
       >
         <BottomNavigationAction
-          value="home"
+          value="/webapp/home"
           icon={
-            mounted && (
-              <span className="text-xl">{value === "home" ? <LogoFill /> : <LogoOutline />}</span>
-            )
+            <span className="text-xl">{value === "home" ? <LogoFill /> : <LogoOutline />}</span>
           }
         />
         <BottomNavigationAction
-          value="ranking"
+          value="/webapp/ranking"
           icon={
             <span className="text-2xl">
               <Crown />
@@ -66,7 +51,7 @@ export function BottomNavigationBar() {
           }
         />
         <BottomNavigationAction
-          value="diary"
+          value="/webapp/diary"
           icon={
             <span className="text-xl">
               <Calendar />
@@ -74,7 +59,7 @@ export function BottomNavigationBar() {
           }
         />
         <BottomNavigationAction
-          value="user"
+          value="/webapp/user"
           icon={
             <span className="text-xl">
               <User />

@@ -8,16 +8,13 @@ import styles from "./styles.module.scss";
 type BackButtonProps = {
   title?: React.ReactNode;
   className?: string;
-  onClick?: () => void;
 };
 
-export function BackButton({ title = "", className = "", onClick }: BackButtonProps) {
+export function BackButton({ title = "", className = "" }: BackButtonProps) {
   const router = useRouter();
 
-  onClick = onClick ?? (() => router.back());
-
   return (
-    <button className={`${styles.button} ${className}`} type="button" onClick={onClick}>
+    <button className={`${styles.button} ${className}`} type="button" onClick={() => router.back()}>
       <span className={styles.icon}>
         <NavArrowLeftSemibold />
       </span>

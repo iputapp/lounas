@@ -1,14 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="227" height="256" fill="none" viewBox="0 0 227 256">
-  <path fill="url(#b)" d="M87.004 43.502C87.004 19.477 67.528 0 43.502 0 19.477 0 0 19.477 0 43.502v168.996C0 236.523 19.477 256 43.502 256c24.026 0 43.502-19.477 43.502-43.502V43.502Z"/>
-  <path fill="url(#c)" d="M155.838 256c39.301 0 71.161-31.86 71.161-71.161s-31.86-71.161-71.161-71.161-71.161 31.86-71.161 71.161S116.537 256 155.838 256Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="35" viewBox="0 0 30 35">
   <defs>
-    <linearGradient id="b" x1="0" x2="87" y1="0" y2="167" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0014FF"/>
-      <stop offset="1" stop-color="#0046FF"/>
+    <linearGradient id="linear-gradient" x1="0.086" y1="0.025" x2="2.291" y2="0.938" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#0014ff"/>
+      <stop offset="1" stop-color="#07f"/>
     </linearGradient>
-    <linearGradient id="c" x1="130.5" x2="217" y1="159.5" y2="246" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0046FF"/>
-      <stop offset="1" stop-color="#07F"/>
-    </linearGradient>
+    <filter id="Rectangle_164">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161" result="color"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur"/>
+      <feComposite operator="in" in="color"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="-0.584" y1="-0.883" x2="1" y2="1.029" xlink:href="#linear-gradient"/>
+    <filter id="Ellipse_63">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161" result="color-2"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur-2"/>
+      <feComposite operator="in" in="color-2"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
   </defs>
+  <g id="Group_213" data-name="Group 213" transform="translate(-368 -289)">
+    <g data-type="innerShadowGroup">
+      <rect id="Rectangle_164-2" data-name="Rectangle 164" width="11" height="35" rx="5.5" transform="translate(368 289)" fill="url(#linear-gradient)"/>
+      <g transform="matrix(1, 0, 0, 1, 368, 289)" filter="url(#Rectangle_164)">
+        <rect id="Rectangle_164-3" data-name="Rectangle 164" width="11" height="35" rx="5.5" fill="#fff"/>
+      </g>
+    </g>
+    <g data-type="innerShadowGroup">
+      <circle id="Ellipse_63-2" data-name="Ellipse 63" cx="9.5" cy="9.5" r="9.5" transform="translate(379 305)" fill="url(#linear-gradient-2)"/>
+      <g transform="matrix(1, 0, 0, 1, 368, 289)" filter="url(#Ellipse_63)">
+        <circle id="Ellipse_63-3" data-name="Ellipse 63" cx="9.5" cy="9.5" r="9.5" transform="translate(11 16)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
 </svg>

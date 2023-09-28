@@ -54,15 +54,13 @@ export function CircleButton({
     direction: 180,
   },
   animation = {
-    delay: 9999,
+    delay: Math.random() * 0.6969,
     stiffness: 80,
     damping: 8,
   },
   onClick,
 }: CircleButtonProps) {
   const [style, setStyle] = useState<React.CSSProperties>({});
-  const [delay, setDelay] = useState(animation.delay);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     /** rem to px */
@@ -84,63 +82,57 @@ export function CircleButton({
     };
     /** set styles */
     setStyle(styles);
-    /** set delay if unset-status */
-    if (animation.delay >= 9999) setDelay(Math.random() * 0.6969);
-    /** set mounted */
-    setMounted(true);
-  }, [position, size, gradient, x, y, animation.delay]);
+  }, [position, size, gradient, x, y]);
 
   return (
     <>
-      {gradient.start === "#fff" && gradient.end === "#fff"
-        ? mounted && (
-            <motion.button
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: delay,
-                type: "spring",
-                stiffness: animation.stiffness,
-                damping: animation.damping,
-              }}
-              drag={true}
-              dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-              dragTransition={{
-                bounceStiffness: 100,
-                bounceDamping: 8,
-              }}
-              onClick={(e) => onClick(e)}
-              value={value}
-              className={styles.circleBorder}
-              style={style}
-            >
-              <span className={styles.title}>{title}</span>
-            </motion.button>
-          )
-        : mounted && (
-            <motion.button
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: delay,
-                type: "spring",
-                stiffness: animation.stiffness,
-                damping: animation.damping,
-              }}
-              drag={true}
-              dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-              dragTransition={{
-                bounceStiffness: 100,
-                bounceDamping: 8,
-              }}
-              onClick={(e) => onClick(e)}
-              value={value}
-              className={styles.circle}
-              style={style}
-            >
-              <span className={styles.title}>{title}</span>
-            </motion.button>
-          )}
+      {value === "random" ? (
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            delay: animation.delay,
+            type: "spring",
+            stiffness: animation.stiffness,
+            damping: animation.damping,
+          }}
+          drag={true}
+          dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+          dragTransition={{
+            bounceStiffness: 100,
+            bounceDamping: 8,
+          }}
+          onClick={(e) => onClick(e)}
+          value={value}
+          className={styles.circleBorder}
+          style={style}
+        >
+          <span className={styles.title}>{title}</span>
+        </motion.button>
+      ) : (
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            delay: animation.delay,
+            type: "spring",
+            stiffness: animation.stiffness,
+            damping: animation.damping,
+          }}
+          drag={true}
+          dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+          dragTransition={{
+            bounceStiffness: 100,
+            bounceDamping: 8,
+          }}
+          onClick={(e) => onClick(e)}
+          value={value}
+          className={styles.circle}
+          style={style}
+        >
+          <span className={styles.title}>{title}</span>
+        </motion.button>
+      )}
     </>
   );
 }
