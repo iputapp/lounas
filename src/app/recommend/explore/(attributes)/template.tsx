@@ -52,7 +52,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
       currentSelection.map((obj) => [obj.type, obj])
     ) as SelectionDict;
 
-    console.log(selectedDict);
     /** set current selections */
     setSelected(selectedDict);
 
