@@ -17,7 +17,7 @@
 .container {
   @apply grid h-full w-full
     place-content-center
-    gap-24;
+    gap-20 pb-20;
 
   .title {
     @apply mx-auto

@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 import { RectButton } from "@/components/buttons/RectButton";
 import { BorderTitle } from "@/components/headers/BorderTitle";
@@ -10,9 +11,15 @@ import styles from "./page.module.scss";
 
 export default function Page() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const currentParams = new URLSearchParams(Array.from(searchParams.entries())); // all current params
+    console.log(currentParams.toString());
+  }, [searchParams]);
 
   const cancel = () => {
-    router.back();
+    router.push("/webapp/home");
   };
 
   return (
