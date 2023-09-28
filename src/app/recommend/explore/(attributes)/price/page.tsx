@@ -18,8 +18,8 @@ export default function Page() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  /** 特性 おまかせ */
-  const random = "おまかせ";
+  /** 特性 おまかせの閾値 */
+  const random = 999999;
   /** 全ての特性 */
   const traits = dishTraits.map((trait, index) => {
     /** 特性のカテゴリ数 */
@@ -27,20 +27,20 @@ export default function Page() {
     return {
       ...trait,
       size:
-        trait.name === random
+        trait.threshold >= random
           ? circleThemes[circleThemes.length - 1].size
           : circleThemes[index % typeCount].size,
       gradient:
-        trait.name === random
+        trait.threshold >= random
           ? circleThemes[circleThemes.length - 1].gradient
           : circleThemes[index % typeCount].gradient,
       position: {
         x:
-          trait.name === random
+          trait.threshold >= random
             ? circleThemes[circleThemes.length - 1].position.x
             : circleThemes[index % typeCount].position.x,
         y:
-          trait.name === random
+          trait.threshold >= random
             ? circleThemes[circleThemes.length - 1].position.y
             : circleThemes[index % typeCount].position.y,
       },
