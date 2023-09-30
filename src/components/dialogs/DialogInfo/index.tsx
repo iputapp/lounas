@@ -4,8 +4,10 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
-import { styled } from "@mui/material/styles";
+import { styled, ThemeProvider } from "@mui/material/styles";
 import { Dispatch, SetStateAction } from "react";
+
+import { theme } from "@/styles/mui";
 
 const StyledDialog = styled(Dialog)(() => ({
   "& .MuiDialog-paper": {
@@ -54,24 +56,26 @@ type DialogInfoProps = {
 
 export function DialogInfo({ title, children, isOpen, setIsOpen }: DialogInfoProps) {
   return (
-    <StyledDialog
-      onClose={() => setIsOpen(!isOpen)}
-      aria-labelledby="info-dialog-title"
-      open={isOpen}
-      scroll="paper"
-    >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-        }}
+    <ThemeProvider theme={theme}>
+      <StyledDialog
+        onClose={() => setIsOpen((prev) => !prev)}
+        aria-labelledby="info-dialog-title"
+        open={isOpen}
+        scroll="paper"
       >
-        <IconButton aria-label="close" onClick={() => setIsOpen(!isOpen)}>
-          <Cancel />
-        </IconButton>
-        <DialogTitle id="info-dialog-title">{title}</DialogTitle>
-      </Box>
-      <DialogContent>{children}</DialogContent>
-    </StyledDialog>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <IconButton aria-label="close" onClick={() => setIsOpen(!isOpen)}>
+            <Cancel />
+          </IconButton>
+          <DialogTitle id="info-dialog-title">{title}</DialogTitle>
+        </Box>
+        <DialogContent>{children}</DialogContent>
+      </StyledDialog>
+    </ThemeProvider>
   );
 }
