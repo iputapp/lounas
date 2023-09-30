@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 import { EMAIL_DOMAIN, VERIFY_DIGITS_LENGTH, VERIFY_DIGITS_REGEX } from "@/constants";
-import { getEmailFromCookie } from "@/lib/cookies";
+import { getEmailFromCookie } from "@/utils/cookies";
 // import { callVerify } from "@/hooks/verify";
 
 export default function Otp() {
