@@ -1,5 +1,5 @@
 import { EMAIL_DOMAIN } from "@/constants";
-import { setEmailToCookie } from "@/utils/cookies";
+import { setEmailToCookie } from "@/utils/auth";
 
 export async function callOtpSignin(student: string) {
   const studentIdPayload = student.toLowerCase().startsWith("tk")
