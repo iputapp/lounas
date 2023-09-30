@@ -9,8 +9,6 @@ $green-size: 28dvh;
     h-screen w-full
     overflow-clip;
 
-  background-color: var.$bg-primary;
-
   .circle {
     @apply absolute;
 
