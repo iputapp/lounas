@@ -5,7 +5,7 @@ import NavArrowRight from "@icons/nav-arrow-right.svg";
 import Link from "next/link";
 
 import { CirclesTopLeft } from "@/components/backgrounds/CirclesTopLeft";
-import { SignupForm } from "@/components/forms/SignupForm";
+import { SignupForm } from "@/components/forms/otp/SignupForm";
 
 import styles from "./page.module.scss";
 

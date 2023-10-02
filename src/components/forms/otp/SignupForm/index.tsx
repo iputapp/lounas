@@ -1,11 +1,11 @@
 import { ThemeProvider } from "@mui/material/styles";
 
 import { BorderRoundButton } from "@/components/buttons/BorderRoundButton";
-import { SignupHookForm } from "@/hooks/SignupHookForm";
+import { SignupHookForm } from "@/hooks/auth/otp/SignupHookForm";
 import { theme } from "@/styles/mui";
 
-import { BasicCheckbox } from "../BasicCheckbox";
-import { BasicTextField } from "../BasicTextField";
+import { BasicCheckbox } from "../../BasicCheckbox";
+import { BasicTextField } from "../../BasicTextField";
 
 type SignupFormProps = {
   className?: React.HTMLAttributes<HTMLFormElement>["className"];
