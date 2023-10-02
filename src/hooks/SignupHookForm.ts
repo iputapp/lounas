@@ -2,8 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
-import type { Signup } from "@/app/api/auth/signup";
-import { signupSchema } from "@/app/api/auth/signup";
+import type { Signup } from "@/app/api/auth/otp";
+import { signupSchema } from "@/app/api/auth/otp";
 
 /** sign-up hook form */
 const SignupHookForm = () => {
