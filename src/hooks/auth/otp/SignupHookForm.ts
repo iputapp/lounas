@@ -38,7 +38,7 @@ const SignupHookForm = () => {
     })
       .then((res) => {
         console.log("res", res);
-        router.push("/signup/confirm");
+        router.push("/signup/verify");
       })
       .catch((err) => console.log("err", err));
   };

@@ -10,7 +10,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const [isOtp, setIsOtp] = useState<boolean>(false);
 
   useEffect(() => {
-    pathname.endsWith("confirm") ? setIsOtp(true) : setIsOtp(false);
+    pathname.endsWith("verify") ? setIsOtp(true) : setIsOtp(false);
   }, [pathname]);
 
   return (
