@@ -38,7 +38,7 @@ const SignupHookForm = () => {
     })
       .then((res) => {
         console.log("res", res);
-        router.push("/signup/otp");
+        router.push("/signup/confirm");
       })
       .catch((err) => console.log("err", err));
   };
