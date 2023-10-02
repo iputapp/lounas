@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 /** form schema */
@@ -29,10 +29,10 @@ const SignupHookForm = () => {
     resolver: zodResolver(formSchema),
   });
 
-  const watchedInput = useWatch({ control });
+  // const watchedInput = useWatch({ control });
 
-  console.log("errors", errors);
-  console.log("watchedInput", watchedInput);
+  // console.log("errors", errors);
+  // console.log("watchedInput", watchedInput);
 
   /** called only when the value conversion and type checking for zod pass */
   const onSubmit = (data: FormSchema): void => {
