@@ -1,0 +1,77 @@
+@use "variables" as var;
+
+@keyframes shrink-x {
+  0% {
+    transform: scaleX(0);
+  }
+
+  5% {
+    transform: scaleX(0);
+  }
+
+  20% {
+    transform: scaleX(1);
+  }
+
+  80% {
+    transform: scaleX(1);
+  }
+
+  95% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+.container {
+  @apply grid h-full w-full
+    content-center
+    gap-10 pt-8;
+
+  .title {
+    @apply mx-auto
+      text-4xl font-bold;
+
+    color: var.$primary;
+  }
+
+  .form {
+    @apply mx-auto
+      grid max-w-sm
+      justify-items-center
+      gap-[1.875rem];
+
+    width: 80%;
+  }
+
+  .additional {
+    @apply grid w-full
+      justify-items-center
+      gap-4;
+
+    & > span {
+      @apply w-fit
+        text-center
+        text-base
+        underline decoration-solid;
+
+      color: var.$secondary;
+    }
+  }
+
+  .tos {
+    @apply w-full;
+
+    & > * {
+      @apply mx-auto flex
+        w-fit items-center
+        space-x-1
+        text-blue-600;
+
+      animation: shrink-x 3.8s cubic-bezier(0.83, 0, 0.17, 1) infinite both; // easeInOutQuint
+    }
+  }
+}

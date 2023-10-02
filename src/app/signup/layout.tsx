@@ -17,7 +17,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <header></header>
-      <main className={`${styles.main} ${notoSansJP.className}`}>{children}</main>
+      <main className={`${styles.main} ${notoSansJP.className}`}>
+        <div className={styles.bg}></div>
+        {children}
+      </main>
       <footer></footer>
     </>
   );
