@@ -10,6 +10,7 @@ const formSchema = z.object({
     .string()
     .min(1, { message: "メールアドレスを入力してください。" })
     .email({ message: "不正なメールアドレスです。" }),
+  // email: UserSchema.pick({ email: true }),
   agreePolicy: z.literal(true, { errorMap: () => ({ message: "同意が必要です。" }) }),
 });
 /** type of form schema */
@@ -23,7 +24,7 @@ const SignupHookForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormSchema>({
-    mode: "onChange",
+    mode: "onBlur",
     reValidateMode: "onChange",
     defaultValues: undefined,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
