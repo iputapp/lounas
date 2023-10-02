@@ -29,7 +29,7 @@ const SignupHookForm = () => {
   /** called only when the value conversion and type checking for zod pass */
   const onSubmit = async (data: Signup): Promise<void> => {
     /** fetch to api route */
-    await fetch("/api/auth/signup", {
+    await fetch("/api/auth/otp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
