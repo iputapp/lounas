@@ -15,6 +15,7 @@ const BasicTextField = <T extends FieldValues>({
   required = false,
   variant = "standard",
   autoComplete = "off",
+  inputProps,
 }: BasicTextFieldProps<T>) => {
   const {
     field,
@@ -39,6 +40,7 @@ const BasicTextField = <T extends FieldValues>({
         required={required}
         variant={variant}
         autoComplete={autoComplete}
+        inputProps={inputProps}
       />
       <div className="flex items-center space-x-1 text-xs">
         {errorMessage ? (
