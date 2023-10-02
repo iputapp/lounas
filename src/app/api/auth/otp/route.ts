@@ -1,34 +1,30 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { z } from "zod";
 
-import { EMAIL_DOMAIN } from "@/constants";
+import type { Signup } from ".";
+import { signupSchema } from ".";
 
-export const OtpSigninRequestSchema = z.object({
-  email: z.string().email().endsWith(EMAIL_DOMAIN),
-});
+/** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "force-dynamic";
 
-export type OtpSigninRequest = z.infer<typeof OtpSigninRequestSchema>;
+const onlyEmailSchema = signupSchema.pick({ email: true });
 
 export async function POST(request: Request) {
-  const body = await request.json();
-  const payload: OtpSigninRequest = OtpSigninRequestSchema.parse(body);
+  const body = (await request.json()) as Signup;
+  const payload = onlyEmailSchema.safeParse(body);
+
+  console.log("payload", payload);
+
+  if (!payload.success) return NextResponse.error();
 
   const supabase = createRouteHandlerClient({ cookies });
-
-  const { data, error } = await supabase.auth.signInWithOtp({
-    email: payload.email,
+  await supabase.auth.signInWithOtp({
+    email: payload.data.email,
     options: {
-      emailRedirectTo: `${location.origin}/api/auth/callback`,
+      emailRedirectTo: `${new URL(request.url).origin}/api/auth/callback`,
     },
   });
 
-  if (error) {
-    return NextResponse.error();
-  }
-
-  if (data) {
-    return NextResponse.json("ok");
-  }
+  return NextResponse.json({ message: "ok" });
 }
