@@ -2,8 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
-import type { FormSchema } from "@/app/api/auth/signup";
-import { formSchema } from "@/app/api/auth/signup";
+import type { Signup } from "@/app/api/auth/signup";
+import { signupSchema } from "@/app/api/auth/signup";
 
 /** sign-up hook form */
 const SignupHookForm = () => {
@@ -14,12 +14,12 @@ const SignupHookForm = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormSchema>({
+  } = useForm<Signup>({
     mode: "onChange",
     reValidateMode: "onChange",
     defaultValues: undefined,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(signupSchema),
   });
 
   // const watchedInput = useWatch({ control });
@@ -27,7 +27,7 @@ const SignupHookForm = () => {
   // console.log("watchedInput", watchedInput);
 
   /** called only when the value conversion and type checking for zod pass */
-  const onSubmit = async (data: FormSchema): Promise<void> => {
+  const onSubmit = async (data: Signup): Promise<void> => {
     /** fetch to api route */
     await fetch("/api/auth/signup", {
       method: "POST",

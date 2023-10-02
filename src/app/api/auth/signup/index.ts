@@ -1,16 +1,20 @@
 import { z } from "zod";
 
-/** form schema */
-const formSchema = z.object({
+/** allowed domains */
+const allowedDomains = ["tks.iput.ac.jp", "iput.ac.jp"] as readonly string[];
+
+/** signup schema */
+const signupSchema = z.object({
   email: z
     .string()
-    .min(1, { message: "メールアドレスを入力してください。" })
     .email({ message: "メールアドレスを入力してください。" })
-    .regex(/^.+(tks\.iput\.ac\.jp)$/, { message: "不正なメールアドレスです。" }),
+    .refine((value) => allowedDomains.some((domain) => value.endsWith(`@${domain}`)), {
+      message: "学内のメールアドレスを入力してください。",
+    }),
   agreePolicy: z.literal(true, { errorMap: () => ({ message: "同意が必要です。" }) }),
 });
-/** type of form schema */
-type FormSchema = z.infer<typeof formSchema>;
+/** type of signup schema */
+type Signup = z.infer<typeof signupSchema>;
 
-export { formSchema };
-export type { FormSchema };
+export { signupSchema };
+export type { Signup };
