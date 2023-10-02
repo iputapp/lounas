@@ -1,3 +1,5 @@
+import Cancel from "@icons/cancel.svg";
+import Check from "@icons/check.svg";
 import Checkbox from "@mui/material/Checkbox";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -26,7 +28,7 @@ const BasicCheckbox = <T extends FieldValues>({
   const errorMessage = errors[name]?.message as string;
 
   return (
-    <FormControl required={required} className="ms-4 grid w-fit gap-2" sx={{ color: "#525252" }}>
+    <FormControl required={required} className="ms-4 grid w-fit gap-0" sx={{ color: "#525252" }}>
       <FormControlLabel
         control={
           <Checkbox
@@ -38,7 +40,20 @@ const BasicCheckbox = <T extends FieldValues>({
         }
         label={label}
       />
-      {errorMessage && <span className="text-xs text-red-500">{errorMessage}</span>}
+      <div className="flex items-center space-x-1 text-xs">
+        {errorMessage ? (
+          <span className="text-red-600">
+            <Cancel />
+          </span>
+        ) : (
+          field.value && (
+            <span className="text-green-600">
+              <Check />
+            </span>
+          )
+        )}
+        {errorMessage && <span className="text-red-600">{errorMessage}</span>}
+      </div>
     </FormControl>
   );
 };

@@ -1,3 +1,5 @@
+import Cancel from "@icons/cancel.svg";
+import Check from "@icons/check.svg";
 import type { TextFieldProps } from "@mui/material/TextField";
 import TextField from "@mui/material/TextField";
 import { FieldValues, useController } from "react-hook-form";
@@ -38,7 +40,20 @@ const BasicTextField = <T extends FieldValues>({
         variant={variant}
         autoComplete={autoComplete}
       />
-      {errorMessage && <span className="text-xs text-red-500">{errorMessage}</span>}
+      <div className="flex items-center space-x-1 text-xs">
+        {errorMessage ? (
+          <span className="text-red-600">
+            <Cancel />
+          </span>
+        ) : (
+          field.value && (
+            <span className="text-green-600">
+              <Check />
+            </span>
+          )
+        )}
+        {errorMessage && <span className="text-red-600">{errorMessage}</span>}
+      </div>
     </div>
   );
 };
