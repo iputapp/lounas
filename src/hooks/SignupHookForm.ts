@@ -2,15 +2,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 
-// import { UserSchema } from "@/lib/zod";
-
 /** form schema */
 const formSchema = z.object({
   email: z
     .string()
     .min(1, { message: "メールアドレスを入力してください。" })
-    .email({ message: "不正なメールアドレスです。" }),
-  // email: UserSchema.pick({ email: true }),
+    .email({ message: "メールアドレスを入力してください。" })
+    .regex(/^.+(tks\.iput\.ac\.jp)$/, { message: "不正なメールアドレスです。" }),
   agreePolicy: z.literal(true, { errorMap: () => ({ message: "同意が必要です。" }) }),
 });
 /** type of form schema */
@@ -24,7 +22,7 @@ const SignupHookForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormSchema>({
-    mode: "onBlur",
+    mode: "onChange",
     reValidateMode: "onChange",
     defaultValues: undefined,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
