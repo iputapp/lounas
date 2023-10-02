@@ -6,15 +6,15 @@ import Box from "@mui/material/Box";
 import FormHelperText from "@mui/material/FormHelperText";
 import TextField from "@mui/material/TextField";
 import Link from "next/link";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { useState } from "react";
 
 import { EMAIL_DOMAIN, VERIFY_DIGITS_LENGTH, VERIFY_DIGITS_REGEX } from "@/constants";
-import { getEmailFromCookie } from "@/utils/auth";
+// import { getEmailFromCookie } from "@/utils/auth";
 // import { callVerify } from "@/hooks/verify";
 
 export default function Otp() {
-  const router = useRouter();
+  // const router = useRouter();
   /** @summary digits */
   const [digits, setDigits] = useState<string>("");
   const [digitsError, setDigitsError] = useState<boolean>(false);
@@ -28,24 +28,22 @@ export default function Otp() {
   const [working, setWorking] = useState<boolean>(false);
   /** Fire verify */
   const verify = async () => {
-    if (digitsError) return;
-    setWorking(true);
-
-    const emailAddress = getEmailFromCookie();
-
-    await fetch("/api/auth/otp/verification", {
-      method: "POST",
-      body: JSON.stringify({ email: emailAddress, digits: digits }),
-    })
-      .then(async (response) => {
-        await router.push("/webapp/");
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        setWorking(false);
-      });
+    //   if (digitsError) return;
+    //   setWorking(true);
+    // const emailAddress = getEmailFromCookie();
+    // await fetch("/api/auth/otp/verification", {
+    //   method: "POST",
+    //   body: JSON.stringify({ email: emailAddress, digits: digits }),
+    // })
+    //   .then(async (response) => {
+    //     await router.push("/webapp/");
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   })
+    //   .finally(() => {
+    //     setWorking(false);
+    //   });
     // callVerify(digits)
     //   .then((data) => {
     //     console.log(data);
