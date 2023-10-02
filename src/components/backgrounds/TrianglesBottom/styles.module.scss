@@ -1,7 +1,7 @@
 @use "variables" as var;
 
-$blue-size: 20dvh;
-$cyan-size: 22dvh;
+$blue-size: 18dvh;
+$cyan-size: 21dvh;
 $green-size: 24dvh;
 
 .bg {
@@ -18,7 +18,7 @@ $green-size: 24dvh;
     transition: transform 0.9s cubic-bezier(0.83, 0, 0.17, 1); // easeInOutQuint
 
     &.blue {
-      right: -7dvh;
+      right: -3.5dvh;
       bottom: 0;
       height: $blue-size;
       background-color: var.$blue;
@@ -26,34 +26,41 @@ $green-size: 24dvh;
     }
 
     &.cyan {
-      right: -7.5dvh;
-      bottom: -3dvh;
+      right: -6dvh;
+      bottom: 2.5dvh;
       height: $cyan-size;
       background-color: var.$cyan;
       transform: rotate(47deg);
     }
 
     &.green {
-      right: -1.5dvh;
-      bottom: -7dvh;
+      right: 1.5dvh;
+      bottom: -6.6dvh;
       height: $green-size;
       background-color: var.$lime;
-      transform: rotate(110deg);
+      transform: rotate(112deg);
     }
 
-    &.blue.move {
-      right: calc(100% - $blue-size - 6.5dvh);
-      bottom: 1.5dvh;
-    }
+    &.move {
+      &.blue {
+        right: calc(100% - $blue-size - 7dvh);
+        bottom: 1.8dvh;
+        transform: rotate(49deg);
+      }
 
-    &.cyan.move {
-      right: calc(100% - $cyan-size + 8dvh);
-      bottom: 2dvh;
-    }
+      &.cyan {
+        right: calc(100% - $cyan-size + 9.5dvh);
+        bottom: 2dvh;
+        background-color: var.$cyan;
+        transform: rotate(-46deg);
+      }
 
-    &.green.move {
-      right: calc(100% - $green-size + 5dvh);
-      bottom: -2px;
+      &.green {
+        right: calc(100% - $green-size + 6.5dvh);
+        bottom: 0;
+        background-color: var.$lime;
+        transform: rotate(0deg);
+      }
     }
   }
 }
