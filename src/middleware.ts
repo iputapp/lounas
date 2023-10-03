@@ -1,33 +1,71 @@
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 import type { NextRequest } from "next/server";
-// import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-/**
- * @param {NextRequest} request
- * @returns {NextResponse} redirect
- * @see {@link https://nextjs.org/docs/app/building-your-application/routing/middleware}
- */
-export function middleware(request: NextRequest) {
-  console.log(request.nextUrl.pathname);
-  // /** @example /signup/otp?pending */
-  // if (
-  //   request.nextUrl.pathname.endsWith("/otp") &&
-  //   request.nextUrl.searchParams.has(process.env.NEXT_PUBLIC_QUERY_SIGN_UP ?? "pending")
-  // ) {
-  //   const value = request.cookies.get(process.env.NEXT_PUBLIC_COOKIE_SIGN_UP_NAME ?? "sign-up")
-  //     ?.value;
-  //   if (value === process.env.NEXT_PUBLIC_COOKIE_SIGN_UP_VALUE ?? "sign-up-success") {
-  //     request.cookies.delete(process.env.NEXT_PUBLIC_COOKIE_SIGN_UP_NAME ?? "sign-up");
-  //     return NextResponse.rewrite(new URL("/signup/otp", request.url));
-  //   } else {
-  //     request.cookies.delete(process.env.NEXT_PUBLIC_COOKIE_SIGN_UP_NAME ?? "sign-up");
-  //     return NextResponse.redirect(new URL("/signup", request.url));
-  //   }
-  // } else {
-  //   request.cookies.delete(process.env.NEXT_PUBLIC_COOKIE_SIGN_UP_NAME ?? "sign-up");
-  //   return NextResponse.redirect(new URL("/signup", request.url));
-  // }
+/** @see {@link https://nextjs.org/docs/app/building-your-application/routing/middleware} */
+export async function middleware(req: NextRequest) {
+  const reqUrl = new URL(req.url);
+  /** supabase auth session */
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient({ req, res });
+  const session = await supabase.auth.getSession();
+
+  console.log("session", session);
+
+  /** /signup/verify */
+  if (req.nextUrl.pathname.endsWith("/verify")) {
+    /** pending status */
+    if (req.cookies.has("verify")) {
+      res.cookies.delete("verify");
+      return;
+    } else {
+      return NextResponse.redirect(`${reqUrl.origin}/signup`);
+    }
+  }
+
+  /** /privacy */
+  if (req.nextUrl.pathname.startsWith("/privacy")) {
+    if (session.data) {
+      return;
+    } else {
+      return NextResponse.redirect(`${reqUrl.origin}`);
+    }
+  }
+
+  /** /dish */
+  if (req.nextUrl.pathname.startsWith("/dish")) {
+    if (session.data) {
+      return;
+    } else {
+      return NextResponse.redirect(`${reqUrl.origin}`);
+    }
+  }
+
+  /** /restaurant */
+  if (req.nextUrl.pathname.startsWith("/restaurant")) {
+    if (session.data) {
+      return;
+    } else {
+      return NextResponse.redirect(`${reqUrl.origin}`);
+    }
+  }
+
+  /** /webapp/user */
+  if (req.nextUrl.pathname.endsWith("/signout")) {
+    if (session.data) {
+      return;
+    } else {
+      return NextResponse.redirect(`${reqUrl.origin}/webapp/user/signin`);
+    }
+  }
 }
 
 export const config = {
-  matcher: ["/signup/:path+"],
+  matcher: [
+    "/signup/:path+",
+    "/privacy/:path*",
+    "/dish/:path*",
+    "/restaurant/:path*",
+    "/webapp/user/signout",
+  ],
 };
