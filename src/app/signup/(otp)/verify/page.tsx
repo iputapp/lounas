@@ -1,111 +1,63 @@
 "use client";
 
-import "./otp.scss";
-
-import Box from "@mui/material/Box";
-import FormHelperText from "@mui/material/FormHelperText";
-import TextField from "@mui/material/TextField";
-import Link from "next/link";
-// import { useRouter } from "next/router";
+import NavArrowRight from "@icons/nav-arrow-right.svg";
 import { useState } from "react";
 
-import { EMAIL_DOMAIN, VERIFY_DIGITS_LENGTH, VERIFY_DIGITS_REGEX } from "@/constants";
-// import { getEmailFromCookie } from "@/utils/auth";
-// import { callVerify } from "@/hooks/verify";
+import { DialogInfo } from "@/components/dialogs/DialogInfo";
+import { VerificationForm } from "@/components/forms/otp/VerificationForm";
 
-export default function Otp() {
-  // const router = useRouter();
-  /** @summary digits */
-  const [digits, setDigits] = useState<string>("");
-  const [digitsError, setDigitsError] = useState<boolean>(false);
-  const digitsChange = (char: string) => {
-    setDigits(char);
-    const error = VERIFY_DIGITS_REGEX.test(char) ? false : true;
-    setDigitsError(error);
-  };
+import styles from "./page.module.scss";
 
-  /** @summary verify */
-  const [working, setWorking] = useState<boolean>(false);
-  /** Fire verify */
-  const verify = async () => {
-    //   if (digitsError) return;
-    //   setWorking(true);
-    // const emailAddress = getEmailFromCookie();
-    // await fetch("/api/auth/otp/verification", {
-    //   method: "POST",
-    //   body: JSON.stringify({ email: emailAddress, digits: digits }),
-    // })
-    //   .then(async (response) => {
-    //     await router.push("/webapp/");
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   })
-    //   .finally(() => {
-    //     setWorking(false);
-    //   });
-    // callVerify(digits)
-    //   .then((data) => {
-    //     console.log(data);
-    //     setWorking(false);
-    //   })
-    //   .catch((e) => {
-    //     console.error(e);
-    //     setWorking(false);
-    //   });
-  };
+export default function Page() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <>
-      <div className="flex-col-center space-y-8">
-        <div className="flex-col-center space-y-4">
-          <h1>確認コードの入力</h1>
-          <div className="flex-col-center max-w-[22rem]">
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>確認コードの入力</h1>
+          <section className={styles.description}>
             <p>
-              <span className="blue">{`@${EMAIL_DOMAIN} `}</span>
-              <span>宛の認証メールに送付されている</span>
+              <span>メールに送付されている</span>
             </p>
             <p>
-              <span className="cyan">{` ${VERIFY_DIGITS_LENGTH} `}</span>
+              <span className="underline decoration-solid">6</span>
               <span>桁のコードを入力してください</span>
             </p>
-          </div>
+          </section>
         </div>
-        <Box
-          className="flex-col-center space-y-4"
-          component={"div"}
-          sx={{
-            "& .MuiTextField-root": { width: "24ch" },
-          }}
-        >
-          <TextField
-            name="digits"
-            label="確認コード"
-            helperText="012345"
-            variant="outlined"
-            value={digits}
-            onChange={(e) => digitsChange(e.target.value)}
-            inputProps={{
-              inputMode: "numeric",
-              pattern: VERIFY_DIGITS_REGEX,
-              maxLength: VERIFY_DIGITS_LENGTH,
-            }}
-            error={digitsError}
-            autoComplete="off"
-            required
-          />
-          <FormHelperText>
-            <Link href={"/help"} target="_blank" rel="noopener noreferrer">
-              <span>確認コードが届きません</span>
-            </Link>
-          </FormHelperText>
-          <div className="button-submit">
-            <button onClick={verify} disabled={working}>
-              <span className={digitsError ? "" : "animate-pulse"}>次へ</span>
-            </button>
-          </div>
-        </Box>
+        <VerificationForm className={styles.form} />
+        {/* dialog info */}
+        <button className={styles.help} onClick={() => setIsDialogOpen((prev) => !prev)}>
+          <span className={styles.icon}>
+            <NavArrowRight />
+          </span>
+          <span>確認コードが届きません。</span>
+        </button>
       </div>
+      <DialogInfo title="確認コードが届きません" isOpen={isDialogOpen} setIsOpen={setIsDialogOpen}>
+        <article className="grid gap-6 text-sm">
+          <section>確認コードが届かない場合は、以下の点をご確認ください。</section>
+          <section className="grid gap-5">
+            <ol className="mx-auto grid w-fit list-decimal gap-4">
+              <li>迷惑メールフォルダを確認する</li>
+              <li>ドメインを許可する</li>
+              <li>ネットワーク状況を確認する</li>
+            </ol>
+            <span>解決しない場合は、恐れ入りますがサポートまでご連絡ください。</span>
+          </section>
+          <section className="mx-auto">
+            <a
+              className="text-blue-600 underline decoration-solid"
+              href="https://github.com/wiyco/imap/issues/new?assignees=&labels=bug%2Ctriage&projects=&template=bug-report.yml&title=%5BBug%5D%3A+%7B%E6%A6%82%E8%A6%81%7D"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              バグの報告
+            </a>
+          </section>
+        </article>
+      </DialogInfo>
     </>
   );
 }
