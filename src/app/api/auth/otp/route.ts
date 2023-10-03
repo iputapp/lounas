@@ -8,11 +8,9 @@ import { signupSchema } from ".";
 /** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
 export const dynamic = "force-dynamic";
 
-const onlyEmailSchema = signupSchema.pick({ email: true });
-
 export async function POST(request: Request) {
   const body = (await request.json()) as Promise<Signup>;
-  const payload = onlyEmailSchema.safeParse(body);
+  const payload = signupSchema.safeParse(body);
 
   if (!payload.success) return NextResponse.error();
 
