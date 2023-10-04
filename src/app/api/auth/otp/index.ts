@@ -1,7 +1,9 @@
 import { z } from "zod";
 
+import { ALLOWED_DOMAINS } from "@/constants";
+
 /** allowed domains */
-const allowedDomains = ["tks.iput.ac.jp", "iput.ac.jp"] as readonly string[];
+const allowedDomains = ALLOWED_DOMAINS;
 
 /** signup schema */
 const signupSchema = z.object({
