@@ -82,8 +82,15 @@ export default function Page() {
   const handleSignOut = async () => {
     await supabase.auth
       .signOut()
-      .then(() => router.refresh())
-      .catch((err) => console.log(err));
+      .then((res) => {
+        if (res.error) {
+          console.error("Error!", res.error.status);
+          throw new Error(res.error.message);
+        }
+
+        router.push("/signup/verify");
+      })
+      .catch((err) => console.error("Error!", err));
   };
 
   return (
