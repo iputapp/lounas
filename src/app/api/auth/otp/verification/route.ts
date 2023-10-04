@@ -12,8 +12,6 @@ export async function POST(request: Request) {
   const body = (await request.json()) as Promise<Verification>;
   const payload = verificationSchema.safeParse(body);
 
-  console.log("payload-verify", payload);
-
   if (!payload.success) return NextResponse.error();
 
   const cookieStore = cookies();
