@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { RectButton } from "@/components/buttons/RectButton";
 import { ErrorPlayer } from "@/components/lottie/Error";
 
-import styles from "./error.module.scss";
+import styles from "./global-error.module.scss";
 
 export const metadata: Metadata = {
   title: "Error",
