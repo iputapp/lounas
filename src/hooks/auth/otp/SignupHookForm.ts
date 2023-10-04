@@ -37,10 +37,14 @@ const SignupHookForm = () => {
       body: JSON.stringify(data),
     })
       .then((res) => {
-        console.log("res", res);
+        if (!res.ok) {
+          console.error("Error!", res.status);
+          throw new Error(res.statusText);
+        }
+
         router.push("/signup/verify");
       })
-      .catch((err) => console.log("err", err));
+      .catch((err) => console.error("Error!", err));
   };
 
   return {
