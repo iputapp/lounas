@@ -11,7 +11,7 @@ import styles from "./page.module.scss";
 
 export default function Page() {
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const disAgree = () => {
     router.push("/webapp/home");
