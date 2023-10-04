@@ -47,7 +47,7 @@ export function LoadingLayer({ working = true }: LoadingLayerProps) {
           strokeWidth="6"
           strokeLinejoin="round"
           initial={{ pathLength: 0, pathSpacing: 0.5 }}
-          animate={{ pathLength: 1, pathSpacing: 0.5 }}
+          animate={{ pathLength: 1, pathSpacing: 0 }}
           transition={{
             duration: 1.5,
             ease: "easeInOut",
