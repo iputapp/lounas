@@ -1,0 +1,38 @@
+@use "variables" as var;
+
+.container {
+  @apply grid h-screen w-full
+    place-content-center
+    place-items-center
+    gap-12;
+
+  background-color: var.$bg-primary;
+
+  .title {
+    @apply text-5xl font-bold;
+
+    color: var.$primary;
+  }
+
+  .description {
+    @apply text-lg font-semibold;
+
+    color: var.$secondary;
+  }
+
+  .penguin {
+    @apply relative w-4/5 overflow-clip;
+
+    aspect-ratio: 1 / 1;
+
+    & > * {
+      @apply absolute object-cover;
+    }
+  }
+
+  & > a {
+    @apply text-xl;
+
+    color: var.$blue;
+  }
+}
