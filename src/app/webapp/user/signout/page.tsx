@@ -83,7 +83,7 @@ export default function Page() {
     await supabase.auth
       .signOut()
       .then(() => router.refresh())
-      .catch((error) => console.error(error));
+      .catch((err) => console.log(err));
   };
 
   return (
