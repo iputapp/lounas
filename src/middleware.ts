@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest) {
   const supabase = createMiddlewareClient({ req, res });
   const session = await supabase.auth.getSession();
 
-  // console.log(session);
+  console.log(session);
 
   /** signined */
   if (session.data.session) {
@@ -21,22 +21,28 @@ export async function middleware(req: NextRequest) {
     }
 
     /** ----- auth ----- */
+    /** /signup */
+    if (reqNextPath.startsWith("/signup")) {
+      return NextResponse.redirect(`${reqUrl.origin}/webapp`);
+    }
+
+    /** ----- app ----- */
+    /** /webapp */
+    if (reqNextPath.endsWith("/webapp")) {
+      return NextResponse.redirect(`${reqUrl.origin}/webapp/home`);
+    }
+
     /** /webapp/user */
     if (reqNextPath.endsWith("/signin")) {
       return NextResponse.redirect(`${reqUrl.origin}/webapp/user/signout`);
     }
   } else {
-    /** root */
+    /** ----- root ----- */
     if (reqNextPath === "/") {
       return NextResponse.redirect(`${reqUrl.origin}/signup`);
     }
 
     /** ----- auth ----- */
-    /** /webapp/user */
-    if (reqNextPath.endsWith("/signout")) {
-      return NextResponse.redirect(`${reqUrl.origin}/webapp/user/signin`);
-    }
-
     /** /signup/verify */
     if (reqNextPath.endsWith("/verify")) {
       /** pending verification */
@@ -50,6 +56,27 @@ export async function middleware(req: NextRequest) {
     /** ----- settings ----- */
     /** /privacy */
     if (reqNextPath.startsWith("/privacy")) {
+      return NextResponse.redirect(`${reqUrl.origin}`);
+    }
+
+    /** ----- app ----- */
+    /** /webapp */
+    if (reqNextPath.endsWith("/webapp")) {
+      return NextResponse.redirect(`${reqUrl.origin}/webapp/user`);
+    }
+
+    /** /webapp/home */
+    if (reqNextPath.endsWith("/home")) {
+      return NextResponse.redirect(`${reqUrl.origin}/webapp/user`);
+    }
+
+    /** /webapp/user */
+    if (reqNextPath.endsWith("/signout")) {
+      return NextResponse.redirect(`${reqUrl.origin}/webapp/user/signin`);
+    }
+
+    /** /recommend */
+    if (reqNextPath.startsWith("/recommend")) {
       return NextResponse.redirect(`${reqUrl.origin}`);
     }
 
@@ -73,6 +100,7 @@ export const config = {
     "/privacy/:path*",
     "/dish/:path*",
     "/restaurant/:path*",
-    "/webapp/:path+",
+    "/webapp/:path*",
+    "/recommend/:path*",
   ],
 };
