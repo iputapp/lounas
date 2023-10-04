@@ -1,5 +1,3 @@
-"use client";
-
 import { ThemeProvider } from "@mui/material/styles";
 
 import { BorderRoundButton } from "@/components/buttons/BorderRoundButton";
