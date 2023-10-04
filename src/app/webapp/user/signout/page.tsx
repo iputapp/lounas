@@ -62,6 +62,7 @@ export default function Page() {
   const router = useRouter();
   const [messageToUser, setMessageToUser] = useState("");
 
+  /** ガチャ */
   const messageGacha = () => {
     const rand = Math.floor(Math.random() * 100) + 1;
     for (const message of messages) {
