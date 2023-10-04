@@ -13,6 +13,7 @@ const signupSchema = z.object({
     }),
   agreePolicy: z.literal(true, { errorMap: () => ({ message: "同意が必要です。" }) }),
 });
+
 /** type of signup schema */
 type Signup = z.infer<typeof signupSchema>;
 
