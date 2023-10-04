@@ -1,6 +1,7 @@
 "use client";
 
 import { Metadata } from "next";
+import { Noto_Sans_JP } from "next/font/google";
 import { useEffect } from "react";
 
 import { RectButton } from "@/components/buttons/RectButton";
@@ -11,6 +12,11 @@ import styles from "./global-error.module.scss";
 export const metadata: Metadata = {
   title: "Error",
 };
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 type GlobalErrorProps = {
   error: Error & { digest?: string };
@@ -23,7 +29,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
   }, [error]);
 
   return (
-    <div className={styles.container}>
+    <main className={`${styles.container} ${notoSansJP.className}`}>
       <h1 className={styles.title}>エラー</h1>
       <div className={styles.animation}>
         <ErrorPlayer />
@@ -37,6 +43,6 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
           </RectButton>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
