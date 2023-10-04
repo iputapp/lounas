@@ -52,7 +52,7 @@
       justify-items-center
       gap-4;
 
-    & > span {
+    & > * {
       @apply w-fit
         text-center
         text-base
