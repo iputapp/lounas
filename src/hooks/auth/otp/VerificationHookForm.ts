@@ -14,6 +14,7 @@ const VerificationHookForm = () => {
     control,
     handleSubmit,
     formState: { errors },
+    resetField,
   } = useForm<Verification>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -38,6 +39,8 @@ const VerificationHookForm = () => {
     })
       .then((res) => {
         if (!res.ok) {
+          control.setError("password", { type: "manual", message: "認証に失敗しました。" });
+          resetField("password");
           console.error("Error!", res.status);
           throw new Error(res.statusText);
         }
