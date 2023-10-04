@@ -1,7 +1,7 @@
 .overlay {
   @apply fixed inset-0 z-40
     h-screen w-full
-    backdrop-blur;
+    backdrop-blur-sm;
 
   transition: all 0.3s ease-in-out;
 
