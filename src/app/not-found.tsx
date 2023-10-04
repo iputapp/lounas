@@ -18,13 +18,15 @@ export default function NotFound() {
   return (
     <div className={`${styles.container} ${notoSansJP.className}`}>
       <h1 className={styles.title}>Not Found</h1>
-      <span className={styles.description}>お探しのページは見つかりませんでした...</span>
+      <div className={styles.balloon}>
+        <span>お探しのページは見つかりませんでした...</span>
+      </div>
       <div className={styles.penguin}>
         <Image
           src="/images/not-found-penguin.png"
           alt="not-found-penguin"
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80vw"
           priority
         />
       </div>

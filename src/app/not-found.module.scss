@@ -14,10 +14,29 @@
     color: var.$primary;
   }
 
-  .description {
-    @apply text-lg font-semibold;
+  .balloon {
+    @apply relative
+      rounded-3xl
+      px-3.5 py-5;
 
-    color: var.$secondary;
+    background-color: #e0edff;
+
+    &::before {
+      @apply absolute;
+
+      top: 100%;
+      left: 50%;
+      margin-left: -1rem;
+      content: "";
+      border: 1rem solid transparent;
+      border-top: 1rem solid #e0edff;
+    }
+
+    & > span {
+      @apply text-lg font-semibold;
+
+      color: var.$secondary;
+    }
   }
 
   .penguin {
