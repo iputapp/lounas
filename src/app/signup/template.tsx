@@ -7,7 +7,7 @@ import { TrianglesBottom } from "@/components/backgrounds/TrianglesBottom";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [isOtp, setIsOtp] = useState<boolean>(false);
+  const [isOtp, setIsOtp] = useState(false);
 
   useEffect(() => {
     pathname.endsWith("verify") ? setIsOtp(true) : setIsOtp(false);
