@@ -38,7 +38,7 @@ const VerificationHookForm = () => {
     })
       .then((res) => {
         console.log("res", res);
-        router.push("/privacy");
+        router.replace("/privacy");
       })
       .catch((err) => console.log("err", err));
   };
