@@ -41,7 +41,7 @@ const SignupHookForm = () => {
           console.error("Error!", res.status);
           control.setError("email", {
             type: "manual",
-            message: "メールの送信に失敗しました。",
+            message: "メールの送信に失敗しました。メールアドレスを確認してください。",
           });
           throw new Error(res.statusText);
         }
