@@ -15,6 +15,7 @@ const VerificationHookForm = () => {
     handleSubmit,
     formState: { errors },
     resetField,
+    clearErrors,
   } = useForm<Verification>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -63,6 +64,7 @@ const VerificationHookForm = () => {
       onSubmit,
       errors,
       resetField,
+      clearErrors,
     },
   };
 };
