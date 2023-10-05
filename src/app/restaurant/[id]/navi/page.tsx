@@ -143,7 +143,14 @@ export default function Page({ params }: { params: { id: string } }) {
           </section>
           <section>
             <div className={styles.mapParent}>
-              <Image className={styles.map} src="/mockup/map.webp" alt="map" fill />
+              <Image
+                className={styles.map}
+                src="/mockup/map.webp"
+                alt="map"
+                fill
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 50vw"
+                priority={false}
+              />
               <span className={styles.preview}>Coming Soon!</span>
             </div>
             <a
