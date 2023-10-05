@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { BorderRoundButton } from "@/components/buttons/BorderRoundButton";
 import { VerificationHookForm } from "@/hooks/auth/otp/VerificationHookForm";
@@ -13,14 +13,15 @@ type VerificationFormProps = {
 
 const VerificationForm = ({ className = "" }: VerificationFormProps) => {
   const {
-    form: { control, handleSubmit, onSubmit, resetField },
+    form: { control, handleSubmit, onSubmit, resetField, clearErrors },
   } = VerificationHookForm();
 
-  /** 確認コード再送ボタン */
-  const time = 10; // 再送までの時間 (秒)
-  const [disabled, setDisabled] = useState(false);
+  /** 確認コード再送ボタン - status */
+  const time = 15; // 再送までの時間 (秒)
+  const [disabled, setDisabled] = useState(true);
   const [count, setCount] = useState(time);
 
+  /** 確認コード再送 - interval */
   const timerResend = () => {
     const timer = setInterval(() => {
       setCount((prev) => prev - 1);
@@ -31,14 +32,24 @@ const VerificationForm = ({ className = "" }: VerificationFormProps) => {
       setDisabled(false);
       setCount(time);
     }, 1000 * time);
+
+    return timer;
   };
+
+  /** 確認コード再送 first-interval */
+  useEffect(() => {
+    const timer = timerResend();
+
+    return () => clearInterval(timer);
+  }, []);
 
   /** 確認コード再送 */
   const handleResend = async () => {
+    clearErrors("password");
     setDisabled(true);
     timerResend();
 
-    await fetch("/api/auth/verification/resend", {
+    await fetch("/api/auth/otp/verification/resend", {
       method: "POST",
     })
       .then((res) => {
