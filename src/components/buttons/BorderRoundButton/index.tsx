@@ -2,7 +2,7 @@
 
 import styles from "./styles.module.scss";
 
-type BorderRoundButtonProps = {
+type BorderRoundButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   fontSize?:
     | "text-xs"
@@ -18,12 +18,16 @@ type BorderRoundButtonProps = {
     | "text-7xl"
     | "text-8xl"
     | "text-9xl";
-  onClick: () => void;
 };
 
-export function BorderRoundButton({ children, fontSize, onClick }: BorderRoundButtonProps) {
+export function BorderRoundButton({
+  children,
+  fontSize,
+  type = "button",
+  onClick,
+}: BorderRoundButtonProps) {
   return (
-    <button className={`${styles.container} ${fontSize}`} onClick={onClick}>
+    <button className={`${styles.container} ${fontSize}`} type={type} onClick={onClick}>
       <div className={styles.inner}>
         <span className={styles.title}>{children}</span>
       </div>

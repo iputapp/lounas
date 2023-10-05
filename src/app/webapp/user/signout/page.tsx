@@ -5,6 +5,7 @@ import Instagram from "@icons/instagram.svg";
 import Lock from "@icons/lock.svg";
 import NavArrowRight from "@icons/nav-arrow-right.svg";
 import Twitter from "@icons/twitter.svg";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
@@ -57,15 +58,18 @@ const messages = [
 ];
 
 export default function Page() {
+  const supabase = createClientComponentClient();
   const router = useRouter();
   const [messageToUser, setMessageToUser] = useState("");
 
+  /** ガチャ */
   const messageGacha = () => {
-    const rand = Math.floor(Math.random() * 100);
+    const rand = Math.floor(Math.random() * 100) + 1;
     for (const message of messages) {
       if (rand < message.prob) {
-        console.log(message.message);
         return message.message;
+      } else {
+        return messages[messages.length - 1].message;
       }
     }
   };
@@ -75,8 +79,18 @@ export default function Page() {
     setMessageToUser(message);
   }, []);
 
-  const signIn = () => {
-    router.replace("/webapp/user/signout");
+  const handleSignOut = async () => {
+    await supabase.auth
+      .signOut()
+      .then((res) => {
+        if (res.error) {
+          console.error("Error!", res.error.status);
+          throw new Error(res.error.message);
+        }
+
+        router.push("/signup/verify");
+      })
+      .catch((err) => console.error("Error!", err));
   };
 
   return (
@@ -85,7 +99,8 @@ export default function Page() {
       <div className={styles.sub}>
         <span className={styles.text}>{messageToUser}</span>
         <div className={styles.button}>
-          <button onClick={signIn}>Sign Out</button>
+          {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
+          <button onClick={handleSignOut}>Sign Out</button>
         </div>
       </div>
       <div className={styles.panel}>
