@@ -2,6 +2,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 
 import { BorderRoundButton } from "@/components/buttons/BorderRoundButton";
+import { LoadingLayer } from "@/components/overlays/LoadingLayer";
 import { VerificationHookForm } from "@/hooks/auth/otp/VerificationHookForm";
 import { theme } from "@/styles/mui";
 
@@ -14,6 +15,7 @@ type VerificationFormProps = {
 const VerificationForm = ({ className = "" }: VerificationFormProps) => {
   const {
     form: { control, handleSubmit, onSubmit, resetField, clearErrors },
+    status: { isProcessing },
   } = VerificationHookForm();
 
   /** 確認コード再送ボタン - status */
@@ -70,41 +72,44 @@ const VerificationForm = ({ className = "" }: VerificationFormProps) => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-      <form noValidate onSubmit={handleSubmit(onSubmit)} className={className}>
-        <div className="grid gap-1">
-          <BasicTextField
-            name="password"
-            control={control}
-            label="確認コード"
-            required
-            variant="outlined"
-            inputProps={{
-              inputMode: "numeric",
-              pattern: "[0-9]*",
-              maxLength: 6,
-            }}
-          />
-          <button
-            className={`ms-1 justify-self-start text-sm ${
-              disabled ? "text-neutral-400" : "text-blue-600"
-            } transition-colors duration-300 ease-in-out`}
-            type="button"
-            // eslint-disable-next-line @typescript-eslint/no-misused-promises
-            onClick={handleResend}
-            disabled={disabled}
-          >
-            確認コードを再送する {disabled ? `(${count}秒後)` : ""}
-          </button>
-        </div>
-        <div className="w-fit">
-          <BorderRoundButton type="submit" fontSize="text-lg">
-            次へ
-          </BorderRoundButton>
-        </div>
-      </form>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
+        <form noValidate onSubmit={handleSubmit(onSubmit)} className={className}>
+          <div className="grid gap-1">
+            <BasicTextField
+              name="password"
+              control={control}
+              label="確認コード"
+              required
+              variant="outlined"
+              inputProps={{
+                inputMode: "numeric",
+                pattern: "[0-9]*",
+                maxLength: 6,
+              }}
+            />
+            <button
+              className={`ms-1 justify-self-start text-sm ${
+                disabled ? "text-neutral-400" : "text-blue-600"
+              } transition-colors duration-300 ease-in-out`}
+              type="button"
+              // eslint-disable-next-line @typescript-eslint/no-misused-promises
+              onClick={handleResend}
+              disabled={disabled}
+            >
+              確認コードを再送する {disabled ? `(${count}秒後)` : ""}
+            </button>
+          </div>
+          <div className="w-fit">
+            <BorderRoundButton type="submit" fontSize="text-lg">
+              次へ
+            </BorderRoundButton>
+          </div>
+        </form>
+      </ThemeProvider>
+      <LoadingLayer working={isProcessing} />
+    </>
   );
 };
 
