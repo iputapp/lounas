@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import type { Verification } from "@/app/api/auth/otp/verification";
@@ -8,6 +9,7 @@ import { verificationSchema } from "@/app/api/auth/otp/verification";
 /** sign-up hook form */
 const VerificationHookForm = () => {
   const router = useRouter();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   /** hook form */
   const {
@@ -30,6 +32,9 @@ const VerificationHookForm = () => {
 
   /** called only when the value conversion and type checking for zod pass */
   const onSubmit = async (data: Verification): Promise<void> => {
+    /** set status */
+    setIsProcessing(true);
+
     /** fetch to api route */
     await fetch("/api/auth/otp/verification", {
       method: "POST",
@@ -54,6 +59,10 @@ const VerificationHookForm = () => {
       .catch((err) => {
         control.setError("password", { type: "manual", message: "通信に失敗しました。" });
         console.error("Error!", err);
+      })
+      .finally(() => {
+        /** set status */
+        setIsProcessing(false);
       });
   };
 
@@ -65,6 +74,9 @@ const VerificationHookForm = () => {
       errors,
       resetField,
       clearErrors,
+    },
+    status: {
+      isProcessing: isProcessing,
     },
   };
 };
