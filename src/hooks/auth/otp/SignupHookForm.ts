@@ -39,12 +39,19 @@ const SignupHookForm = () => {
       .then((res) => {
         if (!res.ok) {
           console.error("Error!", res.status);
+          control.setError("email", {
+            type: "manual",
+            message: "メールの送信に失敗しました。",
+          });
           throw new Error(res.statusText);
         }
 
         router.push("/signup/verify");
       })
-      .catch((err) => console.error("Error!", err));
+      .catch((err) => {
+        control.setError("email", { type: "manual", message: "通信に失敗しました。" });
+        console.error("Error!", err);
+      });
   };
 
   return {
