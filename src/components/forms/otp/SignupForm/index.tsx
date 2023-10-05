@@ -20,7 +20,13 @@ const SignupForm = ({ className = "" }: SignupFormProps) => {
     <ThemeProvider theme={theme}>
       {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
       <form noValidate onSubmit={handleSubmit(onSubmit)} className={className}>
-        <BasicTextField name="email" control={control} label="メールアドレス" required />
+        <BasicTextField
+          name="email"
+          control={control}
+          label="メールアドレス"
+          required
+          inputProps={{ inputMode: "email" }}
+        />
         <BasicCheckbox
           name="agreePolicy"
           control={control}
