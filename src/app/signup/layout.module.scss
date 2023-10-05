@@ -1,0 +1,16 @@
+@use "variables" as var;
+
+.main {
+  @apply min-h-screen w-full px-5;
+
+  padding-top: var.$safe-area-top;
+  padding-bottom: var.$safe-area-bottom;
+}
+
+.bg {
+  @apply fixed inset-0 -z-50
+    h-screen w-full
+    overflow-clip;
+
+  background-color: var.$bg-primary;
+}

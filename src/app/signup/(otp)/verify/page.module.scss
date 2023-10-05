@@ -1,0 +1,56 @@
+@use "variables" as var;
+
+.container {
+  @apply grid h-full w-full
+    content-center
+    gap-10 pb-14;
+
+  .header {
+    @apply mx-auto
+      grid w-fit
+      gap-5;
+
+    .title {
+      @apply text-3xl font-bold;
+
+      color: var.$primary;
+    }
+
+    .description {
+      @apply grid gap-0.5
+        text-center
+        text-base;
+
+      color: var.$tertiary;
+    }
+  }
+
+  .form {
+    @apply mx-auto
+      grid max-w-sm
+      gap-[1.875rem];
+
+    width: 80%;
+
+    & > :last-child {
+      @apply justify-self-end;
+    }
+  }
+
+  .help {
+    @apply flex items-center space-x-0.5 justify-self-center;
+
+    color: var.$tertiary;
+
+    & > .icon {
+      transition: transform 0.2s ease-in-out;
+      transform: rotate(0);
+    }
+
+    &:hover {
+      & > .icon {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

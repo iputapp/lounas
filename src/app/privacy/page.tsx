@@ -11,12 +11,9 @@ import styles from "./page.module.scss";
 
 export default function Page() {
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const disAgree = () => {
-    router.push("/webapp/home");
-  };
-  const agree = () => {
+  const handleAgreement = () => {
     router.push("/webapp/home");
   };
 
@@ -26,7 +23,7 @@ export default function Page() {
         <h1 className={styles.title}>データ利用</h1>
         <div className={styles.description}>
           <p>このアプリではユーザーがより便利にお使いいただくために情報提供をお願いしています。</p>
-          <button className={styles.dialoginfo} onClick={() => setIsOpen(!isOpen)}>
+          <button className={styles.dialoginfo} onClick={() => setIsOpen((prev) => !prev)}>
             <span>私たちが考えるプライバシーについて詳しく知る</span>
           </button>
         </div>
@@ -39,10 +36,10 @@ export default function Page() {
             <span>ランキング機能のみのご利用になります。</span>
           </div>
           <div className={styles.button}>
-            <RectButton color="red" onClick={disAgree}>
+            <RectButton color="red" onClick={handleAgreement}>
               同意しない
             </RectButton>
-            <RectButton color="blue" onClick={agree}>
+            <RectButton color="blue" onClick={handleAgreement}>
               同意する
             </RectButton>
           </div>
