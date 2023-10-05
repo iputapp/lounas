@@ -69,7 +69,7 @@ export function DialogInfo({ title, children, isOpen, setIsOpen }: DialogInfoPro
             alignItems: "center",
           }}
         >
-          <IconButton aria-label="close" onClick={() => setIsOpen(!isOpen)}>
+          <IconButton aria-label="close" onClick={() => setIsOpen((prev) => !prev)}>
             <Cancel />
           </IconButton>
           <DialogTitle id="info-dialog-title">{title}</DialogTitle>
