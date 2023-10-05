@@ -88,7 +88,7 @@ export default function Page() {
           throw new Error(res.error.message);
         }
 
-        router.push("/signup/verify");
+        router.replace("signin");
       })
       .catch((err) => console.error("Error!", err));
   };
