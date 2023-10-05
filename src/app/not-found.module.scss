@@ -4,21 +4,25 @@
   @apply grid h-screen w-full
     place-content-center
     place-items-center
-    gap-12;
+    gap-12 pb-8;
 
   background-color: var.$bg-primary;
 
   .title {
-    @apply text-5xl font-bold;
+    @apply text-4xl font-bold;
 
     color: var.$primary;
   }
 
   .balloon {
-    @apply relative
+    @apply relative mx-auto
       rounded-3xl
-      px-3.5 py-5;
+      px-4
+      py-5
+      text-center;
 
+    width: 96%;
+    min-width: fit-content;
     background-color: #e0edff;
 
     &::before {
@@ -33,7 +37,7 @@
     }
 
     & > span {
-      @apply text-lg font-semibold;
+      @apply text-base font-semibold;
 
       color: var.$secondary;
     }
