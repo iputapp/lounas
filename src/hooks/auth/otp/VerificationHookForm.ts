@@ -39,7 +39,10 @@ const VerificationHookForm = () => {
     })
       .then((res) => {
         if (!res.ok) {
-          control.setError("password", { type: "manual", message: "認証に失敗しました。" });
+          control.setError("password", {
+            type: "manual",
+            message: "認証に失敗しました。しばらくしてから再度お試しください。",
+          });
           resetField("password");
           console.error("Error!", res.status);
           throw new Error(res.statusText);
@@ -47,7 +50,10 @@ const VerificationHookForm = () => {
 
         router.replace("/privacy");
       })
-      .catch((err) => console.error("Error!", err));
+      .catch((err) => {
+        control.setError("password", { type: "manual", message: "通信に失敗しました。" });
+        console.error("Error!", err);
+      });
   };
 
   return {
@@ -56,6 +62,7 @@ const VerificationHookForm = () => {
       handleSubmit,
       onSubmit,
       errors,
+      resetField,
     },
   };
 };
