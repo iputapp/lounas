@@ -2,6 +2,9 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
+/** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "force-dynamic";
+
 export async function POST() {
   const cookieStore = cookies();
   const email = cookieStore.get("email")?.value;
