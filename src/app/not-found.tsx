@@ -16,7 +16,7 @@ const notoSansJP = Noto_Sans_JP({
 
 export default function NotFound() {
   return (
-    <div className={`${styles.container} ${notoSansJP.className}`}>
+    <main className={`${styles.container} ${notoSansJP.className}`}>
       <h1 className={styles.title}>Not Found</h1>
       <div className={styles.balloon}>
         <span>お探しのページは見つかりませんでした...</span>
@@ -31,6 +31,6 @@ export default function NotFound() {
         />
       </div>
       <Link href="/">ホームに戻る</Link>
-    </div>
+    </main>
   );
 }
