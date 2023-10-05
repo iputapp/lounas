@@ -29,7 +29,7 @@ const VerificationForm = ({ className = "" }: VerificationFormProps) => {
     setTimeout(() => {
       clearInterval(timer);
       setDisabled(false);
-      setCount(10);
+      setCount(time);
     }, 1000 * time);
   };
 
