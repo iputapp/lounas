@@ -3,15 +3,15 @@
 import styles from "./styles.module.scss";
 
 type RectButtonProps = {
-  text: string;
+  children: React.ReactNode;
   color: "blue" | "red";
   onClick: () => void;
 };
 
-export function RectButton({ text, color, onClick }: RectButtonProps) {
+export function RectButton({ children, color, onClick }: RectButtonProps) {
   return (
-    <button className={`${styles.box} ${styles[color]} ${styles.flexCenterAll}`} onClick={onClick}>
-      <span className={styles.text}>{text}</span>
+    <button className={`${styles.box} ${styles[color]}`} onClick={onClick}>
+      <span className={styles.text}>{children}</span>
     </button>
   );
 }

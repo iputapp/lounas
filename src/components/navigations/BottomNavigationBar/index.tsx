@@ -7,29 +7,39 @@ import LogoOutline from "@icons/logo-outline.svg";
 import User from "@icons/user.svg";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useLayoutEffect, useState } from "react";
 
-type BottomNavigationBarProps = {
-  pathname?: string;
-};
-
-export function BottomNavigationBar({ pathname = "" }: BottomNavigationBarProps) {
+export function BottomNavigationBar() {
   const router = useRouter();
+  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
   const [value, setValue] = useState("home");
 
+  const rootPath = "/webapp";
+
+  const init = (pathname: string) => {
+    pathname.includes("user") ? setValue("user") : setValue(pathname.split("/").pop() as string);
+  };
+
+  useLayoutEffect(() => {
+    init(pathname);
+  }, [pathname]);
+
+  useEffect(() => setMounted(true), []);
+
   return (
-    <div className="fixed inset-x-0 bottom-0">
+    <div className="fixed inset-x-0 bottom-0 z-50">
       <BottomNavigation
         value={value}
         onChange={(event, value: string) => {
           setValue(value);
-          router.push(`${pathname}/${value}`);
+          router.push(`${rootPath}/${value}`);
         }}
         sx={{
           "&": {
-            backdropFilter: "blur(8px)", // backdrop-blur
-            backgroundColor: "transparent",
+            backdropFilter: "blur(8px) brightness(1.25)", // backdrop-blur, backdrop-brightness-125
+            backgroundColor: "rgb(255 255 255 / 50%)",
             height: "5rem", // 3.5rem(default) + paddingBottom
           },
           "& .MuiBottomNavigationAction-root": {
@@ -42,7 +52,9 @@ export function BottomNavigationBar({ pathname = "" }: BottomNavigationBarProps)
         <BottomNavigationAction
           value="home"
           icon={
-            <span className="text-xl">{value === "home" ? <LogoFill /> : <LogoOutline />}</span>
+            mounted && (
+              <span className="text-xl">{value === "home" ? <LogoFill /> : <LogoOutline />}</span>
+            )
           }
         />
         <BottomNavigationAction
