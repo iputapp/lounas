@@ -1,0 +1,60 @@
+@use "variables" as var;
+
+.container {
+  @apply grid h-screen w-full
+    place-content-center
+    place-items-center
+    gap-12 pb-8;
+
+  background-color: var.$bg-primary;
+
+  .title {
+    @apply text-4xl font-bold;
+
+    color: var.$primary;
+  }
+
+  .balloon {
+    @apply relative mx-auto
+      rounded-3xl
+      px-4 py-5
+      text-center;
+
+    width: 96%;
+    min-width: fit-content;
+    background-color: #e0edff;
+
+    &::before {
+      @apply absolute;
+
+      top: 100%;
+      left: 50%;
+      margin-left: -1rem;
+      content: "";
+      border: 1rem solid transparent;
+      border-top: 1rem solid #e0edff;
+    }
+
+    & > span {
+      @apply text-base font-semibold;
+
+      color: var.$secondary;
+    }
+  }
+
+  .penguin {
+    @apply relative w-4/5 overflow-clip;
+
+    aspect-ratio: 1 / 1;
+
+    & > * {
+      @apply absolute object-cover;
+    }
+  }
+
+  & > a {
+    @apply text-xl;
+
+    color: var.$blue;
+  }
+}

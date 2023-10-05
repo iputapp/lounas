@@ -5,11 +5,9 @@ $cyan-size: 30dvh;
 $green-size: 28dvh;
 
 .bg {
-  @apply fixed inset-0 -z-50
+  @apply fixed inset-0
     h-screen w-full
     overflow-clip;
-
-  background-color: var.$bg-primary;
 
   .circle {
     @apply absolute;
