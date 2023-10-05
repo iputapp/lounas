@@ -1,34 +1,9 @@
 /**
- * @constant {number} STUDENT_ID_LENGTH
- *
- * Length of `student ID`
+ * DON'T USE IN CLIENT SIDE
+ * Only use in server side
  */
-export const STUDENT_ID_LENGTH = 6;
 
-/**
- * @constant {RegExp} STUDENT_ID_REGEX
- *
- * Regex of `student ID`
- */
-export const STUDENT_ID_REGEX = /^2[0-9]{5}$/;
+/** allowed domains */
+const ALLOWED_DOMAINS = ["tks.iput.ac.jp", "iput.ac.jp"] as readonly string[];
 
-/**
- * @constant {string} EMAIL_DOMAIN
- *
- * Domain of `email`
- */
-export const EMAIL_DOMAIN = "tks.iput.ac.jp";
-
-/**
- * @constant {number} VERIFY_DIGITS_LENGTH
- *
- * Length of `verify digits`
- */
-export const VERIFY_DIGITS_LENGTH = 6;
-
-/**
- * @constant {RegExp} VERIFY_DIGITS_REGEX
- *
- * Regex of `verify digits`
- */
-export const VERIFY_DIGITS_REGEX = /^[0-9]{6}$/;
+export { ALLOWED_DOMAINS };

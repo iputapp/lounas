@@ -42,7 +42,7 @@
 //  * Set `email` to cookie
 //  * @param {string} email student email
 //  */
-// export async function setEmailToCookie(email: string) {
+// export function setEmailToCookie(email: string) {
 //   cookies().set({
 //     name: process.env.NEXT_PUBLIC_COOKIE_EMAIL_NAME ?? "email",
 //     value: email,
@@ -57,7 +57,7 @@
 //  * Get `email` from cookie
 //  * @returns {string}
 //  */
-// export async function getEmailFromCookie() {
+// export function getEmailFromCookie() {
 //   const cookieStore = cookies();
 //   const email = cookieStore.get(process.env.NEXT_PUBLIC_COOKIE_EMAIL_NAME ?? "email")?.value;
 //   if (!email) throw new Error("email not found.");

@@ -10,8 +10,8 @@ import styles from "./page.module.scss";
 export default function Page() {
   const router = useRouter();
 
-  const signOut = () => {
-    router.replace("/webapp/user/signout");
+  const handleSignIn = () => {
+    router.push("/signup");
   };
 
   return (
@@ -20,7 +20,7 @@ export default function Page() {
       <div className={styles.sub}>
         <span className={styles.text}>IMAP会員へようこそ！</span>
         <div className={styles.button}>
-          <BorderRoundButton fontSize="text-2xl" onClick={signOut}>
+          <BorderRoundButton fontSize="text-2xl" onClick={handleSignIn}>
             Sign In
           </BorderRoundButton>
         </div>
