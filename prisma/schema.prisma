@@ -81,7 +81,6 @@ model WeekType {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  type String @unique /// @zod.string.min(1)
   name String /// @zod.string.min(1)
 
   restaurantOpens RestaurantOpen[]
@@ -114,7 +113,6 @@ model RouteType {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  type String @unique /// @zod.string.min(1)
   name String /// @zod.string.min(1)
 
   routes Route[]
@@ -127,9 +125,8 @@ model Payment {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  name        String /// @zod.string.min(1)
-  accepted    Boolean
-  description String?
+  accepted Boolean
+  details  String?
 
   paymentType   PaymentType @relation(fields: [paymentTypeId], references: [id])
   paymentTypeId String      @map("payment_type_id") @db.Uuid
@@ -145,7 +142,6 @@ model PaymentType {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  type String @unique /// @zod.string.min(1)
   name String /// @zod.string.min(1)
 
   payments Payment[]
@@ -208,7 +204,6 @@ model DishTrait {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
 
-  type        String /// @zod.string.min(1)
   name        String /// @zod.string.min(1)
   description String?
   threshold   Int /// @zod.number
@@ -241,7 +236,7 @@ model User {
 
   email           String    @unique /// @zod.string.email()
   username        String    @unique /// @zod.string.min(6)
-  lastLogin       DateTime? @map("last_login")
+  lastLogin       DateTime? @map("last_login") @db.Timestamptz()
   dataUsageAgreed Boolean   @map("data_usage_agreed")
 
   visitHistories VisitHistory[]
