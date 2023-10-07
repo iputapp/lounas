@@ -81,13 +81,8 @@ export async function middleware(req: NextRequest) {
     }
 
     /** ----- data ----- */
-    /** /dish */
-    if (reqNextPath.startsWith("/dish")) {
-      return NextResponse.redirect(`${reqUrl.origin}`);
-    }
-
     /** /restaurant */
-    if (reqNextPath.startsWith("/restaurant")) {
+    if (reqNextPath.startsWith("/restaurant/[id]/navi")) {
       return NextResponse.redirect(`${reqUrl.origin}`);
     }
   }
