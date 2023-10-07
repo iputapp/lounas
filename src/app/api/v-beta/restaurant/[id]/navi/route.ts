@@ -13,19 +13,21 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
     },
   });
 
+  // 起点となるstepを探す
   const firstStep = routeSteps.find((step) => !step.previousStepId);
   if (!firstStep) {
     return new Response("Data error: Cannot find first step of route.", { status: 500 });
   }
 
+  // 連結リストを順序配列へ変換する探索的処理
   const sortedRoutes = [firstStep];
-  let currentStep = firstStep;
-  const count = 0;
+  let currentStep = firstStep; // 探索済stepの最後尾
+  let foundStepCount = 0;
   const length = routeSteps.length;
   while (currentStep.nextStepId && currentStep) {
-    if (count >= length) {
+    if (foundStepCount >= length) {
+      // 2回以上同じstepを通るのはありえない。(チェーンがループしている)
       return new Response("Data error: Route step chain is too long.", { status: 500 });
-      // nextStepIdがループしている
     }
 
     const nextStep = routeSteps.find((step) => step.id == currentStep.nextStepId);
@@ -38,6 +40,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
 
     sortedRoutes.push(nextStep);
     currentStep = nextStep;
+    foundStepCount++;
   }
   if (currentStep.nextStepId) {
     // これ、count>=lengthで判定してるから、これは発生しない？要検証
