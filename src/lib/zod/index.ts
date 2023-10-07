@@ -54,7 +54,10 @@ export const NullsOrderSchema = z.enum(['first','last']);
 /////////////////////////////////////////
 
 export const RestaurantSchema = z.object({
-  id: z.string().uuid(),
+  /**
+   * zod.string.regex(/^[A-F0-9]+$/).length(8)
+   */
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
@@ -79,7 +82,6 @@ export type Restaurant = z.infer<typeof RestaurantSchema>
 //------------------------------------------------------
 
 export const RestaurantOptionalDefaultsSchema = RestaurantSchema.merge(z.object({
-  id: z.string().uuid().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -511,7 +513,10 @@ export const PaymentTypeOptionalDefaultsWithRelationsSchema: z.ZodType<PaymentTy
 /////////////////////////////////////////
 
 export const DishSchema = z.object({
-  id: z.string().uuid(),
+  /**
+   * zod.string.regex(/^[A-F0-9]+$/).length(8)
+   */
+  id: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
@@ -527,7 +532,6 @@ export type Dish = z.infer<typeof DishSchema>
 //------------------------------------------------------
 
 export const DishOptionalDefaultsSchema = DishSchema.merge(z.object({
-  id: z.string().uuid().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
