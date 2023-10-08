@@ -107,7 +107,7 @@ p {
 注意：`migrate`で生成されたファイル(`日付_name/migration.sql`, `migration_lock.toml`)も**コミットに含める**
 （[その理由: Prisma Docs, Team development with Prisma Migrate](https://www.prisma.io/docs/guides/migrate/developing-with-prisma-migrate/team-development)）
 
-## Pull Request
+## Pull Request (PR)
 
 PRをする前に以下のコマンドを実行し、体裁を整えること。
 
