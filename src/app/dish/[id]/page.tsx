@@ -1,8 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
+import { DishResponse, dishResponseSchema } from "@/app/api/v-beta/dish/[id]";
 import { BackButton } from "@/components/buttons/BackButton";
 import { RectButton } from "@/components/buttons/RectButton";
 import { Card } from "@/components/cards/Card";
@@ -15,8 +16,18 @@ import styles from "./page.module.scss";
 export default function Page({ params }: { params: { id: string } }) {
   const router = useRouter();
 
+  const [dishData, setDishData] = useState<DishResponse>(null);
+
   useEffect(() => {
     console.log("料理ID:", params.id);
+
+    fetch(`/api/v-beta/dish/${params.id}`)
+      .then(async (res) => {
+        setDishData(dishResponseSchema.parse(await res.json()));
+      })
+      .catch((err) => {
+        // 404など
+      });
   }, [params]);
 
   /** テスト用 料理データ */
@@ -65,14 +76,15 @@ export default function Page({ params }: { params: { id: string } }) {
   ];
 
   /** テスト用 api route から返ってくるデータ (予定) */
-  const data = {
+  const _data = {
     dish: dish,
     restaurant: restaurant,
     payments: payments,
   };
 
+  // ここに行くボタンを押したときの処理
   const decide = () => {
-    router.push(`/restaurant/${data.restaurant.urlId}/navi`);
+    router.push(`/restaurant/${dishData.id}/navi`);
   };
 
   return (
@@ -81,37 +93,43 @@ export default function Page({ params }: { params: { id: string } }) {
         <BackButton title="戻る" />
       </div>
       <div className={styles.content}>
-        <Card image={`/test/${data.dish.thumbnailId}.webp`} alt={data.dish.name}>
-          <p>{data.dish.name}</p>
-          <p>{data.restaurant.name}</p>
+        <Card image={`/test/${dishData.id}.webp`} alt={dishData.name}>
+          <p>{dishData.name}</p>
+          <p>{dishData.restaurant.name}</p>
         </Card>
         <ExpandablePanel
           title="店舗詳細"
-          bgImage={`/test/${data.dish.thumbnailId}.webp`}
+          bgImage={`/test/${dishData.restaurant.id}.webp`}
           titleEx="決済方法"
-          childrenEx={<PaymentLong payments={data.payments} />}
+          childrenEx={<PaymentLong payments={dishData.restaurant.payments} />}
         >
           <ul className="grid justify-items-start gap-3">
             <li>
               <span>
                 全日：
-                {data.restaurant.timeOpen.toLocaleTimeString("ja-JP", {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
+                {dishData.restaurant.restaurantOpens[99999999].timeOpen.toLocaleTimeString(
+                  "ja-JP",
+                  {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  }
+                )}
                 ～
-                {data.restaurant.timeClose.toLocaleTimeString("ja-JP", {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
+                {dishData.restaurant.restaurantOpens[99999999].timeOpen.toLocaleTimeString(
+                  "ja-JP",
+                  {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  }
+                )}
               </span>
             </li>
             <li className="grid">
-              <span>滞在時間：おおよそ{Math.floor(data.dish.eatTime / 60)}分</span>
+              <span>滞在時間：おおよそ{Math.floor(dishData.eatTime / 60)}分</span>
               <small className="text-xs">※混雑状況により異なります。</small>
             </li>
             <li>
-              <span>片道：おおよそ{Math.floor(data.restaurant.travelTime / 60)}分</span>
+              <span>片道：おおよそ{Math.floor(dishData.restaurant.travelTime / 60)}分</span>
             </li>
           </ul>
         </ExpandablePanel>
