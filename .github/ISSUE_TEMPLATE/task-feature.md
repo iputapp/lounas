@@ -1,8 +1,8 @@
 # Tasks (Features)
 
-TEAM PIPLUP
+TEAM PIPLUP 🐧
 
-@duke-imo @HIMA-HIMAZIN @kou-nagamine @nafell @Shvain @YoshieYuushi @wiyco
+@duke-imo @HIMA-HIMAZIN @kou-nagamine @nafell @Shvain @wiyco
 
 ## Overview of Tasks (Features)
 
@@ -16,8 +16,6 @@ TEAM PIPLUP
 
 例：
 
-- [x] 補足説明のアイコン(三角形)を用意する。
-- [x] `_variables.scss`に Secondary Color `#525252`を追加する。
 - [ ] Modal コンポーネントを作成する。
 
 ## Before submitting
