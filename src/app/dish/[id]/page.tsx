@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { DishResponse, dishResponseSchema } from "@/app/api/v-beta/dish/[id]";
+import { VisitRegisterRequest } from "@/app/api/v-beta/user/visit/new";
 import { BackButton } from "@/components/buttons/BackButton";
 import { RectButton } from "@/components/buttons/RectButton";
 import { Card } from "@/components/cards/Card";
@@ -83,8 +84,23 @@ export default function Page({ params }: { params: { id: string } }) {
   };
 
   // ここに行くボタンを押したときの処理
-  const decide = () => {
-    router.push(`/restaurant/${dishData.id}/navi`);
+  const handleChooseDishClick = async () => {
+    const visitLogPayload: VisitRegisterRequest = {
+      userId: "？？？？？？？？？？？？？？？？",
+      dishId: dishData.id,
+      date: new Date(),
+    };
+
+    const res = await fetch(`/api/v-beta/user/visit/new`, {
+      method: "POST",
+      body: JSON.stringify(visitLogPayload),
+    });
+
+    // エラーが起きた場合どうするか？
+    // A: エラーが起きても、とりあえず次のページに遷移する→履歴が登録されない
+    // B: エラーが起きたら、「記録できませんでした」「もう一度試す」「記録せずナビを表示する」を表示する
+
+    router.push(`/restaurant/${dishData.restaurant.id}/navi`);
   };
 
   return (
@@ -136,7 +152,7 @@ export default function Page({ params }: { params: { id: string } }) {
       </div>
       <div className={styles.footer}>
         <div className={styles.button}>
-          <RectButton color="blue" onClick={decide}>
+          <RectButton color="blue" onClick={handleChooseDishClick}>
             ここに行く
           </RectButton>
         </div>
