@@ -18,7 +18,7 @@ Bootstrapped with `create-next-app@13.4.6`.
 
 PR を行う際は、体裁を統一するため、`Create pull request`を押した後、`URL`に`?template=task-feature.md` (もしくは`&template=task-feature.md`) を追加して、テンプレートにアクセスする。
 
-コピー用
+`コピー用`
 
 ```
 template=task-feature.md
