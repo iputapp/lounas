@@ -23,8 +23,6 @@ Client のスクリプトは `src/hooks/` 以下に作ること。
 >
 > - `src/hooks/fetch.ts`
 
-### `fetch.ts`
-
 ```ts
 async function getPosts(): Promise<Post[]> {
   const res = await fetch(`localhost:3000/api/v0/posts`, { cache: "no-store" });
@@ -48,10 +46,10 @@ async function getPosts(): Promise<Post[]> {
 ```ts
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY!;
-
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_KEY!
+);
 
 export { supabase };
 ```
