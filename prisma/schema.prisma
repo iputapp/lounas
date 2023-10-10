@@ -40,7 +40,6 @@ model Restaurant {
   routes          Route[]
   payments        Payment[]
   dishes          Dish[]
-  visitHistories  VisitHistory[]
 
   @@index([travelTime], name: "restaurants_travel_time_idx")
   @@map("restaurants")
@@ -218,12 +217,10 @@ model VisitHistory {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
-  user         User       @relation(fields: [userId], references: [id])
-  userId       String     @map("user_id") @db.Uuid
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
-  dish         Dish       @relation(fields: [dishId], references: [id])
-  dishId       String     @map("dish_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @map("user_id") @db.Uuid
+  dish   Dish   @relation(fields: [dishId], references: [id])
+  dishId String @map("dish_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
 
   @@index([createdAt], name: "visit_histories_created_at_idx")
   @@map("visit_histories")

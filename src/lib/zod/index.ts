@@ -36,7 +36,7 @@ export const DishScoreScalarFieldEnumSchema = z.enum(['id','createdAt','updatedA
 
 export const DishTraitScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','name','description','threshold']);
 
-export const VisitHistoryScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','userId','restaurantId','dishId']);
+export const VisitHistoryScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','userId','dishId']);
 
 export const UserScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','email','username','lastLogin','dataUsageAgreed']);
 
@@ -94,7 +94,6 @@ export type RestaurantRelations = {
   routes: RouteWithRelations[];
   payments: PaymentWithRelations[];
   dishes: DishWithRelations[];
-  visitHistories: VisitHistoryWithRelations[];
 };
 
 export type RestaurantWithRelations = z.infer<typeof RestaurantSchema> & RestaurantRelations
@@ -105,7 +104,6 @@ export const RestaurantWithRelationsSchema: z.ZodType<RestaurantWithRelations> =
   routes: z.lazy(() => RouteWithRelationsSchema).array(),
   payments: z.lazy(() => PaymentWithRelationsSchema).array(),
   dishes: z.lazy(() => DishWithRelationsSchema).array(),
-  visitHistories: z.lazy(() => VisitHistoryWithRelationsSchema).array(),
 }))
 
 // RESTAURANT OPTIONAL DEFAULTS RELATION SCHEMA
@@ -117,7 +115,6 @@ export type RestaurantOptionalDefaultsRelations = {
   routes: RouteOptionalDefaultsWithRelations[];
   payments: PaymentOptionalDefaultsWithRelations[];
   dishes: DishOptionalDefaultsWithRelations[];
-  visitHistories: VisitHistoryOptionalDefaultsWithRelations[];
 };
 
 export type RestaurantOptionalDefaultsWithRelations = z.infer<typeof RestaurantOptionalDefaultsSchema> & RestaurantOptionalDefaultsRelations
@@ -128,7 +125,6 @@ export const RestaurantOptionalDefaultsWithRelationsSchema: z.ZodType<Restaurant
   routes: z.lazy(() => RouteOptionalDefaultsWithRelationsSchema).array(),
   payments: z.lazy(() => PaymentOptionalDefaultsWithRelationsSchema).array(),
   dishes: z.lazy(() => DishOptionalDefaultsWithRelationsSchema).array(),
-  visitHistories: z.lazy(() => VisitHistoryOptionalDefaultsWithRelationsSchema).array(),
 }))
 
 /////////////////////////////////////////
@@ -738,7 +734,6 @@ export const VisitHistorySchema = z.object({
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   userId: z.string(),
-  restaurantId: z.string().regex(/^[A-Z0-9]+$/).length(8),
   dishId: z.string().regex(/^[A-Z0-9]+$/).length(8),
 })
 
@@ -760,7 +755,6 @@ export type VisitHistoryOptionalDefaults = z.infer<typeof VisitHistoryOptionalDe
 
 export type VisitHistoryRelations = {
   user: UserWithRelations;
-  restaurant: RestaurantWithRelations;
   dish: DishWithRelations;
 };
 
@@ -768,7 +762,6 @@ export type VisitHistoryWithRelations = z.infer<typeof VisitHistorySchema> & Vis
 
 export const VisitHistoryWithRelationsSchema: z.ZodType<VisitHistoryWithRelations> = VisitHistorySchema.merge(z.object({
   user: z.lazy(() => UserWithRelationsSchema),
-  restaurant: z.lazy(() => RestaurantWithRelationsSchema),
   dish: z.lazy(() => DishWithRelationsSchema),
 }))
 
@@ -777,7 +770,6 @@ export const VisitHistoryWithRelationsSchema: z.ZodType<VisitHistoryWithRelation
 
 export type VisitHistoryOptionalDefaultsRelations = {
   user: UserOptionalDefaultsWithRelations;
-  restaurant: RestaurantOptionalDefaultsWithRelations;
   dish: DishOptionalDefaultsWithRelations;
 };
 
@@ -785,7 +777,6 @@ export type VisitHistoryOptionalDefaultsWithRelations = z.infer<typeof VisitHist
 
 export const VisitHistoryOptionalDefaultsWithRelationsSchema: z.ZodType<VisitHistoryOptionalDefaultsWithRelations> = VisitHistoryOptionalDefaultsSchema.merge(z.object({
   user: z.lazy(() => UserOptionalDefaultsWithRelationsSchema),
-  restaurant: z.lazy(() => RestaurantOptionalDefaultsWithRelationsSchema),
   dish: z.lazy(() => DishOptionalDefaultsWithRelationsSchema),
 }))
 
