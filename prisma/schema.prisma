@@ -21,7 +21,7 @@ generator zod {
 }
 
 model Restaurant {
-  id        String   @id /// @zod.string.regex(/^[A-F0-9]+$/).length(8)
+  id        String   @id /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
@@ -70,7 +70,7 @@ model RestaurantOpen {
   weekType     WeekType   @relation(fields: [weekTypeId], references: [id])
   weekTypeId   Int        @map("week_type_id")
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-F0-9]+$/).length(8)
+  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
 
   @@unique([weekTypeId, restaurantId])
   @@map("restaurant_opens")
@@ -102,7 +102,7 @@ model Route {
   routeType    RouteType  @relation(fields: [routeTypeId], references: [id])
   routeTypeId  String     @map("route_type_id") @db.Uuid
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-F0-9]+$/).length(8)
+  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
 
   @@index([step], name: "routes_step_idx")
   @@map("routes")
@@ -131,7 +131,7 @@ model Payment {
   paymentType   PaymentType @relation(fields: [paymentTypeId], references: [id])
   paymentTypeId String      @map("payment_type_id") @db.Uuid
   restaurant    Restaurant  @relation(fields: [restaurantId], references: [id])
-  restaurantId  String      @map("restaurant_id") /// @zod.string.regex(/^[A-F0-9]+$/).length(8)
+  restaurantId  String      @map("restaurant_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
 
   @@unique([paymentTypeId, restaurantId])
   @@map("payments")
@@ -150,7 +150,7 @@ model PaymentType {
 }
 
 model Dish {
-  id        String   @id /// @zod.string.regex(/^[A-F0-9]+$/).length(8)
+  id        String   @id /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
@@ -161,7 +161,7 @@ model Dish {
 
   dishTags     DishTag[]  @relation("dish_tagging")
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-F0-9]+$/).length(8)
+  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
 
   dishScores     DishScore[]
   visitHistories VisitHistory[]
@@ -191,7 +191,7 @@ model DishScore {
   score Int /// @zod.number
 
   dish    Dish      @relation(fields: [dishId], references: [id])
-  dishId  String    @map("dish_id") /// @zod.string.regex(/^[A-F0-9]+$/).length(8)
+  dishId  String    @map("dish_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
   trait   DishTrait @relation(fields: [traitId], references: [id])
   traitId String    @map("trait_id") @db.Uuid
 
@@ -221,9 +221,9 @@ model VisitHistory {
   user         User       @relation(fields: [userId], references: [id])
   userId       String     @map("user_id") @db.Uuid
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-F0-9]+$/).length(8)
+  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
   dish         Dish       @relation(fields: [dishId], references: [id])
-  dishId       String     @map("dish_id") /// @zod.string.regex(/^[A-F0-9]+$/).length(8)
+  dishId       String     @map("dish_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
 
   @@index([createdAt], name: "visit_histories_created_at_idx")
   @@map("visit_histories")

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import type { Prisma } from '@prisma/client';
 
 /////////////////////////////////////////
 // HELPER FUNCTIONS
@@ -53,7 +54,7 @@ export const NullsOrderSchema = z.enum(['first','last']);
 /////////////////////////////////////////
 
 export const RestaurantSchema = z.object({
-  id: z.string().regex(/^[A-F0-9]+$/).length(8),
+  id: z.string().regex(/^[A-Z0-9]+$/).length(8),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
@@ -192,7 +193,7 @@ export const RestaurantOpenSchema = z.object({
   timeOpen: z.coerce.date(),
   timeClose: z.coerce.date(),
   weekTypeId: z.number().int(),
-  restaurantId: z.string().regex(/^[A-F0-9]+$/).length(8),
+  restaurantId: z.string().regex(/^[A-Z0-9]+$/).length(8),
 })
 
 export type RestaurantOpen = z.infer<typeof RestaurantOpenSchema>
@@ -301,7 +302,7 @@ export const RouteSchema = z.object({
   nextStepId: z.string().nullable(),
   previousStepId: z.string().nullable(),
   routeTypeId: z.string(),
-  restaurantId: z.string().regex(/^[A-F0-9]+$/).length(8),
+  restaurantId: z.string().regex(/^[A-Z0-9]+$/).length(8),
 })
 
 export type Route = z.infer<typeof RouteSchema>
@@ -408,7 +409,7 @@ export const PaymentSchema = z.object({
   accepted: z.boolean(),
   details: z.string().nullable(),
   paymentTypeId: z.string(),
-  restaurantId: z.string().regex(/^[A-F0-9]+$/).length(8),
+  restaurantId: z.string().regex(/^[A-Z0-9]+$/).length(8),
 })
 
 export type Payment = z.infer<typeof PaymentSchema>
@@ -509,14 +510,14 @@ export const PaymentTypeOptionalDefaultsWithRelationsSchema: z.ZodType<PaymentTy
 /////////////////////////////////////////
 
 export const DishSchema = z.object({
-  id: z.string().regex(/^[A-F0-9]+$/).length(8),
+  id: z.string().regex(/^[A-Z0-9]+$/).length(8),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
   description: z.string().nullable(),
   price: z.number().nonnegative(),
   eatTime: z.number().positive(),
-  restaurantId: z.string().regex(/^[A-F0-9]+$/).length(8),
+  restaurantId: z.string().regex(/^[A-Z0-9]+$/).length(8),
 })
 
 export type Dish = z.infer<typeof DishSchema>
@@ -629,7 +630,7 @@ export const DishScoreSchema = z.object({
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   score: z.number(),
-  dishId: z.string().regex(/^[A-F0-9]+$/).length(8),
+  dishId: z.string().regex(/^[A-Z0-9]+$/).length(8),
   traitId: z.string(),
 })
 
@@ -737,8 +738,8 @@ export const VisitHistorySchema = z.object({
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   userId: z.string(),
-  restaurantId: z.string().regex(/^[A-F0-9]+$/).length(8),
-  dishId: z.string().regex(/^[A-F0-9]+$/).length(8),
+  restaurantId: z.string().regex(/^[A-Z0-9]+$/).length(8),
+  dishId: z.string().regex(/^[A-Z0-9]+$/).length(8),
 })
 
 export type VisitHistory = z.infer<typeof VisitHistorySchema>
