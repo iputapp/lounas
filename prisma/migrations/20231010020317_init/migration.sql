@@ -1,8 +1,8 @@
 -- CreateTable
 CREATE TABLE "restaurants" (
-    "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "id" TEXT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "name" TEXT NOT NULL,
     "description" TEXT,
     "website" TEXT,
@@ -18,8 +18,8 @@ CREATE TABLE "restaurants" (
 -- CreateTable
 CREATE TABLE "restaurant_tags" (
     "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "name" TEXT NOT NULL,
     "description" TEXT,
 
@@ -29,12 +29,12 @@ CREATE TABLE "restaurant_tags" (
 -- CreateTable
 CREATE TABLE "restaurant_opens" (
     "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "time_open" TIMETZ NOT NULL,
     "time_close" TIMETZ NOT NULL,
     "week_type_id" INTEGER NOT NULL,
-    "restaurant_id" UUID NOT NULL,
+    "restaurant_id" TEXT NOT NULL,
 
     CONSTRAINT "restaurant_opens_pkey" PRIMARY KEY ("id")
 );
@@ -42,9 +42,8 @@ CREATE TABLE "restaurant_opens" (
 -- CreateTable
 CREATE TABLE "week_types" (
     "id" INTEGER NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "type" TEXT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "name" TEXT NOT NULL,
 
     CONSTRAINT "week_types_pkey" PRIMARY KEY ("id")
@@ -53,15 +52,15 @@ CREATE TABLE "week_types" (
 -- CreateTable
 CREATE TABLE "routes" (
     "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "description" TEXT,
     "step" INTEGER NOT NULL,
     "thumbnail_id" UUID NOT NULL,
     "next_step_id" UUID,
     "previous_step_id" UUID,
     "route_type_id" UUID NOT NULL,
-    "restaurant_id" UUID NOT NULL,
+    "restaurant_id" TEXT NOT NULL,
 
     CONSTRAINT "routes_pkey" PRIMARY KEY ("id")
 );
@@ -69,9 +68,8 @@ CREATE TABLE "routes" (
 -- CreateTable
 CREATE TABLE "route_types" (
     "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "type" TEXT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "name" TEXT NOT NULL,
 
     CONSTRAINT "route_types_pkey" PRIMARY KEY ("id")
@@ -80,13 +78,12 @@ CREATE TABLE "route_types" (
 -- CreateTable
 CREATE TABLE "payments" (
     "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "name" TEXT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "accepted" BOOLEAN NOT NULL,
-    "description" TEXT,
+    "details" TEXT,
     "payment_type_id" UUID NOT NULL,
-    "restaurant_id" UUID NOT NULL,
+    "restaurant_id" TEXT NOT NULL,
 
     CONSTRAINT "payments_pkey" PRIMARY KEY ("id")
 );
@@ -94,9 +91,8 @@ CREATE TABLE "payments" (
 -- CreateTable
 CREATE TABLE "payment_types" (
     "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "type" TEXT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "name" TEXT NOT NULL,
 
     CONSTRAINT "payment_types_pkey" PRIMARY KEY ("id")
@@ -104,14 +100,14 @@ CREATE TABLE "payment_types" (
 
 -- CreateTable
 CREATE TABLE "dishes" (
-    "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "id" TEXT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "name" TEXT NOT NULL,
     "description" TEXT,
     "price" INTEGER NOT NULL,
     "eat_time" INTEGER NOT NULL,
-    "restaurant_id" UUID NOT NULL,
+    "restaurant_id" TEXT NOT NULL,
 
     CONSTRAINT "dishes_pkey" PRIMARY KEY ("id")
 );
@@ -119,8 +115,8 @@ CREATE TABLE "dishes" (
 -- CreateTable
 CREATE TABLE "dish_tags" (
     "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "name" TEXT NOT NULL,
     "description" TEXT,
 
@@ -130,10 +126,10 @@ CREATE TABLE "dish_tags" (
 -- CreateTable
 CREATE TABLE "dish_scores" (
     "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "score" INTEGER NOT NULL,
-    "dish_id" UUID NOT NULL,
+    "dish_id" TEXT NOT NULL,
     "trait_id" UUID NOT NULL,
 
     CONSTRAINT "dish_scores_pkey" PRIMARY KEY ("id")
@@ -142,9 +138,8 @@ CREATE TABLE "dish_scores" (
 -- CreateTable
 CREATE TABLE "dish_traits" (
     "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "type" TEXT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "name" TEXT NOT NULL,
     "description" TEXT,
     "threshold" INTEGER NOT NULL,
@@ -155,11 +150,11 @@ CREATE TABLE "dish_traits" (
 -- CreateTable
 CREATE TABLE "visit_histories" (
     "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "user_id" UUID NOT NULL,
-    "restaurant_id" UUID NOT NULL,
-    "dish_id" UUID NOT NULL,
+    "restaurant_id" TEXT NOT NULL,
+    "dish_id" TEXT NOT NULL,
 
     CONSTRAINT "visit_histories_pkey" PRIMARY KEY ("id")
 );
@@ -167,11 +162,11 @@ CREATE TABLE "visit_histories" (
 -- CreateTable
 CREATE TABLE "users" (
     "id" UUID NOT NULL,
-    "created_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "email" TEXT NOT NULL,
     "username" TEXT NOT NULL,
-    "last_login" TIMESTAMP(3),
+    "last_login" TIMESTAMPTZ,
     "data_usage_agreed" BOOLEAN NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
@@ -179,13 +174,13 @@ CREATE TABLE "users" (
 
 -- CreateTable
 CREATE TABLE "_restaurant_tagging" (
-    "A" UUID NOT NULL,
+    "A" TEXT NOT NULL,
     "B" UUID NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "_dish_tagging" (
-    "A" UUID NOT NULL,
+    "A" TEXT NOT NULL,
     "B" UUID NOT NULL
 );
 
@@ -196,19 +191,10 @@ CREATE INDEX "restaurants_travel_time_idx" ON "restaurants"("travel_time");
 CREATE UNIQUE INDEX "restaurant_opens_week_type_id_restaurant_id_key" ON "restaurant_opens"("week_type_id", "restaurant_id");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "week_types_type_key" ON "week_types"("type");
-
--- CreateIndex
 CREATE INDEX "routes_step_idx" ON "routes"("step");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "route_types_type_key" ON "route_types"("type");
-
--- CreateIndex
 CREATE UNIQUE INDEX "payments_payment_type_id_restaurant_id_key" ON "payments"("payment_type_id", "restaurant_id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "payment_types_type_key" ON "payment_types"("type");
 
 -- CreateIndex
 CREATE INDEX "dishes_price_idx" ON "dishes"("price");
