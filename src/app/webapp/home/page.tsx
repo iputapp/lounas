@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { z } from "zod";
 
 import { BorderCircleButton } from "@/components/buttons/BorderCircleButton";
 import { BorderTitle } from "@/components/headers/BorderTitle";
@@ -20,6 +21,14 @@ export default function Page() {
   useEffect(() => {
     /** today */
     setDate(new Date());
+
+    fetch(`/api/v-beta/user/${id}/discover-count/`)
+      .then(async (res) => {
+        const visitCount = z.number().parse(await res.json());
+      })
+      .catch((err) => {
+        // 404など
+      });
 
     /** progress bar */
     const mod = visitCount % visitPer;
