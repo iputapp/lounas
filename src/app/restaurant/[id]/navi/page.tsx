@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
+import { NaviResponse, naviResponseSchema } from "@/app/api/v-beta/dish/[id]";
 import { RectButton } from "@/components/buttons/RectButton";
 import { CardFull, NavigationType } from "@/components/cards/CardFull";
 import type { Restaurant } from "@/lib/zod";
@@ -14,9 +15,18 @@ import styles from "./page.module.scss";
 
 export default function Page({ params }: { params: { id: string } }) {
   const router = useRouter();
+  const [pathData, setPathData] = useState<NaviResponse>();
 
   useEffect(() => {
     console.log("お店ID:", params.id);
+
+    fetch(`/api/v-beta/restaurant/${params.id}/navi`)
+      .then(async (res) => {
+        setPathData(naviResponseSchema.parse(await res.json()));
+      })
+      .catch((err) => {
+        // 404など
+      });
   }, [params]);
 
   /** テスト用 お店データ */
