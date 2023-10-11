@@ -1,5 +1,3 @@
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import prisma from "@/lib/prisma";
@@ -8,14 +6,12 @@ import { UserAuth } from "@/lib/supabase";
 import { DataAgreementRequest, dataAgreementRequestSchema } from ".";
 
 export async function GET(request: Request) {
-  const supabase = createRouteHandlerClient({ cookies });
-  const session = await supabase.auth.getSession();
-  const userId = session.data.session?.user.id;
-  if (!userId) return new Response("Unauthorized", { status: 401 });
+  const session = await UserAuth();
+  if (session instanceof Response) return session;
 
   const user = await prisma.user.findUnique({
     where: {
-      id: userId,
+      id: session.user.id,
     },
   });
 

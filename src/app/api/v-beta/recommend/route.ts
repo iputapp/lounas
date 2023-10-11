@@ -1,16 +1,14 @@
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 import prisma from "@/lib/prisma";
+import { UserAuth } from "@/lib/supabase";
 
 import { RecommendRequest, recommendRequestSchema } from ".";
 
 export async function POST(request: NextRequest) {
   //user auth
-  const supabase = createRouteHandlerClient({ cookies });
-  const session = await supabase.auth.getSession();
-  if (!session.data.session) return new Response("Unauthorized", { status: 401 });
+  const session = await UserAuth();
+  if (session instanceof Response) return session;
 
   //validate request body
   const body = (await request.json()) as Promise<RecommendRequest>;

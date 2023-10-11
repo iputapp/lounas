@@ -1,16 +1,13 @@
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import prisma from "@/lib/prisma";
+import { UserAuth } from "@/lib/supabase";
 
 import { VisitRegisterRequest, visitRegisterRequestSchema } from ".";
 
 export async function POST(request: Request) {
-  const supabase = createRouteHandlerClient({ cookies });
-  const session = await supabase.auth.getSession();
-  const userId = session.data.session?.user.id;
-  if (!userId) return new Response("Unauthorized", { status: 401 });
+  const session = await UserAuth();
+  if (session instanceof Response) return session;
 
   const body = (await request.json()) as Promise<VisitRegisterRequest>;
   const payload = visitRegisterRequestSchema.safeParse(body);
@@ -19,7 +16,7 @@ export async function POST(request: Request) {
   const visit = await prisma.visitHistory.create({
     data: {
       dishId: payload.data.dishId,
-      userId: userId,
+      userId: session.user.id,
     },
   });
 
