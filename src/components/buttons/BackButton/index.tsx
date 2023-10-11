@@ -8,7 +8,7 @@ import styles from "./styles.module.scss";
 type BackButtonProps = {
   title?: React.ReactNode;
   className?: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 export function BackButton({ title = "", className = "", onClick }: BackButtonProps) {
