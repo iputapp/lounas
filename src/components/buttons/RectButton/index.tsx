@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 type RectButtonProps = {
   children: React.ReactNode;
   color: "blue" | "red";
-  onClick: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 export function RectButton({ children, color, onClick }: RectButtonProps) {
