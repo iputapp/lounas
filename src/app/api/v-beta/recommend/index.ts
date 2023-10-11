@@ -10,7 +10,7 @@ import {
 export const recommendRequestSchema = z.object({
   amount: z.union([z.literal("small"), z.literal("medium"), z.literal("large"), z.literal("any")]),
   priceMax: z.union([z.literal(700), z.literal(1000), z.literal(1300), z.literal(0)]),
-  個性定番: z.union([z.literal("standard"), z.literal("unique"), z.literal("any")]),
+  commonality: z.union([z.literal("common"), z.literal("unique"), z.literal("any")]),
   clientDate: z.date(),
 });
 

@@ -1,3 +1,5 @@
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 import prisma from "@/lib/prisma";
@@ -6,6 +8,9 @@ import { RecommendRequest, recommendRequestSchema } from ".";
 
 export async function POST(request: NextRequest) {
   //user auth
+  const supabase = createRouteHandlerClient({ cookies });
+  const session = await supabase.auth.getSession();
+  if (!session.data.session) return new Response("Unauthorized", { status: 401 });
 
   //validate request body
   const body = (await request.json()) as Promise<RecommendRequest>;
@@ -14,13 +19,13 @@ export async function POST(request: NextRequest) {
 
   const now: Date = payload.data.clientDate;
   const dayOfWeek = now.getDay();
-  const priceMax: number = payload.data.priceMax == 0 ? 100000000000000000 : payload.data.priceMax;
+  const priceMax: number = payload.data.priceMax == 0 ? 1000000 : payload.data.priceMax;
   const lunchBreakSeconds = 45 * 60; //future: depends on organization
 
   const traits: DishScoreWhereInput[] = [];
 
   //要検討：amount scoreの範囲
-  const amountId = "asdfasdfasdfsafsafda";
+  const amountId = "？？？？？？？？？？？？？？？？？？";
   if (payload.data.amount == "small") {
     traits.push({
       traitId: amountId,
@@ -45,17 +50,17 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  const 個性定番Id = "qwertrytqwertyqwerty";
-  if (payload.data.個性定番 == "standard") {
+  const commonalityId = "？？？？？？？？？？？？？？？？？？？？";
+  if (payload.data.commonality == "common") {
     traits.push({
-      traitId: 個性定番Id,
+      traitId: commonalityId,
       score: {
         lte: 60,
       },
     });
-  } else if (payload.data.個性定番 == "unique") {
+  } else if (payload.data.commonality == "unique") {
     traits.push({
-      traitId: 個性定番Id,
+      traitId: commonalityId,
       score: {
         gte: 40,
       },
