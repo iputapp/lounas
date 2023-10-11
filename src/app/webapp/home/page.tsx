@@ -16,24 +16,23 @@ export default function Page() {
   const [bar, setBar] = useState(0);
 
   const visitPer = 5; // 100%/5件
-  const visitCount = 5; // テスト用 件数
 
   useEffect(() => {
     /** today */
     setDate(new Date());
 
-    fetch(`/api/v-beta/user/${id}/discover-count/`)
+    fetch(`/api/v-beta/user/discover-count/`)
       .then(async (res) => {
         const visitCount = z.number().parse(await res.json());
+
+        /** progress bar */
+        const mod = visitCount % visitPer;
+        const percent = (mod || !visitCount ? mod : visitPer) * (100 / visitPer);
+        setBar(percent);
       })
       .catch((err) => {
         // 404など
       });
-
-    /** progress bar */
-    const mod = visitCount % visitPer;
-    const percent = (mod || !visitCount ? mod : visitPer) * (100 / visitPer);
-    setBar(percent);
   }, []);
 
   const startRecommend = () => {

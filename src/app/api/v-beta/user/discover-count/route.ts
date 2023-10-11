@@ -1,13 +1,13 @@
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+
 import prisma from "@/lib/prisma";
-import { verifyUuid } from "@/lib/verifyId";
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
-  const userId = params.id;
-
-  const isIdValid = verifyUuid(userId);
-  if (!isIdValid) return isIdValid;
-
-  // TODO:user auth
+export async function GET(request: Request) {
+  const supabase = createRouteHandlerClient({ cookies });
+  const session = await supabase.auth.getSession();
+  const userId = session.data.session?.user.id;
+  if (!userId) return new Response("Unauthorized", { status: 401 });
 
   const visitHistories = await prisma.visitHistory.findMany({
     where: {
