@@ -1,11 +1,12 @@
 import { z } from "zod";
 
-import { RouteSchema, RouteTypeSchema } from "@/lib/zod";
+import { RestaurantSchema, RouteSchema, RouteTypeSchema } from "@/lib/zod";
 
-export const naviResponseSchema = RouteSchema.merge(
+export const routeSchema = RouteSchema.merge(
   z.object({
     routeType: RouteTypeSchema,
+    restaurant: RestaurantSchema,
   })
 ).array();
 
-export type NaviResponse = z.infer<typeof naviResponseSchema>;
+export type Route = z.infer<typeof routeSchema>;
