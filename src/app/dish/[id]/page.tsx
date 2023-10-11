@@ -1,8 +1,6 @@
 import { notFound } from "next/navigation";
 
 import type { Dish } from "@/app/api/v-beta/dish/[id]";
-// import { useEffect, useState } from "react";
-// import { VisitRegisterRequest } from "@/app/api/v-beta/user/visit/new";
 import { BackButton } from "@/components/buttons/BackButton";
 import { Card } from "@/components/cards/Card";
 import { ExpandablePanel } from "@/components/layouts/ExpandablePanel";
