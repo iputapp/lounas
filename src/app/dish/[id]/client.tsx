@@ -21,6 +21,8 @@ export function DecideButton({ dish }: { dish: Dish }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(visitLogPayload),
+    }).catch((err) => {
+      console.error(err);
     });
 
     /**
