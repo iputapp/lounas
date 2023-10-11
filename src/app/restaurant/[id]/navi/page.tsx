@@ -80,6 +80,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 alt="map"
                 fill
                 sizes="(max-width: 768px) 25vw, (max-width: 1200px) 50vw, 50vw"
+                priority
               />
               <span className={styles.preview}>Coming Soon!</span>
             </div>
