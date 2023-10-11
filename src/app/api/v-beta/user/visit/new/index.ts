@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 export const visitRegisterRequestSchema = z.object({
-  userId: z.string().uuid(),
   dishId: z
     .string()
     .regex(/^[A-Z0-9]+$/)
