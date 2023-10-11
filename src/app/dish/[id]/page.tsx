@@ -1,53 +1,54 @@
-"use client";
+import { notFound } from "next/navigation";
 
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-
-import { DishResponse, dishResponseSchema } from "@/app/api/v-beta/dish/[id]";
-import { VisitRegisterRequest } from "@/app/api/v-beta/user/visit/new";
+import type { Dish } from "@/app/api/v-beta/dish/[id]";
+// import { useEffect, useState } from "react";
+// import { VisitRegisterRequest } from "@/app/api/v-beta/user/visit/new";
 import { BackButton } from "@/components/buttons/BackButton";
-import { RectButton } from "@/components/buttons/RectButton";
 import { Card } from "@/components/cards/Card";
 import { ExpandablePanel } from "@/components/layouts/ExpandablePanel";
-import { PaymentLong } from "@/components/lists/PaymentLong";
+import { PaymentLong, PaymentType } from "@/components/lists/PaymentLong";
 
+import { DecideButton } from "./client";
 import styles from "./page.module.scss";
 
-export default function Page({ params }: { params: { id: string } }) {
-  const router = useRouter();
+async function getDish(id: string) {
+  const dish = (await fetch(`${process.env.BASE_URL}/api/v-beta/dish/${id}`)
+    .then((res) => res.json())
+    .catch((err) => {
+      console.error(err);
+      return notFound();
+    })) as Dish;
 
-  const [dishData, setDishData] = useState<DishResponse>(null);
+  return dish;
+}
 
-  useEffect(() => {
-    console.log("料理ID:", params.id);
-
-    fetch(`/api/v-beta/dish/${params.id}`)
-      .then(async (res) => {
-        setDishData(dishResponseSchema.parse(await res.json()));
-      })
-      .catch((err) => {
-        // 404など
-      });
-  }, [params]);
-
-  // ここに行くボタンを押したときの処理
-  const handleChooseDishClick = async () => {
-    const visitLogPayload: VisitRegisterRequest = {
-      dishId: dishData.id,
-      date: new Date(),
-    };
-
-    const res = await fetch(`/api/v-beta/user/visit/new`, {
-      method: "POST",
-      body: JSON.stringify(visitLogPayload),
-    });
-
-    // エラーが起きた場合どうするか？
-    // 現在: エラーが起きても、とりあえず次のページに遷移する→履歴が登録されない
-    // ゆくゆく: エラーが起きたら、「記録できませんでした」「もう一度試す」「記録せずナビを表示する」を表示する
-
-    router.push(`/restaurant/${dishData.restaurant.id}/navi`);
-  };
+export default async function Page({ params }: { params: { id: string } }) {
+  /** 料理詳細 */
+  const dish = await getDish(params.id);
+  /** 支払方法 */
+  const payments = dish.restaurant.payments.map((payment) => ({
+    type: payment.paymentType.name as PaymentType,
+    accepted: payment.accepted,
+    details: payment.details,
+  }));
+  const sortedPayments = payments.sort((a, b) => a.type.localeCompare(b.type));
+  /** 営業時間 */
+  const openTime = dish.restaurant.restaurantOpens.map((open) => ({
+    weekDay: open.weekTypeId,
+    weekDayName: open.weekType.name,
+    timeOpen: new Date(open.timeOpen),
+    timeClose: new Date(open.timeClose),
+  }));
+  const sortedOpenTime = openTime.sort((a, b) => a.weekDay - b.weekDay);
+  /** 営業時間 - 重複削除 */
+  const cleanOpenTime = sortedOpenTime.filter(
+    (time, index, self) =>
+      self.findIndex(
+        (t) =>
+          String(t.timeOpen) === String(time.timeOpen) &&
+          String(t.timeClose) === String(time.timeClose)
+      ) === index
+  );
 
   return (
     <div className={styles.container}>
@@ -55,52 +56,49 @@ export default function Page({ params }: { params: { id: string } }) {
         <BackButton title="戻る" />
       </div>
       <div className={styles.content}>
-        <Card image={`/test/${dishData.id}.webp`} alt={dishData.name}>
-          <p>{dishData.name}</p>
-          <p>{dishData.restaurant.name}</p>
+        <Card image={`/${dish.id}.webp`} alt={dish.name}>
+          <p>{dish.name}</p>
+          <p>{dish.restaurant.name}</p>
         </Card>
         <ExpandablePanel
           title="店舗詳細"
-          bgImage={`/test/${dishData.restaurant.id}.webp`}
+          bgImage={`/${dish.restaurant.id}.webp`}
           titleEx="決済方法"
-          childrenEx={<PaymentLong payments={dishData.restaurant.payments} />}
+          childrenEx={<PaymentLong payments={sortedPayments} />}
         >
           <ul className="grid justify-items-start gap-3">
-            <li>
+            <li className="grid justify-items-start">
               <span>
-                全日：
-                {dishData.restaurant.restaurantOpens[99999999].timeOpen.toLocaleTimeString(
-                  "ja-JP",
-                  {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  }
-                )}
+                {cleanOpenTime.length > 1 ? "" : "全日"}：
+                {cleanOpenTime[0].timeOpen.toLocaleTimeString("ja-JP", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
                 ～
-                {dishData.restaurant.restaurantOpens[99999999].timeOpen.toLocaleTimeString(
-                  "ja-JP",
-                  {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  }
-                )}
+                {cleanOpenTime[0].timeClose.toLocaleTimeString("ja-JP", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
               </span>
+              {cleanOpenTime.length > 1 && (
+                <small className="text-xs">
+                  ※例外：{cleanOpenTime.map((time) => time.weekDayName).join(", ")}
+                </small>
+              )}
             </li>
-            <li className="grid">
-              <span>滞在時間：おおよそ{Math.floor(dishData.eatTime / 60)}分</span>
+            <li className="grid justify-items-start">
+              <span>滞在時間：おおよそ{Math.floor(dish.eatTime / 60)}分</span>
               <small className="text-xs">※混雑状況により異なります。</small>
             </li>
             <li>
-              <span>片道：おおよそ{Math.floor(dishData.restaurant.travelTime / 60)}分</span>
+              <span>片道：おおよそ{Math.floor(dish.restaurant.travelTime / 60)}分</span>
             </li>
           </ul>
         </ExpandablePanel>
       </div>
       <div className={styles.footer}>
         <div className={styles.button}>
-          <RectButton color="blue" onClick={handleChooseDishClick}>
-            ここに行く
-          </RectButton>
+          <DecideButton dish={dish} />
         </div>
       </div>
     </div>
