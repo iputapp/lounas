@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 
 import prisma from "@/lib/prisma";
-import { UserAuth } from "@/lib/supabase";
+import { userAuth } from "@/lib/supabase";
 
 import { VisitRegisterRequest, visitRegisterRequestSchema } from ".";
 
 export async function POST(request: Request) {
-  const session = await UserAuth();
+  const session = await userAuth();
   if (session instanceof Response) return session;
 
   const body = (await request.json()) as Promise<VisitRegisterRequest>;

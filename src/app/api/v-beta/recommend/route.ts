@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import prisma from "@/lib/prisma";
-import { UserAuth } from "@/lib/supabase";
+import { userAuth } from "@/lib/supabase";
 
 import { RecommendRequest, recommendRequestSchema } from ".";
 
 export async function POST(request: NextRequest) {
   //user auth
-  const session = await UserAuth();
+  const session = await userAuth();
   if (session instanceof Response) return session;
 
   //validate request body

@@ -1,7 +1,7 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-export async function UserAuth() {
+export async function userAuth() {
   const supabase = createRouteHandlerClient({ cookies });
   const session = await supabase.auth.getSession();
   if (!session.data.session) return new Response("Unauthorized", { status: 401 });
