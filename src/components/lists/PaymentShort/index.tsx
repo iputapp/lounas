@@ -20,6 +20,8 @@ export function PaymentShort({ payments }: { payments: PaymentShortProps[] }) {
         return "QRコード";
       case "transport":
         return "交通系";
+      default:
+        return "その他";
     }
   };
 

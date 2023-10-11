@@ -18,6 +18,8 @@ export function PaymentLong({ payments }: { payments: PaymentLongProps[] }) {
         return "QRコード決済";
       case "transport":
         return "交通系";
+      default:
+        return "その他";
     }
   };
 
