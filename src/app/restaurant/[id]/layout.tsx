@@ -1,10 +1,14 @@
+import type { Restaurant } from "@/app/api/v-beta/restaurant/[id]";
 import type { Restaurants } from "@/app/api/v-beta/restaurants";
 
 /** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-metadata} */
 // eslint-disable-next-line @typescript-eslint/require-await
-export async function generateMetadata({ params }: { params: { name: string } }) {
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const restaurant = (await fetch(
+    `${process.env.BASE_URL}/api/v-beta/restaurant/${params.id}`
+  ).then((res) => res.json())) as Restaurant;
   return {
-    title: params.name,
+    title: restaurant.name,
   };
 }
 
@@ -17,7 +21,6 @@ export async function generateStaticParams() {
   return restaurants.map((restaurant) => ({
     params: {
       id: restaurant.id,
-      name: restaurant.name,
     },
   }));
 }
