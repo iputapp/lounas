@@ -2,20 +2,30 @@ import { z } from "zod";
 
 import {
   DishSchema,
-  PaymentTypeWithRelationsSchema,
+  PaymentSchema,
+  PaymentTypeSchema,
   RestaurantOpenSchema,
   RestaurantSchema,
+  WeekTypeSchema,
 } from "@/lib/zod";
 
-export const dishResponseSchema = DishSchema.merge(
+export const dishSchema = DishSchema.merge(
   z.object({
     restaurant: RestaurantSchema.merge(
       z.object({
-        restaurantOpens: RestaurantOpenSchema.array(),
-        payments: PaymentTypeWithRelationsSchema.array(),
+        restaurantOpens: RestaurantOpenSchema.merge(
+          z.object({
+            weekType: WeekTypeSchema,
+          })
+        ).array(),
+        payments: PaymentSchema.merge(
+          z.object({
+            paymentType: PaymentTypeSchema,
+          })
+        ).array(),
       })
     ),
   })
 );
 
-export type DishResponse = z.infer<typeof dishResponseSchema>;
+export type Dish = z.infer<typeof dishSchema>;

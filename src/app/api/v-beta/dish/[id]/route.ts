@@ -1,17 +1,20 @@
-import prisma from "@/lib/prisma";
+import { NextResponse } from "next/server";
+
+import { prisma } from "@/lib/prisma";
+
+// import { dishSchema } from ".";
 
 export async function GET(req: Request, { params }: { params: { id: string } }) {
-  const dishId = params.id;
-
-  const isIdValid = verifyUrlId(dishId);
-  if (!isIdValid) return isIdValid;
-
   const dish = await prisma.dish.findUnique({
-    where: { id: dishId },
+    where: { id: params.id },
     include: {
       restaurant: {
         include: {
-          restaurantOpens: true,
+          restaurantOpens: {
+            include: {
+              weekType: true,
+            },
+          },
           payments: {
             include: {
               paymentType: true,
@@ -22,7 +25,10 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
     },
   });
 
-  if (!dish) return new Response("Dish not found", { status: 404 });
+  /** @todo コメントの解除および`dish`を`res`に置換 */
+  // const res = dishSchema.parse(dish);
 
-  return Nextresponse.json(dish);
+  if (!dish) return new NextResponse("Dish not found", { status: 404 });
+
+  return NextResponse.json(dish);
 }
