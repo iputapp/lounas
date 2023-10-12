@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import type { DataAgreementRequest } from "@/app/api/v-beta/user/data-agreement";
 import { RectButton } from "@/components/buttons/RectButton";
 import { DialogInfo } from "@/components/dialogs/DialogInfo";
 import { PrivacyPlayer } from "@/components/lottie/Privacy";
@@ -13,8 +14,27 @@ export default function Page() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleAgreement = () => {
-    router.push("/webapp/home");
+  const handleClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    await fetch("/api/v-beta/user/data-agreement", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        dataUsageAgreed: e.currentTarget.value ? true : false,
+      } as DataAgreementRequest),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          console.error("Error!", res.status);
+          throw new Error(res.statusText);
+        }
+        console.log("We appreciate for your agreement!");
+      })
+      .catch((err) => console.error("Error!", err))
+      .finally(() => {
+        router.push("/webapp/home");
+      });
   };
 
   return (
@@ -36,10 +56,12 @@ export default function Page() {
             <span>ランキング機能のみのご利用になります。</span>
           </div>
           <div className={styles.button}>
-            <RectButton color="red" onClick={handleAgreement}>
+            {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
+            <RectButton color="red" onClick={handleClick}>
               同意しない
             </RectButton>
-            <RectButton color="blue" onClick={handleAgreement}>
+            {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
+            <RectButton color="blue" onClick={handleClick} value="agreed">
               同意する
             </RectButton>
           </div>
