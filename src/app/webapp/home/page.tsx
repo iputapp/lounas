@@ -11,6 +11,7 @@ import { BasicLinearProgress } from "@/components/progresses/BasicLinearProgress
 import styles from "./page.module.scss";
 
 async function getVisitsCount() {
+  /** @todo cache settings */
   const visitsCount = (await fetch("/api/v-beta/user/visits-count")
     .then((res) => res.json())
     .catch((err) => {
