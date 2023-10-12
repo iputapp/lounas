@@ -22,8 +22,12 @@ export async function GET(request: NextRequest) {
   const now = new Date();
   /** 今日の曜日 (index) */
   const dayOfWeek = new Date().getDay();
-  /** 時間 */
-  // const time =
+  /**
+   * 今の時間 (時間のみ)
+   * 1970-01-01 00:00:00+00 (Unix system time zero) [timestamp with time zone]
+   * @see {@link https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-DATETIME-SPECIAL-VALUES}
+   */
+  const time = new Date(1970, 0, 1, now.getHours(), now.getMinutes(), now.getSeconds());
   /** 料理の値段 */
   const price = payload.data.price;
 
@@ -120,16 +124,12 @@ export async function GET(request: NextRequest) {
         restaurantOpens: {
           some: {
             weekTypeId: dayOfWeek,
-            /**
-             * now BETWEEN timeOpen AND timeClose
-             * 1970-01-01 00:00:00+00 (Unix system time zero) [timestamp with time zone]
-             * @see {@link https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-DATETIME-SPECIAL-VALUES}
-             */
+            /** time BETWEEN timeOpen AND timeClose */
             timeOpen: {
-              lte: new Date(1970, 0, 1, now.getHours(), now.getMinutes(), now.getSeconds()),
+              lte: time,
             },
             timeClose: {
-              gte: new Date(1970, 0, 1, now.getHours(), now.getMinutes(), now.getSeconds()),
+              gte: time,
             },
           },
         },
