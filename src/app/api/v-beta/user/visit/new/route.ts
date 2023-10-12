@@ -15,19 +15,12 @@ export async function POST(request: Request) {
 
   const visit = await prisma.visitHistory.create({
     data: {
-      dishId: payload.data.dishId,
       userId: session.user.id,
+      dishId: payload.data.dishId,
     },
   });
 
-  if (!visit) {
-    return {
-      status: 500,
-      body: {
-        message: "Could not register visit. Something went wrong.",
-      },
-    };
-  }
+  if (!visit) return NextResponse.json("Could not register visit", { status: 500 });
 
   return NextResponse.json("ok");
 }

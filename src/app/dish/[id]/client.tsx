@@ -11,26 +11,34 @@ export function DecideButton({ dish }: { dish: Dish }) {
 
   // ここに行くボタンを押したときの処理
   const handleClick = async () => {
-    const visitLogPayload: VisitRegisterRequest = {
+    const visitLogPayload = {
       dishId: dish.id,
-      date: new Date(),
-    };
-    await fetch(`/api/v-beta/user/visit/new`, {
+    } as VisitRegisterRequest;
+
+    await fetch("/api/v-beta/user/visit/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(visitLogPayload),
-    }).catch((err) => {
-      console.error(err);
-    });
-
-    /**
-     * @todo エラーが起きた場合どうするか？
-     * 現在: エラーが起きても、とりあえず次のページに遷移する→履歴が登録されない
-     * ゆくゆく: エラーが起きたら、「記録できませんでした」「もう一度試す」「記録せずナビを表示する」を表示する
-     */
-    router.push(`/restaurant/${dish.restaurant.id}/navi`);
+    })
+      .then((res) => {
+        if (!res.ok) {
+          console.error("Error!", res.status);
+          throw new Error(res.statusText);
+        }
+      })
+      .catch((err) => {
+        /**
+         * @todo エラーが起きた場合どうするか？
+         * 現在: エラーが起きても、とりあえず次のページに遷移する→履歴が登録されない
+         * ゆくゆく: エラーが起きたら、「記録できませんでした」「もう一度試す」「記録せずナビを表示する」を表示する
+         */
+        console.error("Error!", err);
+      })
+      .finally(() => {
+        router.push(`/restaurant/${dish.restaurant.id}/navi`);
+      });
   };
 
   return (

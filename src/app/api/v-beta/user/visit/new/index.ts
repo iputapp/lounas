@@ -1,11 +1,9 @@
 import { z } from "zod";
 
-export const visitRegisterRequestSchema = z.object({
-  dishId: z
-    .string()
-    .regex(/^[A-Z0-9]+$/)
-    .length(8),
-  date: z.date().optional(),
+import { VisitHistorySchema } from "@/lib/zod";
+
+export const visitRegisterRequestSchema = VisitHistorySchema.pick({
+  dishId: true,
 });
 
 export type VisitRegisterRequest = z.infer<typeof visitRegisterRequestSchema>;
