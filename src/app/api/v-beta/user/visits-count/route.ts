@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 import { userAuth } from "@/lib/supabase";
 
-export async function GET(request: Request) {
+export async function GET() {
   const session = await userAuth();
   if (session instanceof Response) return session;
 

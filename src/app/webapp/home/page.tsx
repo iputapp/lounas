@@ -21,7 +21,7 @@ export default function Page() {
     /** today */
     setDate(new Date());
 
-    fetch(`/api/v-beta/user/discover-count/`)
+    fetch("/api/v-beta/user/visits-count")
       .then(async (res) => {
         const visitCount = z.number().parse(await res.json());
 
