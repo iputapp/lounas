@@ -1,4 +1,4 @@
-import { RecommendRequest } from "@/app/api/v-beta/recommend";
+import type { RecommendRequest } from "@/app/api/v-beta/recommend";
 
 import { CircleTheme, circleThemes } from "./themes";
 
