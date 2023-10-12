@@ -2,26 +2,61 @@ import { z } from "zod";
 
 import {
   DishSchema,
-  PaymentTypeWithRelationsSchema,
+  DishScoreSchema,
+  DishTraitSchema,
+  PaymentSchema,
+  PaymentTypeSchema,
   RestaurantOpenSchema,
   RestaurantSchema,
+  WeekTypeSchema,
 } from "@/lib/zod";
 
 export const recommendRequestSchema = z.object({
   amount: z.union([z.literal("small"), z.literal("medium"), z.literal("large"), z.literal("any")]),
-  priceMax: z.union([z.literal(700), z.literal(1000), z.literal(1300), z.literal(0)]),
+  price: z.union([z.literal(650), z.literal(850), z.literal(1000), z.literal(999999)]),
   commonality: z.union([z.literal("common"), z.literal("unique"), z.literal("any")]),
-  clientDate: z.date(),
 });
 
 export type RecommendRequest = z.infer<typeof recommendRequestSchema>;
 
-export const recommendResponseSchema = DishSchema.merge(
+// export const recommendResponseSchema = DishScoreSchema.merge(
+//   z.object({
+//     restaurant: RestaurantSchema.merge(
+//       z.object({
+//         restaurantOpens: RestaurantOpenSchema.merge(
+//           z.object({
+//             weekType: WeekTypeSchema,
+//           })
+//         ).array(),
+//         payments: PaymentSchema.merge(
+//           z.object({
+//             paymentType: PaymentTypeSchema,
+//           })
+//       ).array()
+//       }),
+//     ),
+//   })
+// ).array();
+
+export const recommendResponseSchema = DishScoreSchema.merge(
   z.object({
-    restaurant: RestaurantSchema.merge(
+    dish: DishSchema.merge(
       z.object({
-        restaurantOpens: RestaurantOpenSchema.array(),
-        payments: PaymentTypeWithRelationsSchema.array(),
+        restaurant: RestaurantSchema.merge(
+          z.object({
+            restaurantOpens: RestaurantOpenSchema.merge(
+              z.object({
+                weekType: WeekTypeSchema,
+              })
+            ).array(),
+            payments: PaymentSchema.merge(
+              z.object({
+                paymentType: PaymentTypeSchema,
+              })
+            ).array(),
+          })
+        ),
+        dishTraits: DishTraitSchema,
       })
     ),
   })
