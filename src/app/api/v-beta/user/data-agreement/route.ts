@@ -23,7 +23,7 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const session = await UserAuth();
+  const session = await userAuth();
   if (session instanceof Response) return session;
 
   const body = (await request.json()) as Promise<DataAgreementRequest>;
