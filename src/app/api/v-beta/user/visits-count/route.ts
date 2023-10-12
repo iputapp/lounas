@@ -23,8 +23,7 @@ export async function GET() {
 
   const payload = visitsCountSchema.parse(visitsCount);
 
-  // performance？？？？？
-
+  /** @todo performance issue??? */
   // const visitedBefore = visitHistories.filter(
   //   (history) => history.createdAt.getMonth() < today.getMonth()
   // );
@@ -43,6 +42,10 @@ export async function GET() {
   // });
   // const monthlyDiscoveries = visitedThisMonth.map((history) => {! visitedBefore.find((before) => before.dishId == history.dishId)});
 
+  /**
+   * @todo DB vs Server, which is the best performance??
+   * @author KaSHH - nafell
+   */
   // type VisitIdDictionary = Record<string, number>;
   // const visitedBefore: VisitIdDictionary = {};
   // const visitedThisMonth: string[] = [];
