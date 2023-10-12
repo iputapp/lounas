@@ -38,7 +38,10 @@ export default async function Page({ params }: { params: { id: string } }) {
     timeClose: new Date(open.timeClose),
   }));
   const sortedOpenTime = openTime.sort((a, b) => a.weekDay - b.weekDay);
-  /** 営業時間 - 重複削除 */
+  /**
+   * 営業時間 - 重複削除
+   * The computational complexity is O(N^2), but with a maximum array length of 7, speed is guaranteed
+   */
   const cleanOpenTime = sortedOpenTime.filter(
     (time, index, self) =>
       self.findIndex(
