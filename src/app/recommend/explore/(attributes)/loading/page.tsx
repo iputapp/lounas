@@ -1,13 +1,27 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { notFound, ReadonlyURLSearchParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
+import { RecommendResponse } from "@/app/api/v-beta/recommend";
 import { RectButton } from "@/components/buttons/RectButton";
 import { BorderTitle } from "@/components/headers/BorderTitle";
 import { BasicSkeleton } from "@/components/skeletons/BasicSkeleton";
 
 import styles from "./page.module.scss";
+
+async function getRecommend(params: ReadonlyURLSearchParams) {
+  const recommend = (await fetch(`/api/v-beta/recommend?${params.toString()}`, {
+    method: "GET",
+  })
+    .then((res) => res.json())
+    .catch((err) => {
+      console.error(err);
+      return notFound();
+    })) as RecommendResponse;
+
+  return recommend;
+}
 
 export default function Page() {
   const router = useRouter();
@@ -16,6 +30,14 @@ export default function Page() {
   useEffect(() => {
     const currentParams = new URLSearchParams(Array.from(searchParams.entries())); // all current params
     console.log(currentParams.toString());
+    /** fetch recommend */
+    (async () => {
+      const recommend = await getRecommend(searchParams);
+      /** @todo timer and redirect to result page??? */
+      console.log(recommend);
+    })().catch((err) => {
+      console.error(err);
+    });
   }, [searchParams]);
 
   const cancel = () => {
