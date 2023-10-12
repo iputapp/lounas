@@ -4,7 +4,7 @@ import NavArrowRight from "@icons/nav-arrow-right.svg";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { messages, settings } from "./constants";
 import styles from "./page.module.scss";
@@ -26,7 +26,7 @@ export default function Page() {
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const message = messageGacha() as string;
     setMessageToUser(message);
   }, []);
