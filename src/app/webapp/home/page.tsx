@@ -2,37 +2,58 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { z } from "zod";
 
+import { VisitsCount } from "@/app/api/v-beta/user/visits-count";
 import { BorderCircleButton } from "@/components/buttons/BorderCircleButton";
 import { BorderTitle } from "@/components/headers/BorderTitle";
 import { BasicLinearProgress } from "@/components/progresses/BasicLinearProgress";
 
 import styles from "./page.module.scss";
 
+async function getVisitsCount() {
+  const visitsCount = (await fetch("/api/v-beta/user/visits-count")
+    .then((res) => res.json())
+    .catch((err) => {
+      console.error(err);
+      return null;
+    })) as VisitsCount | null;
+  return visitsCount;
+}
+
 export default function Page() {
   const router = useRouter();
   const [date, setDate] = useState(new Date());
-  const [bar, setBar] = useState(0);
+  const [status, setStatus] = useState<{ count: number | null; bar: number }>({ count: 0, bar: 0 });
 
   const visitPer = 5; // 100%/5件
 
   useEffect(() => {
     /** today */
     setDate(new Date());
-
-    fetch("/api/v-beta/user/visits-count")
-      .then(async (res) => {
-        const visitCount = z.number().parse(await res.json());
-
+    /** error status */
+    const errorStatus = {
+      count: null,
+      bar: 0,
+    };
+    /** visits count */
+    (async () => {
+      const visitsCount = await getVisitsCount();
+      if (visitsCount !== null) {
         /** progress bar */
-        const mod = visitCount % visitPer;
-        const percent = (mod || !visitCount ? mod : visitPer) * (100 / visitPer);
-        setBar(percent);
-      })
-      .catch((err) => {
-        // 404など
-      });
+        const mod = visitsCount % visitPer;
+        const percent = (mod || !visitsCount ? mod : visitPer) * (100 / visitPer);
+        const newStatus = {
+          count: visitsCount,
+          bar: percent,
+        };
+        setStatus(newStatus);
+      } else {
+        setStatus(errorStatus);
+      }
+    })().catch((err) => {
+      console.error(err);
+      setStatus(errorStatus);
+    });
   }, []);
 
   const startRecommend = () => {
@@ -57,9 +78,9 @@ export default function Page() {
         <div className={styles.exp}>
           <div className={styles.text}>
             <span>今月の開拓数：</span>
-            <span>{visitCount}件</span>
+            <span>{status.count ?? "エラーやで"}件</span>
           </div>
-          <BasicLinearProgress value={bar} />
+          <BasicLinearProgress value={status.bar} />
         </div>
         <div></div>
       </section>
