@@ -1,20 +1,27 @@
+import { NextResponse } from "next/server";
+
 import prisma from "@/lib/prisma";
 import { userAuth } from "@/lib/supabase";
+
+import { visitsCountSchema } from ".";
 
 export async function GET() {
   const session = await userAuth();
   if (session instanceof Response) return session;
 
-  const visitHistories = await prisma.visitHistory.findMany({
+  const today = new Date();
+
+  const visitsCount = await prisma.visitHistory.count({
     where: {
       userId: session.user.id,
-    },
-    orderBy: {
-      createdAt: "asc",
+      createdAt: {
+        gte: new Date(today.getFullYear(), today.getMonth(), 1),
+        lt: new Date(today.getFullYear(), today.getMonth() + 1, 1),
+      },
     },
   });
 
-  const today = new Date();
+  const payload = visitsCountSchema.parse(visitsCount);
 
   // performance？？？？？
 
@@ -36,19 +43,21 @@ export async function GET() {
   // });
   // const monthlyDiscoveries = visitedThisMonth.map((history) => {! visitedBefore.find((before) => before.dishId == history.dishId)});
 
-  type VisitIdDictionary = Record<string, number>;
-  const visitedBefore: VisitIdDictionary = {};
-  const visitedThisMonth: string[] = [];
+  // type VisitIdDictionary = Record<string, number>;
+  // const visitedBefore: VisitIdDictionary = {};
+  // const visitedThisMonth: string[] = [];
 
-  visitHistories.forEach((history) => {
-    if (history.createdAt.getMonth() < today.getMonth()) {
-      visitedBefore[history.dishId] = 1;
-    } else if (history.createdAt.getMonth() == today.getMonth()) {
-      visitedThisMonth.push(history.dishId);
-    }
-  });
+  // visitHistories.forEach((history) => {
+  //   if (history.createdAt.getMonth() < today.getMonth()) {
+  //     visitedBefore[history.dishId] = 1;
+  //   } else if (history.createdAt.getMonth() == today.getMonth()) {
+  //     visitedThisMonth.push(history.dishId);
+  //   }
+  // });
 
-  const monthlyDiscoveries = visitedThisMonth.filter((dishId) => !visitedBefore[dishId]);
+  // const monthlyDiscoveries = visitedThisMonth.filter((dishId) => !visitedBefore[dishId]);
 
-  return new Response(JSON.stringify(monthlyDiscoveries.length), { status: 200 });
+  // return new Response(JSON.stringify(monthlyDiscoveries.length), { status: 200 });
+
+  return NextResponse.json(payload);
 }
