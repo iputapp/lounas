@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
-import { userAuth } from "@/lib/supabase";
+import { TimeOnly } from "@/lib/TimeOnly";
 
 import { RecommendRequest, recommendRequestSchema } from ".";
 
 export async function GET(request: NextRequest) {
-  const session = await userAuth();
-  if (session instanceof Response) return session;
+  // const session = await userAuth();
+  // if (session instanceof Response) return session;
 
   const searchParams = request.nextUrl.searchParams;
   const params = {
@@ -20,14 +20,13 @@ export async function GET(request: NextRequest) {
 
   /** 今 */
   const now = new Date();
-  /** 今日の曜日 (index) */
-  const dayOfWeek = new Date().getDay();
   /**
    * 今の時間 (時間のみ)
    * 1970-01-01 00:00:00+00 (Unix system time zero) [timestamp with time zone]
    * @see {@link https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-DATETIME-SPECIAL-VALUES}
    */
-  const time = new Date(1970, 0, 1, now.getHours(), now.getMinutes(), now.getSeconds());
+  const nowTimeOnly = new TimeOnly(now.getHours(), now.getMinutes(), now.getSeconds());
+
   /** 料理の値段 */
   const price = payload.data.price;
 
@@ -123,13 +122,13 @@ export async function GET(request: NextRequest) {
       restaurant: {
         restaurantOpens: {
           some: {
-            weekTypeId: dayOfWeek,
+            weekTypeId: now.getDay(),
             /** time BETWEEN timeOpen AND timeClose */
             timeOpen: {
-              lte: time,
+              lte: nowTimeOnly,
             },
             timeClose: {
-              gte: time,
+              gte: nowTimeOnly,
             },
           },
         },
@@ -170,8 +169,8 @@ export async function GET(request: NextRequest) {
    * query result zod validation
    * @todo zod validation
    */
-  // const items = recommendResponseSchema.parse(results);
   const items = results;
+  //const items = recommendResponseSchema.parse(results);
 
   /**
    * お昼休みの時間
