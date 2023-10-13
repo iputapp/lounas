@@ -88,22 +88,21 @@ model WeekType {
 }
 
 model Route {
-  id        String   @id @default(uuid()) @db.Uuid
+  id        String   @id /// @zod.string.regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
   description    String?
-  step           Int /// @zod.number.nonnegative()
-  thumbnailId    String  @map("thumbnail_id") @db.Uuid
-  nextStepId     String? @map("next_step_id") @db.Uuid
-  previousStepId String? @map("previous_step_id") @db.Uuid
+  thumbnailId    String? @map("thumbnail_id") @db.Uuid // images are reusable, thus id != thumbnailId
+  nextStepId     String? @map("next_step_id") /// @zod.string.regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
+  previousStepId String? @map("previous_step_id") /// @zod.string.regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
 
   routeType    RouteType  @relation(fields: [routeTypeId], references: [id])
   routeTypeId  String     @map("route_type_id") @db.Uuid
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
   restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
 
-  @@index([step], name: "routes_step_idx")
+  @@index([id], name: "routes_id_idx")
   @@map("routes")
 }
 
@@ -231,8 +230,7 @@ model User {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
-  email           String    @unique /// @zod.string.email()
-  username        String    @unique /// @zod.string.min(6)
+  username        String    @unique /// @zod.string()
   lastLogin       DateTime? @map("last_login") @db.Timestamptz()
   dataUsageAgreed Boolean   @map("data_usage_agreed")
 
