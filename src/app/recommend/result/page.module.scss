@@ -1,7 +1,7 @@
 @use "variables" as var;
 
 .container {
-  @apply grid h-full w-full gap-12;
+  @apply grid h-full w-full content-start gap-12;
 
   .header {
     @apply w-full;
@@ -16,7 +16,8 @@
 
   .content {
     @apply grid
-      grid-cols-1 gap-7
+      grid-cols-1
+      gap-7
       px-1
       md:grid-cols-2;
   }
