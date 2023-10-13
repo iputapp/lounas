@@ -5,13 +5,13 @@ import Check from "@icons/check.svg";
 export type PaymentType = "cash" | "credit" | "qr" | "transport";
 
 type PaymentShortProps = {
-  payment: PaymentType;
+  type: PaymentType;
   accepted: boolean;
 };
 
 export function PaymentShort({ payments }: { payments: PaymentShortProps[] }) {
-  const getPaymentName = (payment: PaymentType) => {
-    switch (payment) {
+  const getPaymentName = (type: PaymentType) => {
+    switch (type) {
       case "cash":
         return "現金";
       case "credit":
@@ -29,8 +29,8 @@ export function PaymentShort({ payments }: { payments: PaymentShortProps[] }) {
     <div className="flex items-center justify-end">
       <ul className="w-fit">
         {payments.map((item) => (
-          <li key={item.payment} className="flex items-center justify-end space-x-1">
-            <small>{getPaymentName(item.payment)}</small>
+          <li key={item.type} className="flex items-center justify-end space-x-1">
+            <small>{getPaymentName(item.type)}</small>
             {item.accepted ? (
               <small className="text-green-600">
                 <Check />
