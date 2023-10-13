@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
-// import { notFound } from "next/navigation";
 import { RecommendResponse } from "@/app/api/v-beta/recommend";
 import { RectButton } from "@/components/buttons/RectButton";
 import { CardHorizontal } from "@/components/cards/CardHorizontal";
@@ -21,7 +21,7 @@ async function getRecommend(params: URLSearchParams) {
     .then((res) => res.json())
     .catch((err) => {
       console.error(err);
-      // return notFound();
+      return notFound();
     })) as RecommendResponse[];
 
   return recommends;
