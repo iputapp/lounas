@@ -16,6 +16,7 @@ async function getRecommend(params: URLSearchParams) {
     `${process.env.BASE_URL}/api/v-beta/recommend?${params.toString()}`,
     {
       method: "GET",
+      cache: "no-cache",
     }
   )
     .then((res) => res.json())
