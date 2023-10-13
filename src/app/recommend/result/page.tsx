@@ -70,22 +70,36 @@ export default async function Page({
         <h1 className={styles.title}>あなたへのおすすめ</h1>
       </div>
       <div className={styles.content}>
-        {recommends.map((recommend, index) => (
-          <CardHorizontal
-            key={recommend.id}
-            url={`/dish/${recommend.id}`}
-            title={recommend.name}
-            tag={index + 1}
-            image={`/${recommend.id}.webp`}
-            description={<PaymentShort payments={recommend.restaurant.payments} />}
-          />
-        ))}
+        {recommends.length == 0 ? (
+          <>
+            <div className={styles.zero}>検索結果: 0件</div>
+            <div className={styles.noresult}>
+              ご希望に沿う料理は見つかりませんでした…
+              <div className={styles.retry}>
+                <Link href="/recommend/explore" replace>
+                  もう一度検索する
+                </Link>
+              </div>
+            </div>
+          </>
+        ) : (
+          recommends.map((recommend, index) => (
+            <CardHorizontal
+              key={recommend.id}
+              url={`/dish/${recommend.id}`}
+              title={recommend.name}
+              tag={index + 1}
+              image={`/${recommend.id}.webp`}
+              description={<PaymentShort payments={recommend.restaurant.payments} />}
+            />
+          ))
+        )}
       </div>
       <div className={styles.footer}>
         <div className={styles.button}>
           <RectButton color="red">
             <Link href="/webapp/home" replace>
-              キャンセル
+              ホームへ戻る
             </Link>
           </RectButton>
         </div>

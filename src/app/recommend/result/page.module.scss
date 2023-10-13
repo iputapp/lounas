@@ -20,6 +20,28 @@
       gap-7
       px-1
       md:grid-cols-2;
+
+    .zero {
+      @apply mt-14
+        w-full
+        text-center
+        text-xl
+        font-bold;
+    }
+
+    .noresult {
+      @apply mb-14 mt-3
+      w-full
+      text-center;
+
+      .retry {
+        @apply mx-auto 
+          w-fit items-center
+          space-x-1
+          font-bold
+         text-blue-600;
+      }
+    }
   }
 
   .footer {
