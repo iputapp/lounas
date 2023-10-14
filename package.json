@@ -2,7 +2,6 @@
   "name": "imap",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,11 +14,7 @@
     "format": "npm run eslint:fix && npm run stylelint:fix && npm run prettier:fix",
     "db:gen": "prisma generate",
     "db:mig:dev": "dotenv -e .env.local prisma migrate dev",
-    "db:studio": "dotenv -e .env.local prisma studio",
-    "seed": "esbuild prisma/seed.ts --outfile=node_modules/tmp-seed.cjs --bundle --format=cjs --platform=node --external:prisma --external:@prisma/client && node node_modules/tmp-seed.cjs --preview-feature"
-  },
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+    "db:studio": "dotenv -e .env.local prisma studio"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -30,7 +25,6 @@
     "@prisma/client": "^5.4.2",
     "@supabase/auth-helpers-nextjs": "^0.8.1",
     "@supabase/supabase-js": "^2.38.0",
-    "@types/get-stream": "^3.0.2",
     "@types/node": "20.7.1",
     "@types/react": "18.2.23",
     "@types/react-dom": "18.2.8",
@@ -53,16 +47,12 @@
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
     "csv": "^6.3.5",
-    "csv-parse": "^5.5.2",
-    "csvtojson": "^2.0.10",
     "encoding": "^0.1.13",
-    "esbuild": "^0.19.4",
     "eslint-config-next": "^13.5.3",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
-    "get-stream": "^8.0.1",
     "nanoid": "^5.0.1",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.4",

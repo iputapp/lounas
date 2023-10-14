@@ -1,6 +1,8 @@
-import { PrismaClient } from "@prisma/client";
-import  csv from "csvtojson";
+import * as csv from "csv";
+import fs from "fs";
 
+import prisma from "@/lib/prisma";
+import { generateRouteId, generateUrlId } from "@/lib/urlId";
 import {
   DishTraitOptionalDefaults,
   OrganizationOptionalDefaults,
@@ -8,11 +10,6 @@ import {
   RouteTypeOptionalDefaults,
   WeekTypeOptionalDefaults,
 } from "@/lib/zod";
-
-import { TimeOnly } from "./seeding/TimeOnly";
-import { generateRouteId, generateUrlId } from "./seeding/urlId";
-
-const prisma = new PrismaClient();
 
 // ========================================
 // ===== DB tables
@@ -55,7 +52,7 @@ const routeTypeCsvMapping = new Map<string, string>([
 
 const amountCsvMapping = new Map<string, number>([
   ["素うどん1杯", 25],
-  ["ラーメン1杯", 60],
+  ["素うどん1杯", 60],
   ["牛丼大盛り", 80],
 ]);
 
@@ -201,11 +198,10 @@ async function seedDistalTables() {
 
 // ========================================
 // ===== phase #2: proximal tables
-async function seedProximalTables(
-  paymentCsvIdMap: Map<string, string>,
-  dishTraitCsvIdMap: Map<string, string>,
-  routeTypeCsvIdMap: Map<string, string>
-) {
+
+const main = async () => {
+  const { paymentCsvIdMap, dishTraitCsvIdMap, routeTypeCsvIdMap } = await seedDistalTables();
+
   console.log(logLabel, "phase 2: seeding distal tables");
 
   type RestaurantCsvType = {
@@ -227,8 +223,6 @@ async function seedProximalTables(
     d払い: string;
     楽天pay: string;
     LINEpay: string;
-    チェック済: string;
-    営業日程_補足: string;
     日open: string;
     日close: string;
     月open: string;
@@ -244,12 +238,16 @@ async function seedProximalTables(
     土open: string;
     土close: string;
   };
+  let restaurantCsvs: RestaurantCsvType[] = [];
+  fs.createReadStream("./csv/restaurant.csv").pipe(
+    csv.parse({ columns: true }, (error, csv) => {
+      if (error) throw error;
+      restaurantCsvs = csv as RestaurantCsvType[];
+    })
+  );
+  console.log(logLabel, "loaded restaurant.csv");
 
-  const restaurantCsv = await csv().fromFile("./prisma/csv/restaurant.csv");
-  const restaurantData = restaurantCsv as RestaurantCsvType[];
-  console.log(logLabel, "Loaded restaurant.csv");
-
-  const restaurantPromises = restaurantData.map((restaurantCsv) => {
+  const restaurantPromises = restaurantCsvs.map((restaurantCsv) => {
     return prisma.restaurant.create({
       data: {
         id: generateUrlId(),
@@ -258,7 +256,7 @@ async function seedProximalTables(
         address: restaurantCsv.住所,
         longitude: 0,
         latitude: 0,
-        travelTime: 0+parseInt(restaurantCsv.片道時間_分), //parseInt(restaurantCsv.片道時間_分)
+        travelTime: parseInt(restaurantCsv.片道時間_分),
         travelDistance: parseInt(restaurantCsv.道のり距離_m),
         restaurantOpens: {
           create: [
@@ -268,8 +266,8 @@ async function seedProximalTables(
                   id: weekTypes[0].id,
                 },
               },
-              timeOpen: parseTimeOnly(restaurantCsv.日open, "open"),
-              timeClose: parseTimeOnly(restaurantCsv.日close, "close"),
+              timeOpen: restaurantCsv.日open,
+              timeClose: restaurantCsv.日close,
             },
             {
               weekType: {
@@ -277,8 +275,8 @@ async function seedProximalTables(
                   id: weekTypes[1].id,
                 },
               },
-              timeOpen: parseTimeOnly(restaurantCsv.月open, "open"),
-              timeClose: parseTimeOnly(restaurantCsv.月close, "close"),
+              timeOpen: restaurantCsv.月open,
+              timeClose: restaurantCsv.月close,
             },
             {
               weekType: {
@@ -286,8 +284,8 @@ async function seedProximalTables(
                   id: weekTypes[2].id,
                 },
               },
-              timeOpen: parseTimeOnly(restaurantCsv.火open, "open"),
-              timeClose: parseTimeOnly(restaurantCsv.火close, "close"),
+              timeOpen: restaurantCsv.火open,
+              timeClose: restaurantCsv.火close,
             },
             {
               weekType: {
@@ -295,8 +293,8 @@ async function seedProximalTables(
                   id: weekTypes[3].id,
                 },
               },
-              timeOpen: parseTimeOnly(restaurantCsv.水open, "open"),
-              timeClose: parseTimeOnly(restaurantCsv.水close, "close"),
+              timeOpen: restaurantCsv.水open,
+              timeClose: restaurantCsv.水close,
             },
             {
               weekType: {
@@ -304,8 +302,8 @@ async function seedProximalTables(
                   id: weekTypes[4].id,
                 },
               },
-              timeOpen: parseTimeOnly(restaurantCsv.木open, "open"),
-              timeClose: parseTimeOnly(restaurantCsv.木close, "close"),
+              timeOpen: restaurantCsv.木open,
+              timeClose: restaurantCsv.木close,
             },
             {
               weekType: {
@@ -313,8 +311,8 @@ async function seedProximalTables(
                   id: weekTypes[5].id,
                 },
               },
-              timeOpen: parseTimeOnly(restaurantCsv.金open, "open"),
-              timeClose: parseTimeOnly(restaurantCsv.金close, "close"),
+              timeOpen: restaurantCsv.金open,
+              timeClose: restaurantCsv.金close,
             },
             {
               weekType: {
@@ -322,8 +320,8 @@ async function seedProximalTables(
                   id: weekTypes[6].id,
                 },
               },
-              timeOpen: parseTimeOnly(restaurantCsv.土open, "open"),
-              timeClose: parseTimeOnly(restaurantCsv.土close, "close"),
+              timeOpen: restaurantCsv.土open,
+              timeClose: restaurantCsv.土close,
             },
           ],
         },
@@ -390,21 +388,18 @@ async function seedProximalTables(
       },
     });
   });
-  console.log(logLabel, "Created queries for restaurants");
+  console.log(logLabel, "created queries for restaurants");
 
   const restaurantRecords = await prisma.$transaction(restaurantPromises);
-  console.log(logLabel, "Transaction completed for restaurants");
+  console.log(logLabel, "transaction completed for restaurants");
 
   const restaurantNameIdMap = new Map<string, string>(
     restaurantRecords.map((record) => [record.name, record.id])
   );
   console.log(restaurantNameIdMap);
-  console.log(logLabel, "Retrived mapping for restaurants");
-
-
+  console.log(logLabel, "mapped restaurants");
 
   type DishCsvType = {
-    ファイル名_確認用: string;
     料理名: string;
     店舗名: string;
     価格_税込: string;
@@ -413,13 +408,18 @@ async function seedProximalTables(
     普遍的vs個性的: string;
     さっぱりvsガッツリ: string;
     説明_任意: string;
-    サムネイル: string;
   };
-  const dishCsv = await csv().fromFile("./prisma/csv/dish.csv");
-  const dishData = dishCsv as DishCsvType[];
-  console.log(logLabel, "Loaded dish.csv");
 
-  const dishPromises = dishData.map((dishCsv) => {
+  let dishCsvs: DishCsvType[] = [];
+  fs.createReadStream("./csv/dish.csv").pipe(
+    csv.parse({ columns: true }, (error, csv) => {
+      if (error) throw error;
+      dishCsvs = csv as DishCsvType[];
+    })
+  );
+  console.log(logLabel, "loaded dish.csv");
+
+  const dishPromises = dishCsvs.map((dishCsv) => {
     return prisma.dish.create({
       data: {
         id: generateUrlId(),
@@ -463,16 +463,16 @@ async function seedProximalTables(
       },
     });
   });
-  console.log(logLabel, "Created queries for dishes");
+  console.log(logLabel, "created queries for dishes");
   const dishRecords = await prisma.$transaction(dishPromises);
-  console.log(logLabel, "Transaction completed for dishes");
+  console.log(logLabel, "transaction completed for dishes");
 
-  const dishNameIdMap = new Map<string, string>(
-    dishRecords.map((record) => [record.name, record.id])
-  );
-  console.log(dishNameIdMap);
-  console.log(logLabel, "Retrived mapping for dishes");
-
+  let routeLines: string[] = [];
+  fs.readFile("./csv/route.csv", "utf-8", (error, data) => {
+    if (error) throw error;
+    routeLines = data.split("\n").filter((line) => line.length > 0);
+  });
+  console.log(logLabel, "loaded route.csv");
 
   type RouteWithIds = {
     id: string;
@@ -483,21 +483,12 @@ async function seedProximalTables(
     restaurantId: string;
     routeTypeId: string;
   };
-  type RoutesOfRestauratns = {
-    routes: RouteWithIds[];
-  }
 
-  const routeCsv = await csv({noheader:true, output:"csv"}).fromFile("./prisma/csv/route.csv");
-  console.log(logLabel, "Loaded route.csv");
-
-  const routeMatryoshka: RoutesOfRestauratns[] = [];
-  for (let line = 0; line < routeCsv.length; line += 5) {
-    const routeRestaurantCsv = routeCsv.slice(line, line + 4);
+  const routePayloads: RouteWithIds[] = [];
+  for (let line = 0; line < routeLines.length / 5; line += 5) {
+    const routeRestaurantCsv = routeLines.slice(line, line + 4).map((line) => line.split(","));
     const routeStepCount = routeRestaurantCsv[0].length;
-    routeMatryoshka.push({routes: []});
-    const restaurantCount = routeMatryoshka.length - 1;
     for (let rcounter = 1; rcounter < routeStepCount; rcounter++) {
-      if (routeRestaurantCsv[0][rcounter] === "") break;
       const restaurantId = restaurantNameIdMap.get(routeRestaurantCsv[0][0])!;
       const routePayload: RouteWithIds = {
         id: generateRouteId(restaurantId, rcounter - 1),
@@ -507,21 +498,17 @@ async function seedProximalTables(
         routeTypeId: routeTypeCsvIdMap.get(routeRestaurantCsv[2][rcounter])!,
       };
 
-      routeMatryoshka[restaurantCount].routes.push(routePayload);
-    }
-    routeMatryoshka[restaurantCount].routes.forEach((route, index) => {
-      if (index > 0) {
-        route.previousStepId = routeMatryoshka[restaurantCount].routes[index - 1].id;
+      if (rcounter > 0) {
+        routePayload.previousStepId = routePayloads[rcounter - 1].id;
       }
-      if (index < routeMatryoshka[restaurantCount].routes.length - 1) {
-        route.nextStepId = routeMatryoshka[restaurantCount].routes[index + 1].id;
+      if (rcounter < routeStepCount - 1) {
+        routePayload.nextStepId = generateUrlId();
       }
-    });
-  }
-  console.log(logLabel, "Created route payloads");
 
-  const routePayloads = routeMatryoshka.flatMap((restaurant) => restaurant.routes);
-  console.log("Number of routes payload:", routePayloads.length)
+      routePayloads.push(routePayload);
+    }
+  }
+  console.log(logLabel, "created route payloads");
 
   const routePromises = routePayloads.map((routePayload) => {
     return prisma.route.create({
@@ -544,25 +531,13 @@ async function seedProximalTables(
       },
     });
   });
-  console.log(logLabel, "Created queries for routes");
+  console.log(logLabel, "created queries for routes");
 
   const routeRecords = await prisma.$transaction(routePromises);
-  console.log(logLabel, "Transaction completed for routes"); 
-  console.log("Number of routes:", routeRecords.length);
+  console.log(logLabel, "transaction completed for routes");
 
-  console.log("payload == record check:", routePayloads.length === routeRecords.length);
-
-  console.log(logLabel, "Seeding completed!");
-}
-
-function parseTimeOnly(timeString: string, type: "open" | "close") {
-  if (timeString === "-" || timeString === "") {
-    timeString = type === "open" ? "23:59:59" : "00:00:00"; // closed for the whole day
-  }
-
-  const [hour, minute, seconds] = timeString.split(":").map((time) => parseInt(time));
-  return new TimeOnly(hour, minute, seconds);
-}
+  console.log(logLabel, "seeding completed!");
+};
 
 function generatePaymentDetails(names: string[], values: string[]): string {
   if (names.length !== values.length) {
@@ -578,12 +553,6 @@ function generatePaymentDetails(names: string[], values: string[]): string {
 
 function paymentCsvBool(value: string) {
   return paymentAvaliableCsvMapping.get(value) ?? false;
-}
-
-async function main() {
-  const { paymentCsvIdMap, dishTraitCsvIdMap, routeTypeCsvIdMap } = await seedDistalTables();
-
-  await seedProximalTables(paymentCsvIdMap, dishTraitCsvIdMap, routeTypeCsvIdMap);
 }
 
 main()
