@@ -1,5 +1,6 @@
 /**
  * Convert a Date object to a TimeOnly object
+ *
  * 1970-01-01 00:00:00+00 (Unix system time zero) [timestamp with time zone]
  * @see {@link https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-DATETIME-SPECIAL-VALUES}
  */
