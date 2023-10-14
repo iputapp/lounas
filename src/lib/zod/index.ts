@@ -20,7 +20,7 @@ export const RestaurantOpenScalarFieldEnumSchema = z.enum(['id','createdAt','upd
 
 export const WeekTypeScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','name']);
 
-export const RouteScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','description','step','thumbnailId','nextStepId','previousStepId','routeTypeId','restaurantId']);
+export const RouteScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','description','thumbnailId','nextStepId','previousStepId','routeTypeId','restaurantId']);
 
 export const RouteTypeScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','name']);
 
@@ -38,7 +38,9 @@ export const DishTraitScalarFieldEnumSchema = z.enum(['id','createdAt','updatedA
 
 export const VisitHistoryScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','userId','dishId']);
 
-export const UserScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','email','username','lastLogin','dataUsageAgreed']);
+export const UserScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','username','lastLogin','dataUsageAgreed','organizationId']);
+
+export const OrganizationScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','name','emailDomain','isStudent','isStaff']);
 
 export const SortOrderSchema = z.enum(['asc','desc']);
 
@@ -289,14 +291,13 @@ export const WeekTypeOptionalDefaultsWithRelationsSchema: z.ZodType<WeekTypeOpti
 /////////////////////////////////////////
 
 export const RouteSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string().regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   description: z.string().nullable(),
-  step: z.number().nonnegative(),
-  thumbnailId: z.string(),
-  nextStepId: z.string().nullable(),
-  previousStepId: z.string().nullable(),
+  thumbnailId: z.string().nullable(),
+  nextStepId: z.string().regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/).nullable(),
+  previousStepId: z.string().regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/).nullable(),
   routeTypeId: z.string(),
   restaurantId: z.string().regex(/^[A-Z0-9]+$/).length(8),
 })
@@ -307,7 +308,6 @@ export type Route = z.infer<typeof RouteSchema>
 //------------------------------------------------------
 
 export const RouteOptionalDefaultsSchema = RouteSchema.merge(z.object({
-  id: z.string().uuid().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
 }))
@@ -788,10 +788,10 @@ export const UserSchema = z.object({
   id: z.string().uuid(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
-  email: z.string().email(),
-  username: z.string().min(6),
+  username: z.string(),
   lastLogin: z.coerce.date().nullable(),
   dataUsageAgreed: z.boolean(),
+  organizationId: z.string().nullable(),
 })
 
 export type User = z.infer<typeof UserSchema>
@@ -812,12 +812,14 @@ export type UserOptionalDefaults = z.infer<typeof UserOptionalDefaultsSchema>
 
 export type UserRelations = {
   visitHistories: VisitHistoryWithRelations[];
+  Organization?: OrganizationWithRelations | null;
 };
 
 export type UserWithRelations = z.infer<typeof UserSchema> & UserRelations
 
 export const UserWithRelationsSchema: z.ZodType<UserWithRelations> = UserSchema.merge(z.object({
   visitHistories: z.lazy(() => VisitHistoryWithRelationsSchema).array(),
+  Organization: z.lazy(() => OrganizationWithRelationsSchema).nullable(),
 }))
 
 // USER OPTIONAL DEFAULTS RELATION SCHEMA
@@ -825,10 +827,65 @@ export const UserWithRelationsSchema: z.ZodType<UserWithRelations> = UserSchema.
 
 export type UserOptionalDefaultsRelations = {
   visitHistories: VisitHistoryOptionalDefaultsWithRelations[];
+  Organization?: OrganizationOptionalDefaultsWithRelations | null;
 };
 
 export type UserOptionalDefaultsWithRelations = z.infer<typeof UserOptionalDefaultsSchema> & UserOptionalDefaultsRelations
 
 export const UserOptionalDefaultsWithRelationsSchema: z.ZodType<UserOptionalDefaultsWithRelations> = UserOptionalDefaultsSchema.merge(z.object({
   visitHistories: z.lazy(() => VisitHistoryOptionalDefaultsWithRelationsSchema).array(),
+  Organization: z.lazy(() => OrganizationOptionalDefaultsWithRelationsSchema).nullable(),
+}))
+
+/////////////////////////////////////////
+// ORGANIZATION SCHEMA
+/////////////////////////////////////////
+
+export const OrganizationSchema = z.object({
+  id: z.string().uuid(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
+  name: z.string(),
+  emailDomain: z.string().nullable(),
+  isStudent: z.boolean(),
+  isStaff: z.boolean(),
+})
+
+export type Organization = z.infer<typeof OrganizationSchema>
+
+// ORGANIZATION OPTIONAL DEFAULTS SCHEMA
+//------------------------------------------------------
+
+export const OrganizationOptionalDefaultsSchema = OrganizationSchema.merge(z.object({
+  id: z.string().uuid().optional(),
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
+}))
+
+export type OrganizationOptionalDefaults = z.infer<typeof OrganizationOptionalDefaultsSchema>
+
+// ORGANIZATION RELATION SCHEMA
+//------------------------------------------------------
+
+export type OrganizationRelations = {
+  users: UserWithRelations[];
+};
+
+export type OrganizationWithRelations = z.infer<typeof OrganizationSchema> & OrganizationRelations
+
+export const OrganizationWithRelationsSchema: z.ZodType<OrganizationWithRelations> = OrganizationSchema.merge(z.object({
+  users: z.lazy(() => UserWithRelationsSchema).array(),
+}))
+
+// ORGANIZATION OPTIONAL DEFAULTS RELATION SCHEMA
+//------------------------------------------------------
+
+export type OrganizationOptionalDefaultsRelations = {
+  users: UserOptionalDefaultsWithRelations[];
+};
+
+export type OrganizationOptionalDefaultsWithRelations = z.infer<typeof OrganizationOptionalDefaultsSchema> & OrganizationOptionalDefaultsRelations
+
+export const OrganizationOptionalDefaultsWithRelationsSchema: z.ZodType<OrganizationOptionalDefaultsWithRelations> = OrganizationOptionalDefaultsSchema.merge(z.object({
+  users: z.lazy(() => UserOptionalDefaultsWithRelationsSchema).array(),
 }))

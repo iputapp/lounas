@@ -230,12 +230,29 @@ model User {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
-  username        String    @unique /// @zod.string()
+  username        String // identification inside organization
   lastLogin       DateTime? @map("last_login") @db.Timestamptz()
   dataUsageAgreed Boolean   @map("data_usage_agreed")
 
   visitHistories VisitHistory[]
 
+  Organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?       @map("organization_id") @db.Uuid
+
+  @@unique([username, organizationId])
   @@index([lastLogin], name: "users_last_login_idx")
   @@map("users")
+}
+
+model Organization {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  name        String  @unique
+  emailDomain String? @map("email_domain")
+  isStudent   Boolean @map("is_student")
+  isStaff     Boolean @map("is_staff")
+
+  users User[]
 }
