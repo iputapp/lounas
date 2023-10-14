@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     sameSite: "strict",
     secure: true,
     httpOnly: true,
-    maxAge: 120, // 2 minutes
+    maxAge: 60 * 60 * 24 * 30, // 30 days
   });
 
   /** permit users access to the verify page */
