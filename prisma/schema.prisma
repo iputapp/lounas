@@ -257,4 +257,6 @@ model Organization {
   isStaff     Boolean @map("is_staff")
 
   users User[]
+
+  @@map("organizations")
 }
