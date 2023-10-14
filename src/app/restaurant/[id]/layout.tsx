@@ -1,6 +1,9 @@
 import type { Restaurant } from "@/app/api/v-beta/restaurant/[id]";
 import type { Restaurants } from "@/app/api/v-beta/restaurants";
 
+/** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamicParams = false; // return a 404 page if the params are not found
+
 /** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-metadata} */
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function generateMetadata({ params }: { params: { id: string } }) {
