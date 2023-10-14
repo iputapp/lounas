@@ -3,6 +3,10 @@ import { NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
 
+/** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "error"; // SSG
+export const revalidate = 604800; // ISR 7 days
+
 export async function GET(req: Request, { params }: { params: { id: string } }) {
   const routes = await prisma.route.findMany({
     where: { restaurantId: params.id },
