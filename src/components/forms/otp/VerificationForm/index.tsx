@@ -19,7 +19,7 @@ const VerificationForm = ({ className = "" }: VerificationFormProps) => {
   } = VerificationHookForm();
 
   /** 確認コード再送ボタン - status */
-  const time = 15; // 再送までの時間 (秒)
+  const time = 20; // 再送までの時間 (秒)
   const [disabled, setDisabled] = useState(true);
   const [count, setCount] = useState(time);
 
