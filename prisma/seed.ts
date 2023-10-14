@@ -229,8 +229,6 @@ const main = async () => {
         name: restaurantCsv.店舗名,
         description: restaurantCsv.説明_任意,
         address: restaurantCsv.住所,
-        longitude: 0,
-        latitude: 0,
         travelTime: parseInt(restaurantCsv.片道時間_分),
         travelDistance: parseInt(restaurantCsv.道のり距離_m),
         restaurantOpens: {
@@ -308,56 +306,10 @@ const main = async () => {
                   id: paymentCsvIdMap.get("cash")!,
                 },
               },
-              accepted: paymentCsvBool(restaurantCsv.現金),
-              details: "可能",
+              accepted: paymentAvaliableCsvMapping.get(restaurantCsv.現金) ?? false,
+              details: generatePaymentDetails(restaurantCsv.現金),
             },
-            {
-              paymentType: {
-                connect: {
-                  id: paymentCsvIdMap.get("credit")!,
-                },
-              },
-              accepted:
-                paymentCsvBool(restaurantCsv.VISA) ||
-                paymentCsvBool(restaurantCsv.MASTER) ||
-                paymentCsvBool(restaurantCsv.JCB),
-              details: generatePaymentDetails(
-                [restaurantCsv.VISA, restaurantCsv.MASTER, restaurantCsv.JCB],
-                ["VISA", "MASTER", "JCB"]
-              ),
-            },
-            {
-              paymentType: {
-                connect: {
-                  id: paymentCsvIdMap.get("qr")!,
-                },
-              },
-              accepted:
-                paymentCsvBool(restaurantCsv.PayPay) ||
-                paymentCsvBool(restaurantCsv.au_Pay) ||
-                paymentCsvBool(restaurantCsv.d払い) ||
-                paymentCsvBool(restaurantCsv.楽天pay) ||
-                paymentCsvBool(restaurantCsv.LINEpay),
-              details: generatePaymentDetails(
-                [
-                  restaurantCsv.PayPay,
-                  restaurantCsv.au_Pay,
-                  restaurantCsv.d払い,
-                  restaurantCsv.楽天pay,
-                  restaurantCsv.LINEpay,
-                ],
-                ["PayPay", "au Pay", "d払い", "楽天pay", "LINEpay"]
-              ),
-            },
-            {
-              paymentType: {
-                connect: {
-                  id: paymentCsvIdMap.get("transport")!,
-                },
-              },
-              accepted: paymentCsvBool(restaurantCsv.交通系IC),
-              details: "可能",
-            },
+            {},
           ],
         },
       },
@@ -499,20 +451,6 @@ const main = async () => {
 
   const routeRecords = await prisma.$transaction(routePromises);
 };
-
-function generatePaymentDetails(names: string[], values: string[]): string {
-  if (names.length !== values.length) {
-    throw new Error("names.length !== values.length");
-  }
-
-  const details = names.map((name, index) => `${name}:${values[index]}`).join(", ");
-
-  return details;
-}
-
-function paymentCsvBool(value: string) {
-  return paymentAvaliableCsvMapping.get(value) ?? false;
-}
 
 main()
   .catch((e) => {
