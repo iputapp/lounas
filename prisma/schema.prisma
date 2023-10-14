@@ -111,7 +111,8 @@ model RouteType {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
-  name String /// @zod.string.min(1)
+  name        String /// @zod.string.min(1)
+  description String?
 
   routes Route[]
 
@@ -204,7 +205,6 @@ model DishTrait {
 
   name        String /// @zod.string.min(1)
   description String?
-  threshold   Int /// @zod.number
 
   dishScores DishScore[]
 
@@ -249,7 +249,9 @@ model Organization {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
-  name        String  @unique
+  name        String  @unique /// @zod.string.min(1)
+  displayName String  @map("display_name") /// @zod.string.min(1)
+  description String?
   emailDomain String? @map("email_domain")
   isStudent   Boolean @map("is_student")
   isStaff     Boolean @map("is_staff")

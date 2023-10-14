@@ -22,7 +22,7 @@ export const WeekTypeScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt
 
 export const RouteScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','description','thumbnailId','nextStepId','previousStepId','routeTypeId','restaurantId']);
 
-export const RouteTypeScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','name']);
+export const RouteTypeScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','name','description']);
 
 export const PaymentScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','accepted','details','paymentTypeId','restaurantId']);
 
@@ -34,13 +34,13 @@ export const DishTagScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt'
 
 export const DishScoreScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','score','dishId','traitId']);
 
-export const DishTraitScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','name','description','threshold']);
+export const DishTraitScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','name','description']);
 
 export const VisitHistoryScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','userId','dishId']);
 
 export const UserScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','username','lastLogin','dataUsageAgreed','organizationId']);
 
-export const OrganizationScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','name','emailDomain','isStudent','isStaff']);
+export const OrganizationScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','name','displayName','description','emailDomain','isStudent','isStaff']);
 
 export const SortOrderSchema = z.enum(['asc','desc']);
 
@@ -353,6 +353,7 @@ export const RouteTypeSchema = z.object({
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
+  description: z.string().nullable(),
 })
 
 export type RouteType = z.infer<typeof RouteTypeSchema>
@@ -683,7 +684,6 @@ export const DishTraitSchema = z.object({
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
   description: z.string().nullable(),
-  threshold: z.number(),
 })
 
 export type DishTrait = z.infer<typeof DishTraitSchema>
@@ -845,7 +845,9 @@ export const OrganizationSchema = z.object({
   id: z.string().uuid(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
-  name: z.string(),
+  name: z.string().min(1),
+  displayName: z.string().min(1),
+  description: z.string().nullable(),
   emailDomain: z.string().nullable(),
   isStudent: z.boolean(),
   isStaff: z.boolean(),
