@@ -12,28 +12,6 @@ import {
 } from "@/lib/zod";
 
 // ========================================
-// ===== DB tables
-// Restaurant
-// Dish
-// Route
-// + RestaurantOpen
-// + Payment
-// + DishScore
-// ** WeekType
-// ** RouteType
-// ** PaymentType
-// ** DishTrait
-// ** Organization
-
-// ? User
-// ? + VisitHistory
-// ?? ** DishTag
-// ?? ** RestaurantTag
-// ========================================
-
-const logLabel = "[PRISMA SEED]";
-
-// ========================================
 // ===== CSV mappings
 
 // 正確な値がほしい
@@ -69,7 +47,7 @@ const paymentAvaliableCsvMapping = new Map<string, boolean>([
 ]);
 
 // ========================================
-// ===== phase #1: distal tables
+// ===== pass #1: distal tables
 
 // n-to-n(explicit join table)
 const paymentMethods: PaymentTypeOptionalDefaults[] = [
@@ -125,69 +103,51 @@ const routeTypes: RouteTypeOptionalDefaults[] = Array.from(routeTypeCsvMapping, 
  * @returns records
  */
 async function seedDistalTables() {
-  console.log(logLabel, "phase 1: seeding distal tables");
-
   const paymentTypePromises = paymentMethods.map((paymentMethod) => {
     return prisma.paymentType.create({
       data: paymentMethod,
     });
   });
-  console.log(logLabel, "created queries for paymentTypes");
 
   const dishTraitPromises = dishTraits.map((dishTrait) => {
     return prisma.dishTrait.create({
       data: dishTrait,
     });
   });
-  console.log(logLabel, "created queries for dishTraits");
 
   const organizationPromises = user_organizations.map((org) => {
     return prisma.organization.create({
       data: org,
     });
   });
-  console.log(logLabel, "created queries for organizations");
 
   const routeTypePromises = routeTypes.map((routeType) => {
     return prisma.routeType.create({
       data: routeType,
     });
   });
-  console.log(logLabel, "created queries for routeTypes");
 
   const weekTypePromises = weekTypes.map((weekType) => {
     return prisma.weekType.create({
       data: weekType,
     });
   });
-  console.log(logLabel, "created queries for weekTypes");
 
   const paymentTypeRecords = await prisma.$transaction(paymentTypePromises);
-  console.log(logLabel, "transaction completed for paymentTypes");
   const dishTraitRecords = await prisma.$transaction(dishTraitPromises);
-  console.log(logLabel, "transaction completed for dishTraits");
   const organizationRecords = await prisma.$transaction(organizationPromises);
-  console.log(logLabel, "transaction completed for organizations");
   const routeTypeRecords = await prisma.$transaction(routeTypePromises);
-  console.log(logLabel, "transaction completed for routeTypes");
   await prisma.$transaction(weekTypePromises);
-  console.log(logLabel, "transaction completed for weekTypes");
 
   const paymentCsvIdMap = new Map<string, string>(
     paymentTypeRecords.map((record) => [record.name, record.id])
   );
-  console.log(paymentCsvIdMap);
-  console.log(logLabel, "mapped payments");
   const dishTraitCsvIdMap = new Map<string, string>(
     dishTraitRecords.map((record) => [record.name, record.id])
   );
-  console.log(dishTraitCsvIdMap);
-  console.log(logLabel, "mapped dishTraits");
   const routeTypeCsvIdMap = new Map<string, string>(
     routeTypeRecords.map((record) => [record.description!, record.id])
   );
-  console.log(routeTypeCsvIdMap);
-  console.log(logLabel, "mapped routeTypes");
 
   return {
     paymentCsvIdMap,
@@ -197,12 +157,28 @@ async function seedDistalTables() {
 }
 
 // ========================================
-// ===== phase #2: proximal tables
+// ===== pass #2: proximal tables
 
+// Restaurant
+// Dish
+// Route
+// + RestaurantOpen
+// + Payment
+// + DishScore
+// ** WeekType
+// ** RouteType
+// ** PaymentType
+// ** DishTrait
+// ** Organization
+
+// ? User
+// ? + VisitHistory
+// ?? ** DishTag
+// ?? ** RestaurantTag
+
+// ========================================
 const main = async () => {
   const { paymentCsvIdMap, dishTraitCsvIdMap, routeTypeCsvIdMap } = await seedDistalTables();
-
-  console.log(logLabel, "phase 2: seeding distal tables");
 
   type RestaurantCsvType = {
     店舗名: string;
@@ -245,7 +221,6 @@ const main = async () => {
       restaurantCsvs = csv as RestaurantCsvType[];
     })
   );
-  console.log(logLabel, "loaded restaurant.csv");
 
   const restaurantPromises = restaurantCsvs.map((restaurantCsv) => {
     return prisma.restaurant.create({
@@ -388,16 +363,11 @@ const main = async () => {
       },
     });
   });
-  console.log(logLabel, "created queries for restaurants");
 
   const restaurantRecords = await prisma.$transaction(restaurantPromises);
-  console.log(logLabel, "transaction completed for restaurants");
-
   const restaurantNameIdMap = new Map<string, string>(
     restaurantRecords.map((record) => [record.name, record.id])
   );
-  console.log(restaurantNameIdMap);
-  console.log(logLabel, "mapped restaurants");
 
   type DishCsvType = {
     料理名: string;
@@ -417,7 +387,6 @@ const main = async () => {
       dishCsvs = csv as DishCsvType[];
     })
   );
-  console.log(logLabel, "loaded dish.csv");
 
   const dishPromises = dishCsvs.map((dishCsv) => {
     return prisma.dish.create({
@@ -463,16 +432,13 @@ const main = async () => {
       },
     });
   });
-  console.log(logLabel, "created queries for dishes");
   const dishRecords = await prisma.$transaction(dishPromises);
-  console.log(logLabel, "transaction completed for dishes");
 
   let routeLines: string[] = [];
   fs.readFile("./csv/route.csv", "utf-8", (error, data) => {
     if (error) throw error;
     routeLines = data.split("\n").filter((line) => line.length > 0);
   });
-  console.log(logLabel, "loaded route.csv");
 
   type RouteWithIds = {
     id: string;
@@ -508,7 +474,6 @@ const main = async () => {
       routePayloads.push(routePayload);
     }
   }
-  console.log(logLabel, "created route payloads");
 
   const routePromises = routePayloads.map((routePayload) => {
     return prisma.route.create({
@@ -531,12 +496,8 @@ const main = async () => {
       },
     });
   });
-  console.log(logLabel, "created queries for routes");
 
   const routeRecords = await prisma.$transaction(routePromises);
-  console.log(logLabel, "transaction completed for routes");
-
-  console.log(logLabel, "seeding completed!");
 };
 
 function generatePaymentDetails(names: string[], values: string[]): string {
@@ -544,9 +505,7 @@ function generatePaymentDetails(names: string[], values: string[]): string {
     throw new Error("names.length !== values.length");
   }
 
-  const details = names
-    .map((name, index) => (paymentCsvBool(values[index]) ? name : ""))
-    .join(", ");
+  const details = names.map((name, index) => `${name}:${values[index]}`).join(", ");
 
   return details;
 }
