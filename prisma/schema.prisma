@@ -93,7 +93,7 @@ model Route {
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
   description    String?
-  thumbnailId    String? @map("thumbnail_id") @db.Uuid // images are reusable, thus id != thumbnailId
+  thumbnailId    String? @map("thumbnail_id") // images are reusable, thus id != thumbnailId
   nextStepId     String? @map("next_step_id") /// @zod.string.regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
   previousStepId String? @map("previous_step_id") /// @zod.string.regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
 
