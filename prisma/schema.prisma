@@ -21,7 +21,7 @@ generator zod {
 }
 
 model Restaurant {
-  id        String   @id /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
+  id        String   @id @unique /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
@@ -88,7 +88,7 @@ model WeekType {
 }
 
 model Route {
-  id        String   @id /// @zod.string.regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
+  id        String   @id @unique /// @zod.string.regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
@@ -149,7 +149,7 @@ model PaymentType {
 }
 
 model Dish {
-  id        String   @id /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
+  id        String   @id @unique /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
