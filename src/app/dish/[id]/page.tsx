@@ -77,7 +77,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         </Card>
         <ExpandablePanel
           title="店舗詳細"
-          bgImage={`/${dish.restaurant.id}.webp`}
+          bgImage={`/dishes/id/${dish.id}.webp`}
           titleEx="決済方法"
           childrenEx={<PaymentLong payments={sortedPayments} />}
         >

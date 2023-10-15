@@ -23,7 +23,7 @@ const SignupForm = ({ className = "" }: SignupFormProps) => {
       <ThemeProvider theme={theme}>
         {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
         <form noValidate onSubmit={handleSubmit(onSubmit)} className={className}>
-          <div className="relative w-full">
+          <div className="relative h-14 w-full">
             <BasicTextField
               name="studentId"
               control={control}
@@ -31,9 +31,9 @@ const SignupForm = ({ className = "" }: SignupFormProps) => {
               required
               inputProps={{ inputMode: "text", maxLength: 8 }}
             />
-            {/* <span className="absolute inset-y-0 right-0 my-auto h-fit pb-2 text-neutral-800">
+            <span className="absolute inset-y-0 right-0 my-auto h-fit text-neutral-800">
               @tks.iput.ac.jp
-            </span> */}
+            </span>
           </div>
           <BasicCheckbox
             name="agreePolicy"
