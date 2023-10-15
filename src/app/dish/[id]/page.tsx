@@ -10,7 +10,7 @@ import { DecideButton } from "./client";
 import styles from "./page.module.scss";
 
 async function getDish(id: string) {
-  const dish = (await fetch(`${process.env.BASE_URL}/api/v-beta/dish/${id}`)
+  const dish = (await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/dish/${id}`)
     .then((res) => res.json())
     .catch((err) => {
       console.error(err);

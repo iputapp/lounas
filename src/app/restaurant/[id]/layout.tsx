@@ -8,7 +8,7 @@ export const dynamicParams = false; // return a 404 page if the params are not f
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const restaurant = (await fetch(
-    `${process.env.BASE_URL}/api/v-beta/restaurant/${params.id}`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/restaurant/${params.id}`
   ).then((res) => res.json())) as Restaurant;
   return {
     title: restaurant.name,
@@ -17,9 +17,9 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 
 /** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-static-params} */
 export async function generateStaticParams() {
-  const restaurants = (await fetch(`${process.env.BASE_URL}/api/v-beta/restaurants`).then((res) =>
-    res.json()
-  )) as Restaurants;
+  const restaurants = (await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/restaurants`
+  ).then((res) => res.json())) as Restaurants;
 
   return restaurants.map((restaurant) => ({
     params: {
