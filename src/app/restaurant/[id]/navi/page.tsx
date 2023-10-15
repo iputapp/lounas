@@ -11,7 +11,9 @@ import { CardFull, NavigationType } from "@/components/cards/CardFull";
 import styles from "./page.module.scss";
 
 async function getRoutes(id: string) {
-  const routes = (await fetch(`${process.env.BASE_URL}/api/v-beta/restaurant/${id}/navi`)
+  const routes = (await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/restaurant/${id}/navi`
+  )
     .then((res) => res.json())
     .catch((err) => {
       console.error(err);

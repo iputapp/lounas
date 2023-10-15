@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic"; // SSR
 
 async function getRecommend(params: URLSearchParams) {
   const recommends = (await fetch(
-    `${process.env.BASE_URL}/api/v-beta/recommend?${params.toString()}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/recommend?${params.toString()}`,
     {
       method: "GET",
     }
