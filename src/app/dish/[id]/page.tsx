@@ -21,9 +21,7 @@ export async function generateStaticParams() {
   )) as Dishes;
 
   return dishes.map((dish) => ({
-    params: {
-      id: dish.id,
-    },
+    id: dish.id,
   }));
 }
 
