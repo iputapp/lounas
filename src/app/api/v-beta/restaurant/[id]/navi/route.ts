@@ -20,7 +20,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
   // const res = routeSchema.parse(routes);
 
   /** sort with step */
-  const sortedRoutes = routes.sort((a, b) => a.step - b.step);
+  const sortedRoutes = routes.sort((a, b) => a.id.localeCompare(b.id));
 
   /* 存在チェック */
   if (!sortedRoutes.length) return NextResponse.error();
