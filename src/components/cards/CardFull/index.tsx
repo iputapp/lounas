@@ -1,3 +1,4 @@
+import Downstairs from "@icons/downstairs.svg";
 import LocationOn from "@icons/location-on.svg";
 import Straight from "@icons/straight.svg";
 import TurnLeft from "@icons/turn-left.svg";
@@ -6,12 +7,12 @@ import TurnSharpLeft from "@icons/turn-sharp-left.svg";
 import TurnSharpRight from "@icons/turn-sharp-right.svg";
 import TurnSlightLeft from "@icons/turn-slight-left.svg";
 import TurnSlightRight from "@icons/turn-slight-right.svg";
+import Upstairs from "@icons/upstairs.svg";
 import Image from "next/image";
 
 import styles from "./styles.module.scss";
 
-export type NavigationType = "straight" | "left" | "right" | "pin";
-
+export type NavigationType = "straight" | "left" | "right" | "sharpLeft" | "sharpRight" | "slightLeft" | "slightRight" | "downstairs" | "upstairs" | "elevator" | "landmark" | "arrival" ;
 type CardFullProps = {
   image: string;
   description: string;
@@ -27,7 +28,11 @@ export function CardFull({ image, description, navigation }: CardFullProps) {
     sharpRight: <TurnSharpRight />,
     slightLeft: <TurnSlightLeft />,
     slightRight: <TurnSlightRight />,
-    pin: <LocationOn />,
+    downstairs: <Downstairs />,
+    upstairs: <Upstairs/>,
+    elevator: "elevator",
+    landmark: "landmark",
+    arrival: <LocationOn />,
   };
 
   return (
@@ -45,7 +50,7 @@ export function CardFull({ image, description, navigation }: CardFullProps) {
           <p>{description}</p>
         </section>
       </div>
-      <div className={`${styles.tag} ${navigation == "pin" ? styles.pin : ""}`}>
+      <div className={`${styles.tag} ${navigation == "arrival" ? styles.arrival : ""}`}>
         <span>{navigationIcons[navigation]}</span>
       </div>
     </article>
