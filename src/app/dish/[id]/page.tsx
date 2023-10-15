@@ -11,6 +11,7 @@ import { DecideButton } from "./client";
 import styles from "./page.module.scss";
 
 /** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "error"; // SSG
 export const dynamicParams = false; // return a 404 page if the params are not found
 
 /** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-static-params} */
