@@ -12,6 +12,8 @@ export default function Test() {
       <CardFull image="/test/route.webp" description="斜め右に進みます" navigation="slightRight" />
       <CardFull image="/test/route.webp" description="斜め右に進みます" navigation="stairsUp" />
       <CardFull image="/test/route.webp" description="斜め右に進みます" navigation="stairsDown" />
+      <CardFull image="/test/route.webp" description="斜め右に進みます" navigation="elevator" />
+      <CardFull image="/test/route.webp" description="斜め右に進みます" navigation="landmark" />
       <CardFull
         image="/test/route.webp"
         description="目の前にセブンイレブンがあります

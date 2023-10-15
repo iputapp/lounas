@@ -1,3 +1,5 @@
+import Elevator from "@icons/elevator.svg";
+import EmojiFlags from "@icons/emoji-flags.svg";
 import LocationOn from "@icons/location-on.svg";
 import StairsDown from "@icons/stairs-down.svg";
 import StairsUp from "@icons/stairs-up.svg";
@@ -42,8 +44,8 @@ export function CardFull({ image, description, navigation }: CardFullProps) {
     slightRight: <TurnSlightRight />,
     stairsDown: <StairsDown />,
     stairsUp: <StairsUp />,
-    elevator: "elevator",
-    landmark: "landmark",
+    elevator: <Elevator />,
+    landmark: <EmojiFlags />,
     arrival: <LocationOn />,
   };
 
