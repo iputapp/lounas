@@ -5,10 +5,24 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import type { Route } from "@/app/api/v-beta/restaurant/[id]/navi";
+import { Restaurants } from "@/app/api/v-beta/restaurants";
 import { RectButton } from "@/components/buttons/RectButton";
 import { CardFull, NavigationType } from "@/components/cards/CardFull";
 
 import styles from "./page.module.scss";
+
+/** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-static-params} */
+export async function generateStaticParams() {
+  const restaurants = (await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/restaurants`
+  ).then((res) => res.json())) as Restaurants;
+
+  return restaurants.map((restaurant) => ({
+    params: {
+      id: restaurant.id,
+    },
+  }));
+}
 
 async function getRoutes(id: string) {
   const routes = (await fetch(
