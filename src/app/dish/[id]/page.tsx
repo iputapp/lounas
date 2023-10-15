@@ -10,6 +10,10 @@ import { PaymentLong, PaymentType } from "@/components/lists/PaymentLong";
 import { DecideButton } from "./client";
 import styles from "./page.module.scss";
 
+/** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "error"; // SSG
+export const dynamicParams = false; // return a 404 page if the params are not found
+
 /** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-static-params} */
 export async function generateStaticParams() {
   const dishes = (await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/dishes`).then((res) =>

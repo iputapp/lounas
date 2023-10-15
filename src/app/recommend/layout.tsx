@@ -6,7 +6,7 @@ import styles from "./layout.module.scss";
 export const metadata: Metadata = {
   title: {
     default: "Recommend",
-    template: "%s - Recommend | IMAP",
+    template: "%s - Recommend | lounas",
   },
 };
 
