@@ -1,79 +1,55 @@
-"use client";
+import { notFound } from "next/navigation";
 
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-
+import type { Dish } from "@/app/api/v-beta/dish/[id]";
 import { BackButton } from "@/components/buttons/BackButton";
-import { RectButton } from "@/components/buttons/RectButton";
 import { Card } from "@/components/cards/Card";
 import { ExpandablePanel } from "@/components/layouts/ExpandablePanel";
 import { PaymentLong, PaymentType } from "@/components/lists/PaymentLong";
-import type { Dish, Restaurant } from "@/lib/zod";
 
+import { DecideButton } from "./client";
 import styles from "./page.module.scss";
 
-export default function Page({ params }: { params: { id: string } }) {
-  const router = useRouter();
+async function getDish(id: string) {
+  const dish = (await fetch(`${process.env.BASE_URL}/api/v-beta/dish/${id}`)
+    .then((res) => res.json())
+    .catch((err) => {
+      console.error(err);
+      return notFound();
+    })) as Dish;
 
-  useEffect(() => {
-    console.log("料理ID:", params.id);
-  }, [params]);
+  return dish;
+}
 
-  /** テスト用 料理データ */
-  const dish: Dish = {
-    id: params.id,
-    urlId: params.id,
-    createdAt: new Date("2023-09-21T01:02:34.069Z"),
-    updatedAt: new Date("2023-09-21T01:23:45.069Z"),
-    name: "MAXラーメン",
-    description:
-      "言わずと知れた、壱角家の看板メニュー！\nチャーシュー3枚、海苔が6枚、味玉も乗って、まさにいいとこどりのMAXラーメン。\n見て満足、食べて満足。壱角家の一番人気！",
-    price: 980,
-    amount: 75,
-    eatTime: 360, // 6分
-    restaurantId: "a1199e64-f208-4300-a83e-8d5484d3ea3c",
-    thumbnailId: "katsudon", // params.id
-  };
-
-  /** テスト用 お店データ */
-  type RestaurantExtend = Restaurant & {
-    timeOpen: Date;
-    timeClose: Date;
-  };
-  const restaurant: RestaurantExtend = {
-    id: "a1199e64-f208-4300-a83e-8d5484d3ea3c",
-    urlId: "a1199e64-f208-4300-a83e-8d5484d3ea3c",
-    createdAt: new Date("2023-09-21T01:02:34.069Z"),
-    updatedAt: new Date("2023-09-21T01:23:45.069Z"),
-    name: "横浜家系ラーメン 壱角家 西新宿店",
-    description: "トッピングし放題！ネギの入れすぎに注意！\nカウンター・テーブルあり。",
-    address: "東京都新宿区西新宿1-14-5 新和ビル 1F",
-    website: "https://ichikakuya.com/",
-    longtitude: 139.691706,
-    latitude: 35.691706,
-    travelTime: 300, // 5分
-    timeOpen: new Date("1900-01-01T02:00:00.000Z"),
-    timeClose: new Date("1900-01-01T15:00:00.000Z"),
-  };
-
-  /** テスト用 支払方法 */
-  const payments = [
-    { payment: "cash" as PaymentType, accepted: true },
-    { payment: "credit" as PaymentType, accepted: true },
-    { payment: "transport" as PaymentType, accepted: true },
-    { payment: "qr" as PaymentType, accepted: false },
-  ];
-
-  /** テスト用 api route から返ってくるデータ (予定) */
-  const data = {
-    dish: dish,
-    restaurant: restaurant,
-    payments: payments,
-  };
-
-  const decide = () => {
-    router.push(`/restaurant/${data.restaurant.urlId}/navi`);
-  };
+export default async function Page({ params }: { params: { id: string } }) {
+  /** 料理詳細 */
+  const dish = await getDish(params.id);
+  /** 支払方法 */
+  const payments = dish.restaurant.payments.map((payment) => ({
+    type: payment.paymentType.name as PaymentType,
+    accepted: payment.accepted,
+    details: payment.details,
+  }));
+  const sortedPayments = payments.sort((a, b) => a.type.localeCompare(b.type));
+  /** 営業時間 */
+  const openTime = dish.restaurant.restaurantOpens.map((open) => ({
+    weekDay: open.weekTypeId,
+    weekDayName: open.weekType.name,
+    timeOpen: new Date(open.timeOpen),
+    timeClose: new Date(open.timeClose),
+  }));
+  const sortedOpenTime = openTime.sort((a, b) => a.weekDay - b.weekDay);
+  /**
+   * 営業時間 - 重複削除
+   * The computational complexity is O(N^2), but with a maximum array length of 7, speed is guaranteed
+   */
+  const cleanOpenTime = sortedOpenTime.filter(
+    (time, index, self) =>
+      self.findIndex(
+        (t) =>
+          String(t.timeOpen) === String(time.timeOpen) &&
+          String(t.timeClose) === String(time.timeClose)
+      ) === index
+  );
 
   return (
     <div className={styles.container}>
@@ -81,46 +57,49 @@ export default function Page({ params }: { params: { id: string } }) {
         <BackButton title="戻る" />
       </div>
       <div className={styles.content}>
-        <Card image={`/test/${data.dish.thumbnailId}.webp`} alt={data.dish.name}>
-          <p>{data.dish.name}</p>
-          <p>{data.restaurant.name}</p>
+        <Card image={`/${dish.id}.webp`} alt={dish.name}>
+          <p>{dish.name}</p>
+          <p>{dish.restaurant.name}</p>
         </Card>
         <ExpandablePanel
           title="店舗詳細"
-          bgImage={`/test/${data.dish.thumbnailId}.webp`}
+          bgImage={`/${dish.restaurant.id}.webp`}
           titleEx="決済方法"
-          childrenEx={<PaymentLong payments={data.payments} />}
+          childrenEx={<PaymentLong payments={sortedPayments} />}
         >
           <ul className="grid justify-items-start gap-3">
-            <li>
+            <li className="grid justify-items-start">
               <span>
-                全日：
-                {data.restaurant.timeOpen.toLocaleTimeString("ja-JP", {
+                {cleanOpenTime.length > 1 ? "" : "全日"}：
+                {cleanOpenTime[0].timeOpen.toLocaleTimeString("ja-JP", {
                   hour: "2-digit",
                   minute: "2-digit",
                 })}
                 ～
-                {data.restaurant.timeClose.toLocaleTimeString("ja-JP", {
+                {cleanOpenTime[0].timeClose.toLocaleTimeString("ja-JP", {
                   hour: "2-digit",
                   minute: "2-digit",
                 })}
               </span>
+              {cleanOpenTime.length > 1 && (
+                <small className="text-xs">
+                  ※例外：{cleanOpenTime.map((time) => time.weekDayName).join(", ")}
+                </small>
+              )}
             </li>
-            <li className="grid">
-              <span>滞在時間：おおよそ{Math.floor(data.dish.eatTime / 60)}分</span>
+            <li className="grid justify-items-start">
+              <span>滞在時間：おおよそ{Math.floor(dish.eatTime / 60)}分</span>
               <small className="text-xs">※混雑状況により異なります。</small>
             </li>
             <li>
-              <span>片道：おおよそ{Math.floor(data.restaurant.travelTime / 60)}分</span>
+              <span>片道：おおよそ{Math.floor(dish.restaurant.travelTime / 60)}分</span>
             </li>
           </ul>
         </ExpandablePanel>
       </div>
       <div className={styles.footer}>
         <div className={styles.button}>
-          <RectButton color="blue" onClick={decide}>
-            ここに行く
-          </RectButton>
+          <DecideButton dish={dish} />
         </div>
       </div>
     </div>

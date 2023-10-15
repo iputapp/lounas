@@ -1,18 +1,8 @@
 import { z } from "zod";
 
-import { ALLOWED_DOMAINS } from "@/constants";
-
-/** allowed domains */
-const allowedDomains = ALLOWED_DOMAINS;
-
 /** signup schema */
 const signupSchema = z.object({
-  email: z
-    .string()
-    .email({ message: "メールアドレスを入力してください。" })
-    .refine((value) => allowedDomains.some((domain) => value.endsWith(`@${domain}`)), {
-      message: "学内のメールアドレスを入力してください。",
-    }),
+  studentId: z.string().regex(/^(tk|TK)?\d{6}$/, { message: "学籍番号を入力してください。" }),
   agreePolicy: z.literal(true, { errorMap: () => ({ message: "同意が必要です。" }) }),
 });
 

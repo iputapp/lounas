@@ -44,7 +44,7 @@ const SignupHookForm = () => {
       .then((res) => {
         if (!res.ok) {
           console.error("Error!", res.status);
-          control.setError("email", {
+          control.setError("studentId", {
             type: "manual",
             message: "メールの送信に失敗しました。メールアドレスを確認してください。",
           });
@@ -54,7 +54,7 @@ const SignupHookForm = () => {
         router.push("/signup/verify");
       })
       .catch((err) => {
-        control.setError("email", { type: "manual", message: "通信に失敗しました。" });
+        control.setError("studentId", { type: "manual", message: "通信に失敗しました。" });
         console.error("Error!", err);
       })
       .finally(() => {

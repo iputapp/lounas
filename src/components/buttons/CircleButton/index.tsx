@@ -7,7 +7,7 @@ import styles from "./styles.module.scss";
 
 type CircleButtonProps = {
   title: string;
-  value: string;
+  value: React.ButtonHTMLAttributes<HTMLButtonElement>["value"];
   size?: number;
   x?: number;
   y?: number;
@@ -22,7 +22,7 @@ type CircleButtonProps = {
     stiffness: number;
     damping: number;
   };
-  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 /**

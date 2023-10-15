@@ -47,20 +47,13 @@ export const RestaurantOpenScalarFieldEnumSchema = z.enum([
   "restaurantId",
 ]);
 
-export const WeekTypeScalarFieldEnumSchema = z.enum([
-  "id",
-  "createdAt",
-  "updatedAt",
-  "type",
-  "name",
-]);
+export const WeekTypeScalarFieldEnumSchema = z.enum(["id", "createdAt", "updatedAt", "name"]);
 
 export const RouteScalarFieldEnumSchema = z.enum([
   "id",
   "createdAt",
   "updatedAt",
   "description",
-  "step",
   "thumbnailId",
   "nextStepId",
   "previousStepId",
@@ -72,28 +65,21 @@ export const RouteTypeScalarFieldEnumSchema = z.enum([
   "id",
   "createdAt",
   "updatedAt",
-  "type",
   "name",
+  "description",
 ]);
 
 export const PaymentScalarFieldEnumSchema = z.enum([
   "id",
   "createdAt",
   "updatedAt",
-  "name",
   "accepted",
-  "description",
+  "details",
   "paymentTypeId",
   "restaurantId",
 ]);
 
-export const PaymentTypeScalarFieldEnumSchema = z.enum([
-  "id",
-  "createdAt",
-  "updatedAt",
-  "type",
-  "name",
-]);
+export const PaymentTypeScalarFieldEnumSchema = z.enum(["id", "createdAt", "updatedAt", "name"]);
 
 export const DishScalarFieldEnumSchema = z.enum([
   "id",
@@ -127,10 +113,8 @@ export const DishTraitScalarFieldEnumSchema = z.enum([
   "id",
   "createdAt",
   "updatedAt",
-  "type",
   "name",
   "description",
-  "threshold",
 ]);
 
 export const VisitHistoryScalarFieldEnumSchema = z.enum([
@@ -138,7 +122,6 @@ export const VisitHistoryScalarFieldEnumSchema = z.enum([
   "createdAt",
   "updatedAt",
   "userId",
-  "restaurantId",
   "dishId",
 ]);
 
@@ -146,10 +129,22 @@ export const UserScalarFieldEnumSchema = z.enum([
   "id",
   "createdAt",
   "updatedAt",
-  "email",
   "username",
   "lastLogin",
   "dataUsageAgreed",
+  "organizationId",
+]);
+
+export const OrganizationScalarFieldEnumSchema = z.enum([
+  "id",
+  "createdAt",
+  "updatedAt",
+  "name",
+  "displayName",
+  "description",
+  "emailDomain",
+  "isStudent",
+  "isStaff",
 ]);
 
 export const SortOrderSchema = z.enum(["asc", "desc"]);
@@ -166,7 +161,10 @@ export const NullsOrderSchema = z.enum(["first", "last"]);
 /////////////////////////////////////////
 
 export const RestaurantSchema = z.object({
-  id: z.string().uuid(),
+  id: z
+    .string()
+    .regex(/^[A-Z0-9]+$/)
+    .length(8),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
@@ -192,7 +190,6 @@ export type Restaurant = z.infer<typeof RestaurantSchema>;
 
 export const RestaurantOptionalDefaultsSchema = RestaurantSchema.merge(
   z.object({
-    id: z.string().uuid().optional(),
     createdAt: z.coerce.date().optional(),
     updatedAt: z.coerce.date().optional(),
   })
@@ -209,7 +206,6 @@ export type RestaurantRelations = {
   routes: RouteWithRelations[];
   payments: PaymentWithRelations[];
   dishes: DishWithRelations[];
-  visitHistories: VisitHistoryWithRelations[];
 };
 
 export type RestaurantWithRelations = z.infer<typeof RestaurantSchema> & RestaurantRelations;
@@ -222,7 +218,6 @@ export const RestaurantWithRelationsSchema: z.ZodType<RestaurantWithRelations> =
       routes: z.lazy(() => RouteWithRelationsSchema).array(),
       payments: z.lazy(() => PaymentWithRelationsSchema).array(),
       dishes: z.lazy(() => DishWithRelationsSchema).array(),
-      visitHistories: z.lazy(() => VisitHistoryWithRelationsSchema).array(),
     })
   );
 
@@ -235,7 +230,6 @@ export type RestaurantOptionalDefaultsRelations = {
   routes: RouteOptionalDefaultsWithRelations[];
   payments: PaymentOptionalDefaultsWithRelations[];
   dishes: DishOptionalDefaultsWithRelations[];
-  visitHistories: VisitHistoryOptionalDefaultsWithRelations[];
 };
 
 export type RestaurantOptionalDefaultsWithRelations = z.infer<
@@ -251,7 +245,6 @@ export const RestaurantOptionalDefaultsWithRelationsSchema: z.ZodType<Restaurant
       routes: z.lazy(() => RouteOptionalDefaultsWithRelationsSchema).array(),
       payments: z.lazy(() => PaymentOptionalDefaultsWithRelationsSchema).array(),
       dishes: z.lazy(() => DishOptionalDefaultsWithRelationsSchema).array(),
-      visitHistories: z.lazy(() => VisitHistoryOptionalDefaultsWithRelationsSchema).array(),
     })
   );
 
@@ -329,7 +322,10 @@ export const RestaurantOpenSchema = z.object({
   timeOpen: z.coerce.date(),
   timeClose: z.coerce.date(),
   weekTypeId: z.number().int(),
-  restaurantId: z.string(),
+  restaurantId: z
+    .string()
+    .regex(/^[A-Z0-9]+$/)
+    .length(8),
 });
 
 export type RestaurantOpen = z.infer<typeof RestaurantOpenSchema>;
@@ -395,7 +391,6 @@ export const WeekTypeSchema = z.object({
   id: z.number().min(0).max(6),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
-  type: z.string().min(1),
   name: z.string().min(1),
 });
 
@@ -450,16 +445,24 @@ export const WeekTypeOptionalDefaultsWithRelationsSchema: z.ZodType<WeekTypeOpti
 /////////////////////////////////////////
 
 export const RouteSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string().regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   description: z.string().nullable(),
-  step: z.number().nonnegative(),
-  thumbnailId: z.string(),
-  nextStepId: z.string().nullable(),
-  previousStepId: z.string().nullable(),
+  thumbnailId: z.string().nullable(),
+  nextStepId: z
+    .string()
+    .regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
+    .nullable(),
+  previousStepId: z
+    .string()
+    .regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
+    .nullable(),
   routeTypeId: z.string(),
-  restaurantId: z.string(),
+  restaurantId: z
+    .string()
+    .regex(/^[A-Z0-9]+$/)
+    .length(8),
 });
 
 export type Route = z.infer<typeof RouteSchema>;
@@ -469,7 +472,6 @@ export type Route = z.infer<typeof RouteSchema>;
 
 export const RouteOptionalDefaultsSchema = RouteSchema.merge(
   z.object({
-    id: z.string().uuid().optional(),
     createdAt: z.coerce.date().optional(),
     updatedAt: z.coerce.date().optional(),
   })
@@ -521,8 +523,8 @@ export const RouteTypeSchema = z.object({
   id: z.string().uuid(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
-  type: z.string().min(1),
   name: z.string().min(1),
+  description: z.string().nullable(),
 });
 
 export type RouteType = z.infer<typeof RouteTypeSchema>;
@@ -583,11 +585,13 @@ export const PaymentSchema = z.object({
   id: z.string().uuid(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
-  name: z.string().min(1),
   accepted: z.boolean(),
-  description: z.string().nullable(),
+  details: z.string().nullable(),
   paymentTypeId: z.string(),
-  restaurantId: z.string(),
+  restaurantId: z
+    .string()
+    .regex(/^[A-Z0-9]+$/)
+    .length(8),
 });
 
 export type Payment = z.infer<typeof PaymentSchema>;
@@ -649,7 +653,6 @@ export const PaymentTypeSchema = z.object({
   id: z.string().uuid(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
-  type: z.string().min(1),
   name: z.string().min(1),
 });
 
@@ -708,14 +711,20 @@ export const PaymentTypeOptionalDefaultsWithRelationsSchema: z.ZodType<PaymentTy
 /////////////////////////////////////////
 
 export const DishSchema = z.object({
-  id: z.string().uuid(),
+  id: z
+    .string()
+    .regex(/^[A-Z0-9]+$/)
+    .length(8),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   name: z.string().min(1),
   description: z.string().nullable(),
   price: z.number().nonnegative(),
   eatTime: z.number().positive(),
-  restaurantId: z.string(),
+  restaurantId: z
+    .string()
+    .regex(/^[A-Z0-9]+$/)
+    .length(8),
 });
 
 export type Dish = z.infer<typeof DishSchema>;
@@ -725,7 +734,6 @@ export type Dish = z.infer<typeof DishSchema>;
 
 export const DishOptionalDefaultsSchema = DishSchema.merge(
   z.object({
-    id: z.string().uuid().optional(),
     createdAt: z.coerce.date().optional(),
     updatedAt: z.coerce.date().optional(),
   })
@@ -845,7 +853,10 @@ export const DishScoreSchema = z.object({
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   score: z.number(),
-  dishId: z.string(),
+  dishId: z
+    .string()
+    .regex(/^[A-Z0-9]+$/)
+    .length(8),
   traitId: z.string(),
 });
 
@@ -911,10 +922,8 @@ export const DishTraitSchema = z.object({
   id: z.string().uuid(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
-  type: z.string().min(1),
   name: z.string().min(1),
   description: z.string().nullable(),
-  threshold: z.number(),
 });
 
 export type DishTrait = z.infer<typeof DishTraitSchema>;
@@ -976,8 +985,10 @@ export const VisitHistorySchema = z.object({
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   userId: z.string(),
-  restaurantId: z.string(),
-  dishId: z.string(),
+  dishId: z
+    .string()
+    .regex(/^[A-Z0-9]+$/)
+    .length(8),
 });
 
 export type VisitHistory = z.infer<typeof VisitHistorySchema>;
@@ -1000,7 +1011,6 @@ export type VisitHistoryOptionalDefaults = z.infer<typeof VisitHistoryOptionalDe
 
 export type VisitHistoryRelations = {
   user: UserWithRelations;
-  restaurant: RestaurantWithRelations;
   dish: DishWithRelations;
 };
 
@@ -1010,7 +1020,6 @@ export const VisitHistoryWithRelationsSchema: z.ZodType<VisitHistoryWithRelation
   VisitHistorySchema.merge(
     z.object({
       user: z.lazy(() => UserWithRelationsSchema),
-      restaurant: z.lazy(() => RestaurantWithRelationsSchema),
       dish: z.lazy(() => DishWithRelationsSchema),
     })
   );
@@ -1020,7 +1029,6 @@ export const VisitHistoryWithRelationsSchema: z.ZodType<VisitHistoryWithRelation
 
 export type VisitHistoryOptionalDefaultsRelations = {
   user: UserOptionalDefaultsWithRelations;
-  restaurant: RestaurantOptionalDefaultsWithRelations;
   dish: DishOptionalDefaultsWithRelations;
 };
 
@@ -1033,7 +1041,6 @@ export const VisitHistoryOptionalDefaultsWithRelationsSchema: z.ZodType<VisitHis
   VisitHistoryOptionalDefaultsSchema.merge(
     z.object({
       user: z.lazy(() => UserOptionalDefaultsWithRelationsSchema),
-      restaurant: z.lazy(() => RestaurantOptionalDefaultsWithRelationsSchema),
       dish: z.lazy(() => DishOptionalDefaultsWithRelationsSchema),
     })
   );
@@ -1046,10 +1053,10 @@ export const UserSchema = z.object({
   id: z.string().uuid(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
-  email: z.string().email(),
-  username: z.string().min(6),
+  username: z.string(),
   lastLogin: z.coerce.date().nullable(),
   dataUsageAgreed: z.boolean(),
+  organizationId: z.string().nullable(),
 });
 
 export type User = z.infer<typeof UserSchema>;
@@ -1072,6 +1079,7 @@ export type UserOptionalDefaults = z.infer<typeof UserOptionalDefaultsSchema>;
 
 export type UserRelations = {
   visitHistories: VisitHistoryWithRelations[];
+  Organization?: OrganizationWithRelations | null;
 };
 
 export type UserWithRelations = z.infer<typeof UserSchema> & UserRelations;
@@ -1079,6 +1087,7 @@ export type UserWithRelations = z.infer<typeof UserSchema> & UserRelations;
 export const UserWithRelationsSchema: z.ZodType<UserWithRelations> = UserSchema.merge(
   z.object({
     visitHistories: z.lazy(() => VisitHistoryWithRelationsSchema).array(),
+    Organization: z.lazy(() => OrganizationWithRelationsSchema).nullable(),
   })
 );
 
@@ -1087,6 +1096,7 @@ export const UserWithRelationsSchema: z.ZodType<UserWithRelations> = UserSchema.
 
 export type UserOptionalDefaultsRelations = {
   visitHistories: VisitHistoryOptionalDefaultsWithRelations[];
+  Organization?: OrganizationOptionalDefaultsWithRelations | null;
 };
 
 export type UserOptionalDefaultsWithRelations = z.infer<typeof UserOptionalDefaultsSchema> &
@@ -1096,5 +1106,72 @@ export const UserOptionalDefaultsWithRelationsSchema: z.ZodType<UserOptionalDefa
   UserOptionalDefaultsSchema.merge(
     z.object({
       visitHistories: z.lazy(() => VisitHistoryOptionalDefaultsWithRelationsSchema).array(),
+      Organization: z.lazy(() => OrganizationOptionalDefaultsWithRelationsSchema).nullable(),
+    })
+  );
+
+/////////////////////////////////////////
+// ORGANIZATION SCHEMA
+/////////////////////////////////////////
+
+export const OrganizationSchema = z.object({
+  id: z.string().uuid(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
+  name: z.string().min(1),
+  displayName: z.string().min(1),
+  description: z.string().nullable(),
+  emailDomain: z.string().nullable(),
+  isStudent: z.boolean(),
+  isStaff: z.boolean(),
+});
+
+export type Organization = z.infer<typeof OrganizationSchema>;
+
+// ORGANIZATION OPTIONAL DEFAULTS SCHEMA
+//------------------------------------------------------
+
+export const OrganizationOptionalDefaultsSchema = OrganizationSchema.merge(
+  z.object({
+    id: z.string().uuid().optional(),
+    createdAt: z.coerce.date().optional(),
+    updatedAt: z.coerce.date().optional(),
+  })
+);
+
+export type OrganizationOptionalDefaults = z.infer<typeof OrganizationOptionalDefaultsSchema>;
+
+// ORGANIZATION RELATION SCHEMA
+//------------------------------------------------------
+
+export type OrganizationRelations = {
+  users: UserWithRelations[];
+};
+
+export type OrganizationWithRelations = z.infer<typeof OrganizationSchema> & OrganizationRelations;
+
+export const OrganizationWithRelationsSchema: z.ZodType<OrganizationWithRelations> =
+  OrganizationSchema.merge(
+    z.object({
+      users: z.lazy(() => UserWithRelationsSchema).array(),
+    })
+  );
+
+// ORGANIZATION OPTIONAL DEFAULTS RELATION SCHEMA
+//------------------------------------------------------
+
+export type OrganizationOptionalDefaultsRelations = {
+  users: UserOptionalDefaultsWithRelations[];
+};
+
+export type OrganizationOptionalDefaultsWithRelations = z.infer<
+  typeof OrganizationOptionalDefaultsSchema
+> &
+  OrganizationOptionalDefaultsRelations;
+
+export const OrganizationOptionalDefaultsWithRelationsSchema: z.ZodType<OrganizationOptionalDefaultsWithRelations> =
+  OrganizationOptionalDefaultsSchema.merge(
+    z.object({
+      users: z.lazy(() => UserOptionalDefaultsWithRelationsSchema).array(),
     })
   );
