@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
-import { TimeOnly } from "@/types/TimeOnly";
+import { TimeOnly } from "@/types/date";
 
 import { RecommendRequest, recommendRequestSchema } from ".";
 
