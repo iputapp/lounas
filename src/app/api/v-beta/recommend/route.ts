@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
-import { userAuth } from "@/lib/supabase";
+// import { userAuth } from "@/lib/supabase";
 import { TimeOnly } from "@/types/date";
 
 import { RecommendRequest, recommendRequestSchema } from ".";
@@ -10,8 +10,8 @@ import { RecommendRequest, recommendRequestSchema } from ".";
 export const dynamic = "force-dynamic"; // SSR
 
 export async function GET(request: NextRequest) {
-  const session = await userAuth();
-  if (session instanceof Response) return session;
+  // const session = await userAuth();
+  // if (session instanceof Response) return session;
 
   const searchParams = request.nextUrl.searchParams;
   const params = {
