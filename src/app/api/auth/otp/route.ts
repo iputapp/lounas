@@ -16,7 +16,11 @@ export async function POST(request: Request) {
 
   if (!payload.success) return NextResponse.error();
 
-  const email = `${payload.data.studentId}@${IPUT_STUDENT_DOMAIN}`;
+  const emailUsername = payload.data.studentId.toLocaleLowerCase().startsWith("tk") 
+    ? payload.data.studentId.toLocaleLowerCase() 
+    : "tk" + payload.data.studentId;
+
+  const email = `${emailUsername}@${IPUT_STUDENT_DOMAIN}`;
 
   const supabase = createRouteHandlerClient({ cookies });
   const { data, error } = await supabase.auth.signInWithOtp({
