@@ -10,6 +10,7 @@ import styles from "./page.module.scss";
 
 /** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
 export const dynamic = "force-dynamic"; // SSR
+export const fetchCache = "force-no-store";
 
 async function getRecommend(params: URLSearchParams) {
   const recommends = (await fetch(
