@@ -1,7 +1,7 @@
 @use "variables" as var;
 
 .container {
-  @apply grid h-full w-full content-start gap-12;
+  @apply grid h-full w-full gap-12;
 
   .header {
     @apply w-full;
@@ -17,30 +17,36 @@
   .content {
     @apply grid
       grid-cols-1
+      content-start
       gap-7
       px-1
       md:grid-cols-2;
+  }
 
-    .zero {
-      @apply mt-14
-        w-full
-        text-center
-        text-xl
-        font-bold;
+  .zero {
+    @apply grid
+      w-full
+      content-between
+      justify-items-center gap-10;
+
+    .head {
+      @apply grid justify-items-center gap-8;
+
+      .title {
+        @apply text-xl font-semibold;
+
+        color: var.$tertiary;
+      }
+
+      .description {
+        @apply text-center;
+
+        color: var.$tertiary;
+      }
     }
 
-    .noresult {
-      @apply mb-14 mt-3
-      w-full
-      text-center;
-
-      .retry {
-        @apply mx-auto 
-          w-fit items-center
-          space-x-1
-          font-bold
-         text-blue-600;
-      }
+    .retry {
+      @apply text-lg font-semibold text-blue-600;
     }
   }
 
