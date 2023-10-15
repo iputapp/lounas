@@ -22,9 +22,7 @@ export async function generateStaticParams() {
   ).then((res) => res.json())) as Restaurants;
 
   return restaurants.map((restaurant) => ({
-    params: {
-      id: restaurant.id,
-    },
+    id: restaurant.id,
   }));
 }
 
