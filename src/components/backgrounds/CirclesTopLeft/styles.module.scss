@@ -1,0 +1,40 @@
+@use "variables" as var;
+
+$blue-size: 34dvh;
+$cyan-size: 30dvh;
+$green-size: 28dvh;
+
+.bg {
+  @apply fixed inset-0
+    h-screen w-full
+    overflow-clip;
+
+  .circle {
+    @apply absolute;
+
+    aspect-ratio: 1 / 1;
+    clip-path: circle(50% at 50% 50%);
+    mix-blend-mode: multiply;
+
+    &.blue {
+      top: -9dvh;
+      left: -10dvh;
+      height: $blue-size;
+      background-color: var.$blue;
+    }
+
+    &.cyan {
+      top: -6dvh;
+      left: 8dvh;
+      height: $cyan-size;
+      background-color: var.$cyan;
+    }
+
+    &.green {
+      top: 10dvh;
+      left: -11.75dvh;
+      height: $green-size;
+      background-color: var.$lime;
+    }
+  }
+}

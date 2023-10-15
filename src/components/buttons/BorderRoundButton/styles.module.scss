@@ -1,0 +1,24 @@
+@use "variables" as var;
+
+.container {
+  @apply relative h-fit w-full
+    overflow-clip;
+
+  padding: 0.25em; // p-1
+  background: linear-gradient(to right, var.$lime, var.$cyan, var.$blue);
+  border-radius: 1.5em; // rounded-3xl
+
+  & > .inner {
+    @apply flex items-center justify-center;
+
+    padding: 0.375em 1.5em; // py-1.5 px-6
+    background-color: #fff;
+    border-radius: 1.5em; // rounded-3xl
+  }
+
+  & .title {
+    @apply font-semibold;
+
+    color: var.$primary;
+  }
+}

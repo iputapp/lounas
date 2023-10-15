@@ -1,0 +1,99 @@
+@use "variables" as var;
+
+// common styles
+.panel {
+  @apply flex
+    items-start justify-between
+    overflow-clip rounded-2xl
+    p-3
+    backdrop-blur-md backdrop-brightness-200;
+
+  background-color: rgb(255 255 255 / 80%);
+
+  .content {
+    @apply grid w-full
+      justify-items-start
+      px-1.5 pb-1.5 pt-1;
+
+    .title {
+      @apply text-xl font-semibold;
+
+      color: var.$primary;
+    }
+
+    .description {
+      @apply px-1;
+
+      color: var.$tertiary;
+    }
+  }
+
+  .icon {
+    color: var.$secondary;
+  }
+}
+
+// overview panel
+.overview {
+  @apply relative w-full;
+
+  .content {
+    @apply gap-5;
+
+    .description {
+      @apply font-semibold;
+
+      color: var.$primary;
+    }
+  }
+
+  .panel-bg {
+    @apply absolute inset-0 -z-10
+      -m-4;
+
+    // background: url("/test/katsudon.webp") no-repeat center; // set in html
+    filter: blur(12px) brightness(1.25); // blur brightness-125
+    background-size: 175%;
+  }
+}
+
+// expanded panel
+.full {
+  @apply fixed inset-0 z-30
+      h-screen w-full;
+
+  visibility: hidden;
+  background-color: rgb(0 0 0 / 50%);
+  opacity: 0;
+  transition:
+    visibility 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+
+  &.expanded {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  & > * {
+    @apply absolute inset-0
+      m-auto;
+
+    width: 90%;
+    height: fit-content;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1); // easeInOutCubic
+    transform: scale(0);
+
+    &.expanded {
+      transform: scale(1);
+    }
+  }
+
+  .content {
+    @apply gap-8;
+
+    & > section {
+      @apply grid h-fit w-full
+      justify-items-start gap-4;
+    }
+  }
+}

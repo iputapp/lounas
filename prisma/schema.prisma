@@ -1,0 +1,262 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator zod {
+  provider = "zod-prisma-types"
+  output   = "../src/lib/zod"
+
+  createInputTypes                 = false // default is true, (keep generated types minimal)
+  createOptionalDefaultValuesTypes = true // default is false, (generate types for optional default() fields)
+  createRelationValuesTypes        = true // default is false, (generate types for relation fields)
+}
+
+model Restaurant {
+  id        String   @id @unique /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  name           String /// @zod.string.min(1)
+  description    String?
+  website        String? /// @zod.string.url()
+  address        String?
+  longitude      Float /// zod.number.min(-180).max(180) // disabled validation because of bug: negative value is rejected by zod-schema-types
+  latitude       Float /// zod.number.min(-90).max(90) // disabled validation because of bug: negative value is rejected by zod-schema-types
+  travelTime     Int     @map("travel_time") /// @zod.number.nonnegative()
+  travelDistance Int     @map("travel_distance") /// @zod.number.nonnegative()
+
+  restaurantTags RestaurantTag[] @relation("restaurant_tagging")
+
+  restaurantOpens RestaurantOpen[]
+  routes          Route[]
+  payments        Payment[]
+  dishes          Dish[]
+
+  @@index([travelTime], name: "restaurants_travel_time_idx")
+  @@map("restaurants")
+}
+
+model RestaurantTag {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  name        String /// @zod.string.min(1)
+  description String?
+
+  restaurants Restaurant[] @relation("restaurant_tagging")
+
+  @@map("restaurant_tags")
+}
+
+model RestaurantOpen {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  timeOpen  DateTime @map("time_open") @db.Timetz() /// @zod.date
+  timeClose DateTime @map("time_close") @db.Timetz() /// @zod.date
+
+  weekType     WeekType   @relation(fields: [weekTypeId], references: [id])
+  weekTypeId   Int        @map("week_type_id")
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
+
+  @@unique([weekTypeId, restaurantId])
+  @@map("restaurant_opens")
+}
+
+model WeekType {
+  id        Int      @id /// @zod.number.min(0).max(6)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  name String /// @zod.string.min(1)
+
+  restaurantOpens RestaurantOpen[]
+
+  @@map("week_types")
+}
+
+model Route {
+  id        String   @id @unique /// @zod.string.regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  description    String?
+  thumbnailId    String? @map("thumbnail_id") // images are reusable, thus id != thumbnailId
+  nextStepId     String? @map("next_step_id") /// @zod.string.regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
+  previousStepId String? @map("previous_step_id") /// @zod.string.regex(/^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$/)
+
+  routeType    RouteType  @relation(fields: [routeTypeId], references: [id])
+  routeTypeId  String     @map("route_type_id") @db.Uuid
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
+
+  @@index([id], name: "routes_id_idx")
+  @@map("routes")
+}
+
+model RouteType {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  name        String /// @zod.string.min(1)
+  description String?
+
+  routes Route[]
+
+  @@map("route_types")
+}
+
+model Payment {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  accepted Boolean
+  details  String?
+
+  paymentType   PaymentType @relation(fields: [paymentTypeId], references: [id])
+  paymentTypeId String      @map("payment_type_id") @db.Uuid
+  restaurant    Restaurant  @relation(fields: [restaurantId], references: [id])
+  restaurantId  String      @map("restaurant_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
+
+  @@unique([paymentTypeId, restaurantId])
+  @@map("payments")
+}
+
+model PaymentType {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  name String /// @zod.string.min(1)
+
+  payments Payment[]
+
+  @@map("payment_types")
+}
+
+model Dish {
+  id        String   @id @unique /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  name        String /// @zod.string.min(1)
+  description String?
+  price       Int /// @zod.number.nonnegative()
+  eatTime     Int     @map("eat_time") /// @zod.number.positive()
+
+  dishTags     DishTag[]  @relation("dish_tagging")
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId String     @map("restaurant_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
+
+  dishScores     DishScore[]
+  visitHistories VisitHistory[]
+
+  @@index([price], name: "dishes_price_idx")
+  @@map("dishes")
+}
+
+model DishTag {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  name        String /// @zod.string.min(1)
+  description String?
+
+  dishes Dish[] @relation("dish_tagging")
+
+  @@map("dish_tags")
+}
+
+model DishScore {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  score Int /// @zod.number
+
+  dish    Dish      @relation(fields: [dishId], references: [id])
+  dishId  String    @map("dish_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
+  trait   DishTrait @relation(fields: [traitId], references: [id])
+  traitId String    @map("trait_id") @db.Uuid
+
+  @@unique([dishId, traitId])
+  @@map("dish_scores")
+}
+
+model DishTrait {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  name        String /// @zod.string.min(1)
+  description String?
+
+  dishScores DishScore[]
+
+  @@map("dish_traits")
+}
+
+model VisitHistory {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @map("user_id") @db.Uuid
+  dish   Dish   @relation(fields: [dishId], references: [id])
+  dishId String @map("dish_id") /// @zod.string.regex(/^[A-Z0-9]+$/).length(8)
+
+  @@index([createdAt], name: "visit_histories_created_at_idx")
+  @@map("visit_histories")
+}
+
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  username        String // identification inside organization
+  lastLogin       DateTime? @map("last_login") @db.Timestamptz()
+  dataUsageAgreed Boolean   @map("data_usage_agreed")
+
+  visitHistories VisitHistory[]
+
+  Organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?       @map("organization_id") @db.Uuid
+
+  @@unique([username, organizationId])
+  @@index([lastLogin], name: "users_last_login_idx")
+  @@map("users")
+}
+
+model Organization {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  name        String  @unique /// @zod.string.min(1)
+  displayName String  @map("display_name") /// @zod.string.min(1)
+  description String?
+  emailDomain String? @map("email_domain")
+  isStudent   Boolean @map("is_student")
+  isStaff     Boolean @map("is_staff")
+
+  users User[]
+
+  @@map("organizations")
+}

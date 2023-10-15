@@ -1,0 +1,60 @@
+@use "variables" as var;
+
+.container {
+  @apply grid h-full w-full gap-12;
+
+  .header {
+    @apply w-full;
+
+    .title {
+      @apply w-fit
+        text-3xl font-bold;
+
+      color: var.$primary;
+    }
+  }
+
+  .content {
+    @apply grid
+      grid-cols-1
+      content-start
+      gap-7
+      px-1
+      md:grid-cols-2;
+  }
+
+  .zero {
+    @apply grid
+      w-full
+      content-between
+      justify-items-center gap-10;
+
+    .head {
+      @apply grid justify-items-center gap-8;
+
+      .title {
+        @apply text-xl font-semibold;
+
+        color: var.$tertiary;
+      }
+
+      .description {
+        @apply text-center;
+
+        color: var.$tertiary;
+      }
+    }
+
+    .retry {
+      @apply text-lg font-semibold text-blue-600;
+    }
+  }
+
+  .footer {
+    @apply w-full;
+
+    .button {
+      @apply mx-auto w-fit;
+    }
+  }
+}

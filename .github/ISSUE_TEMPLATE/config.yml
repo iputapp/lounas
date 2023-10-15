@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Tasks (Features) 🚀
+    url: https://github.com/wiyco/imap/issues/new?assignees=&labels=&projects=wiyco/4&template=task-feature.md&title=%5BFeature%5D%3A+
+    about: For TEAM PIPLUP 🐧

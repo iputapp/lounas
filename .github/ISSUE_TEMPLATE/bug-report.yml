@@ -1,0 +1,51 @@
+name: Bug Report 🐞
+description: バグ報告フォーム 😎
+title: "[Bug]: {概要}"
+labels: ["bug", "triage"]
+# assignees:
+#   - wiyco
+body:
+  - type: markdown
+    attributes:
+      value: |
+        バグのご報告に感謝します！😇
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: バグの詳細
+      description: どのようなバグですか？できるだけ詳しくお願いします！🙇
+      placeholder: スクリーンショットの添付もよろしくお願いします！
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: ブラウザの種類
+      description: バグが起きたブラウザを教えてください！🙇 (複数選択可)
+      multiple: true
+      options:
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Firefox
+        - Brave
+        - Opera
+        - その他
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: ブラウザのバージョン
+      description: ブラウザのバージョンを教えてください！🙇
+      placeholder: ex. Chrome Version 114.0.5735.199 (Official Build) (64-bit)
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 行動規範 (Code of Conduct)
+      description: この報告フォームを送信した時点で[行動規範(Code of Conduct)](../blob/develop/_docs/CODE_OF_CONDUCT.md)に同意したとみなします。
+      options:
+        - label: このプロジェクトの行動規範に同意します。
+          required: true

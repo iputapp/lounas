@@ -1,0 +1,37 @@
+@use "variables" as var;
+
+.circle {
+  @apply relative w-full
+    overflow-clip rounded-full;
+
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(to right, var.$lime, var.$cyan, var.$blue);
+
+  & > .circle-inner {
+    @apply absolute inset-0 m-auto
+      flex items-center justify-center
+      rounded-full;
+
+    width: calc(100% - 0.375em);
+    aspect-ratio: 1 / 1;
+    background-color: #fff;
+  }
+
+  & .title {
+    @apply font-semibold;
+
+    color: var.$tertiary;
+  }
+}
+
+.circle-outer {
+  @apply rounded-full;
+
+  padding: 6%;
+  background: linear-gradient(
+    to right,
+    rgb(var.$lime, 40%),
+    rgb(var.$cyan, 40%),
+    rgb(var.$blue, 40%)
+  );
+}
