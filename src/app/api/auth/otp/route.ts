@@ -16,8 +16,8 @@ export async function POST(request: Request) {
 
   if (!payload.success) return NextResponse.error();
 
-  const emailUsername = payload.data.studentId.toLocaleLowerCase().startsWith("tk") 
-    ? payload.data.studentId.toLocaleLowerCase() 
+  const emailUsername = payload.data.studentId.toLocaleLowerCase().startsWith("tk")
+    ? payload.data.studentId.toLocaleLowerCase()
     : "tk" + payload.data.studentId;
 
   const email = `${emailUsername}@${IPUT_STUDENT_DOMAIN}`;
