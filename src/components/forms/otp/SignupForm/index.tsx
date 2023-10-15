@@ -23,13 +23,18 @@ const SignupForm = ({ className = "" }: SignupFormProps) => {
       <ThemeProvider theme={theme}>
         {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
         <form noValidate onSubmit={handleSubmit(onSubmit)} className={className}>
-          <BasicTextField
-            name="email"
-            control={control}
-            label="メールアドレス"
-            required
-            inputProps={{ inputMode: "email" }}
-          />
+          <div className="relative w-full">
+            <BasicTextField
+              name="studentId"
+              control={control}
+              label="学籍番号"
+              required
+              inputProps={{ inputMode: "text", maxLength: 8 }}
+            />
+            {/* <span className="absolute inset-y-0 right-0 my-auto h-fit pb-2 text-neutral-800">
+              @tks.iput.ac.jp
+            </span> */}
+          </div>
           <BasicCheckbox
             name="agreePolicy"
             control={control}

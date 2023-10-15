@@ -1,5 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
+
+import { CldImg } from "@/components/image/CldImg";
 
 import styles from "./styles.module.scss";
 
@@ -15,7 +16,7 @@ export function CardHorizontal({ url, title, image, tag, description }: CardHori
   return (
     <Link href={url} className={styles.card}>
       <div className={styles.imageParent}>
-        <Image
+        <CldImg
           className={styles.image}
           src={image}
           alt={title}
