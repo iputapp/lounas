@@ -10,6 +10,8 @@ export default function Test() {
       <CardFull image="/test/route.webp" description="道なり" navigation="sharpRight" />
       <CardFull image="/test/route.webp" description="斜め左に進みます" navigation="slightLeft" />
       <CardFull image="/test/route.webp" description="斜め右に進みます" navigation="slightRight" />
+      <CardFull image="/test/route.webp" description="斜め右に進みます" navigation="stairsUp" />
+      <CardFull image="/test/route.webp" description="斜め右に進みます" navigation="stairsDown" />
       <CardFull
         image="/test/route.webp"
         description="目の前にセブンイレブンがあります
@@ -17,7 +19,7 @@ export default function Test() {
         今夜飲みに行かないかい？（イケボ）目の前にセブンイレブンがあります
         今夜飲みに行かないかい？（イケボ）目の前にセブンイレブンがあります
         今夜飲みに行かないかい？（イケボ）"
-        navigation="pin"
+        navigation="arrival"
       />
     </div>
   );

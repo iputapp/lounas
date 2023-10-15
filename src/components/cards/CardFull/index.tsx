@@ -1,5 +1,6 @@
-import Downstairs from "@icons/downstairs.svg";
 import LocationOn from "@icons/location-on.svg";
+import StairsDown from "@icons/stairs-down.svg";
+import StairsUp from "@icons/stairs-up.svg";
 import Straight from "@icons/straight.svg";
 import TurnLeft from "@icons/turn-left.svg";
 import TurnRight from "@icons/turn-right.svg";
@@ -7,12 +8,23 @@ import TurnSharpLeft from "@icons/turn-sharp-left.svg";
 import TurnSharpRight from "@icons/turn-sharp-right.svg";
 import TurnSlightLeft from "@icons/turn-slight-left.svg";
 import TurnSlightRight from "@icons/turn-slight-right.svg";
-import Upstairs from "@icons/upstairs.svg";
 import Image from "next/image";
 
 import styles from "./styles.module.scss";
 
-export type NavigationType = "straight" | "left" | "right" | "sharpLeft" | "sharpRight" | "slightLeft" | "slightRight" | "downstairs" | "upstairs" | "elevator" | "landmark" | "arrival" ;
+export type NavigationType =
+  | "straight"
+  | "left"
+  | "right"
+  | "sharpLeft"
+  | "sharpRight"
+  | "slightLeft"
+  | "slightRight"
+  | "stairsDown"
+  | "stairsUp"
+  | "elevator"
+  | "landmark"
+  | "arrival";
 type CardFullProps = {
   image: string;
   description: string;
@@ -28,8 +40,8 @@ export function CardFull({ image, description, navigation }: CardFullProps) {
     sharpRight: <TurnSharpRight />,
     slightLeft: <TurnSlightLeft />,
     slightRight: <TurnSlightRight />,
-    downstairs: <Downstairs />,
-    upstairs: <Upstairs/>,
+    stairsDown: <StairsDown />,
+    stairsUp: <StairsUp />,
     elevator: "elevator",
     landmark: "landmark",
     arrival: <LocationOn />,
