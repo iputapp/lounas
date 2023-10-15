@@ -10,7 +10,7 @@ import { DecideButton } from "./client";
 import styles from "./page.module.scss";
 
 async function getDish(id: string) {
-  const dish = (await fetch(`${process.env.BASE_URL}/api/v-beta/dish/${id}`)
+  const dish = (await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/dish/${id}`)
     .then((res) => res.json())
     .catch((err) => {
       console.error(err);
@@ -57,7 +57,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <BackButton title="戻る" />
       </div>
       <div className={styles.content}>
-        <Card image={`/${dish.id}.webp`} alt={dish.name}>
+        <Card image={`/dishes/id/${dish.id}.webp`} alt={dish.name}>
           <p>{dish.name}</p>
           <p>{dish.restaurant.name}</p>
         </Card>
