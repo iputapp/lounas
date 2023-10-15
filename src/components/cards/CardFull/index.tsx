@@ -10,7 +10,8 @@ import TurnSharpLeft from "@icons/turn-sharp-left.svg";
 import TurnSharpRight from "@icons/turn-sharp-right.svg";
 import TurnSlightLeft from "@icons/turn-slight-left.svg";
 import TurnSlightRight from "@icons/turn-slight-right.svg";
-import Image from "next/image";
+
+import { CldImg } from "@/components/image/CldImg";
 
 import styles from "./styles.module.scss";
 
@@ -52,7 +53,7 @@ export function CardFull({ image, description, navigation }: CardFullProps) {
   return (
     <article className={styles.card}>
       <div className={styles.imageParent}>
-        <Image
+        <CldImg
           className={styles.image}
           src={image}
           alt={description}
