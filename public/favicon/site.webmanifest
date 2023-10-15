@@ -1,6 +1,6 @@
 {
-  "name": "IMAP",
-  "short_name": "IMAP",
+  "name": "lounas",
+  "short_name": "lounas",
   "description": "The Lunch Recommendation App for IPUT Students",
   "icons": [
     {
@@ -14,10 +14,11 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#696969",
-  "background_color": "#696969",
+  "theme_color": "#262626",
+  "background_color": "#262626",
   "display": "standalone",
   "orientation": "portrait",
   "lang": "ja-JP",
-  "scope": "/"
+  "scope": "/",
+  "start_url": "/"
 }
