@@ -1,19 +1,24 @@
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
-import { userAuth } from "@/lib/supabase";
 
 import { visitsCountSchema } from ".";
 
 export async function GET() {
-  const session = await userAuth();
-  if (session instanceof Response) return session;
+  const cookieStore = cookies();
+
+  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+  const session = await supabase.auth.getSession();
+
+  if (session.error || !session.data.session) return NextResponse.error();
 
   const today = new Date();
 
   const visitsCount = await prisma.visitHistory.count({
     where: {
-      userId: session.user.id,
+      userId: session.data.session.user.id,
       createdAt: {
         gte: new Date(today.getFullYear(), today.getMonth(), 1),
         lt: new Date(today.getFullYear(), today.getMonth() + 1, 1),

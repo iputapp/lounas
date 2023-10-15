@@ -1,18 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
-// import { userAuth } from "@/lib/supabase";
 import { TimeOnly } from "@/types/date";
 
 import { RecommendRequest, recommendRequestSchema } from ".";
 
-/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
-export const dynamic = "force-dynamic"; // SSR
-
 export async function GET(request: NextRequest) {
-  // const session = await userAuth();
-  // if (session instanceof Response) return session;
-
   const searchParams = request.nextUrl.searchParams;
   const params = {
     amount: searchParams.get("amount"),
