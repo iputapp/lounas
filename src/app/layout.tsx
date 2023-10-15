@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   applicationName: "lounas",
   description: "The Lunch Recommendation App for IPUT Students",
-  metadataBase: new URL(process.env.URL || "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
   openGraph: {
     title: "lounas",
     description: "The Lunch Recommendation App for IPUT Students",
