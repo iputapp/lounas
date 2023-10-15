@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import type { Signup } from "@/app/api/auth/otp";
@@ -8,6 +9,7 @@ import { signupSchema } from "@/app/api/auth/otp";
 /** sign-up hook form */
 const SignupHookForm = () => {
   const router = useRouter();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   /** hook form */
   const {
@@ -28,6 +30,9 @@ const SignupHookForm = () => {
 
   /** called only when the value conversion and type checking for zod pass */
   const onSubmit = async (data: Signup): Promise<void> => {
+    /** set status */
+    setIsProcessing(true);
+
     /** fetch to api route */
     await fetch("/api/auth/otp", {
       method: "POST",
@@ -39,9 +44,9 @@ const SignupHookForm = () => {
       .then((res) => {
         if (!res.ok) {
           console.error("Error!", res.status);
-          control.setError("email", {
+          control.setError("studentId", {
             type: "manual",
-            message: "メールの送信に失敗しました。",
+            message: "メールの送信に失敗しました。メールアドレスを確認してください。",
           });
           throw new Error(res.statusText);
         }
@@ -49,8 +54,12 @@ const SignupHookForm = () => {
         router.push("/signup/verify");
       })
       .catch((err) => {
-        control.setError("email", { type: "manual", message: "通信に失敗しました。" });
+        control.setError("studentId", { type: "manual", message: "通信に失敗しました。" });
         console.error("Error!", err);
+      })
+      .finally(() => {
+        /** set status */
+        setIsProcessing(false);
       });
   };
 
@@ -60,6 +69,9 @@ const SignupHookForm = () => {
       handleSubmit,
       onSubmit,
       errors,
+    },
+    status: {
+      isProcessing: isProcessing,
     },
   };
 };

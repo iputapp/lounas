@@ -2,6 +2,8 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
+import { IPUT_STUDENT_DOMAIN } from "@/constants";
+
 import type { Signup } from ".";
 import { signupSchema } from ".";
 
@@ -14,9 +16,15 @@ export async function POST(request: Request) {
 
   if (!payload.success) return NextResponse.error();
 
+  const emailUsername = payload.data.studentId.toLocaleLowerCase().startsWith("tk")
+    ? payload.data.studentId.toLocaleLowerCase()
+    : "tk" + payload.data.studentId;
+
+  const email = `${emailUsername}@${IPUT_STUDENT_DOMAIN}`;
+
   const supabase = createRouteHandlerClient({ cookies });
   const { data, error } = await supabase.auth.signInWithOtp({
-    email: payload.data.email,
+    email: email,
     options: {
       emailRedirectTo: `${new URL(request.url).origin}/api/auth/callback`,
     },
@@ -28,12 +36,12 @@ export async function POST(request: Request) {
   const cookieStore = cookies();
   cookieStore.set({
     name: "email",
-    value: payload.data.email,
+    value: email,
     path: "/",
     sameSite: "strict",
     secure: true,
     httpOnly: true,
-    maxAge: 60 * 60 * 24 * 30, // 30 days
+    maxAge: 360, // 6 minutes
   });
 
   /** permit users access to the verify page */

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { CldImg } from "@/components/image/CldImg";
 
 import styles from "./styles.module.scss";
 
@@ -12,7 +12,7 @@ export function Card({ children, image, alt }: CardProps) {
   return (
     <article className={styles.card}>
       <div className={styles.imageParent}>
-        <Image
+        <CldImg
           className={styles.image}
           src={image}
           alt={alt}
