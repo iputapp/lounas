@@ -57,7 +57,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <BackButton title="戻る" />
       </div>
       <div className={styles.content}>
-        <Card image={`/${dish.id}.webp`} alt={dish.name}>
+        <Card image={`/dishes/id/${dish.id}.webp`} alt={dish.name}>
           <p>{dish.name}</p>
           <p>{dish.restaurant.name}</p>
         </Card>

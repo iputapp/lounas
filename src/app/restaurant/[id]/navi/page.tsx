@@ -105,7 +105,11 @@ export default async function Page({ params }: { params: { id: string } }) {
         {routes.map((route, index) => (
           <CardFull
             key={index}
-            image={`/${route.thumbnailId}.webp`}
+            image={
+              route.nextStepId
+                ? `/routes/${route.thumbnailId}.webp`
+                : `/restaurants/id/${route.restaurant.id}.webp`
+            }
             description={route.description ?? ""}
             navigation={route.routeType.name as NavigationType}
           />
