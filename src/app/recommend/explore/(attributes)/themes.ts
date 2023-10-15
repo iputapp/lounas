@@ -1,5 +1,5 @@
 /** Type of Circle Button Theme */
-type CircleThemeType = {
+type CircleTheme = {
   size: number;
   gradient: {
     direction: number;
@@ -13,7 +13,7 @@ type CircleThemeType = {
 };
 
 /** Theme of Circle Button */
-const circleThemes: CircleThemeType[] = [
+const circleThemes: CircleTheme[] = [
   {
     size: 12,
     gradient: {
@@ -65,4 +65,4 @@ const circleThemes: CircleThemeType[] = [
 ];
 
 export { circleThemes };
-export type { CircleThemeType };
+export type { CircleTheme };

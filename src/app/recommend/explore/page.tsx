@@ -9,7 +9,7 @@ export default function Page() {
   const pathname = usePathname();
 
   useEffect(() => {
-    router.replace(`${pathname}/quantity`); // first section
+    router.replace(`${pathname}/amount`); // first section
   }, [router, pathname]);
 
   return (
