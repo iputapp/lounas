@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import type { Dish } from "@/app/api/v-beta/dish/[id]";
+import { Dishes } from "@/app/api/v-beta/dishes";
 import { BackButton } from "@/components/buttons/BackButton";
 import { Card } from "@/components/cards/Card";
 import { ExpandablePanel } from "@/components/layouts/ExpandablePanel";
@@ -8,6 +9,19 @@ import { PaymentLong, PaymentType } from "@/components/lists/PaymentLong";
 
 import { DecideButton } from "./client";
 import styles from "./page.module.scss";
+
+/** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-static-params} */
+export async function generateStaticParams() {
+  const dishes = (await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/dishes`).then((res) =>
+    res.json()
+  )) as Dishes;
+
+  return dishes.map((dish) => ({
+    params: {
+      id: dish.id,
+    },
+  }));
+}
 
 async function getDish(id: string) {
   const dish = (await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/dish/${id}`)
