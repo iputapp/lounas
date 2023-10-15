@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { RecommendResponse } from "@/app/api/v-beta/recommend";
 import { RectButton } from "@/components/buttons/RectButton";
 import { CardHorizontal } from "@/components/cards/CardHorizontal";
-import { PaymentShort } from "@/components/lists/PaymentShort";
+import { PaymentShort, PaymentType } from "@/components/lists/PaymentShort";
 
 import styles from "./page.module.scss";
 
@@ -16,7 +16,6 @@ async function getRecommend(params: URLSearchParams) {
     `${process.env.BASE_URL}/api/v-beta/recommend?${params.toString()}`,
     {
       method: "GET",
-      cache: "no-cache",
     }
   )
     .then((res) => res.json())
@@ -34,35 +33,18 @@ export default async function Page({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  // const searchParams = useSearchParams();
-  // const [recommends, setRecommends] = useState<RecommendResponse[]>([]);
-
-  // useEffect(() => {
-  //   const currentParams = new URLSearchParams(Array.from(searchParams.entries())); // all current params
-  //   console.log(currentParams.toString());
-  //   /** fetch recommend */
-  //   (async () => {
-  //     const result = await getRecommend(searchParams);
-  //     /** @todo timer and redirect to result page??? */
-  //     console.log(result);
-  //     setRecommends(result);
-  //   })().catch((err) => {
-  //     console.error(err);
-  //   });
-  // }, [searchParams]);
-
   const params = new URLSearchParams(searchParams as Record<string, string>);
   console.log(params.toString());
   /** おすすめ */
   const recommends = await getRecommend(params);
 
   /** 支払方法 */
-  // const payments = recommends.map((item) => {
-  //   return item.restaurant.payments.map((payment) => ({
-  //     type: payment.paymentType.name as PaymentType,
-  //     accepted: payment.accepted,
-  //   }));
-  // });
+  const payments = recommends.map((item) => {
+    return item.restaurant.payments.map((payment) => ({
+      type: payment.paymentType.name as PaymentType,
+      accepted: payment.accepted,
+    }));
+  });
   // const sortedPayments = payments.sort((a, b) => a.type.localeCompare(b.type));
 
   return (
@@ -91,7 +73,7 @@ export default async function Page({
               title={recommend.name}
               tag={index + 1}
               image={`/${recommend.id}.webp`}
-              description={<PaymentShort payments={recommend.restaurant.payments} />}
+              description={<PaymentShort payments={payments[index]} />}
             />
           ))
         )}
