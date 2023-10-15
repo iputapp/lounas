@@ -1,5 +1,4 @@
 import type { Restaurant } from "@/app/api/v-beta/restaurant/[id]";
-import type { Restaurants } from "@/app/api/v-beta/restaurants";
 
 /** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
 export const dynamicParams = false; // return a 404 page if the params are not found
@@ -13,19 +12,6 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   return {
     title: restaurant.name,
   };
-}
-
-/** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-static-params} */
-export async function generateStaticParams() {
-  const restaurants = (await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/restaurants`
-  ).then((res) => res.json())) as Restaurants;
-
-  return restaurants.map((restaurant) => ({
-    params: {
-      id: restaurant.id,
-    },
-  }));
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
