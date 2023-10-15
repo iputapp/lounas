@@ -6,7 +6,7 @@ import styles from "./layout.module.scss";
 export const metadata: Metadata = {
   title: {
     default: "Privacy",
-    template: "%s - Privacy | IMAP",
+    template: "%s - Privacy | lounas",
   },
 };
 
