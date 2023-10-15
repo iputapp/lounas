@@ -35,7 +35,6 @@ const SignupForm = ({ className = "" }: SignupFormProps) => {
               @tks.iput.ac.jp
             </span>
           </div>
-          {/* <div className="-mb-16 -mt-8 w-full text-right">@tks.iput.ac.jp</div> */}
           <BasicCheckbox
             name="agreePolicy"
             control={control}
