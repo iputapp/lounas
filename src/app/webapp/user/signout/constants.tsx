@@ -20,13 +20,13 @@ const settings = [
   {
     title: "Instagram",
     icon: <Instagram />,
-    url: "https://www.instagram.com/imap.bq/",
+    url: "https://www.instagram.com/lounas_app/",
     isInternal: false,
   },
   {
     title: "Twitter",
     icon: <Twitter />,
-    url: "https://twitter.com/imap_bq",
+    url: "https://x.com/lounas_app",
     isInternal: false,
   },
 ];
