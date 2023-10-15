@@ -4,19 +4,19 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "IMAP",
-    template: "%s | IMAP",
+    default: "lounas",
+    template: "%s | lounas",
   },
-  applicationName: "IMAP",
+  applicationName: "lounas",
   description: "The Lunch Recommendation App for IPUT Students",
   metadataBase: new URL(process.env.URL || "http://localhost:3000"),
   openGraph: {
-    title: "IMAP",
+    title: "lounas",
     description: "The Lunch Recommendation App for IPUT Students",
     type: "website",
     locale: "ja_JP",
     url: "/",
-    siteName: "IMAP",
+    siteName: "lounas",
   },
   icons: {
     icon: [
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
   themeColor: [
     {
       media: "(prefers-color-scheme: light)",
-      color: "#696969",
+      color: "#262626",
     },
   ],
   manifest: "/favicon/site.webmanifest",
   appleWebApp: {
-    title: "IMAP",
-    statusBarStyle: "black-translucent",
+    title: "lounas",
+    statusBarStyle: "black",
     startupImage: "/favicon/android-chrome-512x512.png",
   },
 };
