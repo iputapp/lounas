@@ -1,7 +1,6 @@
 import type { Restaurant } from "@/app/api/v-beta/restaurant/[id]";
 
 /** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-metadata} */
-// eslint-disable-next-line @typescript-eslint/require-await
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const restaurant = (await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/restaurant/${params.id}`
