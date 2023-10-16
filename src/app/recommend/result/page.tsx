@@ -45,7 +45,9 @@ export default async function Page({
       accepted: payment.accepted,
     }));
   });
-  // const sortedPayments = payments.sort((a, b) => a.type.localeCompare(b.type));
+  const sortedPayments = payments.map((payment) =>
+    payment.sort((a, b) => a.type.localeCompare(b.type))
+  );
 
   return (
     <div className={styles.container}>
@@ -61,7 +63,7 @@ export default async function Page({
               title={recommend.name}
               tag={index + 1}
               image={`/dish/id/${recommend.id}.webp`}
-              description={<PaymentShort payments={payments[index]} />}
+              description={<PaymentShort payments={sortedPayments[index]} />}
             />
           ))}
         </div>
