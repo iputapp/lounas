@@ -73,28 +73,30 @@ export default async function Page({ params }: { params: { id: string } }) {
         <BackButton title="戻る" />
       </div>
       <div className={styles.content}>
-        <Card image={`/dishes/id/${dish.id}.webp`} alt={dish.name}>
+        <Card image={`dishes/id/${dish.id}.webp`} alt={dish.name}>
           <p>{dish.name}</p>
           <p>{dish.restaurant.name}</p>
         </Card>
         <ExpandablePanel
           title="店舗詳細"
-          bgImage={`/dishes/id/${dish.id}.webp`}
+          bgImage={`dishes/id/${dish.id}.webp`}
           titleEx="決済方法"
           childrenEx={<PaymentLong payments={sortedPayments} />}
         >
           <ul className="grid justify-items-start gap-3">
             <li className="grid justify-items-start">
               <span>
-                {cleanOpenTime.length > 1 ? "" : "全日"}：
+                {cleanOpenTime.length > 1 ? "通常" : "全日"}：
                 {cleanOpenTime[0].timeOpen.toLocaleTimeString("ja-JP", {
                   hour: "2-digit",
                   minute: "2-digit",
+                  timeZone: "Asia/Tokyo",
                 })}
                 ～
                 {cleanOpenTime[0].timeClose.toLocaleTimeString("ja-JP", {
                   hour: "2-digit",
                   minute: "2-digit",
+                  timeZone: "Asia/Tokyo",
                 })}
               </span>
               {cleanOpenTime.length > 1 && (
@@ -104,11 +106,11 @@ export default async function Page({ params }: { params: { id: string } }) {
               )}
             </li>
             <li className="grid justify-items-start">
-              <span>滞在時間：おおよそ{Math.floor(dish.eatTime / 60)}分</span>
+              <span>滞在時間：おおよそ{dish.eatTime}分</span>
               <small className="text-xs">※混雑状況により異なります。</small>
             </li>
             <li>
-              <span>片道：おおよそ{Math.floor(dish.restaurant.travelTime / 60)}分</span>
+              <span>片道：おおよそ{dish.restaurant.travelTime}分</span>
             </li>
           </ul>
         </ExpandablePanel>
