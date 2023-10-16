@@ -79,7 +79,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <div className={styles.info}>
           <section>
             <div className={styles.distance}>
-              <span>{`約${Math.floor(restaurant.travelTime / 60)}分`}</span>
+              <span>{`約${restaurant.travelTime}分`}</span>
               <span>{`(${restaurant.travelDistance}m)`}</span>
             </div>
             <div className={styles.route}>
