@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -72,6 +73,15 @@ export default async function Page({
           <div className={styles.head}>
             <span className={styles.title}>検索結果: 0件</span>
             <span className={styles.description}>ご希望に沿う料理は見つかりませんでした...</span>
+            <div className={styles.parent}>
+              <Image
+                src="/images/not-found-penguin.png"
+                alt="not-found-penguin"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80vw"
+                priority
+              />
+            </div>
           </div>
           <Link className={styles.retry} href="/recommend/explore" replace>
             もう一度検索する
