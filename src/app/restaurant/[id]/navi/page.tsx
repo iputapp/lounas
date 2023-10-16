@@ -125,8 +125,8 @@ export default async function Page({ params }: { params: { id: string } }) {
             key={index}
             image={
               route.nextStepId
-                ? `/routes/${route.thumbnailId}.webp`
-                : `/restaurants/id/${route.restaurant.id}.webp`
+                ? `routes/${route.thumbnailId}`
+                : `restaurants/id/${route.restaurant.id}.webp`
             }
             description={route.description ?? ""}
             navigation={route.routeType.name as NavigationType}

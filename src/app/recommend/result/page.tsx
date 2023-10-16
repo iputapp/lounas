@@ -62,7 +62,7 @@ export default async function Page({
               url={`/dish/${recommend.id}`}
               title={recommend.name}
               tag={index + 1}
-              image={`/dish/id/${recommend.id}.webp`}
+              image={`dishes/id/${recommend.id}.webp`}
               description={<PaymentShort payments={sortedPayments[index]} />}
             />
           ))}
