@@ -11,6 +11,10 @@ import { CardFull, NavigationType } from "@/components/cards/CardFull";
 
 import styles from "./page.module.scss";
 
+/** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "error"; // SSG
+export const dynamicParams = false; // return a 404 page if the params are not found
+
 /** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-static-params} */
 export async function generateStaticParams() {
   const restaurants = (await fetch(
@@ -18,9 +22,7 @@ export async function generateStaticParams() {
   ).then((res) => res.json())) as Restaurants;
 
   return restaurants.map((restaurant) => ({
-    params: {
-      id: restaurant.id,
-    },
+    id: restaurant.id,
   }));
 }
 
@@ -77,7 +79,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <div className={styles.info}>
           <section>
             <div className={styles.distance}>
-              <span>{`約${Math.floor(restaurant.travelTime / 60)}分`}</span>
+              <span>{`約${restaurant.travelTime}分`}</span>
               <span>{`(${restaurant.travelDistance}m)`}</span>
             </div>
             <div className={styles.route}>
@@ -123,8 +125,8 @@ export default async function Page({ params }: { params: { id: string } }) {
             key={index}
             image={
               route.nextStepId
-                ? `/routes/${route.thumbnailId}.webp`
-                : `/restaurants/id/${route.restaurant.id}.webp`
+                ? `routes/${route.thumbnailId}`
+                : `restaurants/id/${route.restaurant.id}.webp`
             }
             description={route.description ?? ""}
             navigation={route.routeType.name as NavigationType}

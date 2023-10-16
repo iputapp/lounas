@@ -1,13 +1,8 @@
 import { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 
-import styles from "./layout.module.scss";
-
 export const metadata: Metadata = {
-  title: {
-    default: "Privacy",
-    template: "%s - Privacy | lounas",
-  },
+  title: "Terms of Service",
 };
 
 const notoSansJP = Noto_Sans_JP({
@@ -19,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <header></header>
-      <main className={`${styles.main} ${notoSansJP.className}`}>{children}</main>
+      <main className={`${notoSansJP.className}`}>{children}</main>
       <footer></footer>
     </>
   );

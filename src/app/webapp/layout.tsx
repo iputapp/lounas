@@ -8,7 +8,7 @@ import styles from "./layout.module.scss";
 export const metadata: Metadata = {
   title: {
     default: "App",
-    template: "%s - App | IMAP",
+    template: "%s - App | lounas",
   },
 };
 
