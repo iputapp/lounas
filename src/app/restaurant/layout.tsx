@@ -6,7 +6,7 @@ import styles from "./layout.module.scss";
 export const metadata: Metadata = {
   title: {
     default: "Restaurant",
-    template: "%s - Restaurant | IMAP",
+    template: "%s - Restaurant | lounas",
   },
 };
 

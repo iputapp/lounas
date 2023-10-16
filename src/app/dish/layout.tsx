@@ -6,7 +6,7 @@ import styles from "./layout.module.scss";
 export const metadata: Metadata = {
   title: {
     default: "Dish",
-    template: "%s - Dish | IMAP",
+    template: "%s - Dish | lounas",
   },
 };
 

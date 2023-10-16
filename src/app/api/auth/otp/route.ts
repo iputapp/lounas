@@ -7,10 +7,9 @@ import { IPUT_STUDENT_DOMAIN } from "@/constants";
 import type { Signup } from ".";
 import { signupSchema } from ".";
 
-/** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
-export const dynamic = "force-dynamic";
-
 export async function POST(request: Request) {
+  const cookieStore = cookies();
+
   const body = (await request.json()) as Promise<Signup>;
   const payload = signupSchema.safeParse(body);
 
@@ -22,7 +21,7 @@ export async function POST(request: Request) {
 
   const email = `${emailUsername}@${IPUT_STUDENT_DOMAIN}`;
 
-  const supabase = createRouteHandlerClient({ cookies });
+  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
   const { data, error } = await supabase.auth.signInWithOtp({
     email: email,
     options: {
@@ -33,7 +32,6 @@ export async function POST(request: Request) {
   if (error || !data) return NextResponse.error();
 
   /** store email to cookie */
-  const cookieStore = cookies();
   cookieStore.set({
     name: "email",
     value: email,
