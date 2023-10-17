@@ -1,5 +1,6 @@
 "use client";
 
+import LinkIcon from "@icons/link.svg";
 import NavArrowRight from "@icons/nav-arrow-right.svg";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
@@ -74,9 +75,14 @@ export default function Page() {
                   <span>{item.icon}</span>
                   <span>{item.title}</span>
                 </div>
-                <span>
-                  <NavArrowRight />
-                </span>
+                <div>
+                  <span>
+                    <LinkIcon />
+                  </span>
+                  <span>
+                    <NavArrowRight />
+                  </span>
+                </div>
               </a>
             )
           )}
