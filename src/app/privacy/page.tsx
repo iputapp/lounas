@@ -92,7 +92,7 @@ export default function Page() {
           <div className={styles.status}>
             {dataAgreement !== null && (
               <>
-                <span>現在のあなたの設定：</span>
+                <span className={styles.text}>現在のあなたの設定：</span>
                 <span className={styles.agreed}>{dataAgreement ? "同意する" : "同意しない"}</span>
               </>
             )}

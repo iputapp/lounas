@@ -63,6 +63,10 @@
       @apply mx-auto
         font-semibold;
 
+      & > .text {
+        color: var.$secondary;
+      }
+
       & > .agreed {
         color: var.$blue;
       }
