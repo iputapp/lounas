@@ -74,12 +74,15 @@ export default async function Page({ params }: { params: { id: string } }) {
       </div>
       <div className={styles.content}>
         <Card image={`dishes/id/${dish.id}.webp`} alt={dish.name}>
-          <p>{dish.name}</p>
+          <p>
+            <span>{dish.name}</span>
+            <span>：{dish.price.toLocaleString()}円</span>
+          </p>
           <p>{dish.restaurant.name}</p>
         </Card>
         <ExpandablePanel
           title="店舗詳細"
-          bgImage={`dishes/id/${dish.id}.webp`}
+          bgImage={``}
           titleEx="決済方法"
           childrenEx={<PaymentLong payments={sortedPayments} />}
         >
