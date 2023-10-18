@@ -19,7 +19,9 @@
 
 // page styles
 .container {
-  @apply grid w-full gap-12;
+  @apply mx-auto grid
+    w-full max-w-3xl
+    gap-12;
 
   .header {
     @apply sticky top-0 z-30
