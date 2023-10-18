@@ -16,6 +16,9 @@ export async function GET() {
 
   /** user can only access their own data - Supabase Row-Level Security (RLS) */
   const user = await prisma.user.findUnique({
+    select: {
+      dataUsageAgreed: true,
+    },
     where: {
       id: session.data.session.user.id,
     },

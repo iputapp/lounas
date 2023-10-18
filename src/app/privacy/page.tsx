@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { DataAgreementRequest } from "@/app/api/v-beta/user/data-agreement";
 import { RectButton } from "@/components/buttons/RectButton";
@@ -10,9 +10,33 @@ import { PrivacyPlayer } from "@/components/lottie/Privacy";
 
 import styles from "./page.module.scss";
 
+async function getDataAgreement() {
+  /** @todo cache settings */
+  const dataAgreement = (await fetch("/api/v-beta/user/data-agreement", {
+    method: "GET",
+  })
+    .then((res) => res.json())
+    .catch((err) => {
+      console.error(err);
+      return null;
+    })) as DataAgreementRequest | null;
+  return dataAgreement;
+}
+
 export default function Page() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [dataAgreement, setDataAgreement] = useState<DataAgreementRequest | null>(null);
+
+  useEffect(() => {
+    /** get data agreement */
+    (async () => {
+      const dataAgreement = await getDataAgreement();
+      setDataAgreement(dataAgreement);
+    })().catch((err) => {
+      console.error(err);
+    });
+  }, []);
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     await fetch("/api/v-beta/user/data-agreement", {
@@ -64,6 +88,14 @@ export default function Page() {
             <RectButton color="blue" onClick={handleClick} value="agreed">
               同意する
             </RectButton>
+          </div>
+          <div className={styles.status}>
+            {dataAgreement !== null && (
+              <>
+                <span className={styles.text}>現在のあなたの設定：</span>
+                <span className={styles.agreed}>{dataAgreement ? "同意する" : "同意しない"}</span>
+              </>
+            )}
           </div>
         </div>
       </div>

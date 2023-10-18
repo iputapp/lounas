@@ -1,8 +1,10 @@
 @use "variables" as var;
 
 .container {
-  @apply grid h-full w-full
-    content-start gap-12;
+  @apply mx-auto grid
+    h-full w-full max-w-3xl
+    content-start
+    gap-12;
 
   .header {
     @apply w-fit

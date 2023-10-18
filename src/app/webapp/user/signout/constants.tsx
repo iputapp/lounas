@@ -1,6 +1,8 @@
 import Github from "@icons/github.svg";
 import Instagram from "@icons/instagram.svg";
 import Lock from "@icons/lock.svg";
+import LogoOutline from "@icons/logo-outline.svg";
+import SendDiagonal from "@icons/send-diagonal.svg";
 import Twitter from "@icons/twitter.svg";
 
 /** 設定一覧 */
@@ -12,10 +14,10 @@ const settings = [
     isInternal: true,
   },
   {
-    title: "バグの報告",
-    icon: <Github />,
-    url: "https://github.com/wiyco/imap/issues/new?assignees=&labels=bug%2Ctriage&projects=&template=bug-report.yml&title=%5BBug%5D%3A+%7B%E6%A6%82%E8%A6%81%7D",
-    isInternal: false,
+    title: "利用規約",
+    icon: <LogoOutline />,
+    url: "/tos",
+    isInternal: true,
   },
   {
     title: "Instagram",
@@ -24,9 +26,21 @@ const settings = [
     isInternal: false,
   },
   {
-    title: "Twitter",
+    title: "X/Twitter",
     icon: <Twitter />,
     url: "https://x.com/lounas_app",
+    isInternal: false,
+  },
+  {
+    title: "フィードバック",
+    icon: <SendDiagonal />,
+    url: "https://forms.gle/c1gosjcJZf5gTtvCA",
+    isInternal: false,
+  },
+  {
+    title: "バグの報告",
+    icon: <Github />,
+    url: "https://github.com/PROJECT-PIPLUP/lounas/issues/new?assignees=&labels=bug%2Ctriage&projects=&template=bug-report.yml&title=%5BBug%5D%3A+%7B%E6%A6%82%E8%A6%81%7D",
     isInternal: false,
   },
 ];
