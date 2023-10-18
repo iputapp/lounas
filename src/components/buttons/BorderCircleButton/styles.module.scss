@@ -18,7 +18,7 @@
   }
 
   & .title {
-    @apply font-semibold;
+    @apply select-none font-semibold;
 
     color: var.$tertiary;
   }
