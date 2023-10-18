@@ -1,8 +1,8 @@
 @use "variables" as var;
 
 .circle {
-  @apply flex items-center justify-center
-    rounded-full;
+  @apply flex select-none items-center
+    justify-center rounded-full;
 
   aspect-ratio: 1 / 1;
 
@@ -15,8 +15,8 @@
 }
 
 .circle-border {
-  @apply flex items-center justify-center
-    rounded-full;
+  @apply flex items-center
+    justify-center rounded-full;
 
   aspect-ratio: 1 / 1;
 
