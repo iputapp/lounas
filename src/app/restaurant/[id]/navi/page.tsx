@@ -1,14 +1,14 @@
-import NavArrowDown from "@icons/nav-arrow-down.svg";
+// import NavArrowDown from "@icons/nav-arrow-down.svg";
 import WarningCircle from "@icons/warning-circle.svg";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import type { Route } from "@/app/api/v-beta/restaurant/[id]/navi";
 import { Restaurants } from "@/app/api/v-beta/restaurants";
-import { RectButton } from "@/components/buttons/RectButton";
 import { CardFull, NavigationType } from "@/components/cards/CardFull";
+import { NavigationPlayer } from "@/components/lottie/Navigation";
 
+import { ExitButton } from "./client";
 import styles from "./page.module.scss";
 
 /** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
@@ -83,9 +83,10 @@ export default async function Page({ params }: { params: { id: string } }) {
               <span>{`(${restaurant.travelDistance}m)`}</span>
             </div>
             <div className={styles.route}>
-              <div className={styles.origin}>{normalizeText("コクーンタワー2F出入口", 14)}</div>
+              <div className={styles.origin}>{normalizeText("コクーンタワー出入口", 14)}</div>
               <span className={styles.icon}>
-                <NavArrowDown />
+                {/* <NavArrowDown /> */}
+                <NavigationPlayer />
               </span>
               <div className={styles.destination}>{normalizeText(restaurant.name, 14)}</div>
             </div>
@@ -135,11 +136,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       </div>
       <div className={styles.footer}>
         <div className={styles.button}>
-          <RectButton color="red">
-            <Link href={"/webapp/home"} replace>
-              終了する
-            </Link>
-          </RectButton>
+          <ExitButton restaurant={restaurant} />
         </div>
       </div>
     </div>
