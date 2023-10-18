@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import type { Dish } from "@/app/api/v-beta/dish/[id]";
 
 /** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-metadata} */
@@ -7,7 +9,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   ).then((res) => res.json())) as Dish;
   return {
     title: `${dish.name} & ${dish.restaurant.name}`,
-  };
+    description: `料理：${dish.name}\nお店：${dish.restaurant.name}`,
+  } as Metadata;
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
