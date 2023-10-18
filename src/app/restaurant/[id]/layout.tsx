@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import type { Restaurant } from "@/app/api/v-beta/restaurant/[id]";
 
 /** @see{@link https://nextjs.org/docs/app/api-reference/functions/generate-metadata} */
@@ -7,7 +9,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   ).then((res) => res.json())) as Restaurant;
   return {
     title: restaurant.name,
-  };
+    description: "ログインユーザーのみ閲覧可能なページです。",
+  } as Metadata;
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {

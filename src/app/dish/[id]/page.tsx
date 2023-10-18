@@ -1,13 +1,15 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import type { Dish } from "@/app/api/v-beta/dish/[id]";
 import { Dishes } from "@/app/api/v-beta/dishes";
 import { BackButton } from "@/components/buttons/BackButton";
+import { RectButton } from "@/components/buttons/RectButton";
 import { Card } from "@/components/cards/Card";
 import { ExpandablePanel } from "@/components/layouts/ExpandablePanel";
 import { PaymentLong, PaymentType } from "@/components/lists/PaymentLong";
 
-import { DecideButton } from "./client";
+// import { DecideButton } from "./client";
 import styles from "./page.module.scss";
 
 /** @see{@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
@@ -74,12 +76,15 @@ export default async function Page({ params }: { params: { id: string } }) {
       </div>
       <div className={styles.content}>
         <Card image={`dishes/id/${dish.id}.webp`} alt={dish.name}>
-          <p>{dish.name}</p>
+          <p>
+            <span>{dish.name}</span>
+            <span>：{dish.price.toLocaleString()}円</span>
+          </p>
           <p>{dish.restaurant.name}</p>
         </Card>
         <ExpandablePanel
           title="店舗詳細"
-          bgImage={`dishes/id/${dish.id}.webp`}
+          bgImage={``}
           titleEx="決済方法"
           childrenEx={<PaymentLong payments={sortedPayments} />}
         >
@@ -117,7 +122,17 @@ export default async function Page({ params }: { params: { id: string } }) {
       </div>
       <div className={styles.footer}>
         <div className={styles.button}>
-          <DecideButton dish={dish} />
+          {/* <DecideButton dish={dish} /> */}
+          <RectButton color="blue">
+            <Link
+              href={{
+                pathname: `/restaurant/${dish.restaurant.id}/navi`,
+                query: { dish: dish.id },
+              }}
+            >
+              ここに行く
+            </Link>
+          </RectButton>
         </div>
       </div>
     </div>
