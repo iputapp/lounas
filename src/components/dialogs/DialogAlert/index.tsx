@@ -15,7 +15,7 @@ const StyledDialog = styled(Dialog)(() => ({
     borderRadius: "1.5rem", // rounded-3xl
     border: "2px solid rgb(0 119 255 / 80%)", // border-2
     backdropFilter: "blur(12px) brightness(2)", // backdrop-blur-md backdrop-brightness-200
-    backgroundColor: "rgb(255 255 255 / 50%)",
+    backgroundColor: "rgb(255 255 255 / 60%)",
     overflowX: "clip",
     paddingTop: "2rem", // pt-8
     paddingBottom: "1.5rem", // pb-6
@@ -53,6 +53,7 @@ type DialogAlertProps = {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   onClickYes?: React.MouseEventHandler<HTMLButtonElement>;
   onClickNo?: React.MouseEventHandler<HTMLButtonElement>;
+  isProcessing?: boolean;
 };
 
 export function DialogAlert({
@@ -62,6 +63,7 @@ export function DialogAlert({
   setIsOpen,
   onClickYes,
   onClickNo,
+  isProcessing,
 }: DialogAlertProps) {
   return (
     <ThemeProvider theme={theme}>
@@ -69,10 +71,10 @@ export function DialogAlert({
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>{children}</DialogContent>
         <DialogActions className="mx-auto flex w-[90%] items-center justify-between space-x-11 p-0">
-          <RectButton color="red" autoFocus={true} onClick={onClickNo}>
+          <RectButton color="red" onClick={onClickNo} autoFocus={true} disabled={isProcessing}>
             いいえ
           </RectButton>
-          <RectButton color="blue" onClick={onClickYes}>
+          <RectButton color="blue" onClick={onClickYes} disabled={isProcessing}>
             はい
           </RectButton>
         </DialogActions>
