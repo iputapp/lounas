@@ -9,7 +9,7 @@ import { RectButton } from "@/components/buttons/RectButton";
 export function DecideButton({ dish }: { dish: Dish }) {
   const router = useRouter();
 
-  // ここに行くボタンを押したときの処理
+  /** ここに行く */
   const handleClick = async () => {
     const visitLogPayload = {
       dishId: dish.id,
