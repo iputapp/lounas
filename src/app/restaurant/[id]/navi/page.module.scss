@@ -19,7 +19,9 @@
 
 // page styles
 .container {
-  @apply grid w-full gap-12;
+  @apply mx-auto grid
+    w-full max-w-3xl
+    gap-12;
 
   .header {
     @apply sticky top-0 z-30
@@ -78,10 +80,15 @@
 
           // down arrow
           .icon {
-            @apply -my-1.5
-              text-2xl;
+            @apply -my-3 text-2xl;
 
             color: var.$blue;
+
+            & svg {
+              @apply overflow-clip;
+
+              height: 4rem !important; // h-16
+            }
           }
         }
       }

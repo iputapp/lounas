@@ -17,7 +17,7 @@
 
   & > .title {
     @apply w-fit
-      text-4xl font-bold;
+      select-none text-4xl font-bold;
 
     color: transparent;
     background: linear-gradient(135deg, #fff 50%, var.$primary 50%);
@@ -37,7 +37,7 @@
     background-color: #fff;
 
     .date {
-      @apply text-xl font-bold;
+      @apply select-none text-xl font-bold;
 
       color: var.$tertiary;
     }
@@ -48,8 +48,8 @@
 
       .text {
         @apply flex
-          items-center justify-between
-          font-semibold;
+          select-none items-center
+          justify-between font-semibold;
 
         color: var.$primary;
       }
@@ -60,15 +60,15 @@
     @apply grid w-full gap-6;
 
     .title {
-      @apply mx-auto;
+      @apply mx-auto select-none;
 
       color: var.$primary;
     }
 
     .description {
       @apply mx-auto w-10/12
-        text-center
-        text-base;
+        select-none
+        text-center text-base;
 
       color: var.$tertiary;
     }

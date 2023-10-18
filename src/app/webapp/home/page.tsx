@@ -72,6 +72,7 @@ export default function Page() {
                 year: "numeric",
                 month: "short",
                 day: "numeric",
+                weekday: "short",
               })}
             </span>
           ) : null}
