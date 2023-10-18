@@ -17,6 +17,7 @@ export default function Page() {
   const router = useRouter();
   const [messageToUser, setMessageToUser] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   /** ガチャ */
   const messageGacha = () => {
@@ -36,7 +37,10 @@ export default function Page() {
   }, []);
 
   /** dialog alert yes */
-  const handleSignOut = async () => {
+  const handleYes = async () => {
+    /** set state processing */
+    setIsProcessing(true);
+
     /** sign-out */
     await supabase.auth
       .signOut()
@@ -49,7 +53,11 @@ export default function Page() {
         setIsOpen(false);
         router.replace("signin");
       })
-      .catch((err) => console.error("Error!", err));
+      .catch((err) => console.error("Error!", err))
+      .finally(() => {
+        setIsOpen(false);
+        setIsProcessing(false);
+      });
   };
 
   /** dialog alert no */
@@ -106,8 +114,9 @@ export default function Page() {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
-        onClickYes={handleSignOut}
+        onClickYes={handleYes}
         onClickNo={handleNo}
+        isProcessing={isProcessing}
       >
         <div className="grid gap-1.5 text-center text-sm font-semibold">
           <p>※再度確認コードのログインが必要になります。</p>
