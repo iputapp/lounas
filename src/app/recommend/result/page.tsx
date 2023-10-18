@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -10,6 +11,8 @@ import styles from "./page.module.scss";
 
 /** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
 export const dynamic = "force-dynamic"; // SSR
+export const revalidate = 0; // revalidate every request
+export const fetchCache = "force-no-store"; // no-store
 
 async function getRecommend(params: URLSearchParams) {
   const recommends = (await fetch(
@@ -45,7 +48,9 @@ export default async function Page({
       accepted: payment.accepted,
     }));
   });
-  // const sortedPayments = payments.sort((a, b) => a.type.localeCompare(b.type));
+  const sortedPayments = payments.map((payment) =>
+    payment.sort((a, b) => a.type.localeCompare(b.type))
+  );
 
   return (
     <div className={styles.container}>
@@ -60,8 +65,8 @@ export default async function Page({
               url={`/dish/${recommend.id}`}
               title={recommend.name}
               tag={index + 1}
-              image={`/dish/id/${recommend.id}.webp`}
-              description={<PaymentShort payments={payments[index]} />}
+              image={`dishes/id/${recommend.id}.webp`}
+              description={<PaymentShort payments={sortedPayments[index]} />}
             />
           ))}
         </div>
@@ -70,6 +75,15 @@ export default async function Page({
           <div className={styles.head}>
             <span className={styles.title}>検索結果: 0件</span>
             <span className={styles.description}>ご希望に沿う料理は見つかりませんでした...</span>
+            <div className={styles.parent}>
+              <Image
+                src="/images/not-found-penguin.png"
+                alt="not-found-penguin"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80vw"
+                priority
+              />
+            </div>
           </div>
           <Link className={styles.retry} href="/recommend/explore" replace>
             もう一度検索する
