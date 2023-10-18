@@ -58,5 +58,18 @@
     .button {
       @apply grid grid-cols-2 gap-12;
     }
+
+    .status {
+      @apply mx-auto
+        font-semibold;
+
+      & > .text {
+        color: var.$secondary;
+      }
+
+      & > .agreed {
+        color: var.$blue;
+      }
+    }
   }
 }
