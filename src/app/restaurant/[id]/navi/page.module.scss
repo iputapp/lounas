@@ -80,10 +80,15 @@
 
           // down arrow
           .icon {
-            @apply -my-1.5
-              text-2xl;
+            @apply -my-3 text-2xl;
 
             color: var.$blue;
+
+            & svg {
+              @apply overflow-clip;
+
+              height: 4rem !important; // h-16
+            }
           }
         }
       }
