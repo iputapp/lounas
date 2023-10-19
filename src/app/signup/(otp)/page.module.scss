@@ -31,11 +31,23 @@
     content-center
     gap-10 pt-12;
 
-  .title {
-    @apply mx-auto
-      text-4xl font-bold;
+  .head {
+    @apply grid w-full
+      justify-items-center
+      gap-2.5;
 
-    color: var.$primary;
+    .title {
+      @apply text-4xl font-bold;
+
+      color: var.$primary;
+    }
+
+    & > .description {
+      @apply text-center
+          text-xs;
+
+      color: var.$tertiary;
+    }
   }
 
   .form {
@@ -50,9 +62,9 @@
   .additional {
     @apply grid w-full
       justify-items-center
-      gap-4;
+      gap-5;
 
-    & > * {
+    & > .main {
       @apply w-fit
         text-center
         text-base

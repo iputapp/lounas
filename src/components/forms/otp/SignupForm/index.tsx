@@ -45,7 +45,7 @@ const SignupForm = ({ className = "" }: SignupFormProps) => {
           />
           <div className="mx-auto w-[88%]">
             <BorderRoundButton type="submit" fontSize="text-2xl">
-              Sign Up
+              Sign In
             </BorderRoundButton>
           </div>
         </form>
