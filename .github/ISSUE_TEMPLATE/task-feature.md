@@ -24,7 +24,7 @@ TEAM PIPLUP 🐧
 >
 > 以下はチェックのみ編集を許可する。(内容の追加および変更は禁じる)
 
-- [x] [行動規範(Code of Conduct)](https://github.com/wiyco/imap/blob/develop/_docs/CODE_OF_CONDUCT.md)に同意します。
+- [x] [行動規範(Code of Conduct)](https://github.com/PROJECT-PIPLUP/lounas/blob/develop/_docs/CODE_OF_CONDUCT.md)に同意します。
 
 ## Remark
 
