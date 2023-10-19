@@ -40,7 +40,7 @@ const settings = [
   {
     title: "バグの報告",
     icon: <Github />,
-    url: "https://github.com/PROJECT-PIPLUP/lounas/issues/new?assignees=&labels=bug%2Ctriage&projects=&template=bug-report.yml&title=%5BBug%5D%3A+%7B%E6%A6%82%E8%A6%81%7D",
+    url: "https://github.com/PROJECT-PIPLUP/lounas/issues/new/choose",
     isInternal: false,
   },
 ];

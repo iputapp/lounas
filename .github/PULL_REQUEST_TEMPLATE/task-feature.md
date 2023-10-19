@@ -33,15 +33,15 @@ TEAM PIPLUP 🐧
 >
 > 以下はチェックのみ編集を許可する。(内容の追加および変更は禁じる)
 
-- [x] [コーディング規約](https://github.com/wiyco/imap/blob/develop/_docs/CODING.md)を確認しました。
-- [x] [ディレクトリ構成](https://github.com/wiyco/imap/blob/develop/_docs/DIRECTORY.md)を確認しました。
+- [x] [コーディング規約](https://github.com/PROJECT-PIPLUP/lounas/blob/develop/_docs/CODING.md)を確認しました。
+- [x] [ディレクトリ構成](https://github.com/PROJECT-PIPLUP/lounas/blob/develop/_docs/DIRECTORY.md)を確認しました。
 - [ ] `npm run format`を実行しても`Error`は出ませんでした。
 - [ ] `npm run format`を実行しても`Warning`は最小限でした。
 - [ ] Google Chrome で表示を確認しました。
 - [ ] Firefox で表示を確認しました。
 - [ ] Google Chrome (iPhone 12 Pro) で表示を確認しました。
 - [ ] iPhone Safari で表示を確認しました。
-- [x] [行動規範(Code of Conduct)](https://github.com/wiyco/imap/blob/develop/_docs/CODE_OF_CONDUCT.md)に同意します。
+- [x] [行動規範(Code of Conduct)](https://github.com/PROJECT-PIPLUP/lounas/blob/develop/_docs/CODE_OF_CONDUCT.md)に同意します。
 
 ## Remark
 
