@@ -14,7 +14,10 @@ export default function Page() {
     <>
       <CirclesTopLeft />
       <div className={styles.container}>
-        <h1 className={styles.title}>ようこそ</h1>
+        <div className={styles.head}>
+          <h1 className={styles.title}>ログイン</h1>
+          <span className={styles.description}>登録もこちらから！</span>
+        </div>
         <SignupForm className={styles.form} />
         <div className={styles.tos}>
           <Link href={"/tos"} target="_blank" rel="noopener noreferrer">
@@ -28,7 +31,9 @@ export default function Page() {
           </Link>
         </div>
         <div className={styles.additional}>
-          <Link href={"/webapp"}>登録せずに試す&#40;ランキング機能のみ&#41;</Link>
+          <Link className={styles.main} href={"/webapp"}>
+            ログインせずに試す&#40;ランキング機能のみ&#41;
+          </Link>
         </div>
       </div>
     </>
