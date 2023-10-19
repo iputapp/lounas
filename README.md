@@ -131,8 +131,9 @@ module.exports = {
 
 ## Zod
 
-[Docs - Zod](https://zod.dev/)
-[Docs - zod-prisma-types](https://github.com/chrishoermann/zod-prisma-types)
+- [Docs - Zod](https://zod.dev/)
+
+- [ Docs - zod-prisma-types](https://github.com/chrishoermann/zod-prisma-types)
 
 ## Supabase
 
