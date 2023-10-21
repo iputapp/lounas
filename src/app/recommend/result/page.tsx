@@ -10,9 +10,7 @@ import { PaymentShort, PaymentType } from "@/components/lists/PaymentShort";
 import styles from "./page.module.scss";
 
 /** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
-export const dynamic = "force-dynamic"; // SSR
-export const revalidate = 0; // revalidate every request
-export const fetchCache = "force-no-store"; // no-store
+export const dynamic = "force-dynamic";
 
 async function getRecommend(params: URLSearchParams) {
   const recommends = (await fetch(
@@ -37,7 +35,6 @@ export default async function Page({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
   const params = new URLSearchParams(searchParams as Record<string, string>);
-  console.log(params.toString());
   /** おすすめ */
   const recommends = await getRecommend(params);
 
@@ -74,13 +71,27 @@ export default async function Page({
         <div className={styles.zero}>
           <div className={styles.head}>
             <span className={styles.title}>検索結果: 0件</span>
-            <span className={styles.description}>ご希望に沿う料理は見つかりませんでした...</span>
+            <div className={styles.description}>
+              <span>ご希望に沿う料理は見つかりませんでした...</span>
+              <span>💡 現在時刻で営業中のお店のみ表示しております 💡</span>
+              <span>
+                {new Date().toLocaleString("ja-JP", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                  weekday: "short",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  second: "2-digit",
+                })}
+              </span>
+            </div>
             <div className={styles.parent}>
               <Image
                 src="/images/not-found-penguin.png"
                 alt="not-found-penguin"
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80vw"
+                sizes="(max-width: 768px) 75vw, (max-width: 1200px) 75vw, 75vw"
                 priority
               />
             </div>

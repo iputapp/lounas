@@ -13,9 +13,7 @@ const notoSansJP = Noto_Sans_JP({
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <header></header>
       <main className={`${notoSansJP.className}`}>{children}</main>
-      <footer></footer>
     </>
   );
 }

@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <div className="grid gap-8 px-5 py-8">
+    <div className="mx-auto grid max-w-2xl gap-8 px-5 py-8">
       <div className="grid w-fit gap-1 border-b-2 border-b-neutral-500 pe-8">
         <h1 className="text-3xl font-bold text-neutral-800">利用規約</h1>
         <h2 className="text-lg text-neutral-600">Terms of Service</h2>

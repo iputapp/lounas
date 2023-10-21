@@ -10,6 +10,9 @@ import { BasicLinearProgress } from "@/components/progresses/BasicLinearProgress
 
 import styles from "./page.module.scss";
 
+/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "force-dynamic";
+
 async function getVisitsCount() {
   /** @todo cache settings */
   const visitsCount = (await fetch("/api/v-beta/user/visits-count")

@@ -4,7 +4,7 @@
 import { PrismaClient } from "@prisma/client";
 
 const primsaClientSingleton = () => {
-  return new PrismaClient({ log: ["query", "error", "info", "warn"] });
+  return new PrismaClient({ log: ["error", "warn"] });
 };
 
 type PrismaClientSingleton = ReturnType<typeof primsaClientSingleton>;
