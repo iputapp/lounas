@@ -23,12 +23,9 @@ export async function GET(request: NextRequest) {
   revalidatePath("/recommend/result");
 
   /** 今 */
-  const now = new Date(new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" }));
-  /**
-   * 今の時間 (時間のみ)
-   * @description TimeOnlyにはローカルタイムを入れる
-   */
-  const nowTimeOnly = new TimeOnly(now.getHours(), now.getMinutes(), now.getSeconds());
+  const now = new Date();
+  /** 今の時間 */
+  const nowTimeOnly = new TimeOnly(now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
 
   /** 料理の値段 */
   const price = payload.data.price;
@@ -176,19 +173,6 @@ export async function GET(request: NextRequest) {
   const items = results;
   //const items = recommendResponseSchema.parse(results);
 
-  for (const item of items) {
-    if (item.restaurant.name == "カレーハウス11イマサ") {
-      const timeOpen = item.restaurant.restaurantOpens[now.getUTCDay()].timeOpen;
-      const timeClose = item.restaurant.restaurantOpens[now.getUTCDay()].timeClose;
-      console.log({
-        now: nowTimeOnly,
-        open: new TimeOnly(timeOpen.getHours(), timeOpen.getMinutes(), timeOpen.getSeconds()),
-        close: new TimeOnly(timeClose.getHours(), timeClose.getMinutes(), timeClose.getSeconds()),
-      });
-      break;
-    }
-  }
-
   /**
    * 営業中のお店の料理
    * @todo PrismaでUTC以外('Asia/Tokyo')を扱えるようになれば、この処理は不要になる
@@ -206,10 +190,10 @@ export async function GET(request: NextRequest) {
     const timeClose = item.restaurant.restaurantOpens[now.getUTCDay()].timeClose;
     /** nowTimeOnly BETWEEN timeOpen AND timeClose */
     return (
-      new TimeOnly(timeOpen.getHours(), timeOpen.getMinutes(), timeOpen.getSeconds()) <=
+      new TimeOnly(timeOpen.getUTCHours(), timeOpen.getUTCMinutes(), timeOpen.getUTCSeconds()) <=
         nowTimeOnly &&
       nowTimeOnly <=
-        new TimeOnly(timeClose.getHours(), timeClose.getMinutes(), timeClose.getSeconds())
+        new TimeOnly(timeClose.getUTCHours(), timeClose.getUTCMinutes(), timeClose.getUTCSeconds())
     );
   });
 
