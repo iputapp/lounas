@@ -12,6 +12,9 @@ import { DialogAlert } from "@/components/dialogs/DialogAlert";
 import { messages, settings } from "./constants";
 import styles from "./page.module.scss";
 
+/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "force-dynamic";
+
 export default function Page() {
   const supabase = createClientComponentClient();
   const router = useRouter();

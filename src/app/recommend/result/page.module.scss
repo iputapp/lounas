@@ -39,9 +39,19 @@
       }
 
       .description {
-        @apply text-center;
+        @apply grid gap-2.5;
 
-        color: var.$tertiary;
+        & > :nth-child(1) {
+          @apply text-center text-base;
+
+          color: var.$tertiary;
+        }
+
+        & > :nth-child(n + 2) {
+          @apply text-center text-xs;
+
+          color: var.$secondary;
+        }
       }
 
       .parent {
