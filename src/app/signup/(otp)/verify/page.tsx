@@ -41,7 +41,8 @@ export default function Page() {
           <section className="grid gap-5">
             <ol className="mx-auto grid w-fit list-decimal gap-4">
               <li>迷惑メールフォルダを確認する</li>
-              <li>ドメインを許可する</li>
+              <li>メールアドレスが正しいかを確認する</li>
+              <li>noreply@lounas.jp の受信を許可する</li>
               <li>ネットワーク状況を確認する</li>
             </ol>
             <span>解決しない場合は、恐れ入りますがサポートまでご連絡ください。</span>
