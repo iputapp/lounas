@@ -1,9 +1,13 @@
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
 import { TimeOnly } from "@/types/date";
 
 import { RecommendRequest, recommendRequestSchema } from ".";
+
+/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -14,6 +18,9 @@ export async function GET(request: NextRequest) {
   };
   const payload = recommendRequestSchema.safeParse(params);
   if (!payload.success) return NextResponse.error();
+
+  /** @see {@link https://nextjs.org/docs/app/api-reference/functions/revalidatePath} */
+  revalidatePath("/recommend/result");
 
   /** 今 */
   const now = new Date();
@@ -207,17 +214,18 @@ export async function GET(request: NextRequest) {
   /** 条件に当てはまる料理が5つ以上 */
   if (logisticallyFeasibleDishes.length >= 5) {
     /** ランダムシャッフル + 初めから5個 */
-    const recommends = shuffleDishes(logisticallyFeasibleDishes).slice(0, 5);
+    const recommends = shuffleArray(logisticallyFeasibleDishes).slice(0, 5);
     return NextResponse.json(recommends);
   } else {
     /** ランダムシャッフル + 初めから5個 */
-    const recommends = shuffleDishes(filterByTime).slice(0, 5);
+    const recommends = shuffleArray(filterByTime).slice(0, 5);
     return NextResponse.json(recommends);
   }
 }
 
 /**
- * shuffle dishes
+ * shuffle array
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const shuffleDishes = (dishes: any[]): any[] => dishes.sort(() => Math.random() - Math.random());
+const shuffleArray = (array: any[]): any[] =>
+  array.slice().sort(() => Math.random() - Math.random());
