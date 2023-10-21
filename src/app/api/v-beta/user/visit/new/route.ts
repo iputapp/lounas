@@ -6,6 +6,9 @@ import { prisma } from "@/lib/prisma";
 
 import { VisitRegisterRequest, visitRegisterRequestSchema } from ".";
 
+/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "force-dynamic";
+
 export async function POST(request: Request) {
   const cookieStore = cookies();
 
