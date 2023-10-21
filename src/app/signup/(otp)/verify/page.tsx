@@ -50,11 +50,11 @@ export default function Page() {
           <section className="mx-auto">
             <a
               className="text-blue-600 underline decoration-solid"
-              href="https://github.com/wiyco/imap/issues/new?assignees=&labels=bug%2Ctriage&projects=&template=bug-report.yml&title=%5BBug%5D%3A+%7B%E6%A6%82%E8%A6%81%7D"
+              href="https://forms.gle/c1gosjcJZf5gTtvCA"
               target="_blank"
               rel="noopener noreferrer"
             >
-              バグの報告
+              フィードバックフォーム
             </a>
           </section>
         </article>
