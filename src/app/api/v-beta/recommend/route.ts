@@ -19,8 +19,7 @@ export async function GET(request: NextRequest) {
   const now = new Date();
   /**
    * 今の時間 (時間のみ)
-   * 1970-01-01 00:00:00+00 (Unix system time zero) [timestamp with time zone]
-   * @see {@link https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-DATETIME-SPECIAL-VALUES}
+   * @description TimeOnlyには日本時間を入れる
    */
   const nowTimeOnly = new TimeOnly(now.getHours(), now.getMinutes(), now.getSeconds());
 
@@ -119,14 +118,14 @@ export async function GET(request: NextRequest) {
       restaurant: {
         restaurantOpens: {
           some: {
-            weekTypeId: now.getDay(),
-            /** time BETWEEN timeOpen AND timeClose */
-            timeOpen: {
-              lte: nowTimeOnly,
-            },
-            timeClose: {
-              gte: nowTimeOnly,
-            },
+            weekTypeId: now.getUTCDay(), // Prisma's timezone is UTC
+            /** nowTimeOnly BETWEEN timeOpen AND timeClose */
+            // timeOpen: {
+            //   lte: nowTimeOnly,
+            // },
+            // timeClose: {
+            //   gte: nowTimeOnly,
+            // },
           },
         },
       },
@@ -157,6 +156,7 @@ export async function GET(request: NextRequest) {
               paymentType: true,
             },
           },
+          restaurantOpens: true,
         },
       },
     },
@@ -170,13 +170,37 @@ export async function GET(request: NextRequest) {
   //const items = recommendResponseSchema.parse(results);
 
   /**
+   * 営業中のお店の料理
+   * @todo PrismaでUTC以外('Asia/Tokyo')を扱えるようになれば、この処理は不要になる
+   */
+  const filterByTime = items.filter((item) => {
+    /**
+     * sort `restaurant.restaurantOpens` by weekTypeId (sort by day of the week)
+     * n*log(n) / worst case: n^2
+     */
+    item.restaurant.restaurantOpens = item.restaurant.restaurantOpens.sort(
+      (a, b) => a.weekTypeId - b.weekTypeId
+    );
+    /** 0: Sunday, 6: Saturday (the reason for sorting in the previous codes) */
+    const timeOpen = item.restaurant.restaurantOpens[now.getUTCDay()].timeOpen;
+    const timeClose = item.restaurant.restaurantOpens[now.getUTCDay()].timeClose;
+    /** nowTimeOnly BETWEEN timeOpen AND timeClose */
+    return (
+      new TimeOnly(timeOpen.getHours(), timeOpen.getMinutes(), timeOpen.getSeconds()) <=
+        nowTimeOnly &&
+      nowTimeOnly <=
+        new TimeOnly(timeClose.getHours(), timeClose.getMinutes(), timeClose.getSeconds())
+    );
+  });
+
+  /**
    * お昼休みの時間
    * @todo future: depends on organization
    */
   const lunchBreakTime = 45 * 60; // 45 minutes
 
   /** お昼休みの時間でいける範囲の料理 */
-  const logisticallyFeasibleDishes = items.filter(
+  const logisticallyFeasibleDishes = filterByTime.filter(
     (item) => item.restaurant.travelTime * 2 + item.eatTime <= lunchBreakTime
   );
 
@@ -187,7 +211,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(recommends);
   } else {
     /** ランダムシャッフル + 初めから5個 */
-    const recommends = shuffleDishes(items).slice(0, 5);
+    const recommends = shuffleDishes(filterByTime).slice(0, 5);
     return NextResponse.json(recommends);
   }
 }
