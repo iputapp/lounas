@@ -18,6 +18,10 @@ export async function POST() {
     email: email,
   });
 
+  /** AuthApiError: For security purposes, you can only request this once every 60 seconds */
+  if (error?.status === 429)
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+
   if (error || !data) return NextResponse.error();
 
   return NextResponse.json({ message: "ok" });
