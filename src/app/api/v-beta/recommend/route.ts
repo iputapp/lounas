@@ -26,9 +26,9 @@ export async function GET(request: NextRequest) {
   const now = new Date();
   /**
    * 今の時間 (時間のみ)
-   * @description TimeOnlyにはローカルタイムを入れる
+   * @description TimeOnlyにはローカルタイムを入れる？
    */
-  const nowTimeOnly = new TimeOnly(now.getHours(), now.getMinutes(), now.getSeconds());
+  const nowTimeOnly = new TimeOnly(now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
 
   /** 料理の値段 */
   const price = payload.data.price;
