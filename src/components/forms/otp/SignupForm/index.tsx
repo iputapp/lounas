@@ -31,7 +31,7 @@ const SignupForm = ({ className = "" }: SignupFormProps) => {
               control={control}
               label="学籍番号"
               required
-              inputProps={{ inputMode: "text", maxLength: 8 }}
+              inputProps={{ inputMode: "email", maxLength: 8 }}
             />
             <span className="absolute inset-y-0 right-0 my-auto h-fit text-neutral-800">
               @tks.iput.ac.jp
