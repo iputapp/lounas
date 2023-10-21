@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest) {
   const supabase = createMiddlewareClient({ req, res });
   const session = await supabase.auth.getSession();
 
-  console.log(session);
+  console.log(session.data.session?.user, session.data.session?.expires_in);
 
   /** signined */
   if (session.data.session) {
