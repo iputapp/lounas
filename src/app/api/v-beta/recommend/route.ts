@@ -191,6 +191,12 @@ export async function GET(request: NextRequest) {
     /** 0: Sunday, 6: Saturday (the reason for sorting in the previous codes) */
     const timeOpen = item.restaurant.restaurantOpens[now.getUTCDay()].timeOpen;
     const timeClose = item.restaurant.restaurantOpens[now.getUTCDay()].timeClose;
+    console.log("time", {
+      restaurant: item.restaurant.name,
+      now: nowTimeOnly,
+      open: new TimeOnly(timeOpen.getHours(), timeOpen.getMinutes(), timeOpen.getSeconds()),
+      close: new TimeOnly(timeClose.getHours(), timeClose.getMinutes(), timeClose.getSeconds()),
+    });
     /** nowTimeOnly BETWEEN timeOpen AND timeClose */
     return (
       new TimeOnly(timeOpen.getHours(), timeOpen.getMinutes(), timeOpen.getSeconds()) <=

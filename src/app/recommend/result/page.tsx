@@ -76,6 +76,7 @@ export default async function Page({
               <span>💡 現在時刻で営業中のお店のみ表示しております 💡</span>
               <span>
                 {new Date().toLocaleString("ja-JP", {
+                  timeZone: "Asia/Tokyo",
                   year: "numeric",
                   month: "short",
                   day: "numeric",
