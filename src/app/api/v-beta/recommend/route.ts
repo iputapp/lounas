@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
   const now = new Date();
   /**
    * 今の時間 (時間のみ)
-   * @description TimeOnlyには日本時間を入れる
+   * @description TimeOnlyにはローカルタイムを入れる
    */
   const nowTimeOnly = new TimeOnly(now.getHours(), now.getMinutes(), now.getSeconds());
 
