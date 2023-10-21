@@ -1,6 +1,12 @@
 import { z } from "zod";
 
-import { DishSchema, PaymentSchema, PaymentTypeSchema, RestaurantSchema } from "@/lib/zod";
+import {
+  DishSchema,
+  PaymentSchema,
+  PaymentTypeSchema,
+  RestaurantOpenSchema,
+  RestaurantSchema,
+} from "@/lib/zod";
 
 export const recommendRequestSchema = z.object({
   amount: z.union([z.literal("small"), z.literal("medium"), z.literal("large"), z.literal("any")]),
@@ -19,6 +25,7 @@ export const recommendResponseSchema = DishSchema.merge(
             paymentType: PaymentTypeSchema,
           })
         ).array(),
+        restaurantOpens: RestaurantOpenSchema.array(),
       })
     ),
   })
