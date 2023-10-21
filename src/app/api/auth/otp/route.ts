@@ -7,6 +7,9 @@ import { IPUT_STUDENT_DOMAIN } from "@/constants";
 import type { Signup } from ".";
 import { signupSchema } from ".";
 
+/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "force-dynamic";
+
 export async function POST(request: Request) {
   const cookieStore = cookies();
 
