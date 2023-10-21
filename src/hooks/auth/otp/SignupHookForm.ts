@@ -43,18 +43,26 @@ const SignupHookForm = () => {
     })
       .then((res) => {
         if (!res.ok) {
+          switch (res.status) {
+            case 429:
+              control.setError("studentId", {
+                type: "manual",
+                message: "リクエストが多すぎます。",
+              });
+              break;
+            default:
+              control.setError("studentId", {
+                type: "manual",
+                message: "通信に失敗しました。",
+              });
+          }
           console.error("Error!", res.status);
-          control.setError("studentId", {
-            type: "manual",
-            message: "メールの送信に失敗しました。メールアドレスを確認してください。",
-          });
           throw new Error(res.statusText);
         }
 
         router.push("/signup/verify");
       })
       .catch((err) => {
-        control.setError("studentId", { type: "manual", message: "通信に失敗しました。" });
         console.error("Error!", err);
       })
       .finally(() => {

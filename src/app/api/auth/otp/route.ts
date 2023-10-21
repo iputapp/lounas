@@ -32,6 +32,10 @@ export async function POST(request: Request) {
     },
   });
 
+  /** AuthApiError: For security purposes, you can only request this once every 60 seconds */
+  if (error?.status === 429)
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+
   if (error || !data) return NextResponse.error();
 
   /** store email to cookie */
@@ -42,7 +46,7 @@ export async function POST(request: Request) {
     sameSite: "strict",
     secure: true,
     httpOnly: true,
-    maxAge: 360, // 6 minutes
+    maxAge: 540, // 9 minutes
   });
 
   /** permit users access to the verify page */
@@ -53,7 +57,7 @@ export async function POST(request: Request) {
     sameSite: "strict",
     secure: true,
     httpOnly: true,
-    maxAge: 120, // 2 minutes
+    maxAge: 150, // 2 minutes 30 seconds
   });
 
   return NextResponse.json({ message: "ok" });
