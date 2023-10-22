@@ -192,7 +192,7 @@ export async function GET(request: NextRequest) {
       travelDistance: item.value.basic.travel_distance,
       timeOpen: item.value.basic.time_open,
       timeClose: item.value.basic.time_close,
-      payments: item.value.payments, // .sort((a, b) => a.type.localeCompare(b.type))
+      payments: item.value.payments.sort((a, b) => a.type.localeCompare(b.type)),
     },
   }));
 
