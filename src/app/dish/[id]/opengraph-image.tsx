@@ -20,19 +20,8 @@ export async function generateImageMetadata({ params }: { params: { id: string }
     },
   ];
 }
-// Route segment config
-export const runtime = "edge";
 
-// Image metadata
-export const alt = "About Acme";
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
-export const contentType = "image/png";
-
-// Image generation
+/** Image generation */
 export default function Image({ params, name }: { params: { id: string }; name: string }) {
   return new ImageResponse(<CldImg src={`dishes/id/${params.id}.webp`} alt={name} />);
 }
