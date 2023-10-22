@@ -8,11 +8,11 @@ export const metadata: Metadata = {
     template: "%s | lounas",
   },
   applicationName: "lounas",
-  description: "The Lunch Recommendation App for IPUT Students",
+  description: "The lunch recommendation app for IPUT students.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
   openGraph: {
     title: "lounas",
-    description: "The Lunch Recommendation App for IPUT Students",
+    description: "The lunch recommendation app for IPUT students.",
     type: "website",
     locale: "ja_JP",
     url: "/",
