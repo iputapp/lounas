@@ -25,6 +25,17 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
       locale: "ja_JP",
       url: new URL(`dish/${dish.id}`, process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
       siteName: "lounas",
+      images: [
+        {
+          url: new URL(
+            `dishes/id/${dish.id}.jpg`,
+            `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1697559133`
+          ),
+          width: 1024,
+          height: 768,
+          alt: `${dish.name} @${dish.restaurant.name}`,
+        },
+      ],
     },
   } as Metadata;
 }
