@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       creator: "@lounas_app",
       title: `${dish.name} @${dish.restaurant.name} | lounas`,
       description: description,
