@@ -49,8 +49,6 @@ export default async function Page({
   //   payment.sort((a, b) => a.type.localeCompare(b.type))
   // );
 
-  console.log(recommends);
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
