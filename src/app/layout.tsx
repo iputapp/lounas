@@ -17,6 +17,30 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: "/",
     siteName: "lounas",
+    images: [
+      {
+        type: "image/png",
+        url: "/favicon/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "lounas icon",
+      },
+    ],
+  },
+  twitter: {
+    card: "app",
+    creator: "@lounas_app",
+    title: "lounas",
+    description: "The lunch recommendation app for IPUT students.",
+    images: [
+      {
+        type: "image/png",
+        url: "/favicon/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "lounas icon",
+      },
+    ],
   },
   icons: {
     icon: [
