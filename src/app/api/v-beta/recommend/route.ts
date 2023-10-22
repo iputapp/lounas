@@ -1,7 +1,7 @@
-// import { revalidatePath } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-import { Prisma, prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 
 // import { TimeOnly } from "@/types/date";
 import {
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
   if (!payload.success) return NextResponse.error();
 
   /** @see {@link https://nextjs.org/docs/app/api-reference/functions/revalidatePath} */
-  // revalidatePath("/recommend/result");
+  revalidatePath("/recommend/result");
 
   /** 今 */
   // const now = new Date();
@@ -126,8 +126,7 @@ export async function GET(request: NextRequest) {
    * @todo Remove this when Prisma supports JST
    */
   /** query result */
-  const results = await prisma.$queryRaw<RecommendQuery[]>(
-    Prisma.sql`
+  const results = await prisma.$queryRaw<RecommendQuery[]>`
     select d.id, d.name, d.description, d.price, d.eat_time,
     r.id as restaurant_id, r.name as restaurant_name, r.description as restaurant_description,
     r.website, r.address, r.longitude, r.latitude, r.travel_time, r.travel_distance,
@@ -154,10 +153,9 @@ export async function GET(request: NextRequest) {
     in (
       select ds.dish_id from dish_scores as ds left outer join dish_traits as dt on ds.trait_id = dt.id
       where dt.name = ${traitFilter[1].type} and ds.score >= ${traitFilter[1].score.min} and ds.score < ${traitFilter[1].score.max}
-    )
-    ;
-    `
-  );
+    );
+  `;
+
   /** paymentをarrayプロパティにする */
   const resultsObject = results.reduce(
     (acc, cur) => {
