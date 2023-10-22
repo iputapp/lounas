@@ -10,6 +10,9 @@ import { PrivacyPlayer } from "@/components/lottie/Privacy";
 
 import styles from "./page.module.scss";
 
+/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "force-dynamic";
+
 async function getDataAgreement() {
   /** @todo cache settings */
   const dataAgreement = (await fetch("/api/v-beta/user/data-agreement", {
@@ -53,7 +56,10 @@ export default function Page() {
           console.error("Error!", res.status);
           throw new Error(res.statusText);
         }
-        console.log("We appreciate for your agreement!");
+        console.log(
+          "%cWe appreciate for your agreement! 🚀",
+          "color: #fff; font-size: 1.25rem; background-color: #07f; padding: 0.25rem 0.5rem; border-radius: 0.5rem;"
+        );
       })
       .catch((err) => console.error("Error!", err))
       .finally(() => {

@@ -8,15 +8,39 @@ export const metadata: Metadata = {
     template: "%s | lounas",
   },
   applicationName: "lounas",
-  description: "The Lunch Recommendation App for IPUT Students",
+  description: "The lunch recommendation app for IPUT students.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
   openGraph: {
     title: "lounas",
-    description: "The Lunch Recommendation App for IPUT Students",
+    description: "The lunch recommendation app for IPUT students.",
     type: "website",
     locale: "ja_JP",
     url: "/",
     siteName: "lounas",
+    images: [
+      {
+        type: "image/png",
+        url: "/favicon/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "lounas icon",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    creator: "@lounas_app",
+    title: "lounas",
+    description: "The lunch recommendation app for IPUT students.",
+    images: [
+      {
+        type: "image/png",
+        url: "/favicon/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "lounas icon",
+      },
+    ],
   },
   icons: {
     icon: [

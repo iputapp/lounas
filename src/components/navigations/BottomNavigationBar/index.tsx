@@ -34,7 +34,7 @@ export function BottomNavigationBar() {
         value={value}
         onChange={(event, value: string) => {
           setValue(value);
-          router.push(`${rootPath}/${value}`);
+          router.replace(`${rootPath}/${value}`);
         }}
         sx={{
           "&": {

@@ -41,7 +41,8 @@ export default function Page() {
           <section className="grid gap-5">
             <ol className="mx-auto grid w-fit list-decimal gap-4">
               <li>迷惑メールフォルダを確認する</li>
-              <li>ドメインを許可する</li>
+              <li>メールアドレスが正しいかを確認する</li>
+              <li>noreply@lounas.jp の受信を許可する</li>
               <li>ネットワーク状況を確認する</li>
             </ol>
             <span>解決しない場合は、恐れ入りますがサポートまでご連絡ください。</span>
@@ -49,11 +50,11 @@ export default function Page() {
           <section className="mx-auto">
             <a
               className="text-blue-600 underline decoration-solid"
-              href="https://github.com/wiyco/imap/issues/new?assignees=&labels=bug%2Ctriage&projects=&template=bug-report.yml&title=%5BBug%5D%3A+%7B%E6%A6%82%E8%A6%81%7D"
+              href="https://forms.gle/c1gosjcJZf5gTtvCA"
               target="_blank"
               rel="noopener noreferrer"
             >
-              バグの報告
+              フィードバックフォーム
             </a>
           </section>
         </article>

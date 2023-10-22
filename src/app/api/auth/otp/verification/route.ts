@@ -5,6 +5,9 @@ import { NextResponse } from "next/server";
 import type { Verification } from ".";
 import { verificationSchema } from ".";
 
+/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
+export const dynamic = "force-dynamic";
+
 export async function POST(request: Request) {
   const cookieStore = cookies();
 
@@ -15,7 +18,7 @@ export async function POST(request: Request) {
 
   const email = cookieStore.get("email")?.value;
 
-  if (!email) return NextResponse.error();
+  if (!email) return NextResponse.json({ error: "Request timeout" }, { status: 408 });
 
   const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
   const { data, error } = await supabase.auth.verifyOtp({
@@ -23,6 +26,13 @@ export async function POST(request: Request) {
     email: email,
     token: payload.data.password,
   });
+
+  /** AuthApiError: For security purposes, you can only request this once every 60 seconds */
+  if (error?.status === 429)
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+
+  /** AuthApiError: Token has expired or is invalid */
+  if (error?.status === 401) return NextResponse.json({ error: "Invalid token" }, { status: 401 });
 
   if (error || !data) return NextResponse.error();
 
