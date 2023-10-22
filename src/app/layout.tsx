@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "app",
+    card: "summary",
     creator: "@lounas_app",
     title: "lounas",
     description: "The lunch recommendation app for IPUT students.",
