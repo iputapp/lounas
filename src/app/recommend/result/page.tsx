@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { RecommendResponse } from "@/app/api/v-beta/recommend";
+import { RecommendResponseF } from "@/app/api/v-beta/recommend";
 import { RectButton } from "@/components/buttons/RectButton";
 import { CardHorizontal } from "@/components/cards/CardHorizontal";
-import { PaymentShort, PaymentType } from "@/components/lists/PaymentShort";
+import { PaymentShort } from "@/components/lists/PaymentShort";
 
 import styles from "./page.module.scss";
 
@@ -23,7 +23,7 @@ async function getRecommend(params: URLSearchParams) {
     .catch((err) => {
       console.error(err);
       return notFound();
-    })) as RecommendResponse[];
+    })) as RecommendResponseF[];
 
   return recommends;
 }
@@ -39,15 +39,15 @@ export default async function Page({
   const recommends = await getRecommend(params);
 
   /** 支払方法 */
-  const payments = recommends.map((item) => {
-    return item.restaurant.payments.map((payment) => ({
-      type: payment.paymentType.name as PaymentType,
-      accepted: payment.accepted,
-    }));
-  });
-  const sortedPayments = payments.map((payment) =>
-    payment.sort((a, b) => a.type.localeCompare(b.type))
-  );
+  // const payments = recommends.map((item) => {
+  //   return item.restaurant.payments.map((payment) => ({
+  //     type: payment.paymentType.name as PaymentType,
+  //     accepted: payment.accepted,
+  //   }));
+  // });
+  // const sortedPayments = payments.map((payment) =>
+  //   payment.sort((a, b) => a.type.localeCompare(b.type))
+  // );
 
   return (
     <div className={styles.container}>
@@ -58,12 +58,12 @@ export default async function Page({
         <div className={styles.content}>
           {recommends.map((recommend, index) => (
             <CardHorizontal
-              key={recommend.id}
-              url={`/dish/${recommend.id}`}
-              title={recommend.name}
+              key={recommend.dish.id}
+              url={`/dish/${recommend.dish.id}`}
+              title={recommend.dish.name}
               tag={index + 1}
-              image={`dishes/id/${recommend.id}.webp`}
-              description={<PaymentShort payments={sortedPayments[index]} />}
+              image={`dishes/id/${recommend.dish.id}.webp`}
+              description={<PaymentShort payments={recommend.restaurant.payments} />}
             />
           ))}
         </div>
@@ -73,9 +73,10 @@ export default async function Page({
             <span className={styles.title}>検索結果: 0件</span>
             <div className={styles.description}>
               <span>ご希望に沿う料理は見つかりませんでした...</span>
-              <span>💡 現在時刻で営業中のお店のみ表示しております 💡</span>
+              <span>💡 営業中のお店のみ表示しております 💡</span>
               <span>
                 {new Date().toLocaleString("ja-JP", {
+                  timeZone: "Asia/Tokyo",
                   year: "numeric",
                   month: "short",
                   day: "numeric",

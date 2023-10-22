@@ -1,7 +1,7 @@
 {
   "name": "lounas",
   "short_name": "lounas",
-  "description": "The Lunch Recommendation App for IPUT Students",
+  "description": "The lunch recommendation app for IPUT students.",
   "icons": [
     {
       "src": "/favicon/android-chrome-192x192.png",
