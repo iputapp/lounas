@@ -9,7 +9,20 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   ).then((res) => res.json())) as Restaurant;
   return {
     title: restaurant.name,
-    description: "ログインユーザーのみ閲覧可能なページです。",
+    description:
+      "The lunch recommendation app for IPUT students.\nログインユーザーのみ閲覧可能なページです。",
+    openGraph: {
+      title: `${restaurant.name} | lounas`,
+      description:
+        "The lunch recommendation app for IPUT students.\nログインユーザーのみ閲覧可能なページです。",
+      type: "website",
+      locale: "ja_JP",
+      url: new URL(
+        `restaurant/${restaurant.id}`,
+        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+      ),
+      siteName: "lounas",
+    },
   } as Metadata;
 }
 
