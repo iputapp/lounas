@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 import { Prisma, prisma } from "@/lib/prisma";
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
   if (!payload.success) return NextResponse.error();
 
   /** @see {@link https://nextjs.org/docs/app/api-reference/functions/revalidatePath} */
-  revalidatePath("/recommend/result");
+  // revalidatePath("/recommend/result");
 
   /** 今 */
   // const now = new Date();
