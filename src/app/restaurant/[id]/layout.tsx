@@ -10,11 +10,11 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   return {
     title: restaurant.name,
     description:
-      "The lunch recommendation app for IPUT students.\nログインユーザーのみ閲覧可能なページです。",
+      "The lunch recommendation app for IPUT students.\n\nログインユーザーのみ閲覧可能なページです。",
     openGraph: {
       title: `${restaurant.name} | lounas`,
       description:
-        "The lunch recommendation app for IPUT students.\nログインユーザーのみ閲覧可能なページです。",
+        "The lunch recommendation app for IPUT students.\n\nログインユーザーのみ閲覧可能なページです。",
       type: "website",
       locale: "ja_JP",
       url: new URL(

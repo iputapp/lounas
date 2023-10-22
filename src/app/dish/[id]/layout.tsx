@@ -9,10 +9,14 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   ).then((res) => res.json())) as Dish;
   return {
     title: `${dish.name} @${dish.restaurant.name}`,
-    description: `The lunch recommendation app for IPUT students.\n料理：${dish.name}\nお店：${dish.restaurant.name}`,
+    description: `The lunch recommendation app for IPUT students.\n\n料理『${dish.name}』\nお店『${
+      dish.restaurant.name
+    }』\n値段『${dish.price.toLocaleString()}円』`,
     openGraph: {
       title: `${dish.name} @${dish.restaurant.name} | lounas`,
-      description: `The lunch recommendation app for IPUT students.\n料理：${dish.name}\nお店：${dish.restaurant.name}`,
+      description: `The lunch recommendation app for IPUT students.\n\n料理『${
+        dish.name
+      }』\nお店『${dish.restaurant.name}』\n値段『${dish.price.toLocaleString()}円』`,
       type: "website",
       locale: "ja_JP",
       url: new URL(`dish/${dish.id}`, process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
