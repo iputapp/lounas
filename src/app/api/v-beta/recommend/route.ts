@@ -1,7 +1,7 @@
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-import { prisma } from "@/lib/prisma";
+import { Prisma, prisma } from "@/lib/prisma";
 
 // import { TimeOnly } from "@/types/date";
 import {
@@ -126,7 +126,8 @@ export async function GET(request: NextRequest) {
    * @todo Remove this when Prisma supports JST
    */
   /** query result */
-  const results = await prisma.$queryRaw<RecommendQuery[]>`
+  const results = await prisma.$queryRaw<RecommendQuery[]>(
+    Prisma.sql`
     select d.id, d.name, d.description, d.price, d.eat_time,
     r.id as restaurant_id, r.name as restaurant_name, r.description as restaurant_description,
     r.website, r.address, r.longitude, r.latitude, r.travel_time, r.travel_distance,
@@ -154,7 +155,8 @@ export async function GET(request: NextRequest) {
       select ds.dish_id from dish_scores as ds left outer join dish_traits as dt on ds.trait_id = dt.id
       where dt.name = ${traitFilter[1].type} and ds.score >= ${traitFilter[1].score.min} and ds.score < ${traitFilter[1].score.max}
     );
-  `;
+  `
+  );
 
   /** paymentをarrayプロパティにする */
   const resultsObject = results.reduce(
