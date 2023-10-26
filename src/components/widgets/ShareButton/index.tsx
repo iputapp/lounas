@@ -57,7 +57,7 @@ export function ShareButton() {
     <>
       <div className="mt-2 grid w-fit justify-items-center gap-1.5">
         <button
-          className="rounded-full border border-neutral-500 py-1.5 pe-2 ps-1"
+          className="select-none rounded-full border border-neutral-500 py-1.5 pe-2 ps-1"
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onClick={(e) => handleClick(e, { vertical: "bottom", horizontal: "center" })}
         >

@@ -60,9 +60,10 @@ export function FavButton() {
 
   return (
     <>
-      <div className="mt-2 grid w-fit justify-items-center gap-1.5 blur-sm">
+      {/* delete `relative`, `blur-[3px]`, `span` element (※開発中🚀 with absolute class) in final ver. */}
+      <div className="relative mt-2 grid w-fit justify-items-center gap-1.5">
         <button
-          className="rounded-full border border-neutral-500 p-1.5"
+          className="select-none rounded-full border border-neutral-500 p-1.5 blur-[3px]"
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onClick={(e) => handleClick(e, { vertical: "bottom", horizontal: "center" })}
           disabled={true}
@@ -72,6 +73,7 @@ export function FavButton() {
           </span>
         </button>
         <span className="text-xs text-neutral-700">お気に入り</span>
+        <span className="absolute m-3 text-xs text-neutral-700">※開発中🚀</span>
       </div>
       <Snackbar
         key={state.origin.vertical + state.origin.horizontal}
