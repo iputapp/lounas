@@ -8,6 +8,8 @@ import { RectButton } from "@/components/buttons/RectButton";
 import { Card } from "@/components/cards/Card";
 import { ExpandablePanel } from "@/components/layouts/ExpandablePanel";
 import { PaymentLong, PaymentType } from "@/components/lists/PaymentLong";
+import { FavButton } from "@/components/widgets/FavButton";
+import { ShareButton } from "@/components/widgets/ShareButton";
 
 // import { DecideButton } from "./client";
 import styles from "./page.module.scss";
@@ -121,6 +123,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         </ExpandablePanel>
       </div>
       <div className={styles.footer}>
+        <FavButton />
         <div className={styles.button}>
           {/* <DecideButton dish={dish} /> */}
           <RectButton color="blue">
@@ -134,6 +137,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             </Link>
           </RectButton>
         </div>
+        <ShareButton />
       </div>
     </div>
   );

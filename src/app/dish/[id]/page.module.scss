@@ -8,7 +8,7 @@
 
   .header {
     @apply w-fit
-      select-none text-3xl font-bold;
+      text-3xl font-bold;
   }
 
   .content {
@@ -19,10 +19,14 @@
   }
 
   .footer {
-    @apply w-full;
+    @apply mx-auto flex w-full max-w-sm items-start justify-between;
+
+    & > *:not(.button) {
+      min-width: 6rem; // w-24
+    }
 
     .button {
-      @apply mx-auto w-fit;
+      @apply w-fit;
     }
   }
 }
