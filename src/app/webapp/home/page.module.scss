@@ -17,7 +17,7 @@
 
   & > .title {
     @apply w-fit
-      select-none text-4xl font-bold;
+      text-4xl font-bold;
 
     color: transparent;
     background: linear-gradient(135deg, #fff 50%, var.$primary 50%);
