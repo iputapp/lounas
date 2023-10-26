@@ -19,10 +19,14 @@
   }
 
   .footer {
-    @apply w-full;
+    @apply mx-auto flex w-full max-w-sm items-start justify-between;
+
+    & > *:not(.button) {
+      min-width: 6rem; // w-24
+    }
 
     .button {
-      @apply mx-auto w-fit;
+      @apply w-fit;
     }
   }
 }
