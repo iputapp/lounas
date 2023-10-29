@@ -83,7 +83,7 @@ export default function Page() {
         <div className={styles.choice}>
           <div className={styles.query}>
             <span>同意いただけない場合は</span>
-            <span>ランキング機能のみのご利用になります。</span>
+            <span>一部の機能に制限がございます。</span>
           </div>
           <div className={styles.button}>
             {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
