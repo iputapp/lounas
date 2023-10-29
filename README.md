@@ -70,8 +70,8 @@ NEXT_PUBLIC_SUPABASE_URL=https://yourprojecturl.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=YourApiKey
 
 # postgres
-DATABASE_URL=postgresql://postgres:[pw]@db.[url].supabase.co:5432/postgres?schema=public
-DIRECT_URL=postgresql://postgres:[pw]@db.[url].supabase.co:5432/postgres?pgbouncer=true
+DATABASE_URL=postgresql://postgres:[pw]@db.[url].supabase.co:6543/postgres?pgbouncer=true
+DIRECT_URL=postgresql://postgres:[pw]@db.[url].supabase.co:5432/postgres
 ```
 
 ### Code formatter

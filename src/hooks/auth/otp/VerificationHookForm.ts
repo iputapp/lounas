@@ -55,7 +55,7 @@ const VerificationHookForm = () => {
             case 401:
               control.setError("password", {
                 type: "manual",
-                message: "確認コードが無効です。",
+                message: "無効な確認コードです。",
               });
               break;
             case 408:
