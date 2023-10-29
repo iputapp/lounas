@@ -19,7 +19,10 @@ const SignupHookForm = () => {
   } = useForm<Signup>({
     mode: "onChange",
     reValidateMode: "onChange",
-    defaultValues: undefined,
+    defaultValues: {
+      studentId: undefined,
+      agreePolicy: true /** @todo 同意したとみなします (削除要検討) @see SignupForm */,
+    },
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     resolver: zodResolver(signupSchema),
   });

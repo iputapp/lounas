@@ -26,7 +26,7 @@ export default function NotFound() {
           src="/images/not-found-penguin.png"
           alt="not-found-penguin"
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80vw"
+          sizes="(max-width: 768px) 80vw, (max-width: 1200px) 80vw, 80vw"
           priority
         />
       </div>

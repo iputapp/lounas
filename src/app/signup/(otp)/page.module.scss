@@ -29,7 +29,7 @@
 .container {
   @apply grid h-full w-full
     content-center
-    gap-10 pt-12;
+    gap-8 pt-12;
 
   .head {
     @apply grid w-full
@@ -40,6 +40,16 @@
       @apply text-4xl font-bold;
 
       color: var.$primary;
+
+      & > .logo {
+        @apply text-9xl;
+
+        & > svg {
+          @apply h-full;
+
+          aspect-ratio: 7 / 2;
+        }
+      }
     }
 
     & > .description {
@@ -54,7 +64,7 @@
     @apply mx-auto
       grid max-w-sm
       justify-items-center
-      gap-[1.875rem];
+      gap-6;
 
     width: 80%;
   }
@@ -62,7 +72,7 @@
   .additional {
     @apply grid w-full
       justify-items-center
-      gap-5;
+      gap-4;
 
     & > .main {
       @apply w-fit
