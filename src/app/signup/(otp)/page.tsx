@@ -1,5 +1,6 @@
 "use client";
 
+import LogoFullColorBeta from "@icons/logo-full-color-beta.svg";
 import NavArrowLeft from "@icons/nav-arrow-left.svg";
 import NavArrowRight from "@icons/nav-arrow-right.svg";
 import Link from "next/link";
@@ -15,8 +16,12 @@ export default function Page() {
       <CirclesTopLeft />
       <div className={styles.container}>
         <div className={styles.head}>
-          <h1 className={styles.title}>ログイン</h1>
-          <span className={styles.description}>登録もこちらから！</span>
+          <h1 className={styles.title}>
+            <span className={styles.logo}>
+              <LogoFullColorBeta />
+            </span>
+          </h1>
+          <span className={styles.description}>登録 / ログイン</span>
         </div>
         <SignupForm className={styles.form} />
         <div className={styles.tos}>

@@ -9,6 +9,7 @@ import type { ReactHookFormProps } from "@/types";
 
 type BasicCheckboxProps<T extends FieldValues> = ReactHookFormProps<T> & {
   required?: boolean;
+  defaultChecked?: boolean;
 };
 
 const BasicCheckbox = <T extends FieldValues>({
@@ -16,6 +17,7 @@ const BasicCheckbox = <T extends FieldValues>({
   control,
   label,
   required = false,
+  defaultChecked,
 }: BasicCheckboxProps<T>) => {
   const {
     field,
@@ -36,6 +38,7 @@ const BasicCheckbox = <T extends FieldValues>({
             name={field.name}
             onChange={field.onChange}
             onBlur={field.onBlur}
+            defaultChecked={defaultChecked}
           />
         }
         label={label}

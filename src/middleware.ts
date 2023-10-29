@@ -53,7 +53,7 @@ export async function middleware(req: NextRequest) {
 
       /** remove access permissions to the verify page */
       res.cookies.delete("verify");
-      return;
+      return res;
     }
 
     /** ----- settings ----- */
@@ -89,6 +89,9 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(`${reqUrl.origin}`);
     }
   }
+
+  /** refreshing session */
+  return res;
 }
 
 export const config = {
