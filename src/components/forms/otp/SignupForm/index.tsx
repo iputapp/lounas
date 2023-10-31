@@ -34,7 +34,7 @@ const SignupForm = ({ className = "" }: SignupFormProps) => {
               required
               inputProps={{ inputMode: "numeric", maxLength: 8 }}
             />
-            <span className="absolute inset-y-0 right-0 my-auto h-fit text-neutral-800">
+            <span className="absolute inset-y-0 right-0 my-auto h-fit select-none text-neutral-800">
               @tks.iput.ac.jp
             </span>
           </div>
