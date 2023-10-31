@@ -2,33 +2,39 @@
 
 @keyframes hologram-arrow {
   0% {
-    width: 3rem; // arrow * 2
-    transform: scaleY(0) translateX(4rem); // (w-44(11rem) - 2 * 1.5rem) / 2
+    left: 4rem;
+    width: 3rem; // arrow(1.5rem) * 2
+    transform: scaleY(0); // (w-44(11rem) - 2 * arrow(1.5rem)) / 2
   }
 
-  17.5% {
+  20% {
+    left: 4rem;
     width: 3rem;
-    transform: scaleY(1) translateX(4rem);
+    transform: scaleY(1);
   }
 
   35% {
+    left: 0;
     width: 11rem; // w-44
-    transform: scaleY(1) translateX(0);
+    transform: scaleY(1);
   }
 
   65% {
+    left: 0;
     width: 11rem;
-    transform: scaleY(1) translateX(0);
+    transform: scaleY(1);
   }
 
-  82.5% {
+  80% {
+    left: 4rem;
     width: 3rem;
-    transform: scaleY(1) translateX(4rem);
+    transform: scaleY(1);
   }
 
   100% {
+    left: 4rem;
     width: 3rem;
-    transform: scaleY(0) translateX(4rem);
+    transform: scaleY(0);
   }
 }
 
@@ -37,7 +43,7 @@
     transform: scaleX(0);
   }
 
-  17.5% {
+  25% {
     transform: scaleX(0);
   }
 
@@ -49,7 +55,7 @@
     transform: scaleX(1);
   }
 
-  82.5% {
+  75% {
     transform: scaleX(0);
   }
 
@@ -131,6 +137,8 @@
 
         transform-origin: center bottom;
         animation: hologram-arrow 3.8s cubic-bezier(0.83, 0, 0.17, 1) infinite both; // easeInOutQuint
+        will-change: transform, width, left; // for performance
+        backface-visibility: hidden; // for performance
       }
 
       & > span {
@@ -138,7 +146,7 @@
           h-6
           overflow-clip;
 
-        width: 8rem; // w-44(11rem) - 2 * 1.5rem
+        width: 8rem; // w-44(11rem) - 2 * arrow(1.5rem)
         transform-origin: center bottom;
         animation: hologram-text 3.8s cubic-bezier(0.83, 0, 0.17, 1) infinite both; // easeInOutQuint
       }
