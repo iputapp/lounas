@@ -26,13 +26,15 @@ export default function Page() {
         <SignupForm className={styles.form} />
         <div className={styles.tos}>
           <Link href={"/tos"} target="_blank" rel="noopener noreferrer">
-            <span>
-              <NavArrowRight />
-            </span>
+            <div>
+              <span>
+                <NavArrowRight />
+              </span>
+              <span>
+                <NavArrowLeft />
+              </span>
+            </div>
             <span>利用規約はこちら</span>
-            <span>
-              <NavArrowLeft />
-            </span>
           </Link>
         </div>
         <div className={styles.additional}>

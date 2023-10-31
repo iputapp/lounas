@@ -1,23 +1,55 @@
 @use "variables" as var;
 
-@keyframes shrink-x {
+@keyframes hologram-arrow {
+  0% {
+    width: 3rem;
+    transform: scaleY(0) translateX(4rem); // // (w-44(11rem) - 2 * 1.5rem) / 2
+  }
+
+  17.5% {
+    width: 3rem;
+    transform: scaleY(1) translateX(4rem);
+  }
+
+  35% {
+    width: 11rem; // w-44
+    transform: scaleY(1) translateX(0);
+  }
+
+  65% {
+    width: 11rem;
+    transform: scaleY(1) translateX(0);
+  }
+
+  82.5% {
+    width: 3rem;
+    transform: scaleY(1) translateX(4rem);
+  }
+
+  100% {
+    width: 3rem;
+    transform: scaleY(0) translateX(4rem);
+  }
+}
+
+@keyframes hologram-text {
   0% {
     transform: scaleX(0);
   }
 
-  5% {
+  17.5% {
     transform: scaleX(0);
   }
 
-  20% {
+  35% {
     transform: scaleX(1);
   }
 
-  80% {
+  65% {
     transform: scaleX(1);
   }
 
-  95% {
+  82.5% {
     transform: scaleX(0);
   }
 
@@ -34,7 +66,7 @@
   .head {
     @apply grid w-full
       justify-items-center
-      gap-2.5;
+      gap-1.5;
 
     .title {
       @apply text-4xl font-bold;
@@ -87,13 +119,29 @@
   .tos {
     @apply w-full;
 
-    & > * {
-      @apply mx-auto flex
-        w-fit items-center
-        space-x-1
-        text-blue-600;
+    & > a {
+      @apply relative
+        mx-auto block h-6 w-44
+        text-base text-blue-600;
 
-      animation: shrink-x 3.8s cubic-bezier(0.83, 0, 0.17, 1) infinite both; // easeInOutQuint
+      & > div {
+        @apply absolute
+          flex items-center justify-between 
+          overflow-clip;
+
+        transform-origin: center bottom;
+        animation: hologram-arrow 3.8s cubic-bezier(0.83, 0, 0.17, 1) infinite both; // easeInOutQuint
+      }
+
+      & > span {
+        @apply absolute left-6
+          h-6
+          overflow-clip;
+
+        width: 8rem; // w-44(11rem) - 2 * 1.5rem
+        transform-origin: center bottom;
+        animation: hologram-text 3.8s cubic-bezier(0.83, 0, 0.17, 1) infinite both; // easeInOutQuint
+      }
     }
   }
 }
