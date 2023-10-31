@@ -32,20 +32,37 @@ export default function Page() {
         <DummyPanel>
           <div className="grid gap-4 text-neutral-800">
             <section className="grid justify-items-center">
-              <p>このアプリについて</p>
+              <span>このサービスについて</span>
             </section>
-            <section>
-              <p>
-                {"　"}私たちは、多様なバックグラウンドや経験を持つ個々の個人から成るグループです。
-              </p>
-              <p>
-                {"　"}
-                共に協力し合い、様々な問題を解決していく中で、私たちの成長と共に、より良い未来を築くことを目標としています。
-              </p>
-              <p>
-                {"　"}
-                互いに尊重し、協力し、理解し合うことを大切にし、さまざまな視点からアイデアを活用していきます。
-              </p>
+            <section className="grid gap-2">
+              <div className="grid gap-1">
+                <p>「lounas」は学生の短い昼食時間をより豊かにすることを目的としています。</p>
+                <p>以下の機能を備えることで実現を目指します。</p>
+              </div>
+              <ul className="mx-auto grid w-[90%] list-['・'] gap-2 py-3">
+                <li>あなたの今の気持ちを元におすすめ</li>
+                <li>徒歩7分圏内のお店のみ</li>
+                <li>シンプルで絶対に迷わないルート案内</li>
+              </ul>
+              <div className="grid gap-1">
+                <p>ぜひご利用ください！</p>
+              </div>
+              <div className="hidden text-xs">
+                <p className="flex items-center justify-between">
+                  <span className="italic">Do not try to do everything. Do one thing well.</span>
+                  <span>– Steve Jobs</span>
+                </p>
+                <p className="flex items-center justify-between">
+                  <span className="italic">The biggest risk is not taking any risk.</span>
+                  <span>– Mark Zuckerberg</span>
+                </p>
+                <p className="flex items-center justify-between">
+                  <span className="italic">
+                    Many things are improbable, only a few are impossible.
+                  </span>
+                  <span>– Elon Musk</span>
+                </p>
+              </div>
             </section>
           </div>
         </DummyPanel>
