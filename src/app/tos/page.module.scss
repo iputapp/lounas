@@ -1,0 +1,14 @@
+@use "variables" as var;
+
+.gradient-border-b {
+  border-bottom: 2px solid var.$secondary;
+  border-image-source: linear-gradient(
+    to right,
+    var.$blue,
+    var.$cyan,
+    var.$lime 69%,
+    rgb(0 0 0 / 10%) 70%,
+    rgb(0 0 0 / 0%)
+  );
+  border-image-slice: 1;
+}
