@@ -2,7 +2,7 @@
 
 @keyframes hologram-arrow {
   0% {
-    width: 3rem;
+    width: 3rem; // arrow * 2
     transform: scaleY(0) translateX(4rem); // // (w-44(11rem) - 2 * 1.5rem) / 2
   }
 
