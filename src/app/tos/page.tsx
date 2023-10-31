@@ -1,14 +1,9 @@
+import styles from "./page.module.scss";
+
 export default function Page() {
   return (
     <div className="mx-auto grid max-w-3xl gap-8 px-5 py-8">
-      <div
-        className="grid w-full gap-0 border-b-2 border-b-neutral-500"
-        style={{
-          borderImageSource:
-            "linear-gradient(to right, #07f, #00dcff, #00ffb1 69%, rgb(0 0 0 / 10%) 70%, rgb(0 0 0 / 0%))",
-          borderImageSlice: 1,
-        }}
-      >
+      <div className={`grid w-full ${styles.gradientBorderB}`}>
         <h1 className="text-3xl font-bold text-neutral-800">利用規約</h1>
         <h2 className="text-sm font-semibold text-neutral-600">Terms of Service</h2>
       </div>

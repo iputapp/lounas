@@ -21,7 +21,7 @@ export function FavButton() {
     message: null,
     origin: {
       vertical: "bottom",
-      horizontal: "center",
+      horizontal: "left",
     },
     error: null,
   });
@@ -65,7 +65,7 @@ export function FavButton() {
         <button
           className="select-none rounded-full border border-neutral-500 p-1.5 blur-[3px]"
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          onClick={(e) => handleClick(e, { vertical: "bottom", horizontal: "center" })}
+          onClick={(e) => handleClick(e, { vertical: "bottom", horizontal: "left" })}
           disabled={true}
         >
           <span className="text-xl text-[#07f]">
@@ -73,7 +73,7 @@ export function FavButton() {
           </span>
         </button>
         <span className="text-xs text-neutral-700">お気に入り</span>
-        <span className="absolute m-3 text-xs text-neutral-700">※開発中🚀</span>
+        <span className="absolute m-3 text-xs font-semibold text-neutral-700">開発中</span>
       </div>
       <Snackbar
         key={state.origin.vertical + state.origin.horizontal}
