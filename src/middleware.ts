@@ -41,9 +41,9 @@ export async function middleware(req: NextRequest) {
     }
   } else {
     /** ----- root ----- */
-    if (reqNextPath === "/") {
-      return NextResponse.redirect(`${reqUrl.origin}/signup`);
-    }
+    // if (reqNextPath === "/") {
+    //   return NextResponse.redirect(`${reqUrl.origin}/signup`);
+    // }
 
     /** ----- auth ----- */
     /** /signup/verify */
