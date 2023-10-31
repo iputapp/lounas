@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -48,6 +49,9 @@ export default async function Page({
   // const sortedPayments = payments.map((payment) =>
   //   payment.sort((a, b) => a.type.localeCompare(b.type))
   // );
+
+  /** @see {@link https://nextjs.org/docs/app/api-reference/functions/revalidatePath} */
+  revalidatePath("/recommend/result", "page");
 
   return (
     <div className={styles.container}>
