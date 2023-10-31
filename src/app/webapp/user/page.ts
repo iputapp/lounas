@@ -13,7 +13,8 @@ export default async function Page() {
   const supabase = createServerComponentClient({ cookies: () => cookieStore });
   const session = await supabase.auth.getSession();
 
-  revalidatePath("/webapp/user");
+  /** @see {@link https://nextjs.org/docs/app/api-reference/functions/revalidatePath} */
+  revalidatePath("/webapp/user", "page");
 
   if (session.data.session) {
     return redirect("/webapp/user/signout", RedirectType.replace);
