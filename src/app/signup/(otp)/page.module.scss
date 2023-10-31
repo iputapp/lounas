@@ -1,23 +1,61 @@
 @use "variables" as var;
 
-@keyframes shrink-x {
+@keyframes hologram-arrow {
+  0% {
+    left: 4rem; // (w-44(11rem) - 2 * arrow(1.5rem)) / 2
+    width: 3rem; // arrow(1.5rem) * 2
+    transform: scaleY(0);
+  }
+
+  20% {
+    left: 4rem;
+    width: 3rem;
+    transform: scaleY(1);
+  }
+
+  35% {
+    left: 0;
+    width: 11rem; // w-44
+    transform: scaleY(1);
+  }
+
+  65% {
+    left: 0;
+    width: 11rem;
+    transform: scaleY(1);
+  }
+
+  80% {
+    left: 4rem;
+    width: 3rem;
+    transform: scaleY(1);
+  }
+
+  100% {
+    left: 4rem;
+    width: 3rem;
+    transform: scaleY(0);
+  }
+}
+
+@keyframes hologram-text {
   0% {
     transform: scaleX(0);
   }
 
-  5% {
+  25% {
     transform: scaleX(0);
   }
 
-  20% {
+  35% {
     transform: scaleX(1);
   }
 
-  80% {
+  65% {
     transform: scaleX(1);
   }
 
-  95% {
+  75% {
     transform: scaleX(0);
   }
 
@@ -34,7 +72,7 @@
   .head {
     @apply grid w-full
       justify-items-center
-      gap-2.5;
+      gap-1.5;
 
     .title {
       @apply text-4xl font-bold;
@@ -87,13 +125,31 @@
   .tos {
     @apply w-full;
 
-    & > * {
-      @apply mx-auto flex
-        w-fit items-center
-        space-x-1
-        text-blue-600;
+    & > a {
+      @apply relative
+        mx-auto block h-6 w-44
+        text-base text-blue-600;
 
-      animation: shrink-x 3.8s cubic-bezier(0.83, 0, 0.17, 1) infinite both; // easeInOutQuint
+      & > div {
+        @apply absolute
+          flex items-center justify-between 
+          overflow-clip;
+
+        transform-origin: center bottom;
+        animation: hologram-arrow 3.8s cubic-bezier(0.83, 0, 0.17, 1) infinite both; // easeInOutQuint
+        will-change: transform, width, left; // for performance
+        backface-visibility: hidden; // for performance
+      }
+
+      & > span {
+        @apply absolute left-6
+          h-6
+          overflow-clip;
+
+        width: 8rem; // w-44(11rem) - 2 * arrow(1.5rem)
+        transform-origin: center bottom;
+        animation: hologram-text 3.8s cubic-bezier(0.83, 0, 0.17, 1) infinite both; // easeInOutQuint
+      }
     }
   }
 }
