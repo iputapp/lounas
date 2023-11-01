@@ -1,0 +1,376 @@
+@use "variables" as var;
+
+$container: 56rem; // max-w-4xl
+
+/* common styles */
+.neumo {
+  /* neumorphism */
+  --neumo-shadow: 0 -10px 15px -3px rgb(255 255 255 / 10%), 0 -4px 6px -4px rgb(255 255 255 / 10%);
+  --neumo-shadow-colored: 0 -10px 15px -3px rgb(255 255 255), 0 -4px 6px -4px rgb(255 255 255);
+
+  /* shadow-lg-xl */
+  --tw-shadow: 0 15px 20px -4px rgb(0 0 0 / 10%), 0 6px 8px -5px rgb(0 0 0 / 10%);
+  --tw-shadow-colored: 0 15px 20px -4px var(--tw-shadow-color),
+    0 6px 8px -5px var(--tw-shadow-color);
+
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow), var(--neumo-shadow), var(--neumo-shadow-colored);
+}
+
+/* component styles */
+.lounas {
+  @apply text-6xl;
+
+  svg {
+    @apply w-fit;
+
+    aspect-ratio: 767 / 256;
+  }
+}
+
+.app-link {
+  @apply w-fit
+    rounded-full px-5 py-3.5
+    font-bold;
+
+  color: #fff;
+  background-color: var.$blue;
+}
+
+.border-round-icon {
+  @apply flex items-center justify-center space-x-1.5 rounded-full px-4 py-3;
+
+  background-color: rgb(255 255 255 / 25%);
+  backdrop-filter: brightness(1.2);
+  border: 1.5px solid rgb(115 115 115 / 50%); // neutral-500
+
+  & > :nth-child(1) {
+    @apply text-base;
+
+    color: #0014ff;
+  }
+
+  & > :nth-child(2) {
+    @apply text-xs font-medium;
+
+    color: var.$primary;
+  }
+}
+
+/* page styles */
+.container {
+  @apply relative mx-auto overflow-x-clip;
+
+  width: 100%;
+  max-width: $container;
+  background-color: var.$bg-primary;
+}
+
+.bg-demo {
+  @apply -z-10
+    grid grid-cols-5 grid-rows-1;
+
+  width: $container;
+  transform: translate(0%, -27.5%) rotate(45deg);
+
+  & > :nth-child(n) {
+    @apply grid place-content-center gap-8;
+  }
+}
+
+.bg-demo-overlay {
+  @apply absolute inset-y-0 left-0
+    backdrop-blur-lg;
+
+  width: 50%;
+  height: 32rem;
+
+  & > :nth-child(1) {
+    @apply grid h-full w-full
+      place-content-center
+      gap-16;
+
+    & > h1 {
+      @apply lounas;
+    }
+
+    & > :nth-child(2) {
+      @apply grid justify-items-center gap-2;
+
+      & > a {
+        @apply app-link;
+      }
+
+      & > :nth-child(2) {
+        @apply grid text-xs font-semibold;
+
+        color: var.$secondary;
+      }
+    }
+  }
+}
+
+.smooth-experience {
+  @apply relative grid
+    content-start justify-items-center gap-12
+    overflow-clip rounded-t-[4.5rem]
+    pb-28 pt-16;
+
+  width: 100%;
+  height: 32rem;
+  background: conic-gradient(from 90deg, var.$lime 0, var.$blue 40%, var.$cyan 60%, var.$lime 100%);
+
+  &::before {
+    @apply absolute inset-0;
+
+    content: "";
+    background-color: rgb(255 255 255 / 20%);
+    backdrop-filter: brightness(1.1) blur(8px);
+  }
+
+  & > :nth-child(n) {
+    @apply z-10;
+
+    &:nth-child(1) {
+      @apply grid justify-items-center gap-5;
+
+      & > h2 {
+        @apply text-6xl font-bold;
+
+        color: var.$primary;
+      }
+
+      & > h3 {
+        @apply text-lg font-medium;
+
+        color: var.$tertiary;
+      }
+    }
+
+    &:nth-child(2) {
+      @apply grid grid-cols-1 grid-rows-2 gap-10;
+
+      & > :nth-child(n) {
+        @apply flex items-center justify-center space-x-12;
+
+        & > :nth-child(n) {
+          @apply border-round-icon;
+        }
+      }
+    }
+  }
+}
+
+.route-first {
+  @apply relative flex items-center justify-between;
+
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  padding: 9rem 5rem 4rem 7rem;
+  margin-top: -9rem;
+  background: linear-gradient(to bottom, rgb(255 255 255 / 0%) 0, rgb(255 255 255 / 100%) 5rem);
+
+  & > :nth-child(1) {
+    @apply relative grid gap-3;
+
+    &::before {
+      @apply absolute inset-y-0 -left-16
+          my-auto rounded-full;
+
+      width: 6px;
+      height: 120%;
+      content: "";
+      background: linear-gradient(#0031ff, #009efd, #2af598);
+    }
+
+    & > :nth-child(n of span) {
+      @apply text-2xl font-bold;
+
+      color: var.$primary;
+    }
+
+    & > :nth-child(n of h3) {
+      @apply grid gap-6
+          text-6xl font-bold;
+
+      & > :nth-child(1) {
+        color: var.$cyan;
+      }
+
+      & > :nth-child(2) {
+        color: #0014ff;
+      }
+    }
+  }
+}
+
+.route-second {
+  @apply relative; /* 28rem(smooth-experience top) + 32rem(route-first height) - 9rem */
+
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-image: url("/images/route.webp");
+  background-repeat: no-repeat;
+  background-position: center 80%;
+  background-size: cover;
+
+  & > :nth-child(1) {
+    @apply absolute inset-0
+      flex items-center justify-between
+      overflow-clip
+      backdrop-blur;
+
+    width: 100%;
+    height: 100%;
+    padding-right: 5rem;
+    padding-left: 2.5rem;
+
+    & > img {
+      margin-bottom: -40%;
+    }
+
+    & > :nth-child(2) {
+      @apply mt-12 grid gap-4
+        font-bold;
+
+      color: #fff;
+
+      & > :nth-child(1) {
+        @apply text-3xl;
+      }
+
+      & > :nth-child(2) {
+        @apply text-6xl;
+      }
+    }
+  }
+}
+
+.lunch-time {
+  @apply relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: var.$bg-primary;
+
+  & > :nth-child(1) {
+    @apply neumo
+        absolute inset-y-0 left-0 my-auto
+        grid gap-4
+        rounded-r-[4rem] px-6 py-8;
+
+    width: 51%;
+    height: 75%;
+
+    & > h4 {
+      @apply text-center text-2xl font-bold;
+
+      color: var.$primary;
+    }
+
+    & > :nth-child(2) {
+      @apply grid grid-cols-2;
+
+      & > :nth-child(n) {
+        @apply grid justify-items-center gap-3;
+
+        & > :nth-child(1) {
+          @apply grid content-center justify-items-center gap-1;
+
+          & > img {
+            @apply rounded-2xl;
+          }
+
+          & > :nth-child(n of span) {
+            @apply text-sm font-semibold;
+          }
+
+          & svg {
+            @apply -my-3 max-h-12;
+          }
+        }
+
+        & > :nth-child(2) {
+          @apply grid place-content-center
+            rounded-full;
+
+          width: 75%;
+          aspect-ratio: 1 / 1;
+
+          & > :nth-child(1) {
+            @apply text-center text-xl font-bold;
+
+            color: var.$tertiary;
+          }
+
+          & > :nth-child(2) {
+            @apply text-center text-3xl font-bold;
+
+            color: var.$primary;
+          }
+        }
+
+        & > span {
+          @apply text-center font-semibold;
+
+          color: var.$tertiary;
+        }
+      }
+
+      & > :nth-child(1) {
+        & > :nth-child(2) {
+          background-color: var.$lime;
+        }
+      }
+
+      & > :nth-child(2) {
+        & > :nth-child(2) {
+          background-color: var.$cyan;
+        }
+      }
+    }
+  }
+
+  & > :nth-child(2) {
+    @apply absolute inset-y-0 -right-2 my-auto;
+
+    width: 49%;
+    height: 100%;
+
+    & > :nth-child(1) {
+      @apply absolute inset-y-0 my-auto;
+
+      width: 100%;
+      aspect-ratio: 1 / 1;
+
+      & > :nth-child(n of svg) {
+        @apply h-full w-full;
+
+        filter: blur(8px);
+      }
+    }
+
+    & > :nth-child(2) {
+      @apply grid content-center justify-items-center gap-3;
+
+      width: 100%;
+      height: calc(100% - 2rem);
+
+      & > :nth-child(n of span) {
+        @apply text-2xl font-bold;
+
+        color: var.$primary;
+      }
+
+      & > :nth-child(1 of h3) {
+        @apply text-5xl font-bold;
+
+        color: var.$primary;
+
+        & span {
+          color: #f0c;
+        }
+      }
+    }
+  }
+}
