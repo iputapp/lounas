@@ -21,7 +21,7 @@ export function ShareButton() {
     message: null,
     origin: {
       vertical: "bottom",
-      horizontal: "center",
+      horizontal: "left",
     },
     error: null,
   });
@@ -33,7 +33,7 @@ export function ShareButton() {
     await navigator.clipboard
       .writeText(window.location.href)
       .then(() => {
-        setState({ open: true, message: "コピーしました！🎉", origin: origin, error: null });
+        setState({ open: true, message: "コピーしました！📋", origin: origin, error: null });
         console.log("Copied to clipboard successfully!");
       })
       .catch((err) => {
@@ -59,7 +59,7 @@ export function ShareButton() {
         <button
           className="select-none rounded-full border border-neutral-500 py-1.5 pe-2 ps-1"
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          onClick={(e) => handleClick(e, { vertical: "bottom", horizontal: "center" })}
+          onClick={(e) => handleClick(e, { vertical: "bottom", horizontal: "left" })}
         >
           <span className="text-xl text-[#07f]">
             <ShareAndroid />
