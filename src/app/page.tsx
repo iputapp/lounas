@@ -198,7 +198,7 @@ export default function Page() {
             <span>目的地まで正確にご案内いたします。</span>
           </section>
           <motion.div
-            initial={{ x: "110%", rotateY: 0 }}
+            initial={{ x: "115%", rotateY: 0 }}
             whileInView={{ x: 0, rotateY: -360 }}
             transition={{
               duration: 1,
