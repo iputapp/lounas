@@ -225,7 +225,7 @@ $container: 56rem; // max-w-4xl
     padding-right: 5rem;
     padding-left: 2.5rem;
 
-    & > img {
+    & > :nth-child(1 of div) {
       margin-bottom: -40%;
     }
 
@@ -269,7 +269,18 @@ $container: 56rem; // max-w-4xl
     }
 
     & > :nth-child(2) {
-      @apply grid grid-cols-2;
+      @apply absolute left-0 rounded-e-full;
+
+      bottom: 35%;
+      width: 75%;
+      height: 22px;
+      content: "";
+      background: linear-gradient(to right, #0014ff, #07f);
+      mix-blend-mode: hard-light;
+    }
+
+    & > :nth-child(3) {
+      @apply relative grid grid-cols-2;
 
       & > :nth-child(n) {
         @apply grid justify-items-center gap-3;
@@ -283,6 +294,8 @@ $container: 56rem; // max-w-4xl
 
           & > :nth-child(n of span) {
             @apply text-sm font-semibold;
+
+            color: var.$primary;
           }
 
           & svg {
@@ -291,7 +304,8 @@ $container: 56rem; // max-w-4xl
         }
 
         & > :nth-child(2) {
-          @apply grid place-content-center
+          @apply z-10
+            grid place-content-center
             rounded-full;
 
           width: 75%;
@@ -319,13 +333,13 @@ $container: 56rem; // max-w-4xl
 
       & > :nth-child(1) {
         & > :nth-child(2) {
-          background-color: var.$lime;
+          background-color: var.$cyan;
         }
       }
 
       & > :nth-child(2) {
         & > :nth-child(2) {
-          background-color: var.$cyan;
+          background-color: var.$lime;
         }
       }
     }
@@ -371,6 +385,146 @@ $container: 56rem; // max-w-4xl
           color: #f0c;
         }
       }
+    }
+  }
+}
+
+.recommend-first {
+  @apply relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  & > :nth-child(1) {
+    @apply relative;
+
+    height: 100%;
+
+    & > :nth-child(n of span) {
+      @apply absolute
+        grid place-content-center
+        rounded-full font-semibold;
+
+      aspect-ratio: 1 / 1;
+    }
+
+    & > :nth-child(1) {
+      @apply text-4xl;
+
+      top: 10%;
+      left: 30%;
+      width: 12rem;
+      color: #fff;
+      background: linear-gradient(180deg, #f5576c, #f093fb);
+    }
+
+    & > :nth-child(2) {
+      @apply text-3xl;
+
+      top: 60%;
+      left: 35%;
+      width: 10rem;
+      color: #fff;
+      background: linear-gradient(180deg, #36ba64, #04e67e);
+    }
+
+    & > :nth-child(3) {
+      @apply text-2xl;
+
+      top: 35%;
+      left: 55%;
+      width: 8rem;
+      color: #fff;
+      background: linear-gradient(0deg, #0d32ff, #667eea);
+    }
+
+    & > :nth-child(4) {
+      @apply relative text-sm;
+
+      top: 80%;
+      left: 58%;
+      width: 5rem;
+      color: var.$tertiary;
+
+      &::before {
+        @apply absolute -z-10
+          h-full w-full
+          rounded-full;
+
+        aspect-ratio: 1 / 1;
+        content: "";
+        background: linear-gradient(to right, var.$lime, var.$cyan, var.$blue);
+        transform: scale(1.1);
+      }
+
+      &::after {
+        @apply absolute -z-10
+          h-full w-full
+          rounded-full;
+
+        aspect-ratio: 1 / 1;
+        content: "";
+        background-color: #fff;
+      }
+    }
+  }
+
+  & > :nth-child(2) {
+    @apply absolute inset-0 backdrop-blur-md;
+
+    height: 100%;
+
+    & > :nth-child(1 of h3) {
+      @apply absolute inset-0 my-auto
+        grid gap-6
+        text-center;
+
+      height: fit-content;
+
+      & > :nth-child(1) {
+        @apply text-5xl font-bold;
+
+        color: var.$secondary;
+      }
+
+      & > :nth-child(2) {
+        @apply text-7xl font-bold;
+
+        color: var.$primary;
+      }
+    }
+  }
+}
+
+.recommend-second {
+  @apply grid;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  & > :nth-child(1) {
+    @apply grid content-center
+      text-center text-5xl font-bold;
+
+    color: var.$secondary;
+  }
+
+  & > :nth-child(2) {
+    @apply relative mx-auto
+      grid grid-cols-3 content-end justify-items-center;
+
+    width: 70%;
+
+    & > :nth-child(1) {
+      @apply absolute inset-0
+      -z-10 flex items-center justify-between
+      font-bold;
+
+      left: -30%;
+      width: 175%;
+      font-size: 22rem;
+      line-height: 1;
+      color: var.$primary;
     }
   }
 }

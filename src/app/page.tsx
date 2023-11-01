@@ -197,23 +197,42 @@ export default function Page() {
             </h3>
             <span>目的地まで正確にご案内いたします。</span>
           </section>
-          <Image
-            src={"/images/demo/restaurant-navi.png"}
-            alt="demo"
-            width={200.25}
-            height={405.675}
-            priority
-          />
-        </article>
-        <article className={styles.routeSecond}>
-          <div>
+          <motion.div
+            initial={{ x: "110%", rotateY: 0 }}
+            whileInView={{ x: 0, rotateY: -360 }}
+            transition={{
+              duration: 1,
+              ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+            }}
+            viewport={{ once: true }}
+          >
             <Image
               src={"/images/demo/restaurant-navi.png"}
               alt="demo"
-              width={333.75}
-              height={676.125}
+              width={200.25}
+              height={405.675}
               priority
             />
+          </motion.div>
+        </article>
+        <article className={styles.routeSecond}>
+          <div>
+            <motion.div
+              initial={{ y: "50%" }}
+              whileInView={{ y: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+              }}
+            >
+              <Image
+                src={"/images/demo/restaurant-navi.png"}
+                alt="demo"
+                width={333.75}
+                height={676.125}
+                priority
+              />
+            </motion.div>
             <h3>
               <span>もちろん</span>
               <span>地下も対応</span>
@@ -223,6 +242,16 @@ export default function Page() {
         <article className={styles.lunchTime}>
           <section>
             <h4>近場の厳選された飲食店のみ掲載</h4>
+            <motion.span
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{
+                delay: 0.1,
+                duration: 0.8,
+                ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+              }}
+              style={{ transformOrigin: "left" }}
+            />
             <div>
               <section>
                 <div>
@@ -230,10 +259,19 @@ export default function Page() {
                   <NavigationPlayer />
                   <span>お店</span>
                 </div>
-                <div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{
+                    delay: 0.3,
+                    type: "spring",
+                    stiffness: 120,
+                    damping: 10,
+                  }}
+                >
                   <span>最大</span>
                   <span>8分</span>
-                </div>
+                </motion.div>
                 <span>移動時間</span>
               </section>
               <section>
@@ -243,10 +281,19 @@ export default function Page() {
                   <NavigationPlayer />
                   <span>お店</span> */}
                 </div>
-                <div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{
+                    delay: 0.6,
+                    type: "spring",
+                    stiffness: 120,
+                    damping: 10,
+                  }}
+                >
                   <span>最大</span>
                   <span>25分</span>
-                </div>
+                </motion.div>
                 <span>店内滞在時間</span>
               </section>
             </div>
@@ -261,6 +308,133 @@ export default function Page() {
                 <span>彩る</span>ランチを
               </h3>
             </div>
+          </section>
+        </article>
+        <article className={styles.recommendFirst}>
+          <div>
+            <motion.span
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{
+                delay: 0,
+                type: "spring",
+                stiffness: 80,
+                damping: 8,
+              }}
+            >
+              がっつり
+            </motion.span>
+            <motion.span
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{
+                delay: 0.2,
+                type: "spring",
+                stiffness: 80,
+                damping: 8,
+              }}
+            >
+              普通
+            </motion.span>
+            <motion.span
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{
+                delay: 0.1,
+                type: "spring",
+                stiffness: 80,
+                damping: 8,
+              }}
+            >
+              少なめ
+            </motion.span>
+            <motion.span
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{
+                delay: 0.3,
+                type: "spring",
+                stiffness: 80,
+                damping: 8,
+              }}
+            >
+              おまかせ
+            </motion.span>
+          </div>
+          <section>
+            <h3>
+              <span>検索はいたって</span>
+              <span>シンプル</span>
+            </h3>
+          </section>
+        </article>
+        <article className={styles.recommendSecond}>
+          <div>
+            <span>たった</span>
+          </div>
+          <section>
+            <motion.div
+              initial={{ scale: 0.1 }}
+              whileInView={{ scale: 1 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+              }}
+            >
+              <span>3</span>
+              <span>つ</span>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                delay: 0.7,
+                duration: 0.6,
+                ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+              }}
+            >
+              <Image
+                src={"/images/demo/recommend-1.png"}
+                alt="demo"
+                width={160.2}
+                height={324.54}
+                priority
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                delay: 0.8,
+                duration: 0.6,
+                ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+              }}
+            >
+              <Image
+                src={"/images/demo/recommend-2.png"}
+                alt="demo"
+                width={160.2}
+                height={324.54}
+                priority
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                delay: 0.9,
+                duration: 0.6,
+                ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+              }}
+            >
+              <Image
+                src={"/images/demo/recommend-3.png"}
+                alt="demo"
+                width={160.2}
+                height={324.54}
+                priority
+              />
+            </motion.div>
           </section>
         </article>
       </div>
