@@ -610,17 +610,17 @@ $container: 56rem; // max-w-4xl
 
   /* stylelint-disable-next-line no-descending-specificity */
   & > h2 {
-    @apply absolute right-16 top-10 text-center text-3xl font-bold;
+    @apply absolute right-12 top-8 text-center text-2xl font-bold;
 
     width: fit-content;
     color: var.$primary;
 
     &::after {
-      @apply absolute -bottom-4 rounded-full;
+      @apply absolute -bottom-3 rounded-full;
 
       right: -20%;
       width: 123%;
-      height: 8px;
+      height: 6px;
       content: "";
       background: linear-gradient(to right, #0031ff, #009efd, #2af598);
     }
