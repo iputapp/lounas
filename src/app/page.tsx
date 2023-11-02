@@ -720,7 +720,7 @@ export default function Page() {
                     initial={{ x: "95%" }}
                     whileInView={{ x: 0 }}
                     transition={{
-                      delay: 0.6,
+                      delay: 0.5,
                       duration: 0.6,
                       ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                     }}
@@ -731,7 +731,7 @@ export default function Page() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{
-                      delay: 1.2,
+                      delay: 1,
                       duration: 0.6,
                       ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                     }}
