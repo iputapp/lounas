@@ -614,7 +614,7 @@ $container: 56rem; // max-w-4xl
     @apply grid grid-cols-3;
 
     & > :nth-child(1 of div) {
-      @apply grid gap-8 self-end;
+      @apply grid gap-8 self-end ps-6;
 
       & > h2 {
         @apply grid justify-items-center gap-3
@@ -654,7 +654,7 @@ $container: 56rem; // max-w-4xl
 
           left: -1rem;
           width: 2px;
-          height: 110%;
+          height: 101%;
           content: "";
         }
 
