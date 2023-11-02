@@ -18,13 +18,13 @@ $container: 56rem; // max-w-4xl
 }
 
 /* component styles */
-.lounas {
-  @apply text-6xl;
+.lounas-logo-full {
+  @apply grid place-content-center;
 
   svg {
     @apply w-fit;
 
-    aspect-ratio: 767 / 256;
+    aspect-ratio: 768 / 256;
   }
 }
 
@@ -91,7 +91,7 @@ $container: 56rem; // max-w-4xl
       gap-16;
 
     & > h1 {
-      @apply lounas;
+      @apply lounas-logo-full text-6xl;
     }
 
     & > :nth-child(2) {
@@ -517,14 +517,188 @@ $container: 56rem; // max-w-4xl
 
     & > :nth-child(1) {
       @apply absolute inset-0
-      -z-10 flex items-center justify-between
-      font-bold;
+        flex items-center justify-between
+        font-bold;
 
       left: -30%;
       width: 175%;
       font-size: 22rem;
       line-height: 1;
       color: var.$primary;
+    }
+
+    & > :nth-child(n + 1) {
+      @apply z-10;
+    }
+  }
+}
+
+.recommend-eyecatch {
+  @apply grid place-content-center;
+
+  width: 100%;
+  aspect-ratio: 4 / 1;
+
+  & > :nth-child(1) {
+    @apply flex items-center justify-center
+      text-center text-4xl font-bold;
+
+    color: var.$secondary;
+  }
+}
+
+.recommend-third {
+  @apply relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  & > :nth-child(1) {
+    @apply absolute inset-0;
+
+    & > div {
+      @apply relative overflow-clip;
+
+      width: 100%;
+      height: 100%;
+
+      & > :nth-child(1 of svg) {
+        @apply absolute;
+
+        right: -25%;
+        bottom: -25%;
+        width: fit-content;
+        height: 100%;
+      }
+    }
+  }
+
+  & > :nth-child(2) {
+    @apply relative z-10 mx-auto
+      flex items-start justify-between;
+
+    width: 81%;
+
+    & > :nth-child(1) {
+      @apply relative flex items-center;
+
+      & > :nth-child(2) {
+        @apply absolute;
+
+        right: -40%;
+        bottom: 0;
+      }
+    }
+
+    & > :nth-child(1 of h3) {
+      @apply mt-12 grid gap-3;
+
+      & > :nth-child(n of span) {
+        @apply text-center text-4xl font-bold;
+
+        color: var.$primary;
+      }
+    }
+  }
+}
+
+.footer {
+  @apply mx-auto grid gap-2
+    bg-neutral-300 px-0.5 pb-2 pt-8;
+
+  width: 100%;
+  max-width: $container;
+  height: 15rem;
+
+  & > :nth-child(1) {
+    @apply grid grid-cols-3;
+
+    & > :nth-child(1 of div) {
+      @apply grid gap-8 self-end;
+
+      & > h2 {
+        @apply grid justify-items-center gap-3
+          text-sm;
+
+        & > :nth-child(1) {
+          @apply lounas-logo-full -my-2
+            text-5xl;
+        }
+
+        & > :nth-child(2) {
+          @apply font-bold;
+
+          color: var.$secondary;
+        }
+      }
+
+      & > :nth-child(1 of div) {
+        @apply grid grid-cols-2 justify-items-center;
+
+        h5 {
+          @apply text-sm font-semibold text-blue-600;
+        }
+      }
+    }
+
+    & > :nth-child(2 of div) {
+      @apply grid justify-items-center self-start;
+
+      & > div {
+        @apply relative grid gap-4;
+
+        width: fit-content;
+
+        &::before {
+          @apply absolute inset-y-0 my-auto rounded-full bg-neutral-500;
+
+          left: -1rem;
+          width: 2px;
+          height: 110%;
+          content: "";
+        }
+
+        & > h4 > a {
+          @apply flex items-center justify-center space-x-2.5;
+
+          /* stylelint-disable-next-line no-descending-specificity */
+          & > span {
+            @apply text-base;
+          }
+        }
+      }
+    }
+
+    & > :nth-child(3 of div) {
+      @apply grid gap-2 self-end;
+
+      h3 {
+        @apply app-link mx-auto;
+      }
+
+      div {
+        @apply grid text-xs font-medium;
+
+        line-height: 1.5;
+
+        ul {
+          @apply mx-auto font-medium;
+
+          width: 80%;
+          font-size: 0.75em;
+          list-style: circle;
+        }
+      }
+    }
+  }
+
+  & > :nth-child(2) {
+    @apply grid place-content-center;
+
+    h6 {
+      @apply text-sm;
+
+      color: var.$secondary;
     }
   }
 }
