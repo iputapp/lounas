@@ -255,6 +255,7 @@ export default function Page() {
                   duration: 0.8,
                   ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                 }}
+                viewport={{ once: true }}
                 style={{ transformOrigin: "left" }}
               />
               <div>
@@ -273,6 +274,7 @@ export default function Page() {
                       stiffness: 150,
                       damping: 20,
                     }}
+                    viewport={{ once: true }}
                   >
                     <span>最大</span>
                     <span>8分</span>
@@ -295,6 +297,7 @@ export default function Page() {
                       stiffness: 150,
                       damping: 20,
                     }}
+                    viewport={{ once: true }}
                   >
                     <span>最大</span>
                     <span>25分</span>
@@ -724,6 +727,7 @@ export default function Page() {
                       duration: 0.6,
                       ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                     }}
+                    viewport={{ once: true }}
                   >
                     <LogoFullColor />
                   </motion.span>
@@ -735,6 +739,7 @@ export default function Page() {
                       duration: 0.6,
                       ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                     }}
+                    viewport={{ once: true }}
                   >
                     は進化し続けます。
                   </motion.span>
