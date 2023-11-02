@@ -23,7 +23,7 @@ export default function NotFound() {
       </div>
       <div className={styles.penguin}>
         <Image
-          src="/images/not-found-penguin.png"
+          src="/images/not-found-penguin.webp"
           alt="not-found-penguin"
           fill
           sizes="(max-width: 768px) 80vw, (max-width: 1200px) 80vw, 80vw"
