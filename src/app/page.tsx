@@ -746,7 +746,7 @@ export default function Page() {
                 <p>
                   フィードバックなどは
                   <Link
-                    href={"https://forms.gle/c1gosjcJZf5gTtvCAp"}
+                    href={"https://forms.gle/c1gosjcJZf5gTtvCA"}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -786,7 +786,7 @@ export default function Page() {
             <div>
               <h4>
                 <Link
-                  href={"https://forms.gle/c1gosjcJZf5gTtvCAp"}
+                  href={"https://forms.gle/c1gosjcJZf5gTtvCA"}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
