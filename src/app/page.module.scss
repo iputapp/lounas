@@ -602,6 +602,40 @@ $container: 56rem; // max-w-4xl
   }
 }
 
+.our-mission {
+  @apply relative overflow-clip;
+
+  width: 100%;
+  aspect-ratio: 10 / 11;
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  & > img {
+    width: 120%;
+    height: 120%;
+    background-color: rgb(0 0 0 / 60%);
+    filter: blur(12px) brightness(0.8);
+    scale: 1.04;
+  }
+
+  & > :nth-child(1 of div) {
+    @apply absolute inset-x-0 bottom-12 grid place-content-center gap-[4.5rem];
+
+    & p {
+      @apply text-center text-lg font-semibold;
+
+      color: #fff;
+    }
+
+    & > :nth-child(n) {
+      @apply grid gap-14;
+
+      & > :nth-child(n of div) {
+        @apply grid gap-5;
+      }
+    }
+  }
+}
+
 .next-niki {
   @apply relative w-full;
 

@@ -709,6 +709,47 @@ export default function Page() {
               </h3>
             </section>
           </article>
+          <article className={styles.ourMission}>
+            <Image src={"/images/cocoon.webp"} alt="cocoon" fill priority />
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.6,
+                ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+              }}
+              viewport={{ once: true }}
+            >
+              <section>
+                <div>
+                  <p>数多くの飲食店がある新宿に</p>
+                  <p>立地するコクーンタワー。</p>
+                  <p>その中で過ごす人たち</p>
+                  <p>のランチを便利にしたいという思いから</p>
+                  <p>「lounas」プロジェクトが生まれました。</p>
+                </div>
+                <div>
+                  <p>私たちは、学生が手軽に近くの飲食店やカフェを見つけ、</p>
+                  <p>選択肢を比較し、好みに合ったランチを</p>
+                  <p>見つけるのに役立つアプリを</p>
+                  <p>開発しました。</p>
+                  <p>これは、学生生活をより楽しいものにするための一助</p>
+                  <p>となるであろうとの信念がありました。</p>
+                </div>
+                <div>
+                  <p>これからも、多くの方にご愛顧いただけるようアプリの品質向上に努め</p>
+                  <p>学生の生活が少しでも豊かになれるよう日々活動してまいります。</p>
+                </div>
+              </section>
+              <section>
+                <div>
+                  <p>チームlounas一同</p>
+                  <p>Powered by ChatGPT</p>
+                </div>
+              </section>
+            </motion.div>
+          </article>
           <article className={styles.nextNiki}>
             <div>
               <span className={`${styles.circle} ${styles.blue}`}></span>
