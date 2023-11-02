@@ -702,7 +702,7 @@ $container: 56rem; // max-w-4xl
         border-radius: 2rem;
 
         & > span {
-          @apply text-center text-base font-semibold;
+          @apply py-2 text-center text-lg font-semibold;
 
           height: fit-content;
           color: var.$tertiary;
