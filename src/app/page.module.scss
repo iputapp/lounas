@@ -602,6 +602,132 @@ $container: 56rem; // max-w-4xl
   }
 }
 
+.next-niki {
+  @apply relative w-full;
+
+  aspect-ratio: 16 / 10;
+  background-color: var.$bg-primary;
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  & > h2 {
+    @apply absolute right-16 top-10 text-center text-3xl font-bold;
+
+    width: fit-content;
+    color: var.$primary;
+
+    &::after {
+      @apply absolute -bottom-4 rounded-full;
+
+      right: -20%;
+      width: 123%;
+      height: 8px;
+      content: "";
+      background: linear-gradient(to right, #0031ff, #009efd, #2af598);
+    }
+  }
+
+  & > :nth-child(1 of div) {
+    @apply relative overflow-clip;
+
+    width: 100%;
+    height: 100%;
+
+    .circle {
+      @apply absolute;
+
+      aspect-ratio: 1 / 1;
+      clip-path: circle(50% at 50% 50%);
+      mix-blend-mode: multiply;
+
+      $blue-size: 30dvh;
+      $cyan-size: 26dvh;
+      $green-size: 24dvh;
+
+      &.blue {
+        top: -9dvh;
+        left: -10dvh;
+        height: $blue-size;
+        background-color: var.$blue;
+      }
+
+      &.cyan {
+        top: -7.5dvh;
+        left: 7dvh;
+        height: $cyan-size;
+        background-color: var.$cyan;
+      }
+
+      &.green {
+        top: 7.5dvh;
+        left: -9dvh;
+        height: $green-size;
+        background-color: var.$lime;
+      }
+    }
+  }
+
+  & > :nth-child(2 of div) {
+    @apply absolute inset-x-0 bottom-6 m-auto grid max-w-lg place-content-center gap-6;
+
+    & > :nth-child(1) {
+      @apply py-2;
+
+      & > h3 {
+        @apply ms-6 flex items-center justify-center
+        space-x-1 font-bold;
+
+        height: 3.5rem;
+        font-size: 2rem;
+        line-height: 2.5rem;
+
+        & > :nth-child(1 of span) {
+          @apply lounas-logo-full;
+        }
+
+        & > :nth-child(2 of span) {
+          padding-bottom: 1px;
+          margin-top: 1.125rem;
+          color: var.$primary;
+        }
+      }
+    }
+
+    & > :nth-child(2) {
+      @apply grid grid-cols-2 content-center justify-items-center;
+
+      & > :nth-child(n) {
+        @apply grid grid-cols-2 p-3;
+
+        background-color: #fff;
+        border-radius: 2rem;
+
+        & > span {
+          @apply text-center text-base font-semibold;
+
+          height: fit-content;
+          color: var.$tertiary;
+        }
+      }
+    }
+
+    & > :nth-child(3) {
+      @apply mx-auto;
+
+      width: fit-content;
+
+      & > p {
+        @apply text-center text-xl font-bold;
+
+        color: var.$secondary;
+
+        & > a {
+          @apply text-blue-600;
+        }
+      }
+    }
+  }
+}
+
 .footer {
   @apply mx-auto grid gap-2
     bg-neutral-300 px-0.5 pb-2 pt-10;
@@ -659,11 +785,12 @@ $container: 56rem; // max-w-4xl
         }
 
         & > h4 > a {
-          @apply flex items-center justify-center space-x-2.5;
+          @apply flex items-center justify-stretch space-x-2.5;
 
-          /* stylelint-disable-next-line no-descending-specificity */
-          & > span {
+          & > :nth-child(n of span) {
             @apply text-base;
+
+            color: var.$secondary;
           }
         }
       }
@@ -680,6 +807,7 @@ $container: 56rem; // max-w-4xl
         @apply grid text-xs font-medium;
 
         line-height: 1.5;
+        color: var.$secondary;
 
         ul {
           @apply mx-auto font-medium;

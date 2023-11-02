@@ -41,7 +41,7 @@ export default function Page() {
             transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }} // easeInOutQuint
           >
             <Image
-              src={"/images/demo/ranking.png"}
+              src={"/images/demo/ranking.webp"}
               alt="demo"
               width={131.625}
               height={284.85}
@@ -54,14 +54,14 @@ export default function Page() {
             transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
           >
             <Image
-              src={"/images/demo/signup.png"}
+              src={"/images/demo/signup.webp"}
               alt="demo"
               width={131.625}
               height={284.85}
               priority
             />
             <Image
-              src={"/images/demo/recommend-loading.png"}
+              src={"/images/demo/recommend-loading.webp"}
               alt="demo"
               width={131.625}
               height={284.85}
@@ -74,21 +74,21 @@ export default function Page() {
             transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
           >
             <Image
-              src={"/images/demo/home.png"}
+              src={"/images/demo/home.webp"}
               alt="demo"
               width={131.625}
               height={284.85}
               priority
             />
             <Image
-              src={"/images/demo/user-signout.png"}
+              src={"/images/demo/user-signout.webp"}
               alt="demo"
               width={131.625}
               height={284.85}
               priority
             />
             <Image
-              src={"/images/demo/privacy.png"}
+              src={"/images/demo/privacy.webp"}
               alt="demo"
               width={131.625}
               height={284.85}
@@ -101,14 +101,14 @@ export default function Page() {
             transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
           >
             <Image
-              src={"/images/demo/restaurant-navi.png"}
+              src={"/images/demo/restaurant-navi.webp"}
               alt="demo"
               width={131.625}
               height={284.85}
               priority
             />
             <Image
-              src={"/images/demo/dish.png"}
+              src={"/images/demo/dish.webp"}
               alt="demo"
               width={131.625}
               height={284.85}
@@ -121,7 +121,7 @@ export default function Page() {
             transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
           >
             <Image
-              src={"/images/demo/recommend-1.png"}
+              src={"/images/demo/recommend-1.webp"}
               alt="demo"
               width={131.625}
               height={284.85}
@@ -212,7 +212,7 @@ export default function Page() {
               viewport={{ once: true }}
             >
               <Image
-                src={"/images/demo/restaurant-navi.png"}
+                src={"/images/demo/restaurant-navi.webp"}
                 alt="demo"
                 width={200.25}
                 height={405.675}
@@ -231,7 +231,7 @@ export default function Page() {
                 }}
               >
                 <Image
-                  src={"/images/demo/restaurant-navi.png"}
+                  src={"/images/demo/restaurant-navi.webp"}
                   alt="demo"
                   width={333.75}
                   height={676.125}
@@ -271,7 +271,7 @@ export default function Page() {
                       delay: 0.3,
                       type: "spring",
                       stiffness: 150,
-                      damping: 15,
+                      damping: 20,
                     }}
                   >
                     <span>最大</span>
@@ -293,7 +293,7 @@ export default function Page() {
                       delay: 0.6,
                       type: "spring",
                       stiffness: 150,
-                      damping: 15,
+                      damping: 20,
                     }}
                   >
                     <span>最大</span>
@@ -399,7 +399,7 @@ export default function Page() {
                 }}
               >
                 <Image
-                  src={"/images/demo/recommend-1.png"}
+                  src={"/images/demo/recommend-1.webp"}
                   alt="demo"
                   width={160.2}
                   height={324.54}
@@ -416,7 +416,7 @@ export default function Page() {
                 }}
               >
                 <Image
-                  src={"/images/demo/recommend-2.png"}
+                  src={"/images/demo/recommend-2.webp"}
                   alt="demo"
                   width={160.2}
                   height={324.54}
@@ -433,7 +433,7 @@ export default function Page() {
                 }}
               >
                 <Image
-                  src={"/images/demo/recommend-3.png"}
+                  src={"/images/demo/recommend-3.webp"}
                   alt="demo"
                   width={160.2}
                   height={324.54}
@@ -675,7 +675,7 @@ export default function Page() {
                   }}
                 >
                   <Image
-                    src={"/images/demo/recommend-result.png"}
+                    src={"/images/demo/recommend-result.webp"}
                     alt="demo"
                     width={200.25}
                     height={324.54}
@@ -692,7 +692,7 @@ export default function Page() {
                   }}
                 >
                   <Image
-                    src={"/images/demo/dish.png"}
+                    src={"/images/demo/dish.webp"}
                     alt="demo"
                     width={160.2}
                     height={405.675}
@@ -705,6 +705,58 @@ export default function Page() {
                 <span>を提案いたします!!</span>
               </h3>
             </section>
+          </article>
+          <article className={styles.nextNiki}>
+            <div>
+              <span className={`${styles.circle} ${styles.blue}`}></span>
+              <span className={`${styles.circle} ${styles.cyan}`}></span>
+              <span className={`${styles.circle} ${styles.green}`}></span>
+            </div>
+            <h2>これからもよりよいサービスを</h2>
+            <div>
+              <section>
+                <h3>
+                  <span>
+                    <LogoFullColor />
+                  </span>
+                  <span>は進化し続けます。</span>
+                </h3>
+              </section>
+              <section>
+                <div>
+                  <span>ランキング</span>
+                  <Image
+                    src={"/images/demo/ranking.webp"}
+                    alt="demo"
+                    width={98.71875}
+                    height={213.6375}
+                  />
+                </div>
+                <div>
+                  <span>My日記</span>
+                  <Image
+                    src={"/images/demo/diary.webp"}
+                    alt="demo"
+                    width={98.71875}
+                    height={213.6375}
+                  />
+                </div>
+              </section>
+              <section>
+                <p>
+                  フィードバックなどは
+                  <Link
+                    href={"https://forms.gle/c1gosjcJZf5gTtvCAp"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    こちらのForms
+                  </Link>
+                  に
+                </p>
+                <p>ご連絡くださいますと幸いです。</p>
+              </section>
+            </div>
           </article>
         </div>
       </motion.main>
@@ -741,7 +793,7 @@ export default function Page() {
                   <span>
                     <SendDiagonal />
                   </span>
-                  <span>Feedback</span>
+                  <span>Feedback Form</span>
                 </Link>
               </h4>
               <h4>
