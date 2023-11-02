@@ -667,7 +667,7 @@ $container: 56rem; // max-w-4xl
   }
 
   & > :nth-child(2 of div) {
-    @apply absolute inset-x-0 bottom-6 m-auto grid max-w-lg place-content-center gap-6;
+    @apply absolute inset-x-0 bottom-6 m-auto grid max-w-2xl gap-6;
 
     & > :nth-child(1) {
       @apply py-2;

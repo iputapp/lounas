@@ -716,14 +716,39 @@ export default function Page() {
             <div>
               <section>
                 <h3>
-                  <span>
+                  <motion.span
+                    initial={{ x: "95%" }}
+                    whileInView={{ x: 0 }}
+                    transition={{
+                      delay: 0.6,
+                      duration: 0.6,
+                      ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+                    }}
+                  >
                     <LogoFullColor />
-                  </span>
-                  <span>は進化し続けます。</span>
+                  </motion.span>
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{
+                      delay: 1.2,
+                      duration: 0.6,
+                      ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+                    }}
+                  >
+                    は進化し続けます。
+                  </motion.span>
                 </h3>
               </section>
               <section>
-                <div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+                  }}
+                >
                   <span>ランキング</span>
                   <Image
                     src={"/images/demo/ranking.webp"}
@@ -731,8 +756,15 @@ export default function Page() {
                     width={98.71875}
                     height={213.6375}
                   />
-                </div>
-                <div>
+                </motion.div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.65, 0, 0.35, 1], // easeInOutCubic
+                  }}
+                >
                   <span>My日記</span>
                   <Image
                     src={"/images/demo/diary.webp"}
@@ -740,7 +772,7 @@ export default function Page() {
                     width={98.71875}
                     height={213.6375}
                   />
-                </div>
+                </motion.div>
               </section>
               <section>
                 <p>
