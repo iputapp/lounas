@@ -1,6 +1,7 @@
 @use "variables" as var;
 
 $container: 56rem; // max-w-4xl
+$slide-h: 32.5rem; /* 520px */
 
 /* common styles */
 .neumo {
@@ -62,19 +63,27 @@ $container: 56rem; // max-w-4xl
   @apply relative mx-auto overflow-x-clip;
 
   width: 100%;
-  max-width: $container;
   background-color: var.$bg-primary;
 }
 
 .bg-demo {
-  @apply -z-10
-    grid grid-cols-5 grid-rows-1;
+  @apply relative;
 
-  width: $container;
-  transform: translate(0%, -27.5%) rotate(45deg);
+  width: 100%;
+  height: 69rem;
 
-  & > :nth-child(n) {
-    @apply grid place-content-center gap-8;
+  & > div {
+    @apply grid grid-cols-5 grid-rows-1 gap-10;
+
+    transform: translate(0%, -27.5%) rotate(45deg);
+
+    & > :nth-child(n) {
+      @apply grid place-content-center gap-8;
+
+      & > img {
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -83,7 +92,11 @@ $container: 56rem; // max-w-4xl
     backdrop-blur-lg;
 
   width: 50%;
-  height: 32rem;
+  height: calc(
+    100% - 36rem + 4.5rem
+  ); // this - div(-mt-[36rem]) + smooth-experience(rounded-t-[4.5rem])
+
+  padding-bottom: 3.5rem; // smooth-experience(rounded-t-[4.5rem]) - 1rem
 
   & > :nth-child(1) {
     @apply grid h-full w-full
@@ -162,11 +175,13 @@ $container: 56rem; // max-w-4xl
 }
 
 .route-first {
-  @apply relative flex items-center justify-between;
+  @apply relative flex items-center justify-center space-x-12;
 
   width: 100%;
-  aspect-ratio: 16 / 10;
-  padding: 9rem 5rem 4rem 7rem;
+  height: calc($slide-h + 5rem); // 37.5rem
+
+  // aspect-ratio: 16 / 10;
+  padding: 9rem 3rem 4rem 6rem; /* top | right | bottom | left */
   margin-top: -9rem;
   background: linear-gradient(to bottom, rgb(255 255 255 / 0%) 0, rgb(255 255 255 / 100%) 5rem);
 
@@ -208,7 +223,9 @@ $container: 56rem; // max-w-4xl
   @apply relative; /* 28rem(smooth-experience top) + 32rem(route-first height) - 9rem */
 
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: $slide-h;
+
+  // aspect-ratio: 16 / 10;
   background-image: url("/images/route.webp");
   background-repeat: no-repeat;
   background-position: center 80%;
@@ -216,17 +233,15 @@ $container: 56rem; // max-w-4xl
 
   & > :nth-child(1) {
     @apply absolute inset-0
-      flex items-center justify-between
+      flex items-center justify-center space-x-16
       overflow-clip
       backdrop-blur;
 
-    width: 100%;
-    height: 100%;
-    padding-right: 5rem;
+    padding-right: 4rem;
     padding-left: 2.5rem;
 
     & > :nth-child(1 of div) {
-      margin-bottom: -40%;
+      margin-bottom: -20rem;
     }
 
     & > :nth-child(2) {
@@ -247,20 +262,24 @@ $container: 56rem; // max-w-4xl
 }
 
 .lunch-time {
-  @apply relative;
+  @apply relative overflow-clip;
 
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: $slide-h;
+
+  // aspect-ratio: 16 / 10;
   background-color: var.$bg-primary;
 
   & > :nth-child(1) {
     @apply neumo
         absolute inset-y-0 left-0 my-auto
         grid gap-4
-        rounded-r-[4rem] px-6 py-8;
+        rounded-r-[4rem] py-8;
 
     width: 51%;
     height: 75%;
+    padding-right: 1rem;
+    padding-left: 0.5rem;
 
     & > h4 {
       @apply text-center text-2xl font-bold;
@@ -271,7 +290,7 @@ $container: 56rem; // max-w-4xl
     & > :nth-child(2) {
       @apply absolute left-0 rounded-e-full;
 
-      bottom: 35%;
+      bottom: calc(35% - 2px);
       width: 75%;
       height: 22px;
       content: "";
@@ -306,9 +325,8 @@ $container: 56rem; // max-w-4xl
         & > :nth-child(2) {
           @apply z-10
             grid place-content-center
-            rounded-full;
+            rounded-full p-10;
 
-          width: 75%;
           aspect-ratio: 1 / 1;
 
           & > :nth-child(1) {
@@ -358,9 +376,7 @@ $container: 56rem; // max-w-4xl
       aspect-ratio: 1 / 1;
 
       & > :nth-child(n of svg) {
-        @apply h-full w-full;
-
-        filter: blur(8px);
+        @apply h-full w-full blur;
       }
     }
 
@@ -608,7 +624,8 @@ $container: 56rem; // max-w-4xl
   width: 100%;
   aspect-ratio: 9 / 10;
 
-  & > :nth-child(1 of img) {
+  /* stylelint-disable-next-line no-descending-specificity */
+  & > img {
     width: 100%;
     height: 100%;
     background-color: rgb(0 0 0 / 60%);
@@ -768,7 +785,6 @@ $container: 56rem; // max-w-4xl
     bg-neutral-300 px-0.5 pb-2 pt-10;
 
   width: 100%;
-  max-width: $container;
   height: 15rem;
 
   & > :nth-child(1) {

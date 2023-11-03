@@ -35,122 +35,125 @@ export default function Page() {
         transition={{ duration: 1, ease: "easeInOut" }}
       >
         <article className={styles.bgDemo}>
-          <motion.section
-            initial={{ y: "-100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }} // easeInOutQuint
-          >
-            <Image
-              src={"/images/demo/ranking.webp"}
-              alt="demo"
-              width={131.625}
-              height={284.85}
-              priority
-            />
-          </motion.section>
-          <motion.section
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
-          >
-            <Image
-              src={"/images/demo/signup.webp"}
-              alt="demo"
-              width={131.625}
-              height={284.85}
-              priority
-            />
-            <Image
-              src={"/images/demo/recommend-loading.webp"}
-              alt="demo"
-              width={131.625}
-              height={284.85}
-              priority
-            />
-          </motion.section>
-          <motion.section
-            initial={{ y: "-100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
-          >
-            <Image
-              src={"/images/demo/home.webp"}
-              alt="demo"
-              width={131.625}
-              height={284.85}
-              priority
-            />
-            <Image
-              src={"/images/demo/user-signout.webp"}
-              alt="demo"
-              width={131.625}
-              height={284.85}
-              priority
-            />
-            <Image
-              src={"/images/demo/privacy.webp"}
-              alt="demo"
-              width={131.625}
-              height={284.85}
-              priority
-            />
-          </motion.section>
-          <motion.section
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
-          >
-            <Image
-              src={"/images/demo/restaurant-navi.webp"}
-              alt="demo"
-              width={131.625}
-              height={284.85}
-              priority
-            />
-            <Image
-              src={"/images/demo/dish.webp"}
-              alt="demo"
-              width={131.625}
-              height={284.85}
-              priority
-            />
-          </motion.section>
-          <motion.section
-            initial={{ y: "-100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
-          >
-            <Image
-              src={"/images/demo/recommend-1.webp"}
-              alt="demo"
-              width={131.625}
-              height={284.85}
-              priority
-            />
-          </motion.section>
-        </article>
-        <motion.article
-          className={styles.bgDemoOverlay}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8, duration: 0.5, ease: "easeInOut" }}
-        >
           <div>
-            <h1>
-              <LogoFullColor title="lounas" />
-            </h1>
-            <section>
-              <Link href="/signup">今すぐアプリを使う</Link>
-              <div>
-                <small>※本サービスはスマートフォン向けに最適化しております。</small>
-                <small>
-                  {"　"}スマートフォンでの使用を<strong>強く</strong>おすすめします。
-                </small>
-              </div>
-            </section>
+            <motion.section
+              initial={{ y: "-100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }} // easeInOutQuint
+            >
+              <Image
+                src={"/images/demo/ranking.webp"}
+                alt="demo"
+                width={131.625}
+                height={284.85}
+                priority
+              />
+            </motion.section>
+            <motion.section
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
+            >
+              <Image
+                src={"/images/demo/signup.webp"}
+                alt="demo"
+                width={131.625}
+                height={284.85}
+                priority
+              />
+              <Image
+                src={"/images/demo/recommend-loading.webp"}
+                alt="demo"
+                width={131.625}
+                height={284.85}
+                priority
+              />
+            </motion.section>
+            <motion.section
+              initial={{ y: "-100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
+            >
+              <Image
+                src={"/images/demo/home.webp"}
+                alt="demo"
+                width={131.625}
+                height={284.85}
+                priority
+              />
+              <Image
+                src={"/images/demo/user-signout.webp"}
+                alt="demo"
+                width={131.625}
+                height={284.85}
+                priority
+              />
+              <Image
+                src={"/images/demo/privacy.webp"}
+                alt="demo"
+                width={131.625}
+                height={284.85}
+                priority
+              />
+            </motion.section>
+            <motion.section
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
+            >
+              <Image
+                src={"/images/demo/restaurant-navi.webp"}
+                alt="demo"
+                width={131.625}
+                height={284.85}
+                priority
+              />
+              <Image
+                src={"/images/demo/dish.webp"}
+                alt="demo"
+                width={131.625}
+                height={284.85}
+                priority
+              />
+            </motion.section>
+            <motion.section
+              initial={{ y: "-100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
+            >
+              <Image
+                src={"/images/demo/recommend-1.webp"}
+                alt="demo"
+                width={131.625}
+                height={284.85}
+                priority
+              />
+            </motion.section>
           </div>
-        </motion.article>
-        <div className="-mt-[26rem]">
+          <motion.article
+            className={styles.bgDemoOverlay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.8, duration: 0.5, ease: "easeInOut" }}
+          >
+            <div>
+              <h1>
+                <LogoFullColor title="lounas" />
+              </h1>
+              <section>
+                <Link href="/signup">今すぐアプリを使う</Link>
+                <div>
+                  <small>※本サービスはスマートフォン向けに最適化しております。</small>
+                  <small>
+                    {"　"}スマートフォンでの使用を<strong>強く</strong>おすすめします。
+                  </small>
+                </div>
+              </section>
+            </div>
+          </motion.article>
+        </article>
+
+        <div className="-mt-[36rem]">
           <article className={styles.smoothExperience}>
             <section>
               <h2>Smooth Experience</h2>
@@ -223,7 +226,7 @@ export default function Page() {
           <article className={styles.routeSecond}>
             <div>
               <motion.div
-                initial={{ y: "50%" }}
+                initial={{ y: "20rem" }} // margin-bottom: -20rem;
                 whileInView={{ y: 0 }}
                 transition={{
                   duration: 0.8,
