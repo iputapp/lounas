@@ -900,9 +900,9 @@ export default function Page() {
             </div>
           </div>
           <div>
-            <h3>
-              <Link href={"/signup"}>今すぐアプリを使う</Link>
-            </h3>
+            <Link href={"/signup"}>
+              <h3>今すぐアプリを使う</h3>
+            </Link>
             <div>
               <small>※本アプリはスマートフォン向けに最適化しております。</small>
               <small>{"　"}スマートフォンでの使用を強くおすすめします。</small>

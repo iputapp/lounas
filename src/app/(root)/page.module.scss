@@ -30,9 +30,9 @@ $slide-h: 32.5rem; /* 520px */
 }
 
 .app-link {
-  @apply w-fit
-    rounded-full px-5 py-3.5
-    font-bold;
+  @apply w-fit select-none
+    rounded-full px-5
+    py-3.5 font-bold;
 
   color: #fff;
   background-color: var.$blue;
@@ -421,12 +421,12 @@ $slide-h: 32.5rem; /* 520px */
   @apply relative;
 
   width: 100%;
-
-  // aspect-ratio: 16 / 9;
   height: $slide-h;
 
-  & > :nth-child(1) {
-    @apply relative blur-md;
+  // aspect-ratio: 16 / 9;
+
+  & > :nth-child(1 of div) {
+    @apply relative mx-auto max-w-5xl blur-md;
 
     height: 100%;
 
@@ -527,13 +527,15 @@ $slide-h: 32.5rem; /* 520px */
 }
 
 .recommend-second {
-  @apply grid;
+  @apply mx-auto grid max-w-5xl;
 
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: $slide-h;
+
+  // aspect-ratio: 16 / 9;
 
   & > :nth-child(1) {
-    @apply grid content-center
+    @apply grid content-end
       text-center text-5xl font-bold;
 
     color: var.$secondary;
@@ -567,7 +569,9 @@ $slide-h: 32.5rem; /* 520px */
   @apply grid place-content-center;
 
   width: 100%;
-  aspect-ratio: 4 / 1;
+  height: calc($slide-h * 0.5);
+
+  // aspect-ratio: 4 / 1;
 
   & > :nth-child(1) {
     @apply flex items-center justify-center
@@ -578,16 +582,18 @@ $slide-h: 32.5rem; /* 520px */
 }
 
 .recommend-third {
-  @apply relative;
+  @apply relative mx-auto max-w-5xl;
 
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: $slide-h;
+
+  // aspect-ratio: 16 / 9;
 
   & > :nth-child(1) {
     @apply absolute inset-0;
 
     & > div {
-      @apply relative overflow-clip;
+      @apply relative;
 
       width: 100%;
       height: 100%;
@@ -596,7 +602,7 @@ $slide-h: 32.5rem; /* 520px */
         @apply absolute;
 
         right: -25%;
-        bottom: -25%;
+        bottom: -30%;
         width: fit-content;
         height: 100%;
       }
@@ -605,9 +611,7 @@ $slide-h: 32.5rem; /* 520px */
 
   & > :nth-child(2) {
     @apply relative z-10 mx-auto
-      flex items-start justify-between;
-
-    width: 81%;
+      flex items-start justify-center space-x-24;
 
     & > :nth-child(1) {
       @apply relative flex items-center;
@@ -636,12 +640,16 @@ $slide-h: 32.5rem; /* 520px */
   @apply relative overflow-clip;
 
   width: 100%;
-  aspect-ratio: 9 / 10;
+  height: calc($slide-h * 2);
+
+  // aspect-ratio: 9 / 10;
 
   /* stylelint-disable-next-line no-descending-specificity */
   & > img {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 5 / 6;
+    object-position: 0% 22.5%;
+    object-fit: cover;
     background-color: rgb(0 0 0 / 60%);
     filter: blur(12px) brightness(0.8);
     scale: 1.05;
@@ -667,9 +675,12 @@ $slide-h: 32.5rem; /* 520px */
 }
 
 .next-niki {
-  @apply relative w-full;
+  @apply relative;
 
-  aspect-ratio: 16 / 10;
+  width: 100%;
+  height: calc($slide-h * 1.1);
+
+  // aspect-ratio: 16 / 10;
   background-color: var.$bg-primary;
 
   /* stylelint-disable-next-line no-descending-specificity */
@@ -703,29 +714,55 @@ $slide-h: 32.5rem; /* 520px */
       clip-path: circle(50% at 50% 50%);
       mix-blend-mode: multiply;
 
-      $blue-size: 30dvh;
-      $cyan-size: 26dvh;
-      $green-size: 24dvh;
+      $blue-size: 30%;
+      $cyan-size: 26%;
+      $green-size: 24%;
 
       &.blue {
-        top: -9dvh;
-        left: -10dvh;
-        height: $blue-size;
+        top: -13%;
+        left: -9%;
+        width: $blue-size;
         background-color: var.$blue;
       }
 
       &.cyan {
-        top: -7.5dvh;
-        left: 7dvh;
-        height: $cyan-size;
+        top: -10%;
+        left: 7%;
+        width: $cyan-size;
         background-color: var.$cyan;
       }
 
       &.green {
-        top: 7.5dvh;
-        left: -9dvh;
-        height: $green-size;
+        top: 11%;
+        left: -8.7%;
+        width: $green-size;
         background-color: var.$lime;
+      }
+
+      /* tablet (max-lg) */
+      @media (width >= 1024px) {
+        $circle-size: 16rem;
+
+        &.blue {
+          top: calc(-1 * $circle-size * 0.325);
+          left: calc(-1 * $circle-size * 0.25);
+          width: $circle-size;
+          background-color: var.$blue;
+        }
+
+        &.cyan {
+          top: calc(-1 * $circle-size * 0.275);
+          left: calc($circle-size * 0.25);
+          width: calc($circle-size * 0.9);
+          background-color: var.$cyan;
+        }
+
+        &.green {
+          top: calc($circle-size * 0.2);
+          left: calc(-1 * $circle-size * 0.32);
+          width: calc($circle-size * 0.85);
+          background-color: var.$lime;
+        }
       }
     }
   }
@@ -862,9 +899,10 @@ $slide-h: 32.5rem; /* 520px */
     }
 
     & > :nth-child(3 of div) {
-      @apply grid gap-2 self-end;
+      @apply grid place-content-center gap-2 self-end;
 
-      h3 {
+      /* stylelint-disable-next-line no-descending-specificity */
+      & > a {
         @apply app-link ms-8;
       }
 
