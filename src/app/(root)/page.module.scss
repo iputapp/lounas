@@ -239,7 +239,7 @@ $slide-h: 32.5rem; /* 520px */
     @apply absolute inset-0
       flex items-center justify-center space-x-16
       overflow-clip
-      backdrop-blur;
+      backdrop-blur backdrop-brightness-90;
 
     padding-right: 4rem;
     padding-left: 2.5rem;
