@@ -281,7 +281,7 @@ $slide-h: 32.5rem; /* 520px */
     padding-right: 1rem;
     padding-left: 0.5rem;
 
-    /* tablet */
+    /* tablet (max-lg) */
     @media (width >= 1024px) {
       @apply rounded-[4rem];
 
