@@ -281,6 +281,15 @@ $slide-h: 32.5rem; /* 520px */
     padding-right: 1rem;
     padding-left: 0.5rem;
 
+    /* tablet */
+    @media (width >= 1024px) {
+      @apply rounded-[4rem];
+
+      left: 15%;
+      width: 30rem;
+      height: 75%;
+    }
+
     & > h4 {
       @apply text-center text-2xl font-bold;
 
@@ -307,6 +316,8 @@ $slide-h: 32.5rem; /* 520px */
         & > :nth-child(1) {
           @apply grid content-center justify-items-center gap-1;
 
+          height: 75px; // image height
+
           & > img {
             @apply rounded-2xl;
           }
@@ -325,8 +336,9 @@ $slide-h: 32.5rem; /* 520px */
         & > :nth-child(2) {
           @apply z-10
             grid place-content-center
-            rounded-full p-10;
+            rounded-full;
 
+          height: 9.25rem;
           aspect-ratio: 1 / 1;
 
           & > :nth-child(1) {
@@ -409,7 +421,9 @@ $slide-h: 32.5rem; /* 520px */
   @apply relative;
 
   width: 100%;
-  aspect-ratio: 16 / 9;
+
+  // aspect-ratio: 16 / 9;
+  height: $slide-h;
 
   & > :nth-child(1) {
     @apply relative blur-md;
