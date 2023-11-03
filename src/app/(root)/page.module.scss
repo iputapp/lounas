@@ -58,12 +58,16 @@ $slide-h: 32.5rem; /* 520px */
   }
 }
 
-/* page styles */
+/* article styles */
 .container {
   @apply relative mx-auto overflow-x-clip;
 
   width: 100%;
   background-color: var.$bg-primary;
+
+  img {
+    @apply select-none;
+  }
 }
 
 .bg-demo {
