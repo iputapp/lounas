@@ -224,7 +224,7 @@ $slide-h: 32.5rem; /* 520px */
 }
 
 .route-second {
-  @apply relative; /* 28rem(smooth-experience top) + 32rem(route-first height) - 9rem */
+  @apply relative;
 
   width: 100%;
   height: $slide-h;
