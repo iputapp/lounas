@@ -232,6 +232,7 @@ export default function Page() {
                   duration: 0.8,
                   ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                 }}
+                viewport={{ once: true }}
               >
                 <Image
                   src={"/images/demo/restaurant-navi.webp"}
@@ -332,6 +333,7 @@ export default function Page() {
                   stiffness: 80,
                   damping: 8,
                 }}
+                viewport={{ once: true }}
               >
                 がっつり
               </motion.span>
@@ -344,6 +346,7 @@ export default function Page() {
                   stiffness: 80,
                   damping: 8,
                 }}
+                viewport={{ once: true }}
               >
                 普通
               </motion.span>
@@ -356,6 +359,7 @@ export default function Page() {
                   stiffness: 80,
                   damping: 8,
                 }}
+                viewport={{ once: true }}
               >
                 少なめ
               </motion.span>
@@ -368,6 +372,7 @@ export default function Page() {
                   stiffness: 80,
                   damping: 8,
                 }}
+                viewport={{ once: true }}
               >
                 おまかせ
               </motion.span>
@@ -391,6 +396,7 @@ export default function Page() {
                   duration: 0.8,
                   ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                 }}
+                viewport={{ once: true }}
               >
                 <span>3</span>
                 <span>つ</span>
@@ -403,6 +409,7 @@ export default function Page() {
                   duration: 0.6,
                   ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                 }}
+                viewport={{ once: true }}
               >
                 <Image
                   src={"/images/demo/recommend-1.webp"}
@@ -420,6 +427,7 @@ export default function Page() {
                   duration: 0.6,
                   ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                 }}
+                viewport={{ once: true }}
               >
                 <Image
                   src={"/images/demo/recommend-2.webp"}
@@ -437,6 +445,7 @@ export default function Page() {
                   duration: 0.6,
                   ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                 }}
+                viewport={{ once: true }}
               >
                 <Image
                   src={"/images/demo/recommend-3.webp"}
@@ -458,6 +467,7 @@ export default function Page() {
                   duration: 0.6,
                   ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                 }}
+                viewport={{ once: true }}
               >
                 の
               </motion.span>
@@ -469,6 +479,7 @@ export default function Page() {
                   duration: 0.6,
                   ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                 }}
+                viewport={{ once: true }}
               >
                 質問で
               </motion.span>
@@ -679,6 +690,7 @@ export default function Page() {
                     duration: 0.6,
                     ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                   }}
+                  viewport={{ once: true }}
                 >
                   <Image
                     src={"/images/demo/recommend-result.webp"}
@@ -696,6 +708,7 @@ export default function Page() {
                     duration: 0.6,
                     ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                   }}
+                  viewport={{ once: true }}
                 >
                   <Image
                     src={"/images/demo/dish.webp"}
@@ -797,6 +810,7 @@ export default function Page() {
                     duration: 0.6,
                     ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                   }}
+                  viewport={{ once: true }}
                 >
                   <span>ランキング</span>
                   <Image
@@ -813,6 +827,7 @@ export default function Page() {
                     duration: 0.6,
                     ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                   }}
+                  viewport={{ once: true }}
                 >
                   <span>My日記</span>
                   <Image
