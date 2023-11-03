@@ -689,10 +689,16 @@ $slide-h: 32.5rem; /* 520px */
 
   /* stylelint-disable-next-line no-descending-specificity */
   & > h2 {
-    @apply absolute right-12 top-8 text-center text-2xl font-bold;
+    @apply absolute right-12 top-12 text-center font-bold;
 
-    width: fit-content;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
     color: var.$primary;
+
+    /* tablet (max-lg) */
+    @media (width >= 1024px) {
+      padding-right: 5%;
+    }
 
     &::after {
       @apply absolute -bottom-3 rounded-full;
