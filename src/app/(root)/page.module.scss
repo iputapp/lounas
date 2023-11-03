@@ -716,6 +716,8 @@ $container: 56rem; // max-w-4xl
 
         & > :nth-child(1 of span) {
           @apply lounas-logo-full;
+
+          width: 9rem;
         }
 
         & > :nth-child(2 of span) {
