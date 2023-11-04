@@ -93,7 +93,7 @@ export default async function Page({
             </div>
             <div className={styles.parent}>
               <Image
-                src="/images/not-found-penguin.png"
+                src="/images/not-found-penguin.webp"
                 alt="not-found-penguin"
                 fill
                 sizes="(max-width: 768px) 75vw, (max-width: 1200px) 75vw, 75vw"
