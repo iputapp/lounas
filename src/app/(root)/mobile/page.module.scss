@@ -699,7 +699,7 @@ $slide-h: 48rem; /* 768px */
   @apply relative;
 
   width: 100%;
-  height: $slide-h;
+  height: calc($slide-h - 2rem);
 
   // aspect-ratio: 16 / 10;
   background-color: var.$bg-primary;
