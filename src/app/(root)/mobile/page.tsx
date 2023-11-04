@@ -55,12 +55,13 @@ export default function Page() {
               transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
             >
               <Image
-                src={"/images/demo/signup.webp"}
+                src={"/images/demo/user-signout.webp"}
                 alt="demo"
                 width={131.625}
                 height={284.85}
                 priority
               />
+
               <Image
                 src={"/images/demo/recommend-loading.webp"}
                 alt="demo"
@@ -75,21 +76,22 @@ export default function Page() {
               transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
             >
               <Image
-                src={"/images/demo/home.webp"}
-                alt="demo"
-                width={131.625}
-                height={284.85}
-                priority
-              />
-              <Image
-                src={"/images/demo/user-signout.webp"}
-                alt="demo"
-                width={131.625}
-                height={284.85}
-                priority
-              />
-              <Image
                 src={"/images/demo/privacy.webp"}
+                alt="demo"
+                width={131.625}
+                height={284.85}
+                priority
+              />
+
+              <Image
+                src={"/images/demo/recommend-1.webp"}
+                alt="demo"
+                width={131.625}
+                height={284.85}
+                priority
+              />
+              <Image
+                src={"/images/demo/signup.webp"}
                 alt="demo"
                 width={131.625}
                 height={284.85}
@@ -122,7 +124,7 @@ export default function Page() {
               transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
             >
               <Image
-                src={"/images/demo/recommend-1.webp"}
+                src={"/images/demo/home.webp"}
                 alt="demo"
                 width={131.625}
                 height={284.85}
