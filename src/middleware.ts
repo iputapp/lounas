@@ -49,15 +49,13 @@ export async function middleware(req: NextRequest) {
       if (device.type === "mobile") {
         return NextResponse.rewrite(`${reqUrl.origin}/mobile`);
       }
-      return res;
     }
 
-    /** mobile top page */
+    /** top page (mobile) */
     if (reqNextPath.endsWith("/mobile")) {
       if (device.type !== "mobile") {
-        return NextResponse.rewrite(`${reqUrl.origin}`);
+        return NextResponse.redirect(`${reqUrl.origin}`);
       }
-      return res;
     }
 
     /** ----- auth ----- */
@@ -112,6 +110,7 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     "/",
+    "/mobile/:path*",
     "/signup/:path+",
     "/privacy/:path*",
     "/dish/:path*",
