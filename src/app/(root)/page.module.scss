@@ -100,7 +100,7 @@ $slide-h: 32.5rem; /* 520px */
     100% - 36rem + 4.5rem
   ); // this - div(-mt-[36rem]) + smooth-experience(rounded-t-[4.5rem])
 
-  padding-bottom: 3.5rem; // smooth-experience(rounded-t-[4.5rem]) - 1rem
+  padding-bottom: 1rem; // smooth-experience(rounded-t-[4.5rem]) - 3.5rem
 
   & > :nth-child(1) {
     @apply grid h-full w-full

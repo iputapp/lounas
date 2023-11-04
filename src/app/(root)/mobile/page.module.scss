@@ -99,10 +99,10 @@ $slide-h: 48rem; /* 768px */
 
   width: 100%;
   height: calc(
-    100% - 36rem + 4.5rem
-  ); // this - div(-mt-[36rem]) + smooth-experience(rounded-t-[4.5rem])
+    100% - 36rem + 2.5rem
+  ); // this - div(-mt-[36rem]) + smooth-experience(rounded-t-[2.5rem])
 
-  padding-bottom: 3.5rem; // smooth-experience(rounded-t-[4.5rem]) - 1rem
+  // padding-bottom: 0.5rem; // smooth-experience(rounded-t-[2.5rem]) - 2rem
 
   & > :nth-child(1) {
     @apply grid h-full w-full
