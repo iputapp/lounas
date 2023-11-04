@@ -412,8 +412,8 @@ export default function Page() {
                 <span>つ</span>
               </motion.div>
               <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
                 transition={{
                   delay: 0.7,
                   duration: 0.6,
@@ -430,8 +430,8 @@ export default function Page() {
                 />
               </motion.div>
               <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
                 transition={{
                   delay: 0.8,
                   duration: 0.6,
@@ -448,8 +448,8 @@ export default function Page() {
                 />
               </motion.div>
               <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
                 transition={{
                   delay: 0.9,
                   duration: 0.6,
