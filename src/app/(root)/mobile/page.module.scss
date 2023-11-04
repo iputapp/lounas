@@ -806,6 +806,7 @@ $slide-h: 48rem; /* 768px */
   & > :nth-child(1) {
     @apply grid gap-8;
 
+    /* stylelint-disable-next-line no-descending-specificity */
     & > h2 {
       @apply grid justify-items-center gap-3
           py-2 text-sm;
