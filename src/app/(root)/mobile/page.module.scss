@@ -331,9 +331,9 @@ $slide-h: 48rem; /* 768px */
 
   & > :nth-child(2) {
     @apply neumo
-        relative mx-auto
-        grid gap-4
-        rounded-[3rem] px-4 py-8;
+      relative mx-auto
+      grid gap-4
+      rounded-[3rem] bg-neutral-50 px-4 py-8;
 
     width: 95%;
     height: 100%;
