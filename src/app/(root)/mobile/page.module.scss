@@ -708,9 +708,10 @@ $slide-h: 48rem; /* 768px */
 
   /* stylelint-disable-next-line no-descending-specificity */
   & > h2 {
-    @apply absolute inset-x-0 top-12
+    @apply absolute inset-x-0
       text-center text-2xl font-bold;
 
+    top: 2.75rem;
     width: 100%;
     color: var.$primary;
 
