@@ -42,7 +42,7 @@ export default function Page() {
               transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }} // easeInOutQuint
             >
               <Image
-                src={"/images/demo/ranking.webp"}
+                src={"/images/demo/recommend-loading.webp"}
                 alt="demo"
                 width={131.625}
                 height={284.85}
@@ -62,7 +62,7 @@ export default function Page() {
                 priority
               />
               <Image
-                src={"/images/demo/recommend-loading.webp"}
+                src={"/images/demo/privacy.webp"}
                 alt="demo"
                 width={131.625}
                 height={284.85}
@@ -89,7 +89,7 @@ export default function Page() {
                 priority
               />
               <Image
-                src={"/images/demo/privacy.webp"}
+                src={"/images/demo/recommend-1.webp"}
                 alt="demo"
                 width={131.625}
                 height={284.85}
@@ -122,7 +122,7 @@ export default function Page() {
               transition={{ duration: 1.8, ease: [0.83, 0, 0.17, 1] }}
             >
               <Image
-                src={"/images/demo/recommend-1.webp"}
+                src={"/images/demo/ranking.webp"}
                 alt="demo"
                 width={131.625}
                 height={284.85}
