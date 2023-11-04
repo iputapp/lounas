@@ -61,7 +61,6 @@ export default function Page() {
                 height={284.85}
                 priority
               />
-
               <Image
                 src={"/images/demo/recommend-loading.webp"}
                 alt="demo"
@@ -82,7 +81,6 @@ export default function Page() {
                 height={284.85}
                 priority
               />
-
               <Image
                 src={"/images/demo/recommend-1.webp"}
                 alt="demo"
