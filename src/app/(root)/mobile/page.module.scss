@@ -700,7 +700,7 @@ $slide-h: 48rem; /* 768px */
 }
 
 .next-niki {
-  @apply relative;
+  @apply relative overflow-clip;
 
   width: 100%;
   height: calc($slide-h - 2rem);
