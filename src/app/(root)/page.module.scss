@@ -403,13 +403,13 @@ $slide-h: 32.5rem; /* 520px */
       height: calc(100% - 2rem);
 
       & > :nth-child(n of span) {
-        @apply text-2xl font-bold;
+        @apply z-10 text-2xl font-bold;
 
         color: var.$primary;
       }
 
       & > :nth-child(1 of h3) {
-        @apply text-5xl font-bold;
+        @apply z-10 text-5xl font-bold;
 
         color: var.$primary;
 
