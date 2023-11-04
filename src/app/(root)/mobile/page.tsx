@@ -338,7 +338,7 @@ export default function Page() {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{
-                  delay: 0,
+                  delay: 0.2,
                   type: "spring",
                   stiffness: 80,
                   damping: 8,
@@ -351,7 +351,7 @@ export default function Page() {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{
-                  delay: 0.2,
+                  delay: 0.4,
                   type: "spring",
                   stiffness: 80,
                   damping: 8,
@@ -364,7 +364,7 @@ export default function Page() {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{
-                  delay: 0.1,
+                  delay: 0.3,
                   type: "spring",
                   stiffness: 80,
                   damping: 8,
@@ -377,7 +377,7 @@ export default function Page() {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{
-                  delay: 0.3,
+                  delay: 0.5,
                   type: "spring",
                   stiffness: 80,
                   damping: 8,
