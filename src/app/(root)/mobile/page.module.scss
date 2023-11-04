@@ -762,7 +762,7 @@ $slide-h: 48rem; /* 768px */
         border-radius: 2rem;
 
         & > span {
-          @apply py-2 text-center text-lg font-semibold;
+          @apply py-2 text-center text-base font-semibold;
 
           height: fit-content;
           color: var.$tertiary;
