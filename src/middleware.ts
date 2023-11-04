@@ -1,6 +1,6 @@
 import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { NextResponse, userAgent } from "next/server";
 
 /** @see {@link https://nextjs.org/docs/app/building-your-application/routing/middleware} */
 export async function middleware(req: NextRequest) {
@@ -15,6 +15,10 @@ export async function middleware(req: NextRequest) {
     email: session.data.session?.user.email,
     expiredIn: session.data.session?.expires_in,
   });
+
+  /** @see {@link https://nextjs.org/docs/messages/middleware-parse-user-agent} */
+  const { device } = userAgent(req);
+  console.log("device", device);
 
   /** signined */
   if (session.data.session) {
@@ -41,9 +45,20 @@ export async function middleware(req: NextRequest) {
     }
   } else {
     /** ----- root ----- */
-    // if (reqNextPath === "/") {
-    //   return NextResponse.redirect(`${reqUrl.origin}/signup`);
-    // }
+    if (reqNextPath === "/") {
+      if (device.type === "mobile") {
+        return NextResponse.rewrite(`${reqUrl.origin}/mobile`);
+      }
+      return res;
+    }
+
+    /** mobile top page */
+    if (reqNextPath.endsWith("/mobile")) {
+      if (device.type !== "mobile") {
+        return NextResponse.rewrite(`${reqUrl.origin}`);
+      }
+      return res;
+    }
 
     /** ----- auth ----- */
     /** /signup/verify */
