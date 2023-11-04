@@ -595,8 +595,10 @@ $slide-h: 48rem; /* 768px */
 
   & > :nth-child(1) {
     @apply flex items-center justify-center
-      text-center text-4xl font-bold;
+      text-center font-bold;
 
+    font-size: 1.75rem;
+    line-height: 2rem;
     color: var.$secondary;
   }
 }
@@ -889,7 +891,7 @@ $slide-h: 48rem; /* 768px */
     @apply grid place-content-center gap-4;
 
     & > :nth-child(1 of div) {
-      @apply flex items-center justify-start divide-x-2 divide-neutral-400;
+      @apply flex items-center justify-start divide-x divide-neutral-400;
 
       width: 100%;
 

@@ -679,6 +679,7 @@ export default function Page() {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{
+                    delay: 0.1,
                     duration: 0.6,
                     ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                   }}
@@ -696,7 +697,7 @@ export default function Page() {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{
-                    delay: 0.4,
+                    delay: 0.5,
                     duration: 0.6,
                     ease: [0.65, 0, 0.35, 1], // easeInOutCubic
                   }}
@@ -715,16 +716,7 @@ export default function Page() {
           </article>
           <article className={styles.ourMission}>
             <Image src={"/images/cocoon.webp"} alt="cocoon" fill priority />
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.6,
-                ease: [0.65, 0, 0.35, 1], // easeInOutCubic
-              }}
-              viewport={{ once: true }}
-            >
+            <div>
               <section>
                 <div>
                   <p>数多くの飲食店がある新宿に</p>
@@ -753,7 +745,7 @@ export default function Page() {
                   <p>Powered by ChatGPT</p>
                 </div>
               </section>
-            </motion.div>
+            </div>
           </article>
           <article className={styles.nextNiki}>
             <h2>これからもよりよいサービスを</h2>
@@ -761,7 +753,7 @@ export default function Page() {
               <section>
                 <h3>
                   <motion.span
-                    initial={{ x: "95%" }}
+                    initial={{ x: "90%" }}
                     whileInView={{ x: 0 }}
                     transition={{
                       delay: 0.5,
