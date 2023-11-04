@@ -295,13 +295,13 @@ $slide-h: 48rem; /* 768px */
     height: calc($slide-h * 1.1 * 0.5);
 
     & > :nth-child(1) {
-      @apply absolute inset-0 my-auto;
+      @apply absolute inset-0 my-auto blur;
 
       width: 100%;
       aspect-ratio: 1 / 1;
 
       & > :nth-child(n of svg) {
-        @apply h-full w-full blur;
+        @apply h-full w-full;
       }
     }
 
@@ -390,14 +390,16 @@ $slide-h: 48rem; /* 768px */
           aspect-ratio: 1 / 1;
 
           & > :nth-child(1) {
-            @apply text-center text-xl font-bold;
+            @apply text-center text-lg font-bold;
 
             color: var.$tertiary;
           }
 
           & > :nth-child(2) {
-            @apply text-center text-3xl font-bold;
+            @apply text-center font-bold;
 
+            font-size: 1.75rem;
+            line-height: 2.125rem;
             color: var.$primary;
           }
         }

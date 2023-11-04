@@ -386,13 +386,13 @@ $slide-h: 32.5rem; /* 520px */
     height: 100%;
 
     & > :nth-child(1) {
-      @apply absolute inset-y-0 my-auto;
+      @apply absolute inset-y-0 my-auto blur;
 
       width: 100%;
       aspect-ratio: 1 / 1;
 
       & > :nth-child(n of svg) {
-        @apply h-full w-full blur;
+        @apply h-full w-full;
       }
     }
 
