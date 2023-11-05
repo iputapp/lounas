@@ -510,7 +510,7 @@ $slide-h: 32.5rem; /* 520px */
 
     & > :nth-child(1 of h3) {
       @apply absolute inset-0 my-auto
-        grid gap-6
+        grid place-content-center gap-6
         text-center;
 
       height: fit-content;
