@@ -387,12 +387,10 @@ export default function Page() {
                 おまかせ
               </motion.span>
             </div>
-            <section>
-              <h3>
-                <span>検索はいたって</span>
-                <span>シンプル</span>
-              </h3>
-            </section>
+            <h3>
+              <span>検索はいたって</span>
+              <span>シンプル</span>
+            </h3>
           </article>
           <article className={styles.recommendSecond}>
             <div>
