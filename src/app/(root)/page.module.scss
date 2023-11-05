@@ -504,7 +504,7 @@ $slide-h: 32.5rem; /* 520px */
   }
 
   & > :nth-child(2) {
-    @apply absolute inset-0;
+    @apply absolute inset-0 grid place-content-center;
 
     height: 100%;
 
@@ -597,7 +597,7 @@ $slide-h: 32.5rem; /* 520px */
     @apply absolute inset-0;
 
     & > div {
-      @apply relative;
+      @apply relative overflow-y-clip;
 
       width: 100%;
       height: 100%;
@@ -605,9 +605,9 @@ $slide-h: 32.5rem; /* 520px */
       & > :nth-child(1 of svg) {
         @apply absolute;
 
-        right: -25%;
+        right: -31%;
         bottom: -30%;
-        width: fit-content;
+        width: 100%;
         height: 100%;
       }
     }
@@ -651,7 +651,6 @@ $slide-h: 32.5rem; /* 520px */
   /* stylelint-disable-next-line no-descending-specificity */
   & > img {
     width: 100%;
-    aspect-ratio: 5 / 6;
     object-position: 0% 22.5%;
     object-fit: cover;
     background-color: rgb(0 0 0 / 60%);
