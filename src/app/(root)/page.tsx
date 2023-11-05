@@ -490,8 +490,8 @@ export default function Page() {
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="1143.916"
-                  height="936.837"
+                  width="100%"
+                  height="100%"
                   viewBox="0 0 1143.916 936.837"
                 >
                   <g transform="translate(-560.574 -357.163)">
