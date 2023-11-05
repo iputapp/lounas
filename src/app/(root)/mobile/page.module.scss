@@ -508,27 +508,23 @@ $slide-h: 48rem; /* 768px */
     }
   }
 
-  & > :nth-child(2) {
-    @apply absolute inset-0 grid place-content-center;
-
-    & > :nth-child(1 of h3) {
-      @apply absolute inset-0 my-auto
+  & > :nth-child(1 of h3) {
+    @apply absolute inset-0 my-auto
         grid place-content-center gap-4
         text-center;
 
-      height: fit-content;
+    height: fit-content;
 
-      & > :nth-child(1) {
-        @apply text-3xl font-bold;
+    & > :nth-child(1) {
+      @apply text-3xl font-bold;
 
-        color: var.$secondary;
-      }
+      color: var.$secondary;
+    }
 
-      & > :nth-child(2) {
-        @apply text-6xl font-bold;
+    & > :nth-child(2) {
+      @apply text-6xl font-bold;
 
-        color: var.$primary;
-      }
+      color: var.$primary;
     }
   }
 }
@@ -829,10 +825,10 @@ $slide-h: 48rem; /* 768px */
   }
 
   & > :nth-child(2) {
-    @apply grid grid-cols-2 gap-2.5;
+    @apply grid grid-cols-2 gap-8;
 
     & > :nth-child(1 of div) {
-      @apply grid justify-items-center gap-6 self-center;
+      @apply grid justify-items-center gap-6 self-center ps-4;
 
       & > :nth-child(1 of div) {
         @apply relative grid gap-5;
