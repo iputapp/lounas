@@ -79,6 +79,7 @@ export function ExitButton({ restaurant }: { restaurant: Restaurant }) {
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
         onClickYes={handleYes}
         onClickNo={handleNo}
+        isProcessing={isProcessing}
       >
         <div className="grid gap-1.5 text-center text-sm font-semibold">
           <p>ルート案内を終了すると日記に記録・後で履歴を見ることができます。</p>
