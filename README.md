@@ -1,4 +1,4 @@
-# IMAP
+# lounas
 
 Bootstrapped with `create-next-app@13.4.6`.
 
@@ -16,7 +16,7 @@ Bootstrapped with `create-next-app@13.4.6`.
 
 ### Pull request (PR)
 
-PR を行う際は、体裁を統一するため、`Create pull request`を押した後、`URL`に`?template=task-feature.md` (もしくは`&template=task-feature.md`) を追加して、テンプレートにアクセスする。
+PR を行う際は、体裁を統一するため`Create pull request`を押した後、`URL`に`?template=task-feature.md` (もしくは`&template=task-feature.md`) を追加してテンプレートにアクセスする。
 
 `コピー用`
 
@@ -33,19 +33,19 @@ template=task-feature.md
 > - PR の`URL`
 >
 > ```
-> https://github.com/wiyco/imap/compare/develop...feature/main-app-ui
+> https://github.com/PROJECT-PIPLUP/lounas/compare/develop...feature/main-app-ui
 > ```
 >
 > - テンプレート付き PR の`URL`
 >
 > ```
-> https://github.com/wiyco/imap/compare/develop...feature/main-app-ui?template=task-feature.md
+> https://github.com/PROJECT-PIPLUP/lounas/compare/develop...feature/main-app-ui?template=task-feature.md
 > ```
 >
 > or
 >
 > ```
-> https://github.com/wiyco/imap/compare/develop...feature/main-app-ui?expand=1&template=task-feature.md
+> https://github.com/PROJECT-PIPLUP/lounas/compare/develop...feature/main-app-ui?expand=1&template=task-feature.md
 > ```
 >
 > 詳細は[GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request)を参照。
