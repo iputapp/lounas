@@ -43,6 +43,9 @@ export async function middleware(req: NextRequest) {
     if (reqNextPath.endsWith("/signin")) {
       return NextResponse.redirect(`${reqUrl.origin}/webapp/user/signout`);
     }
+
+    /** refreshing session */
+    return res;
   } else {
     /** ----- root ----- */
     if (reqNextPath === "/") {
@@ -102,9 +105,6 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(`${reqUrl.origin}`);
     }
   }
-
-  /** refreshing session */
-  return res;
 }
 
 export const config = {
