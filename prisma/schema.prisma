@@ -1,14 +1,17 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-generator client {
-  provider = "prisma-client-js"
-}
+// Prisma with Supabase: https://supabase.com/partners/integrations/prisma
 
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
+  schemas   = ["public", "auth"]
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
 }
 
 generator zod {
@@ -43,6 +46,7 @@ model Restaurant {
 
   @@index([travelTime], name: "restaurants_travel_time_idx")
   @@map("restaurants")
+  @@schema("public")
 }
 
 model RestaurantTag {
@@ -56,6 +60,7 @@ model RestaurantTag {
   restaurants Restaurant[] @relation("restaurant_tagging")
 
   @@map("restaurant_tags")
+  @@schema("public")
 }
 
 model RestaurantOpen {
@@ -73,6 +78,7 @@ model RestaurantOpen {
 
   @@unique([weekTypeId, restaurantId])
   @@map("restaurant_opens")
+  @@schema("public")
 }
 
 model WeekType {
@@ -85,6 +91,7 @@ model WeekType {
   restaurantOpens RestaurantOpen[]
 
   @@map("week_types")
+  @@schema("public")
 }
 
 model Route {
@@ -104,6 +111,7 @@ model Route {
 
   @@index([id], name: "routes_id_idx")
   @@map("routes")
+  @@schema("public")
 }
 
 model RouteType {
@@ -117,6 +125,7 @@ model RouteType {
   routes Route[]
 
   @@map("route_types")
+  @@schema("public")
 }
 
 model Payment {
@@ -134,6 +143,7 @@ model Payment {
 
   @@unique([paymentTypeId, restaurantId])
   @@map("payments")
+  @@schema("public")
 }
 
 model PaymentType {
@@ -146,6 +156,7 @@ model PaymentType {
   payments Payment[]
 
   @@map("payment_types")
+  @@schema("public")
 }
 
 model Dish {
@@ -167,6 +178,7 @@ model Dish {
 
   @@index([price], name: "dishes_price_idx")
   @@map("dishes")
+  @@schema("public")
 }
 
 model DishTag {
@@ -180,6 +192,7 @@ model DishTag {
   dishes Dish[] @relation("dish_tagging")
 
   @@map("dish_tags")
+  @@schema("public")
 }
 
 model DishScore {
@@ -196,6 +209,7 @@ model DishScore {
 
   @@unique([dishId, traitId])
   @@map("dish_scores")
+  @@schema("public")
 }
 
 model DishTrait {
@@ -209,6 +223,7 @@ model DishTrait {
   dishScores DishScore[]
 
   @@map("dish_traits")
+  @@schema("public")
 }
 
 model VisitHistory {
@@ -223,6 +238,7 @@ model VisitHistory {
 
   @@index([createdAt], name: "visit_histories_created_at_idx")
   @@map("visit_histories")
+  @@schema("public")
 }
 
 model User {
@@ -242,6 +258,7 @@ model User {
   @@unique([username, organizationId])
   @@index([lastLogin], name: "users_last_login_idx")
   @@map("users")
+  @@schema("public")
 }
 
 model Organization {
@@ -259,4 +276,5 @@ model Organization {
   users User[]
 
   @@map("organizations")
+  @@schema("public")
 }
