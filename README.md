@@ -69,9 +69,14 @@ The below file and variables must be created in the root directory.
 NEXT_PUBLIC_SUPABASE_URL=https://yourprojecturl.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=YourApiKey
 
-# postgres
-DATABASE_URL=postgresql://postgres:[pw]@db.[url].supabase.co:6543/postgres?pgbouncer=true
+# https://supabase.com/partners/integrations/prisma
+# postgres connection string used for migrations
 DIRECT_URL=postgresql://postgres:[pw]@db.[url].supabase.co:5432/postgres
+# postgres connection string with Supavisor config - used by Prisma Client
+DATABASE_URL=postgres://postgres.[url]:postgres:[pw]@[region].pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1
+
+# cdn
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=YourId
 ```
 
 ### Code formatter
