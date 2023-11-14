@@ -73,7 +73,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=YourApiKey
 # postgres connection string used for migrations
 DIRECT_URL=postgresql://postgres:[pw]@db.[url].supabase.co:5432/postgres
 # postgres connection string with Supavisor config - used by Prisma Client
-DATABASE_URL=postgres://postgres.[url]:postgres:[pw]@[region].pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1
+DATABASE_URL=postgres://postgres.[url]:[pw]@[region].pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1
 
 # cdn
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=YourId
