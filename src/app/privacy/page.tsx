@@ -13,10 +13,11 @@ import styles from "./page.module.scss";
 /** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
 export const dynamic = "force-dynamic";
 
-async function getDataAgreement() {
+async function getDataAgreement(abortController?: AbortController) {
   /** @todo cache settings */
   const dataAgreement = (await fetch("/api/v-beta/user/data-agreement", {
     method: "GET",
+    signal: abortController?.signal,
   })
     .then((res) => res.json())
     .catch((err) => {
@@ -35,7 +36,7 @@ export default function Page() {
     const abortController = new AbortController();
     /** get data agreement */
     (async () => {
-      const dataAgreement = await getDataAgreement();
+      const dataAgreement = await getDataAgreement(abortController);
       setDataAgreement(dataAgreement);
     })().catch((err) => {
       console.error(err);

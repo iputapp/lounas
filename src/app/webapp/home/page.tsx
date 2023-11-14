@@ -13,9 +13,12 @@ import styles from "./page.module.scss";
 /** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
 export const dynamic = "force-dynamic";
 
-async function getVisitsCount() {
+async function getVisitsCount(abortController?: AbortController) {
   /** @todo cache settings */
-  const visitsCount = (await fetch("/api/v-beta/user/visits-count")
+  const visitsCount = (await fetch("/api/v-beta/user/visits-count", {
+    method: "GET",
+    signal: abortController?.signal,
+  })
     .then((res) => res.json())
     .catch((err) => {
       console.error(err);
@@ -42,7 +45,7 @@ export default function Page() {
     };
     /** visits count */
     (async () => {
-      const visitsCount = await getVisitsCount();
+      const visitsCount = await getVisitsCount(abortController);
       if (visitsCount !== null) {
         /** progress bar */
         const mod = visitsCount % visitPer;
@@ -74,7 +77,7 @@ export default function Page() {
       <h1 className={styles.title}>こんにちは</h1>
       <section className={styles.panel}>
         <div className={styles.date}>
-          {date ? (
+          {date && (
             <span>
               {date.toLocaleDateString("ja-JP", {
                 year: "numeric",
@@ -83,7 +86,7 @@ export default function Page() {
                 weekday: "short",
               })}
             </span>
-          ) : null}
+          )}
         </div>
         <div className={styles.exp}>
           <div className={styles.text}>

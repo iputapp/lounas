@@ -11,10 +11,15 @@ export async function middleware(req: NextRequest) {
   const supabase = createMiddlewareClient({ req, res });
   const session = await supabase.auth.getSession();
 
-  console.log("session", {
-    email: session.data.session?.user.email,
-    expiredIn: session.data.session?.expires_in,
-  });
+  if (session.error) {
+    console.warn("session", session.error);
+    return NextResponse.redirect(`${reqUrl.origin}/webapp/user/signin`);
+  } else {
+    console.log("session", {
+      email: session.data.session?.user.email,
+      expiredIn: session.data.session?.expires_in,
+    });
+  }
 
   /** @see {@link https://nextjs.org/docs/messages/middleware-parse-user-agent} */
   const { device } = userAgent(req);
