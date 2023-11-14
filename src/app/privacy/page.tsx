@@ -32,6 +32,7 @@ export default function Page() {
   const [dataAgreement, setDataAgreement] = useState<DataAgreementRequest | null>(null);
 
   useEffect(() => {
+    const abortController = new AbortController();
     /** get data agreement */
     (async () => {
       const dataAgreement = await getDataAgreement();
@@ -39,6 +40,10 @@ export default function Page() {
     })().catch((err) => {
       console.error(err);
     });
+    /** cleanup */
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

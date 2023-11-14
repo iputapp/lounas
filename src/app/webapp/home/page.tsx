@@ -32,6 +32,7 @@ export default function Page() {
   const visitPer = 5; // 100%/5件
 
   useEffect(() => {
+    const abortController = new AbortController();
     /** today */
     setDate(new Date());
     /** error status */
@@ -58,6 +59,10 @@ export default function Page() {
       console.error(err);
       setStatus(errorStatus);
     });
+    /** cleanup */
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   const startRecommend = () => {
