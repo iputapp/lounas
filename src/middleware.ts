@@ -11,14 +11,10 @@ export async function middleware(req: NextRequest) {
   const supabase = createMiddlewareClient({ req, res });
   const session = await supabase.auth.getSession();
 
-  if (session.error) {
+  /** session token expired */
+  if (session.error && !reqNextPath.startsWith("/signup")) {
     console.warn("session", session.error);
-    return NextResponse.redirect(`${reqUrl.origin}/webapp/user/signin`);
-  } else {
-    console.log("session", {
-      email: session.data.session?.user.email,
-      expiredIn: session.data.session?.expires_in,
-    });
+    return NextResponse.redirect(`${reqUrl.origin}/signup`);
   }
 
   /** @see {@link https://nextjs.org/docs/messages/middleware-parse-user-agent} */
@@ -27,6 +23,12 @@ export async function middleware(req: NextRequest) {
 
   /** signined */
   if (session.data.session) {
+    /** log */
+    console.log("session", {
+      email: session.data.session.user.email,
+      expiredIn: session.data.session.expires_in,
+    });
+
     /** root */
     if (reqNextPath === "/") {
       return NextResponse.redirect(`${reqUrl.origin}/webapp`);
