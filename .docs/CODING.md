@@ -27,7 +27,7 @@
 
 ### `use server` と `use client`
 
-脆弱性となり得るため、安易に `use client` を使わず、必ず[Next.JS Docs](https://nextjs.org/docs/getting-started/react-essentials)を確認し、理解してから使用すること。
+脆弱性となり得るため、安易に `use client` を使わず、必ず[Next.js Docs](https://nextjs.org/docs/getting-started/react-essentials)を確認し、理解してから使用すること。
 
 ## ページ
 
