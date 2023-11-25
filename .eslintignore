@@ -11,6 +11,7 @@ tsconfig.json
 # /node_modules # default
 /.pnp
 .pnp.js
+.yarn/install-state.gz
 
 # next.js
 /.next/
