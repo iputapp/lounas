@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 import type { Dish } from "@/app/api/v-beta/dish/[id]";
 
