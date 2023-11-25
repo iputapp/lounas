@@ -1,12 +1,8 @@
 /** @see {@link https://nextjs.org/docs/app/building-your-application/styling/sass} */
 const path = require("path");
 
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
-  /** @see {@link https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions#convention} */
-  // experimental: {
-  //   serverActions: false,
-  // },
   /** @see {@link https://nextjs.org/docs/app/building-your-application/styling/sass} */
   sassOptions: {
     includePaths: [path.join(__dirname, "src/styles")],
