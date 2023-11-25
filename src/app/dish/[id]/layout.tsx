@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   /** 所要時間 */
   const requiredTime = dish.eatTime + dish.restaurant.travelTime * 2;
   /** description */
-  const description = `The lunch recommendation app for IPUT students.\n\n料理『${dish.name}』\nお店『${dish.restaurant.name}』\n値段『${dishPrice}円』\n所要時間『約${requiredTime}分』`;
+  const description = `料理『${dish.name}』\nお店『${dish.restaurant.name}』\n値段『${dishPrice}円』\n所要時間『約${requiredTime}分』`;
   /** openGraph image URL */
   const ogImageUrl = new URL(
     `dishes/id/${dish.id}.jpg`,

@@ -9,8 +9,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   ).then((res) => res.json())) as Restaurant;
 
   /** description */
-  const description =
-    "The lunch recommendation app for IPUT students.\n\nログインユーザーのみ閲覧可能なページです。";
+  const description = "ログインユーザーのみ閲覧可能なページです。";
 
   return {
     title: restaurant.name,

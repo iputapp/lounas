@@ -9,11 +9,13 @@ export const metadata: Metadata = {
     template: "%s | lounas",
   },
   applicationName: "lounas",
-  description: "The lunch recommendation app for IPUT students.",
+  description:
+    "『シンプル』そして『新しい体験』を提供する、昼食レコメンドサービスです。コクーンタワーのランチ難民を救済いたします。",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
   openGraph: {
     title: "lounas",
-    description: "The lunch recommendation app for IPUT students.",
+    description:
+      "『シンプル』そして『新しい体験』を提供する、昼食レコメンドサービスです。コクーンタワーのランチ難民を救済いたします。",
     type: "website",
     locale: "ja_JP",
     url: "/",
@@ -33,7 +35,8 @@ export const metadata: Metadata = {
     creator: "@lounas_app",
     creatorId: "1705278649434546176",
     title: "lounas",
-    description: "The lunch recommendation app for IPUT students.",
+    description:
+      "『シンプル』そして『新しい体験』を提供する、昼食レコメンドサービスです。コクーンタワーのランチ難民を救済いたします。",
     images: [
       {
         type: "image/webp",

@@ -1,7 +1,7 @@
 {
   "name": "lounas",
   "short_name": "lounas",
-  "description": "The lunch recommendation app for IPUT students.",
+  "description": "『シンプル』そして『新しい体験』を提供する、昼食レコメンドアプリです。コクーンタワーのランチ難民を救済いたします。",
   "icons": [
     {
       "src": "/favicon/android-chrome-192x192.png",
