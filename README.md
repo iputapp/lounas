@@ -1,14 +1,14 @@
 # lounas
 
-Bootstrapped with `create-next-app@13.4.6`.
+The lunch recommendation app. 🍽️
 
 ## Conventions
 
-`/_docs`
-
-- [コーディング規約](./_docs/CODING.md)
-
-- [ディレクトリ構成](./_docs/DIRECTORY.md)
+- [コーディング規約](.docs/CODING.md)
+- [ディレクトリ構成](.docs/DIRECTORY.md)
+- [Contribution Guidelines](.github/CONTRIBUTING.md)
+- [Code of Conduct](.github/CODE_OF_CONDUCT.md)
+- [Security Policy](.github/SECURITY.md)
 
 > **Warning**
 >
@@ -21,7 +21,7 @@ PR を行う際は、体裁を統一するため`Create pull request`を押し�
 `コピー用`
 
 ```
-template=task-feature.md
+template=develop.md
 ```
 
 > **Note**
@@ -96,28 +96,6 @@ You have to run `npm run format` before PR.
 
 [Docs](https://tailwindcss.com/docs/installation)
 
-### `tailwind.config.js`
-
-Support iOS 15.4 or later.
-
-```js
-module.exports = {
-  theme: {
-    extend: {
-      height: {
-        screen: ["100vh", "100dvh"],
-      },
-      minHeight: {
-        screen: ["100vh", "100dvh"],
-      },
-      maxHeight: {
-        screen: ["100vh", "100dvh"],
-      },
-    },
-  },
-};
-```
-
 ## Next.js
 
 [Docs](https://nextjs.org/docs)
@@ -136,9 +114,11 @@ module.exports = {
 
 ## Zod
 
-- [Docs - Zod](https://zod.dev/)
+[Docs](https://zod.dev/)
 
-- [ Docs - zod-prisma-types](https://github.com/chrishoermann/zod-prisma-types)
+### zod-prisma-types
+
+[Docs](https://github.com/chrishoermann/zod-prisma-types)
 
 ## Supabase
 
