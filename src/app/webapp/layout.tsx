@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 
 import { BottomNavigationBar } from "@/components/navigations/BottomNavigationBar";

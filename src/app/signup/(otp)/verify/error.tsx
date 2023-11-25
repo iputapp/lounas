@@ -1,6 +1,6 @@
 "use client";
 
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { useEffect } from "react";
 
 import { RectButton } from "@/components/buttons/RectButton";

@@ -1,7 +1,7 @@
 import "./globals.scss";
 
 import { Analytics } from "@vercel/analytics/react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
