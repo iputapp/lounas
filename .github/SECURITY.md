@@ -32,10 +32,6 @@ To help maintain a secure environment, please adhere to the following best pract
 
 This security policy applies to the **lounas** project. Security issues outside the scope of this project or non-security-related issues will not be eligible for rewards.
 
-## Attribution
-
-This security policy is adapted from the [Open Source Security Standard](https://github.com/ossf/security-standard).
-
 ## Contact
 
 For security-related inquiries or to report a vulnerability, please contact **[@wiyco](https://github.com/wiyco)**.
