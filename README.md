@@ -10,45 +10,19 @@ The lunch recommendation app. 🍽️
 - [Code of Conduct](.github/CODE_OF_CONDUCT.md)
 - [Security Policy](.github/SECURITY.md)
 
-> **Warning**
->
-> `コーディング規約`の`環境変数`には特に注意すること。
-
-### Pull request (PR)
-
-PR を行う際は、体裁を統一するため`Create pull request`を押した後、`URL`に`?template=task-feature.md` (もしくは`&template=task-feature.md`) を追加してテンプレートにアクセスする。
-
-`コピー用`
+For copy.
 
 ```
 template=develop.md
 ```
 
+```
+template=main.md
+```
+
 > **Note**
 >
-> 通常の PR とテンプレート付き PR の例
->
-> `feature/main-app-ui` → `develop`
->
-> - PR の`URL`
->
-> ```
-> https://github.com/PROJECT-PIPLUP/lounas/compare/develop...feature/main-app-ui
-> ```
->
-> - テンプレート付き PR の`URL`
->
-> ```
-> https://github.com/PROJECT-PIPLUP/lounas/compare/develop...feature/main-app-ui?template=task-feature.md
-> ```
->
-> or
->
-> ```
-> https://github.com/PROJECT-PIPLUP/lounas/compare/develop...feature/main-app-ui?expand=1&template=task-feature.md
-> ```
->
-> 詳細は[GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request)を参照。
+> Please refer to the [GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request) for details.
 
 ## Development
 
