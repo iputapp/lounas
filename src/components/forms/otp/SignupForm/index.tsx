@@ -28,15 +28,15 @@ const SignupForm = ({ className = "" }: SignupFormProps) => {
         <form noValidate onSubmit={handleSubmit(onSubmit)} className={className}>
           <div className="relative h-14 w-full">
             <BasicTextField
-              name="studentId"
+              name="email"
               control={control}
-              label="学籍番号"
+              label="メールアドレス"
               required
-              inputProps={{ inputMode: "numeric", maxLength: 8 }}
+              inputProps={{ inputMode: "email", maxLength: 100 }}
             />
-            <span className="absolute inset-y-0 right-0 my-auto h-fit select-none text-neutral-800">
+            {/* <span className="absolute inset-y-0 right-0 my-auto h-fit select-none text-neutral-800">
               @tks.iput.ac.jp
-            </span>
+            </span> */}
           </div>
           <div className="hidden">
             <BasicCheckbox
