@@ -20,7 +20,7 @@ const SignupHookForm = () => {
     mode: "onChange",
     reValidateMode: "onChange",
     defaultValues: {
-      studentId: undefined,
+      email: undefined,
       agreePolicy: true /** @todo 同意したとみなします (削除要検討) @see SignupForm */,
     },
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
@@ -48,13 +48,13 @@ const SignupHookForm = () => {
         if (!res.ok) {
           switch (res.status) {
             case 429:
-              control.setError("studentId", {
+              control.setError("email", {
                 type: "manual",
                 message: "リクエストが多すぎます。",
               });
               break;
             default:
-              control.setError("studentId", {
+              control.setError("email", {
                 type: "manual",
                 message: "通信に失敗しました。",
               });
