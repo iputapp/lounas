@@ -2,8 +2,6 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-import { IPUT_STUDENT_DOMAIN } from "@/constants";
-
 import type { Signup } from ".";
 import { signupSchema } from ".";
 
@@ -18,15 +16,9 @@ export async function POST(request: Request) {
 
   if (!payload.success) return NextResponse.error();
 
-  const emailUsername = payload.data.studentId.toLocaleLowerCase().startsWith("tk")
-    ? payload.data.studentId.toLocaleLowerCase()
-    : "tk" + payload.data.studentId;
-
-  const email = `${emailUsername}@${IPUT_STUDENT_DOMAIN}`;
-
   const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
   const { data, error } = await supabase.auth.signInWithOtp({
-    email: email,
+    email: payload.data.email,
     options: {
       emailRedirectTo: `${new URL(request.url).origin}/api/auth/callback`,
     },
@@ -41,7 +33,7 @@ export async function POST(request: Request) {
   /** store email to cookie */
   cookieStore.set({
     name: "email",
-    value: email,
+    value: payload.data.email,
     path: "/",
     sameSite: "strict",
     secure: true,
