@@ -33,7 +33,7 @@ export async function POST(request: Request) {
   /** store email to cookie */
   cookieStore.set({
     name: "email",
-    value: email,
+    value: payload.data.email,
     path: "/",
     sameSite: "strict",
     secure: true,
