@@ -57,10 +57,10 @@ export default function Page() {
         <section>
           <p>本規約は随時、追加・変更があることをご理解ください。</p>
           <p>
-            ご不明な点・懸念事項がございましたら、お気軽にSNS&#40;
+            ご不明な点・懸念事項がございましたら、お気軽に&#40;
             <a
               className="text-blue-600"
-              href="https://x.com/lounas_app"
+              href="https://x.com/iputapp"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -69,13 +69,13 @@ export default function Page() {
             {"または"}
             <a
               className="text-blue-600"
-              href="https://www.instagram.com/lounas_app/"
+              href="https://iputapp.lounas.jp/contact"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Instagram
+              アプリ開発サークル
             </a>
-            &#41;のDMにお問い合わせください。
+            &#41;までお問い合わせください。
           </p>
         </section>
       </article>
