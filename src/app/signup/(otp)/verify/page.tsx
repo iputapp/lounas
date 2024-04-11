@@ -45,16 +45,16 @@ export default function Page() {
               <li>noreply@lounas.jp の受信を許可する</li>
               <li>ネットワーク状況を確認する</li>
             </ol>
-            <span>解決しない場合は、恐れ入りますがサポートまでご連絡ください。</span>
+            <span>解決しない場合は、恐れ入りますがアプリ開発サークルまでご連絡ください。</span>
           </section>
           <section className="mx-auto">
             <a
               className="text-blue-600 underline decoration-solid"
-              href="https://forms.gle/c1gosjcJZf5gTtvCA"
+              href="https://iputapp.lounas.jp/contact"
               target="_blank"
               rel="noopener noreferrer"
             >
-              フィードバックフォーム
+              お問い合わせフォーム
             </a>
           </section>
         </article>
