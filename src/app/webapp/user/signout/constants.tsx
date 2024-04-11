@@ -3,6 +3,7 @@ import Instagram from "@icons/instagram.svg";
 import Lock from "@icons/lock.svg";
 import LogoOutline from "@icons/logo-outline.svg";
 import SendDiagonal from "@icons/send-diagonal.svg";
+import Twitter from "@icons/twitter.svg";
 import X from "@icons/x.svg";
 
 /** 設定一覧 */
@@ -41,6 +42,12 @@ const settings = [
     title: "バグの報告",
     icon: <Github />,
     url: "https://github.com/PROJECT-PIPLUP/lounas/issues/new/choose",
+    isInternal: false,
+  },
+  {
+    title: "アプリ開発サークル",
+    icon: <Twitter /> /** @todo Replace */,
+    url: "https://iputapp.lounas.jp/",
     isInternal: false,
   },
 ];
