@@ -1,9 +1,11 @@
 import Github from "@icons/github.svg";
 import Instagram from "@icons/instagram.svg";
+import LogoIputapp from "@icons/iputapp_logo.svg";
 import Lock from "@icons/lock.svg";
 import LogoOutline from "@icons/logo-outline.svg";
 import SendDiagonal from "@icons/send-diagonal.svg";
 import Twitter from "@icons/twitter.svg";
+import X from "@icons/x.svg";
 
 /** 設定一覧 */
 const settings = [
@@ -26,9 +28,9 @@ const settings = [
     isInternal: false,
   },
   {
-    title: "X/Twitter",
-    icon: <Twitter />,
-    url: "https://x.com/lounas_app",
+    title: "X",
+    icon: <X />,
+    url: "https://twitter.com/iputapp",
     isInternal: false,
   },
   {
@@ -40,7 +42,13 @@ const settings = [
   {
     title: "バグの報告",
     icon: <Github />,
-    url: "https://github.com/PROJECT-PIPLUP/lounas/issues/new/choose",
+    url: "https://github.com/iputapp/lounas/issues/new/choose",
+    isInternal: false,
+  },
+  {
+    title: "アプリ開発サークル",
+    icon: <LogoIputapp />,
+    url: "https://iputapp.lounas.jp/",
     isInternal: false,
   },
 ];

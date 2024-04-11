@@ -9,7 +9,7 @@ import NavigatorAlt from "@icons/navigator-alt.svg";
 import PizzaSlice from "@icons/pizza-slice.svg";
 import SendDiagonal from "@icons/send-diagonal.svg";
 import Shop from "@icons/shop.svg";
-import Twitter from "@icons/twitter.svg";
+import X from "@icons/x.svg";
 import { motion } from "framer-motion";
 import { Noto_Sans_JP } from "next/font/google";
 import Image from "next/image";
@@ -857,11 +857,11 @@ export default function Page() {
                 </Link>
               </h4>
               <h4>
-                <Link href={"https://x.com/lounas_app"} target="_blank" rel="noopener noreferrer">
+                <Link href={"https://x.com/iputapp"} target="_blank" rel="noopener noreferrer">
                   <span>
-                    <Twitter />
+                    <X />
                   </span>
-                  <span>X/Twitter</span>
+                  <span>X</span>
                 </Link>
               </h4>
               <h4>
@@ -884,11 +884,7 @@ export default function Page() {
             </Link>
             <div>
               <small>※本アプリはスマートフォン向けに最適化しております。</small>
-              <small>{"　"}スマートフォンでの使用を強くおすすめします。</small>
-              <small>※現在β版のため以下の学校に対応しています。(順次展開予定)</small>
-              <ul>
-                <li>東京国際工科専門職大学</li>
-              </ul>
+              <small>スマートフォンでの使用を強くおすすめします。</small>
             </div>
           </div>
         </section>
@@ -902,6 +898,11 @@ export default function Page() {
             <h5>
               <Link href={"/webapp"} target="_blank" rel="noopener noreferrer">
                 お試し
+              </Link>
+            </h5>
+            <h5>
+              <Link href={"https://iputapp.lounas.jp/about"} target="_blank" rel="noopener noreferrer">
+                運営元
               </Link>
             </h5>
           </div>
