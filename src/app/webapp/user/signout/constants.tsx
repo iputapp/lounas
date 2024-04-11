@@ -3,7 +3,7 @@ import Instagram from "@icons/instagram.svg";
 import Lock from "@icons/lock.svg";
 import LogoOutline from "@icons/logo-outline.svg";
 import SendDiagonal from "@icons/send-diagonal.svg";
-import Twitter from "@icons/twitter.svg";
+import X from "@icons/x.svg";
 
 /** 設定一覧 */
 const settings = [
@@ -26,8 +26,8 @@ const settings = [
     isInternal: false,
   },
   {
-    title: "X/Twitter",
-    icon: <Twitter />,
+    title: "X",
+    icon: <X />,
     url: "https://x.com/lounas_app",
     isInternal: false,
   },
