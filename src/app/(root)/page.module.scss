@@ -864,7 +864,7 @@ $slide-h: 32.5rem; /* 520px */
       }
 
       & > :nth-child(1 of div) {
-        @apply grid grid-cols-2 justify-items-center;
+        @apply grid grid-cols-3 justify-items-center;
 
         h5 {
           @apply text-sm font-semibold text-blue-600;
@@ -874,6 +874,8 @@ $slide-h: 32.5rem; /* 520px */
 
     & > :nth-child(2 of div) {
       @apply grid justify-items-center self-start;
+
+      margin-top: 1rem;
 
       & > div {
         @apply relative grid gap-4;
