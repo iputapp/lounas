@@ -14,7 +14,11 @@
     "format": "npm run eslint:fix && npm run stylelint:fix && npm run prettier:fix",
     "db:gen": "prisma generate",
     "db:mig:dev": "dotenv -e .env.local prisma migrate dev",
-    "db:studio": "dotenv -e .env.local prisma studio"
+    "db:studio": "dotenv -e .env.local prisma studio",
+    "db:seed": "dotenv -e .env.local prisma db seed"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed/index.ts"
   },
   "dependencies": {
     "@emotion/react": "^11",
