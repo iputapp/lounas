@@ -82,6 +82,10 @@ You have to run `npm run format` before PR.
 
 [Docs](https://www.framer.com/motion/)
 
+## React Hook Form
+
+[Docs](https://react-hook-form.com/docs)
+
 ## Prisma
 
 [Docs](https://www.prisma.io/docs)
@@ -97,6 +101,14 @@ You have to run `npm run format` before PR.
 ## Supabase
 
 [Docs](https://supabase.com/docs/reference/javascript/)
+
+## Cloudinary
+
+- [Docs (Front)](https://next.cloudinary.dev/)
+
+## Nano ID
+
+[Docs](https://github.com/ai/nanoid)
 
 ---
 
