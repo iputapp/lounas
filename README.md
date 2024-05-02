@@ -51,6 +51,9 @@ DATABASE_URL=postgres://postgres.[url]:[pw]@[region].pooler.supabase.com:6543/po
 
 # cdn
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=YourId
+
+# google analytics
+NEXT_PUBLIC_GA_TRACKING_ID=TrackingId
 ```
 
 ### Code formatter
