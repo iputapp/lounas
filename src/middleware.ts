@@ -57,14 +57,14 @@ export async function middleware(req: NextRequest) {
     /** ----- root ----- */
     if (reqNextPath === "/") {
       if (device.type === "mobile") {
-        return NextResponse.rewrite(`${reqUrl.origin}/mobile`);
+        return NextResponse.rewrite(`${reqUrl.origin}/about/mobile`);
       }
     }
 
     /** top page (mobile) */
-    if (reqNextPath.endsWith("/mobile")) {
+    if (reqNextPath.endsWith("/about/mobile")) {
       if (device.type !== "mobile") {
-        return NextResponse.redirect(`${reqUrl.origin}`);
+        return NextResponse.redirect(`${reqUrl.origin}/about`);
       }
     }
 
