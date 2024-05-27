@@ -15,7 +15,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
-import { NavigationPlayer } from "@/components/lottie/Navigation";
+import { LottieNavigation } from "@/components/lottie";
 
 import styles from "./page.module.scss";
 
@@ -287,7 +287,7 @@ export default function Page() {
                 <section>
                   <div>
                     <span>コクーンタワー</span>
-                    <NavigationPlayer />
+                    <LottieNavigation />
                     <span>お店</span>
                   </div>
                   <motion.div
@@ -901,7 +901,11 @@ export default function Page() {
               </Link>
             </h5>
             <h5>
-              <Link href={"https://iputapp.lounas.jp/about"} target="_blank" rel="noopener noreferrer">
+              <Link
+                href={"https://iputapp.lounas.jp/about"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 運営元
               </Link>
             </h5>
