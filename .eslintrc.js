@@ -4,15 +4,10 @@ const config = {
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "prettier"
+    "prettier",
   ],
   parser: "@typescript-eslint/parser",
-  plugins: [
-    "unused-imports",
-    "simple-import-sort",
-    "import",
-  ],
+  plugins: ["unused-imports", "simple-import-sort", "import"],
   rules: {
     /** @see {@link https://www.npmjs.com/package/eslint-plugin-unused-imports} */
     "@typescript-eslint/no-unused-vars": "off",
@@ -36,7 +31,7 @@ const config = {
   parserOptions: {
     sourceType: "module",
     ecmaVersion: "latest",
-  }
+  },
 };
 
 module.exports = config;
