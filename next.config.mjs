@@ -1,11 +1,14 @@
-/** @see {@link https://nextjs.org/docs/app/building-your-application/styling/sass} */
-const path = require("path");
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   /** @see {@link https://nextjs.org/docs/app/building-your-application/styling/sass} */
   sassOptions: {
-    includePaths: [path.join(__dirname, "src/styles")],
+    includePaths: [path.join(__dirname, "styles")],
   },
   webpack: (config) => {
     /** @see {@link https://github.com/vercel/next.js/issues/48177#issuecomment-1506251112} */
@@ -45,4 +48,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

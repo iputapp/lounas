@@ -1,6 +1,6 @@
 # config
 .eslintrc.json
-next.config.js
+next.config.mjs
 postcss.config.mjs
 prettier.config.mjs
 stylelint.config.js
