@@ -4,7 +4,7 @@ next.config.mjs
 postcss.config.mjs
 prettier.config.mjs
 stylelint.config.js
-tailwind.config.js
+tailwind.config.ts
 tsconfig.json
 
 # dependencies
