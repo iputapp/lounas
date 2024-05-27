@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import type { DataAgreementRequest } from "@/app/api/v-beta/user/data-agreement";
 import { RectButton } from "@/components/buttons/RectButton";
 import { DialogInfo } from "@/components/dialogs/DialogInfo";
-import { PrivacyPlayer } from "@/components/lottie/Privacy";
+import { LottiePrivacy } from "@/components/lottie";
 
 import styles from "./page.module.scss";
 
@@ -84,7 +84,7 @@ export default function Page() {
           </button>
         </div>
         <div className={styles.animation}>
-          <PrivacyPlayer />
+          <LottiePrivacy />
         </div>
         <div className={styles.choice}>
           <div className={styles.query}>
