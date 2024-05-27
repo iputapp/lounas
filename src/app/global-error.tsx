@@ -5,7 +5,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import { useEffect } from "react";
 
 import { RectButton } from "@/components/buttons/RectButton";
-import { ErrorPlayer } from "@/components/lottie/Error";
+import { LottieError } from "@/components/lottie";
 
 import styles from "./global-error.module.scss";
 
@@ -32,7 +32,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
     <main className={`${styles.container} ${notoSansJP.className}`}>
       <h1 className={styles.title}>エラー</h1>
       <div className={styles.animation}>
-        <ErrorPlayer />
+        <LottieError />
       </div>
       <div className={styles.description}>
         <span className={styles.secondary}>問題が発生しました</span>
