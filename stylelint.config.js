@@ -1,11 +1,11 @@
 /** @type {import("stylelint").Config} */
-module.exports = {
+const config = {
   extends: [
     "stylelint-config-standard",
     "stylelint-config-standard-scss",
     "stylelint-config-recess-order",
   ],
-  plugin: ["stylelint", "stylelint-scss"],
+  plugin: ["stylelint-scss"],
   rules: {
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": [
@@ -16,3 +16,5 @@ module.exports = {
     ],
   },
 };
+
+export default config;
