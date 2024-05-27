@@ -1,5 +1,5 @@
 # config
-.eslintrc.json
+.eslintrc.js
 next.config.mjs
 postcss.config.mjs
 prettier.config.mjs
