@@ -3,7 +3,7 @@
 next.config.mjs
 postcss.config.mjs
 prettier.config.mjs
-stylelint.config.js
+stylelint.config.mjs
 tailwind.config.ts
 tsconfig.json
 
