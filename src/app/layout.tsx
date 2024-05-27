@@ -74,12 +74,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  themeColor: [
-    {
-      media: "(prefers-color-scheme: light)",
-      color: "#262626",
-    },
-  ],
   manifest: "/favicon/site.webmanifest",
   appleWebApp: {
     title: "lounas",
