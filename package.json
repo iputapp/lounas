@@ -24,7 +24,6 @@
     "@mui/material": "^5",
     "@next/third-parties": "^14",
     "@prisma/client": "^5",
-    "@supabase/auth-helpers-nextjs": "^0",
     "@supabase/ssr": "^0",
     "@supabase/supabase-js": "^2",
     "@vercel/analytics": "^1",
