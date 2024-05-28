@@ -12,9 +12,6 @@ import { createClient } from "@/lib/supabase/client";
 import { messages, settings } from "./constants";
 import styles from "./page.module.scss";
 
-/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
-export const dynamic = "force-dynamic";
-
 export default function Page() {
   const supabase = createClient();
   const router = useRouter();
