@@ -7,9 +7,6 @@ import { DummyPanel } from "@/components/layouts/DummyPanel";
 
 import styles from "./page.module.scss";
 
-/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
-export const dynamic = "force-dynamic";
-
 export default function Page() {
   const router = useRouter();
 
