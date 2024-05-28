@@ -4,7 +4,6 @@ import LogoIputapp from "@icons/iputapp_logo.svg";
 import Lock from "@icons/lock.svg";
 import LogoOutline from "@icons/logo-outline.svg";
 import SendDiagonal from "@icons/send-diagonal.svg";
-import Twitter from "@icons/twitter.svg";
 import X from "@icons/x.svg";
 
 /** 設定一覧 */
