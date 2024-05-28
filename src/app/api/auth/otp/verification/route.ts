@@ -1,6 +1,7 @@
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+
+import { createClient } from "@/lib/supabase/server";
 
 import type { Verification } from ".";
 import { verificationSchema } from ".";
@@ -20,7 +21,7 @@ export async function POST(request: Request) {
 
   if (!email) return NextResponse.json({ error: "Request timeout" }, { status: 408 });
 
-  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+  const supabase = createClient();
   const { data, error } = await supabase.auth.verifyOtp({
     type: "email",
     email: email,

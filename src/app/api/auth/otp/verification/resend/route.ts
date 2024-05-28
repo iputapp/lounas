@@ -1,6 +1,7 @@
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+
+import { createClient } from "@/lib/supabase/server";
 
 /** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
 export const dynamic = "force-dynamic";
@@ -12,9 +13,8 @@ export async function POST() {
 
   if (!email) return NextResponse.error();
 
-  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
-  const { data, error } = await supabase.auth.resend({
-    type: "signup",
+  const supabase = createClient();
+  const { data, error } = await supabase.auth.signInWithOtp({
     email: email,
   });
 

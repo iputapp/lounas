@@ -1,8 +1,7 @@
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
+import { createClient } from "@/lib/supabase/server";
 
 import { VisitRegisterRequest, visitRegisterRequestSchema } from ".";
 
@@ -10,12 +9,10 @@ import { VisitRegisterRequest, visitRegisterRequestSchema } from ".";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  const cookieStore = cookies();
+  const supabase = createClient();
+  const auth = await supabase.auth.getUser();
 
-  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
-  const session = await supabase.auth.getSession();
-
-  if (session.error || !session.data.session) return NextResponse.error();
+  if (auth.error || !auth.data.user) return NextResponse.error();
 
   const body = (await request.json()) as Promise<VisitRegisterRequest>;
   const payload = visitRegisterRequestSchema.safeParse(body);
@@ -24,7 +21,7 @@ export async function POST(request: Request) {
 
   const visit = await prisma.visitHistory.create({
     data: {
-      userId: session.data.session.user.id,
+      userId: auth.data.user.id,
       dishId: payload.data.dishId,
     },
   });
