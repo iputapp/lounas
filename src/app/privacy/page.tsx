@@ -1,51 +1,25 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useSWR from "swr";
 
 import type { DataAgreementRequest } from "@/app/api/v-beta/user/data-agreement";
 import { RectButton } from "@/components/buttons/RectButton";
 import { DialogInfo } from "@/components/dialogs/DialogInfo";
 import { LottiePrivacy } from "@/components/lottie";
+import { fetcher } from "@/lib/swr";
 
 import styles from "./page.module.scss";
-
-/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
-export const dynamic = "force-dynamic";
-
-async function getDataAgreement(abortController?: AbortController) {
-  /** @todo cache settings */
-  const dataAgreement = (await fetch("/api/v-beta/user/data-agreement", {
-    method: "GET",
-    signal: abortController?.signal,
-  })
-    .then((res) => res.json())
-    .catch((err) => {
-      console.error(err);
-      return null;
-    })) as DataAgreementRequest | null;
-  return dataAgreement;
-}
 
 export default function Page() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const [dataAgreement, setDataAgreement] = useState<DataAgreementRequest | null>(null);
 
-  useEffect(() => {
-    const abortController = new AbortController();
-    /** get data agreement */
-    (async () => {
-      const dataAgreement = await getDataAgreement(abortController);
-      setDataAgreement(dataAgreement);
-    })().catch((err) => {
-      console.error(err);
-    });
-    /** cleanup */
-    return () => {
-      abortController.abort();
-    };
-  }, []);
+  const { data, error, isLoading } = useSWR<DataAgreementRequest>(
+    "/api/v-beta/user/data-agreement",
+    fetcher
+  );
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     await fetch("/api/v-beta/user/data-agreement", {
@@ -102,11 +76,15 @@ export default function Page() {
             </RectButton>
           </div>
           <div className={styles.status}>
-            {dataAgreement !== null && (
-              <>
-                <span className={styles.text}>現在のあなたの設定：</span>
-                <span className={styles.agreed}>{dataAgreement ? "同意する" : "同意しない"}</span>
-              </>
+            <span className={styles.text}>現在のあなたの設定：</span>
+            {isLoading && !data ? (
+              !error ? (
+                <span className={styles.agreed}>読み込み中...</span>
+              ) : (
+                <span className={styles.agreed}>エラー</span>
+              )
+            ) : (
+              <span className={styles.agreed}>{data ? "同意する" : "同意しない"}</span>
             )}
           </div>
         </div>
