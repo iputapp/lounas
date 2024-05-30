@@ -12,7 +12,7 @@ export default async function Page() {
   const auth = await supabase.auth.getUser();
 
   /** @see {@link https://nextjs.org/docs/app/api-reference/functions/revalidatePath} */
-  revalidatePath("/webapp/user", "page");
+  revalidatePath("/webapp/user", "layout");
 
   if (auth.data.user && !auth.error) {
     return redirect("/webapp/user/signout", RedirectType.replace);
