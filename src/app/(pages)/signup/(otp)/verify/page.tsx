@@ -3,6 +3,7 @@
 import NavArrowRight from "@icons/nav-arrow-right.svg";
 import { useState } from "react";
 
+import { MediaLinks } from "@/_constants/links";
 import { DialogInfo } from "@/components/dialogs/DialogInfo";
 import { VerificationForm } from "@/components/forms/otp/VerificationForm";
 
@@ -50,7 +51,7 @@ export default function Page() {
           <section className="mx-auto">
             <a
               className="text-blue-600 underline decoration-solid"
-              href="https://iputapp.lounas.jp/contact"
+              href={MediaLinks.FEEDBACK_FORM}
               target="_blank"
               rel="noopener noreferrer"
             >

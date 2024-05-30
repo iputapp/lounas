@@ -1,3 +1,5 @@
+import { MediaLinks } from "@/_constants/links";
+
 import styles from "./page.module.scss";
 
 export default function Page() {
@@ -35,7 +37,7 @@ export default function Page() {
               最新情報の提供にご協力いただける方は{" "}
               <a
                 className="text-blue-600"
-                href="https://forms.gle/c1gosjcJZf5gTtvCA"
+                href={MediaLinks.FEEDBACK_FORM}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -60,7 +62,7 @@ export default function Page() {
             ご不明な点・懸念事項がございましたら、お気軽に&#40;
             <a
               className="text-blue-600"
-              href="https://x.com/iputapp"
+              href={MediaLinks.X}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -69,7 +71,7 @@ export default function Page() {
             {"または"}
             <a
               className="text-blue-600"
-              href="https://iputapp.lounas.jp/contact"
+              href={`${MediaLinks.IPUTAPP}/contact`}
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -6,6 +6,8 @@ import LogoOutline from "@icons/logo-outline.svg";
 import SendDiagonal from "@icons/send-diagonal.svg";
 import X from "@icons/x.svg";
 
+import { MediaLinks } from "@/_constants/links";
+
 /** 設定一覧 */
 const settings = [
   {
@@ -23,31 +25,31 @@ const settings = [
   {
     title: "Instagram",
     icon: <Instagram />,
-    url: "https://www.instagram.com/lounas_app/",
+    url: MediaLinks.INSTAGRAM,
     isInternal: false,
   },
   {
     title: "X",
     icon: <X />,
-    url: "https://twitter.com/iputapp",
+    url: MediaLinks.X,
     isInternal: false,
   },
   {
     title: "フィードバック",
     icon: <SendDiagonal />,
-    url: "https://forms.gle/c1gosjcJZf5gTtvCA",
+    url: MediaLinks.FEEDBACK_FORM,
     isInternal: false,
   },
   {
     title: "バグの報告",
     icon: <Github />,
-    url: "https://github.com/iputapp/lounas/issues/new/choose",
+    url: MediaLinks.GITHUB,
     isInternal: false,
   },
   {
     title: "アプリ開発サークル",
     icon: <LogoIputapp />,
-    url: "https://iputapp.lounas.jp/",
+    url: MediaLinks.IPUTAPP,
     isInternal: false,
   },
 ];
