@@ -504,11 +504,11 @@ $slide-h: 32.5rem; /* 520px */
   }
 
   & > :nth-child(1 of h3) {
-    @apply absolute inset-0 my-auto
+    @apply absolute inset-0
         grid place-content-center gap-6
         text-center;
 
-    height: fit-content;
+    height: 100%;
 
     & > :nth-child(1) {
       @apply text-5xl font-bold;
