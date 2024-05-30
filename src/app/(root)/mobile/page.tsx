@@ -883,7 +883,7 @@ export default function Page() {
               <h3>今すぐアプリを使う</h3>
             </Link>
             <div>
-              <small>※本アプリはスマートフォン向けに最適化しております。</small>
+              <small>本アプリはスマートフォン向けに最適化しております。</small>
               <small>スマートフォンでの使用を強くおすすめします。</small>
             </div>
           </div>
