@@ -51,7 +51,7 @@ export default function Page() {
         }
         /** open dialog alert */
         setIsOpen(false);
-        router.replace("signin");
+        router.refresh();
       })
       .catch((err) => console.error("Error!", err))
       .finally(() => {
