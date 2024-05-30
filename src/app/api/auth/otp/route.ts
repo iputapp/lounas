@@ -1,6 +1,7 @@
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+
+import { createClient } from "@/lib/supabase/server";
 
 import type { Signup } from ".";
 import { signupSchema } from ".";
@@ -16,7 +17,7 @@ export async function POST(request: Request) {
 
   if (!payload.success) return NextResponse.error();
 
-  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+  const supabase = createClient();
   const { data, error } = await supabase.auth.signInWithOtp({
     email: payload.data.email,
     options: {
@@ -42,7 +43,7 @@ export async function POST(request: Request) {
   });
 
   /** permit users access to the verify page */
-  cookies().set({
+  cookieStore.set({
     name: "verify",
     value: "pending",
     path: "/signup",

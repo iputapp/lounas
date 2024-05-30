@@ -2,21 +2,18 @@
 
 import LinkIcon from "@icons/link.svg";
 import NavArrowRight from "@icons/nav-arrow-right.svg";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { DialogAlert } from "@/components/dialogs/DialogAlert";
+import { createClient } from "@/lib/supabase/client";
 
 import { messages, settings } from "./constants";
 import styles from "./page.module.scss";
 
-/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
-export const dynamic = "force-dynamic";
-
 export default function Page() {
-  const supabase = createClientComponentClient();
+  const supabase = createClient();
   const router = useRouter();
   const [messageToUser, setMessageToUser] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +51,7 @@ export default function Page() {
         }
         /** open dialog alert */
         setIsOpen(false);
-        router.replace("signin");
+        router.refresh();
       })
       .catch((err) => console.error("Error!", err))
       .finally(() => {

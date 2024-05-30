@@ -509,11 +509,11 @@ $slide-h: 48rem; /* 768px */
   }
 
   & > :nth-child(1 of h3) {
-    @apply absolute inset-0 my-auto
+    @apply absolute inset-0
         grid place-content-center gap-4
         text-center;
 
-    height: fit-content;
+    height: 100%;
 
     & > :nth-child(1) {
       @apply text-3xl font-bold;
@@ -668,8 +668,8 @@ $slide-h: 48rem; /* 768px */
   /* stylelint-disable-next-line no-descending-specificity */
   & > img {
     width: 100%;
-    object-position: 45% 22.5%;
     object-fit: cover;
+    object-position: 45% 22.5%;
     background-color: rgb(0 0 0 / 60%);
     filter: blur(12px) brightness(0.8);
     scale: 1.2;
@@ -712,6 +712,7 @@ $slide-h: 48rem; /* 768px */
     width: 100%;
     color: var.$primary;
 
+    /* stylelint-disable-next-line no-descending-specificity */
     &::after {
       @apply absolute inset-x-0 -bottom-3;
 
@@ -797,8 +798,8 @@ $slide-h: 48rem; /* 768px */
 }
 
 .footer {
-  @apply mx-auto grid gap-4
-    bg-neutral-300 px-0.5 pb-6 pt-8;
+  @apply mx-auto grid gap-6
+    bg-neutral-300 px-0.5 pb-4 pt-8;
 
   width: 100%;
   height: 100%;
@@ -825,10 +826,10 @@ $slide-h: 48rem; /* 768px */
   }
 
   & > :nth-child(2) {
-    @apply grid grid-cols-2 gap-8;
+    @apply grid grid-cols-2 gap-6 pe-1.5;
 
     & > :nth-child(1 of div) {
-      @apply grid justify-items-center gap-6 self-center ps-4;
+      @apply grid justify-items-center gap-6 self-center;
 
       & > :nth-child(1 of div) {
         @apply relative grid gap-5;
@@ -886,17 +887,15 @@ $slide-h: 48rem; /* 768px */
   }
 
   & > :nth-child(3) {
-    @apply grid place-content-center gap-4;
+    @apply grid justify-items-center gap-5 py-2;
 
     & > :nth-child(1 of div) {
-      @apply flex items-center justify-start divide-x divide-neutral-400;
+      @apply flex items-center divide-x divide-neutral-400;
 
-      width: 100%;
+      width: fit-content;
 
       h5 {
-        @apply px-4 text-xs font-semibold text-blue-600;
-        
-        margin: 0 auto;
+        @apply px-8 text-xs font-semibold text-blue-600;
       }
     }
 

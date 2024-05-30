@@ -15,7 +15,8 @@ import { Noto_Sans_JP } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
-import { NavigationPlayer } from "@/components/lottie/Navigation";
+import { MediaLinks } from "@/_constants/links";
+import { LottieNavigation } from "@/components/lottie";
 
 import styles from "./page.module.scss";
 
@@ -287,7 +288,7 @@ export default function Page() {
                 <section>
                   <div>
                     <span>コクーンタワー</span>
-                    <NavigationPlayer />
+                    <LottieNavigation />
                     <span>お店</span>
                   </div>
                   <motion.div
@@ -817,11 +818,7 @@ export default function Page() {
               <section>
                 <p>
                   フィードバックなどは
-                  <Link
-                    href={"https://forms.gle/c1gosjcJZf5gTtvCA"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href={MediaLinks.FEEDBACK_FORM} target="_blank" rel="noopener noreferrer">
                     こちらのForms
                   </Link>
                   に
@@ -845,11 +842,7 @@ export default function Page() {
           <div>
             <div>
               <h4>
-                <Link
-                  href={"https://forms.gle/c1gosjcJZf5gTtvCA"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href={MediaLinks.FEEDBACK_FORM} target="_blank" rel="noopener noreferrer">
                   <span>
                     <SendDiagonal />
                   </span>
@@ -857,7 +850,7 @@ export default function Page() {
                 </Link>
               </h4>
               <h4>
-                <Link href={"https://x.com/iputapp"} target="_blank" rel="noopener noreferrer">
+                <Link href={MediaLinks.X} target="_blank" rel="noopener noreferrer">
                   <span>
                     <X />
                   </span>
@@ -865,11 +858,7 @@ export default function Page() {
                 </Link>
               </h4>
               <h4>
-                <Link
-                  href={"https://www.instagram.com/lounas_app"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href={MediaLinks.INSTAGRAM} target="_blank" rel="noopener noreferrer">
                   <span>
                     <Instagram />
                   </span>
@@ -883,7 +872,7 @@ export default function Page() {
               <h3>今すぐアプリを使う</h3>
             </Link>
             <div>
-              <small>※本アプリはスマートフォン向けに最適化しております。</small>
+              <small>本アプリはスマートフォン向けに最適化しております。</small>
               <small>スマートフォンでの使用を強くおすすめします。</small>
             </div>
           </div>
@@ -901,7 +890,7 @@ export default function Page() {
               </Link>
             </h5>
             <h5>
-              <Link href={"https://iputapp.lounas.jp/about"} target="_blank" rel="noopener noreferrer">
+              <Link href={`${MediaLinks.IPUTAPP}/about`} target="_blank" rel="noopener noreferrer">
                 運営元
               </Link>
             </h5>

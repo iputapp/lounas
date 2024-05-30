@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import type { Route } from "@/app/api/v-beta/restaurant/[id]/navi";
 import { Restaurants } from "@/app/api/v-beta/restaurants";
 import { CardFull, NavigationType } from "@/components/cards/CardFull";
-import { NavigationPlayer } from "@/components/lottie/Navigation";
+import { LottieNavigation } from "@/components/lottie";
 
 import { ExitButton } from "./client";
 import styles from "./page.module.scss";
@@ -86,7 +86,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               <div className={styles.origin}>{normalizeText("コクーンタワー出入口", 14)}</div>
               <span className={styles.icon}>
                 {/* <NavArrowDown /> */}
-                <NavigationPlayer />
+                <LottieNavigation />
               </span>
               <div className={styles.destination}>{normalizeText(restaurant.name, 14)}</div>
             </div>

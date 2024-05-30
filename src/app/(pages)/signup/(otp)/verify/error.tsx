@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { useEffect } from "react";
 
 import { RectButton } from "@/components/buttons/RectButton";
-import { ErrorPlayer } from "@/components/lottie/Error";
+import { LottieError } from "@/components/lottie";
 
 import styles from "./error.module.scss";
 
@@ -26,7 +26,7 @@ export default function Error({ error, reset }: ErrorProps) {
     <div className={styles.container}>
       <h1 className={styles.title}>エラー</h1>
       <div className={styles.animation}>
-        <ErrorPlayer />
+        <LottieError />
       </div>
       <div className={styles.description}>
         <span className={styles.secondary}>認証コードの確認で問題が発生しました</span>

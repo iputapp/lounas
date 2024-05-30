@@ -1,72 +1,27 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 import { VisitsCount } from "@/app/api/v-beta/user/visits-count";
 import { BorderCircleButton } from "@/components/buttons/BorderCircleButton";
 import { BorderTitle } from "@/components/headers/BorderTitle";
 import { BasicLinearProgress } from "@/components/progresses/BasicLinearProgress";
+import { fetcher } from "@/lib/swr";
 
 import styles from "./page.module.scss";
 
-/** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
-export const dynamic = "force-dynamic";
-
-async function getVisitsCount(abortController?: AbortController) {
-  /** @todo cache settings */
-  const visitsCount = (await fetch("/api/v-beta/user/visits-count", {
-    method: "GET",
-    signal: abortController?.signal,
-  })
-    .then((res) => res.json())
-    .catch((err) => {
-      console.error(err);
-      return null;
-    })) as VisitsCount | null;
-  return visitsCount;
-}
-
 export default function Page() {
   const router = useRouter();
-  const [date, setDate] = useState(new Date());
-  const [status, setStatus] = useState<{ count: number | null; bar: number }>({ count: 0, bar: 0 });
 
-  const visitPer = 5; // 100%/5件
+  const { data, error, isLoading } = useSWR<VisitsCount>("/api/v-beta/user/visits-count", fetcher);
 
-  useEffect(() => {
-    const abortController = new AbortController();
-    /** today */
-    setDate(new Date());
-    /** error status */
-    const errorStatus = {
-      count: null,
-      bar: 0,
-    };
-    /** visits count */
-    (async () => {
-      const visitsCount = await getVisitsCount(abortController);
-      if (visitsCount !== null) {
-        /** progress bar */
-        const mod = visitsCount % visitPer;
-        const percent = (mod || !visitsCount ? mod : visitPer) * (100 / visitPer);
-        const newStatus = {
-          count: visitsCount,
-          bar: percent,
-        };
-        setStatus(newStatus);
-      } else {
-        setStatus(errorStatus);
-      }
-    })().catch((err) => {
-      console.error(err);
-      setStatus(errorStatus);
-    });
-    /** cleanup */
-    return () => {
-      abortController.abort();
-    };
-  }, []);
+  const percent = (visitsCount: number) => {
+    const visitPer = 5; // 100%/5件
+    const mod = visitsCount % visitPer;
+    const percent = (mod || !visitsCount ? mod : visitPer) * (100 / visitPer);
+    return percent;
+  };
 
   const startRecommend = () => {
     router.push("/recommend/explore");
@@ -77,23 +32,21 @@ export default function Page() {
       <h1 className={styles.title}>こんにちは</h1>
       <section className={styles.panel}>
         <div className={styles.date}>
-          {date && (
-            <span>
-              {date.toLocaleDateString("ja-JP", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-                weekday: "short",
-              })}
-            </span>
-          )}
+          <span>
+            {new Date().toLocaleDateString("ja-JP", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+              weekday: "short",
+            })}
+          </span>
         </div>
         <div className={styles.exp}>
           <div className={styles.text}>
             <span>今月の開拓数：</span>
-            <span>{status.count ?? "エラーやで"}件</span>
+            <span>{isLoading && !data ? (!error ? "読み込み中..." : "エラー") : `${data}件`}</span>
           </div>
-          <BasicLinearProgress value={status.bar} />
+          <BasicLinearProgress value={percent(data ?? 0)} />
         </div>
         <div></div>
       </section>

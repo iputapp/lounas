@@ -1,5 +1,6 @@
 /** @type {import("prettier").Config} */
-module.exports = {
+const config = {
+  endOfLine: "lf",
   printWidth: 100,
   tabWidth: 2,
   useTabs: false,
@@ -13,3 +14,5 @@ module.exports = {
   arrowParens: "always",
   plugins: ["prettier-plugin-tailwindcss"],
 };
+
+export default config;

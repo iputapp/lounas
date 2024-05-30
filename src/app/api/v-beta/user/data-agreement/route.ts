@@ -1,8 +1,7 @@
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
+import { createClient } from "@/lib/supabase/server";
 
 import { DataAgreementRequest, dataAgreementRequestSchema } from ".";
 
@@ -10,12 +9,10 @@ import { DataAgreementRequest, dataAgreementRequestSchema } from ".";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const cookieStore = cookies();
+  const supabase = createClient();
+  const auth = await supabase.auth.getUser();
 
-  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
-  const session = await supabase.auth.getSession();
-
-  if (session.error || !session.data.session) return NextResponse.error();
+  if (auth.error || !auth.data.user) return NextResponse.error();
 
   /** user can only access their own data - Supabase Row-Level Security (RLS) */
   const user = await prisma.user.findUnique({
@@ -23,7 +20,7 @@ export async function GET() {
       dataUsageAgreed: true,
     },
     where: {
-      id: session.data.session.user.id,
+      id: auth.data.user.id,
     },
   });
 
@@ -33,12 +30,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const cookieStore = cookies();
+  const supabase = createClient();
+  const auth = await supabase.auth.getUser();
 
-  const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
-  const session = await supabase.auth.getSession();
-
-  if (session.error || !session.data.session) return NextResponse.error();
+  if (auth.error || !auth.data.user) return NextResponse.error();
 
   const body = (await request.json()) as Promise<DataAgreementRequest>;
   const payload = dataAgreementRequestSchema.safeParse(body);
@@ -48,7 +43,7 @@ export async function POST(request: Request) {
   /** user can only update their own data - Supabase Row-Level Security (RLS) */
   const user = await prisma.user.update({
     where: {
-      id: session.data.session.user.id,
+      id: auth.data.user.id,
     },
     data: {
       dataUsageAgreed: payload.data.dataUsageAgreed,

@@ -1,10 +1,10 @@
 # config
-.eslintrc.json
-next.config.js
-postcss.config.js
-prettier.config.js
-stylelint.config.js
-tailwind.config.js
+.eslintrc.js
+next.config.mjs
+postcss.config.mjs
+prettier.config.mjs
+stylelint.config.mjs
+tailwind.config.ts
 tsconfig.json
 
 # dependencies

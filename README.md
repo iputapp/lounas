@@ -77,6 +77,10 @@ You have to run `npm run format` before PR.
 
 [Docs](https://nextjs.org/docs)
 
+## SWR
+
+[Docs](https://swr.vercel.app/)
+
 ## Material UI
 
 [Docs](https://mui.com/material-ui/getting-started/overview/)
