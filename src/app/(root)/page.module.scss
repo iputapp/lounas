@@ -645,8 +645,8 @@ $slide-h: 32.5rem; /* 520px */
   /* stylelint-disable-next-line no-descending-specificity */
   & > img {
     width: 100%;
-    object-position: 0% 22.5%;
     object-fit: cover;
+    object-position: 0% 22.5%;
     background-color: rgb(0 0 0 / 60%);
     filter: blur(12px) brightness(0.8);
     scale: 1.05;
@@ -693,6 +693,7 @@ $slide-h: 32.5rem; /* 520px */
       padding-right: 5%;
     }
 
+    /* stylelint-disable-next-line no-descending-specificity */
     &::after {
       @apply absolute -bottom-3 rounded-full;
 

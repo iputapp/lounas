@@ -668,8 +668,8 @@ $slide-h: 48rem; /* 768px */
   /* stylelint-disable-next-line no-descending-specificity */
   & > img {
     width: 100%;
-    object-position: 45% 22.5%;
     object-fit: cover;
+    object-position: 45% 22.5%;
     background-color: rgb(0 0 0 / 60%);
     filter: blur(12px) brightness(0.8);
     scale: 1.2;
@@ -712,6 +712,7 @@ $slide-h: 48rem; /* 768px */
     width: 100%;
     color: var.$primary;
 
+    /* stylelint-disable-next-line no-descending-specificity */
     &::after {
       @apply absolute inset-x-0 -bottom-3;
 
@@ -895,7 +896,7 @@ $slide-h: 48rem; /* 768px */
 
       h5 {
         @apply px-4 text-xs font-semibold text-blue-600;
-        
+
         margin: 0 auto;
       }
     }
