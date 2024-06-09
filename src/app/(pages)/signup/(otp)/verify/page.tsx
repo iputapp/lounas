@@ -1,9 +1,9 @@
 "use client";
 
+import { MediaLinks } from "@constants/links";
 import NavArrowRight from "@icons/nav-arrow-right.svg";
 import { useState } from "react";
 
-import { MediaLinks } from "@/_constants/links";
 import { DialogInfo } from "@/components/dialogs/DialogInfo";
 import { VerificationForm } from "@/components/forms/otp/VerificationForm";
 

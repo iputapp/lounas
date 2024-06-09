@@ -1,5 +1,6 @@
 "use client";
 
+import { MediaLinks } from "@constants/links";
 import BookStack from "@icons/book-stack.svg";
 import Instagram from "@icons/instagram.svg";
 import LogoFullColor from "@icons/logo-full-color.svg";
@@ -15,7 +16,6 @@ import { Noto_Sans_JP } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
-import { MediaLinks } from "@/_constants/links";
 import { LottieNavigation } from "@/components/lottie";
 
 import styles from "./page.module.scss";
