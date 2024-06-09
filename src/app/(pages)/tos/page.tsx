@@ -1,4 +1,4 @@
-import { MediaLinks } from "@/_constants/links";
+import { MediaLinks } from "@constants/links";
 
 import styles from "./page.module.scss";
 

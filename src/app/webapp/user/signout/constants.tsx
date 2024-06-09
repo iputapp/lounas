@@ -1,3 +1,4 @@
+import { MediaLinks } from "@constants/links";
 import Github from "@icons/github.svg";
 import Instagram from "@icons/instagram.svg";
 import LogoIputapp from "@icons/iputapp_logo.svg";
@@ -5,8 +6,6 @@ import Lock from "@icons/lock.svg";
 import LogoOutline from "@icons/logo-outline.svg";
 import SendDiagonal from "@icons/send-diagonal.svg";
 import X from "@icons/x.svg";
-
-import { MediaLinks } from "@/_constants/links";
 
 /** 設定一覧 */
 const settings = [
