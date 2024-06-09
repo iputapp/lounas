@@ -14,9 +14,10 @@ To report a vulnerability, please follow these steps:
    - Detailed steps on how to reproduce the vulnerability.
    - Any potential impact of the vulnerability.
    - Your contact information.
-   > [!NOTE]
-   >
-   > If you prefer not to report via email, please use the [vulnerability report form](github-security) on GitHub.
+
+> [!NOTE]
+>
+> If you prefer not to report via email, please use the [vulnerability report form](github-security) on GitHub.
 
 We take all security vulnerabilities seriously and will respond to your report promptly. Once we have received your email, we will:
 
@@ -56,9 +57,10 @@ Thank you for helping keep our project secure.
    - 脆弱性を再現するための詳細な手順
    - 脆弱性の潜在的な影響
    - あなたの連絡先情報
-   > [!NOTE]
-   >
-   > メールで報告することを希望しない場合は、GitHubの[脆弱性報告フォーム](github-security)を使用してください。
+
+> [!NOTE]
+>
+> メールで報告することを希望しない場合は、GitHubの[脆弱性報告フォーム](github-security)を使用してください。
 
 私たちはすべてのセキュリティ脆弱性を真剣に受け止め、迅速に対応いたします。メールを受信後、以下の対応を行います:
 
