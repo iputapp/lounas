@@ -12,7 +12,7 @@ We welcome contributions in the form of bug reports, feature requests, documenta
 
 ### Bug Reports and Feature Requests
 
-If you encounter a bug or have a feature request, please [open an issue](https://github.com/PROJECT-PIPLUP/lounas/issues) on GitHub. Be sure to include as much detail as possible, including steps to reproduce the issue or a clear description of the requested feature.
+If you encounter a bug or have a feature request, please [open an issue](https://github.com/iputapp/lounas/issues) on GitHub. Be sure to include as much detail as possible, including steps to reproduce the issue or a clear description of the requested feature.
 
 ### Code Contributions
 
