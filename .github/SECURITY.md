@@ -1,5 +1,7 @@
 # Security Policy
 
+日本語版は[最後](#セキュリティポリシー)にあります。
+
 ## Reporting a Vulnerability
 
 If you discover a security vulnerability, please report it to us. We appreciate your help in making our project more secure.
