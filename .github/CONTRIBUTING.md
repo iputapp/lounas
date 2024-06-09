@@ -4,7 +4,7 @@
 
 First off, thanks for taking the time to contribute! 🎉
 
-The following is a set of guidelines for contributing to [lounas](github-repo), which is hosted in the [App Dev. Co. @ IPUT](github-org) on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+The following is a set of guidelines for contributing to [lounas][github-repo], which is hosted in the [App Dev. Co. @ IPUT][github-org] on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## How to Contribute
 
@@ -18,7 +18,7 @@ If you find a bug, please report it by opening an issue in the repository. Be su
 
 > [!IMPORTANT]
 >
-> Please use [this form](github-bug-report-form) to report bugs.
+> Please use [this form][github-bug-report-form] to report bugs.
 
 ### Suggesting Enhancements
 
@@ -45,7 +45,7 @@ If you have an idea for a new feature or an enhancement to an existing one, we'd
    > - `test`: Adding missing or correcting existing tests
    > - `chore`: Changes to the build process or auxiliary tools and libraries such as documentation generation
    >
-   > These examples are taken from [Angular's docs](angular-develop-docs).
+   > These examples are taken from [Angular's docs][angular-develop-docs]
 3. Make your changes.
 4. Ensure your changes adhere to the project's coding style and conventions.
 5. Commit your changes with a clear and descriptive commit message:
@@ -64,7 +64,7 @@ If you have an idea for a new feature or an enhancement to an existing one, we'd
    > - test: Adding missing or correcting existing tests
    > - chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
    >
-   > These `<type>`s are taken from [Angular's docs](angular-develop-docs).
+   > These `<type>`s are taken from [Angular's docs][angular-develop-docs].
 6. Push your branch to your fork:
    ```bash
    git push origin <type>/x-y-z
@@ -112,7 +112,7 @@ All pull requests will be reviewed by one of the project maintainers. The review
 
 ### Code of Conduct
 
-This project and everyone participating in it is governed by the [lounas](github-repo) Code of Conduct. By participating, you are expected to uphold this code. See [CODE_OF_CONDUCT.md](github-code-of-conduct) for details.
+This project and everyone participating in it is governed by the [lounas][github-repo] Code of Conduct. By participating, you are expected to uphold this code. See [CODE_OF_CONDUCT.md][github-code-of-conduct] for details.
 
 ### Getting Help
 
@@ -120,7 +120,7 @@ This project and everyone participating in it is governed by the [lounas](github
 >
 > Under construction 🚧
 
-If you have questions or need further assistance, feel free to join our [Slack/Discord] channel, or open an [discussion](github-discussions).
+If you have questions or need further assistance, feel free to join our [Slack/Discord] channel, or open an [discussion][github-discussions].
 
 ---
 
@@ -130,7 +130,7 @@ Thank you for your contributions! 🐧
 
 まず初めに、コントリビューションしていただきありがとうございます！🎉
 
-以下は、GitHubの[App Dev. Co. @ IPUT](github-org)組織の[lounas](github-repo)へのコントリビューションに関するガイドラインです。これはあくまでガイドラインであり、規則ではありません。最良の判断を行い、このドキュメントに変更を提案したい場合はプルリクエストを送ってください。
+以下は、GitHubの[App Dev. Co. @ IPUT][github-org]組織の[lounas][github-repo]へのコントリビューションに関するガイドラインです。これはあくまでガイドラインであり、規則ではありません。最良の判断を行い、このドキュメントに変更を提案したい場合はプルリクエストを送ってください。
 
 ## コントリビューション方法
 
@@ -144,7 +144,7 @@ Thank you for your contributions! 🐧
 
 > [!IMPORTANT]
 >
-> バグを報告するには[このフォーム](github-bug-report-form)を使用してください。
+> バグを報告するには[このフォーム][github-bug-report-form]を使用してください。
 
 ### 改善提案
 
@@ -171,7 +171,7 @@ Thank you for your contributions! 🐧
    > - `test`: 欠落しているテストの追加や既存テストの修正
    > - `chore`: ドキュメント生成などのビルドプロセスや補助ツール、ライブラリの変更
    >
-   > これらの例は[Angularのドキュメント](angular-develop-docs)から引用しています。
+   > これらの例は[Angularのドキュメント][angular-develop-docs]から引用しています。
 3. 変更を行います。
 4. 変更がプロジェクトのコーディングスタイルと規約に従っていることを確認します。
 5. 明確で簡潔なコミットメッセージで変更をコミットします:
@@ -190,7 +190,7 @@ Thank you for your contributions! 🐧
    > - test: 欠落しているテストの追加や既存テストの修正
    > - chore: ドキュメント生成などのビルドプロセスや補助ツール、ライブラリの変更
    >
-   > これらの`<type>`は[Angular のドキュメント](angular-develop-docs)から引用しています。
+   > これらの`<type>`は[Angular のドキュメント][angular-develop-docs]から引用しています。
 6. フォークしたリポジトリにブランチをプッシュします:
    ```bash
    git push origin <type>/x-y-z
@@ -238,7 +238,7 @@ npm test
 
 ### 行動規範
 
-このプロジェクトおよび参加するすべての人は[lounas](github-repo)の行動規範に従っています。参加することで、この行動規範を守ることが期待されます。詳細は[CODE_OF_CONDUCT.md](github-code-of-conduct)を参照してください。
+このプロジェクトおよび参加するすべての人は[lounas][github-repo]の行動規範に従っています。参加することで、この行動規範を守ることが期待されます。詳細は[CODE_OF_CONDUCT.md][github-code-of-conduct]を参照してください。
 
 ### ヘルプを得る
 
@@ -246,7 +246,7 @@ npm test
 >
 > 工事中 🚧
 
-質問やさらにサポートが必要な場合は、[Slack/Discord]チャンネルに参加するか、[ディスカッション](github-discussions)を開いてください。
+質問やさらにサポートが必要な場合は、[Slack/Discord]チャンネルに参加するか、[ディスカッション][github-discussions]を開いてください。
 
 ---
 

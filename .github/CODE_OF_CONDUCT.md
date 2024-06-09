@@ -64,7 +64,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-[App Dev. Co. @ IPUT](iputapp-contact).
+[App Dev. Co. @ IPUT][iputapp-contact].
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
@@ -165,7 +165,7 @@ Translations are available at [Contributor Covenant Translations][contributor-co
 
 ## 執行
 
-虐待的、嫌がらせ、またはその他の許容できない行動の事例は、執行を担当するコミュニティリーダーに対して[App Dev. Co. @ IPUT](iputapp-contact)で報告される場合があります。すべての苦情は迅速かつ公正にレビューおよび調査されます。
+虐待的、嫌がらせ、またはその他の許容できない行動の事例は、執行を担当するコミュニティリーダーに対して[App Dev. Co. @ IPUT][iputapp-contact]で報告される場合があります。すべての苦情は迅速かつ公正にレビューおよび調査されます。
 
 すべてのコミュニティリーダーは、問題の報告者のプライバシーとセキュリティを尊重する義務があります。
 
