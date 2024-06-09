@@ -4,13 +4,11 @@ The lunch recommendation app. 🍽️
 
 ## Conventions
 
-- [コーディング規約](.docs/CODING.md)
-- [ディレクトリ構成](.docs/DIRECTORY.md)
 - [Contribution Guidelines](.github/CONTRIBUTING.md)
 - [Code of Conduct](.github/CODE_OF_CONDUCT.md)
 - [Security Policy](.github/SECURITY.md)
 
-For copy.
+Pull request templates.
 
 ```
 template=develop.md
@@ -20,13 +18,13 @@ template=develop.md
 template=main.md
 ```
 
-> **Note**
+> [!TIP]
 >
 > Please refer to the [GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request) for details.
 
 ## Development
 
-Install environment packages.
+Install packages.
 
 ```bash
 npm i

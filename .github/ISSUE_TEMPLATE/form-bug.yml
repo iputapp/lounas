@@ -1,7 +1,7 @@
 name: Bug Report Form 🚨
 description: "Please use this form typically."
-title: "[Bug]: "
-labels: ["bug", "report"]
+title: "[Bug] "
+labels: ["report"]
 # assignees:
 #   - username
 body:
@@ -43,7 +43,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: I acknowledge that by submitting this report form, I agree to the [Code of Conduct](https://github.com/PROJECT-PIPLUP/lounas/blob/develop/.github/CODE_OF_CONDUCT.md).
+      description: I acknowledge that by submitting this report form, I agree to the [Code of Conduct](https://github.com/iputapp/lounas/blob/develop/.github/CODE_OF_CONDUCT.md).
       options:
         - label: I agree to the Code of Conduct.
           required: true
