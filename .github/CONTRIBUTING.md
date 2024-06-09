@@ -84,7 +84,7 @@ If you have an idea for a new feature or an enhancement to an existing one, we'd
 ### Coding Standards
 
 - Follow the coding style guidelines defined in the project (e.g., use Prettier for code formatting).
-> [!WARNING]
+> [!TIP]
 >
 > The respective commands for Lint and format are as follows:
 > - lint: `npm run lint`
