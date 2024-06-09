@@ -30,3 +30,6 @@ tsconfig.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# zod schema
+/src/lib/zod/index.ts

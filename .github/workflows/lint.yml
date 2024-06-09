@@ -1,0 +1,47 @@
+name: Lint
+on:
+  push:
+    branches:
+      - develop
+    paths-ignore:
+      - "**/*.md"
+      - ".git*"
+      - ".vscode/**"
+
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths-ignore:
+      - "**/*.md"
+      - ".git*"
+      - ".vscode/**"
+
+jobs:
+  lint:
+    name: npm run lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Cache packages
+        uses: actions/cache@v4
+        id: cache_npm_packages
+        env:
+          cache-name: cache-npm-packages
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install packages
+        if: ${{ steps.cache_npm_packages.outputs.cache-hit != 'true' }}
+        run: npm i
+      - name: Run lint
+        run: npm run lint
