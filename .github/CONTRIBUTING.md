@@ -34,61 +34,61 @@ If you have an idea for a new feature or an enhancement to an existing one, we'd
    ```bash
    git switch -c <type>/x-y-z
    ```
-   > [!TIP]
-   >
-   > `<type>` like be as follows:
-   > - `feature` or `feat`: A new feature
-   > - `bugfix`: A known bug fix (commit to the `develop` branch)
-   > - `hotfix`: A critical bug fix (committed directly to the `main` branch)
-   > - `docs`: Documentation only changes
-   > - `refactor`: A code change that neither fixes a bug nor adds a feature
-   > - `test`: Adding missing or correcting existing tests
-   > - `chore`: Changes to the build process or auxiliary tools and libraries such as documentation generation
-   >
-   > These examples are taken from [Angular's docs][angular-develop-docs]
+> [!TIP]
+>
+> `<type>` like be as follows:
+> - `feature` or `feat`: A new feature
+> - `bugfix`: A known bug fix (commit to the `develop` branch)
+> - `hotfix`: A critical bug fix (committed directly to the `main` branch)
+> - `docs`: Documentation only changes
+> - `refactor`: A code change that neither fixes a bug nor adds a feature
+> - `test`: Adding missing or correcting existing tests
+> - `chore`: Changes to the build process or auxiliary tools and libraries such as documentation generation
+>
+> These examples are taken from [Angular's docs][angular-develop-docs]
 3. Make your changes.
 4. Ensure your changes adhere to the project's coding style and conventions.
 5. Commit your changes with a clear and descriptive commit message:
    ```bash
    git commit -m "<type>(<scope>): <subject>"
    ```
-   > [!IMPORTANT]
-   >
-   > `<type>` must be as follows:
-   > - feat: A new feature
-   > - fix: A bug fix
-   > - docs: Documentation only changes
-   > - style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-   > - refactor: A code change that neither fixes a bug nor adds a feature
-   > - perf: A code change that improves performance
-   > - test: Adding missing or correcting existing tests
-   > - chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
-   >
-   > These `<type>`s are taken from [Angular's docs][angular-develop-docs].
+> [!IMPORTANT]
+>
+> `<type>` must be as follows:
+> - feat: A new feature
+> - fix: A bug fix
+> - docs: Documentation only changes
+> - style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+> - refactor: A code change that neither fixes a bug nor adds a feature
+> - perf: A code change that improves performance
+> - test: Adding missing or correcting existing tests
+> - chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+>
+> These `<type>`s are taken from [Angular's docs][angular-develop-docs].
 6. Push your branch to your fork:
    ```bash
    git push origin <type>/x-y-z
    ```
 7. Open a pull request in the repository.
-   > [!WARNING]
-   >
-   > Please make a pull request in **Draft Status** while you are working.
-   
-   > [!NOTE]
-   >
-   > You can use the template by adding the following query parameters to the URL:
-   > ```
-   > template=develop.md
-   > ```
+> [!WARNING]
+>
+> Please make a pull request in **Draft Status** while you are working.
+
+> [!NOTE]
+>
+> You can use the template by adding the following query parameters to the URL:
+> ```
+> template=develop.md
+> ```
 
 ### Coding Standards
 
 - Follow the coding style guidelines defined in the project (e.g., use Prettier for code formatting).
-  > [!WARNING]
-  >
-  > The respective commands for Lint and format are as follows:
-  > - lint: `npm run lint`
-  > - format: `npm run format`
+> [!WARNING]
+>
+> The respective commands for Lint and format are as follows:
+> - lint: `npm run lint`
+> - format: `npm run format`
 - Write clear, concise comments where necessary.
 - Include tests for new features and bug fixes where applicable.
 - Ensure that your code does not introduce new linting issues or warnings.
@@ -160,61 +160,61 @@ Thank you for your contributions! 🐧
    ```bash
    git switch -c <type>/x-y-z
    ```
-   > [!TIP]
-   >
-   > `<type>`は以下のようになります:
-   > - `feature` または `feat`: 新しい機能
-   > - `bugfix`: 既知のバグ修正（`develop`ブランチにコミット）
-   > - `hotfix`: 重大なバグ修正（`main`ブランチに直接コミット）
-   > - `docs`: ドキュメントの変更のみ
-   > - `refactor`: バグ修正や機能追加ではないコードの変更
-   > - `test`: 欠落しているテストの追加や既存テストの修正
-   > - `chore`: ドキュメント生成などのビルドプロセスや補助ツール、ライブラリの変更
-   >
-   > これらの例は[Angularのドキュメント][angular-develop-docs]から引用しています。
+> [!TIP]
+>
+> `<type>`は以下のようになります:
+> - `feature` または `feat`: 新しい機能
+> - `bugfix`: 既知のバグ修正（`develop`ブランチにコミット）
+> - `hotfix`: 重大なバグ修正（`main`ブランチに直接コミット）
+> - `docs`: ドキュメントの変更のみ
+> - `refactor`: バグ修正や機能追加ではないコードの変更
+> - `test`: 欠落しているテストの追加や既存テストの修正
+> - `chore`: ドキュメント生成などのビルドプロセスや補助ツール、ライブラリの変更
+>
+> これらの例は[Angularのドキュメント][angular-develop-docs]から引用しています。
 3. 変更を行います。
 4. 変更がプロジェクトのコーディングスタイルと規約に従っていることを確認します。
 5. 明確で簡潔なコミットメッセージで変更をコミットします:
    ```bash
    git commit -m "<type>(<scope>): <subject>"
    ```
-   > [!IMPORTANT]
-   >
-   > `<type>`は以下のようになります:
-   > - feat: 新しい機能
-   > - fix: バグ修正
-   > - docs: ドキュメントの変更のみ
-   > - style: コードの意味に影響を与えない変更（ホワイトスペース、フォーマット、セミコロンの欠落など）
-   > - refactor: バグ修正や機能追加ではないコードの変更
-   > - perf: パフォーマンスを改善するコードの変更
-   > - test: 欠落しているテストの追加や既存テストの修正
-   > - chore: ドキュメント生成などのビルドプロセスや補助ツール、ライブラリの変更
-   >
-   > これらの`<type>`は[Angular のドキュメント][angular-develop-docs]から引用しています。
+> [!IMPORTANT]
+>
+> `<type>`は以下のようになります:
+> - feat: 新しい機能
+> - fix: バグ修正
+> - docs: ドキュメントの変更のみ
+> - style: コードの意味に影響を与えない変更（ホワイトスペース、フォーマット、セミコロンの欠落など）
+> - refactor: バグ修正や機能追加ではないコードの変更
+> - perf: パフォーマンスを改善するコードの変更
+> - test: 欠落しているテストの追加や既存テストの修正
+> - chore: ドキュメント生成などのビルドプロセスや補助ツール、ライブラリの変更
+>
+> これらの`<type>`は[Angular のドキュメント][angular-develop-docs]から引用しています。
 6. フォークしたリポジトリにブランチをプッシュします:
    ```bash
    git push origin <type>/x-y-z
    ```
 7. リポジトリにプルリクエストを作成します。
-   > [!WARNING]
-   >
-   > 作業中はプルリクエストを**Draft Status**で作成してください。
-   
-   > [!NOTE]
-   >
-   > URLに以下のクエリパラメータを追加することでテンプレートを使用できます:
-   > ```
-   > template=develop.md
-   > ```
+> [!WARNING]
+>
+> 作業中はプルリクエストを**Draft Status**で作成してください。
+
+> [!NOTE]
+>
+> URLに以下のクエリパラメータを追加することでテンプレートを使用できます:
+> ```
+> template=develop.md
+> ```
 
 ### コーディングスタンダード
 
 - プロジェクトで定義されたコーディングスタイルガイドラインに従います（例: コードフォーマットに Prettier を使用）。
-  > [!WARNING]
-  >
-  > Lint とフォーマットの各コマンドは以下の通りです:
-  > - lint: `npm run lint`
-  > - format: `npm run format`
+> [!WARNING]
+>
+> Lint とフォーマットの各コマンドは以下の通りです:
+> - lint: `npm run lint`
+> - format: `npm run format`
 - 必要に応じて、明確で簡潔なコメントを書いてください。
 - 新しい機能やバグ修正にはテストを含めてください。
 - コードが新たなLintの問題や警告を引き起こさないようにしてください。
