@@ -1,7 +1,10 @@
 #!/bin/bash
 
+BRANCH=$VERCEL_GIT_COMMIT_REF
+
+echo "🚀 Starting build for branch $BRANCH"
+
 # Only build for main, preview, and develop branches
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
 if [ "$BRANCH" != "main" ] && [ "$BRANCH" != "preview" ] && [ "$BRANCH" != "develop" ]; then
   echo "🛑 Skipping build for branch $BRANCH"
   exit 0
