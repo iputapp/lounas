@@ -1,7 +1,7 @@
 name: Bug Report Form 🚨
 description: "Please use this form typically."
-title: "[Bug]: "
-labels: ["bug", "report"]
+title: "[Bug] "
+labels: ["report"]
 # assignees:
 #   - username
 body:
