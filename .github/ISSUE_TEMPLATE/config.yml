@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: New Features 🚀
-    url: https://github.com/iputapp/lounas/issues/new?assignees=&labels=&template=new.md&title=%5BNew%5D%3A+
+  - name: Tasks 🚀
+    url: https://github.com/iputapp/lounas/issues/new?template=task.md&title=%5BTask%5D+
     about: For developers 🐧
   - name: Issues to be fixed 🚑
-    url: https://github.com/iputapp/lounas/issues/new?assignees=&labels=&template=issue.md&title=%5BIssue%5D%3A+
+    url: https://github.com/iputapp/lounas/issues/new?template=issue.md&title=%5BIssue%5D+
     about: For developers 🐧
