@@ -1,0 +1,81 @@
+@use "variables" as var;
+
+.container {
+  @apply grid h-full w-full gap-12;
+
+  .header {
+    @apply w-full;
+
+    .title {
+      @apply w-fit
+        text-3xl font-bold;
+
+      color: var.$primary;
+    }
+  }
+
+  .content {
+    @apply grid
+      grid-cols-1
+      content-start
+      gap-7
+      px-1
+      md:grid-cols-2;
+  }
+
+  .zero {
+    @apply grid
+      w-full
+      content-between
+      justify-items-center gap-8;
+
+    .head {
+      @apply grid justify-items-center gap-6;
+
+      .title {
+        @apply text-xl font-semibold;
+
+        color: var.$tertiary;
+      }
+
+      .description {
+        @apply grid gap-2.5;
+
+        & > :nth-child(1) {
+          @apply text-center text-base;
+
+          color: var.$tertiary;
+        }
+
+        & > :nth-child(n + 2) {
+          @apply text-center text-xs;
+
+          color: var.$secondary;
+        }
+      }
+
+      .parent {
+        @apply relative mx-auto
+          w-3/4 overflow-clip;
+
+        aspect-ratio: 1 / 1;
+
+        & > img {
+          @apply absolute object-cover;
+        }
+      }
+    }
+
+    .retry {
+      @apply text-lg font-semibold text-blue-600;
+    }
+  }
+
+  .footer {
+    @apply w-full;
+
+    .button {
+      @apply mx-auto w-fit;
+    }
+  }
+}

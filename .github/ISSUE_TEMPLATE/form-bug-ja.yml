@@ -1,0 +1,49 @@
+name: バグ報告フォーム 🚨
+description: "通常はこちらをお使いください。"
+title: "[Bug] "
+labels: ["report"]
+# assignees:
+#   - username
+body:
+  - type: markdown
+    attributes:
+      value: |
+        😇
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: バグの詳細
+      description: 見た目のバグの場合、画像も提供いただけると助かります。
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: ブラウザの種類
+      description: 複数選択可。
+      multiple: true
+      options:
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Firefox
+        - Brave
+        - Opera
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: ブラウザのバージョン
+      placeholder: "例: Chrome Version 114.0.5735.199 (Official Build) (64-bit)"
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 行動規範
+      description: この報告フォームを提出することで[行動規範](https://github.com/iputapp/lounas/blob/develop/.github/CODE_OF_CONDUCT.md)に同意します。
+      options:
+        - label: 行動規範に同意する。
+          required: true

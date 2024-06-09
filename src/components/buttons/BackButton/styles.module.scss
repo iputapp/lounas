@@ -1,0 +1,15 @@
+@use "variables" as var;
+
+.button {
+  @apply -ms-2.5
+    flex
+    select-none
+    items-start -space-x-1
+    font-semibold;
+
+  color: var.$blue;
+
+  .icon {
+    font-size: 0.875em;
+  }
+}

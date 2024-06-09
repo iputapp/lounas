@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Tasks 🚀
+    url: https://github.com/iputapp/lounas/issues/new?template=task.md&title=%5BTask%5D+
+    about: For developers 🐧
+  - name: Issues to be fixed 🚑
+    url: https://github.com/iputapp/lounas/issues/new?template=issue.md&title=%5BIssue%5D+
+    about: For developers 🐧

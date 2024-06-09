@@ -1,0 +1,87 @@
+@use "variables" as var;
+
+@keyframes gradient-slide {
+  from {
+    background-position: left;
+  }
+
+  to {
+    background-position: right;
+  }
+}
+
+.container {
+  @apply mx-auto grid h-full w-full max-w-md
+    content-center
+    gap-12;
+
+  & > .title {
+    @apply w-fit
+      text-4xl font-bold;
+
+    color: transparent;
+    background: linear-gradient(-135deg, #fff 50%, var.$primary 50%);
+    background-clip: text;
+    background-size: 250% auto;
+    animation: gradient-slide 2.5s infinite alternate both cubic-bezier(0.83, 0, 0.17, 1); // easeInOutQuint
+  }
+
+  .sub {
+    @apply mx-auto grid w-full
+      justify-items-center
+      gap-2.5;
+
+    .text {
+      @apply text-lg font-semibold;
+
+      color: transparent;
+      background: linear-gradient(-135deg, var.$tertiary 50%, #fff 50%);
+      background-clip: text;
+      background-size: 250% auto;
+      mix-blend-mode: hard-light;
+      animation: gradient-slide 2.5s infinite alternate-reverse both cubic-bezier(0.83, 0, 0.17, 1); // easeInOutQuint
+    }
+
+    .button {
+      width: 14.25rem;
+
+      & > button {
+        @apply mx-auto w-full
+          select-none
+          overflow-clip rounded-full
+          py-3.5 text-2xl font-semibold text-white;
+
+        background-color: #000;
+      }
+    }
+  }
+
+  .panel {
+    @apply mx-auto max-w-md;
+
+    width: 95%;
+    min-height: 48dvh;
+
+    & > article {
+      @apply grid w-full
+      divide-y divide-white/40
+      rounded-xl
+      backdrop-blur-md;
+
+      background-color: rgb(255 255 255 / 30%);
+
+      & > * {
+        @apply flex w-full
+          items-center justify-between
+          p-4
+          text-base;
+
+        color: var.$primary;
+
+        & > div {
+          @apply flex items-center space-x-3;
+        }
+      }
+    }
+  }
+}

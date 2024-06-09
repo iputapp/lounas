@@ -1,0 +1,15 @@
+@use "variables" as var;
+
+.title {
+  @apply relative flex w-fit
+    items-center justify-center;
+}
+
+.title::after {
+  @apply absolute bottom-0 rounded-full;
+
+  width: 40%;
+  height: 4px; // border-b-4
+  content: "";
+  background-color: var.$blue;
+}

@@ -1,0 +1,32 @@
+@use "variables" as var;
+
+.container {
+  @apply mx-auto grid
+    h-full w-full max-w-3xl
+    content-start
+    gap-12;
+
+  .header {
+    @apply w-fit
+      text-3xl font-bold;
+  }
+
+  .content {
+    @apply grid
+      grid-cols-1 gap-7
+      px-2
+      md:grid-cols-2;
+  }
+
+  .footer {
+    @apply mx-auto flex w-full max-w-sm items-start justify-between;
+
+    & > *:not(.button) {
+      min-width: 6rem; // w-24
+    }
+
+    .button {
+      @apply w-fit;
+    }
+  }
+}

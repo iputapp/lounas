@@ -1,0 +1,35 @@
+# config
+.eslintrc.js
+next.config.mjs
+postcss.config.mjs
+prettier.config.mjs
+stylelint.config.mjs
+tailwind.config.ts
+tsconfig.json
+
+# dependencies
+# /node_modules # default
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# zod schema
+/src/lib/zod/index.ts

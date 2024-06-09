@@ -1,0 +1,908 @@
+@use "variables" as var;
+
+$container: 56rem; // max-w-4xl
+// $slide-h: 32.5rem; /* 520px */
+$slide-h: 48rem; /* 768px */
+
+/* common styles */
+.neumo {
+  /* neumorphism */
+  --neumo-shadow: 0 -10px 15px -3px rgb(255 255 255 / 10%), 0 -4px 6px -4px rgb(255 255 255 / 10%);
+  --neumo-shadow-colored: 0 -10px 15px -3px rgb(255 255 255), 0 -4px 6px -4px rgb(255 255 255);
+
+  /* shadow-lg-xl */
+  --tw-shadow: 0 15px 20px -4px rgb(0 0 0 / 10%), 0 6px 8px -5px rgb(0 0 0 / 10%);
+  --tw-shadow-colored: 0 15px 20px -4px var(--tw-shadow-color),
+    0 6px 8px -5px var(--tw-shadow-color);
+
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow), var(--neumo-shadow), var(--neumo-shadow-colored);
+}
+
+/* component styles */
+.lounas-logo-full {
+  @apply grid place-content-center;
+
+  svg {
+    @apply w-fit;
+
+    aspect-ratio: 768 / 256;
+  }
+}
+
+.app-link {
+  @apply w-fit select-none
+    rounded-full px-5
+    py-3.5 font-bold;
+
+  color: #fff;
+  background-color: var.$blue;
+}
+
+.border-round-icon {
+  @apply flex items-center justify-center space-x-1.5 rounded-full px-4 py-3;
+
+  background-color: rgb(255 255 255 / 25%);
+  backdrop-filter: brightness(1.2);
+  border: 1.5px solid rgb(115 115 115 / 50%); // neutral-500
+
+  & > :nth-child(1) {
+    @apply text-base;
+
+    color: #0014ff;
+  }
+
+  & > :nth-child(2) {
+    @apply text-xs font-medium;
+
+    color: var.$primary;
+  }
+}
+
+/* article styles */
+.container {
+  @apply relative mx-auto overflow-x-clip;
+
+  width: 100%;
+  background-color: var.$bg-primary;
+
+  img {
+    @apply select-none;
+  }
+}
+
+.bg-demo {
+  @apply relative;
+
+  width: 100%;
+  height: 69rem;
+
+  & > div {
+    @apply grid grid-cols-5 grid-rows-1 gap-10;
+
+    width: 250%;
+    transform: translate(-15%, -10%) rotate(45deg);
+
+    & > :nth-child(n) {
+      @apply grid place-content-center gap-8;
+
+      & > img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.bg-demo-overlay {
+  @apply absolute inset-y-0 left-0
+    backdrop-blur-lg;
+
+  width: 100%;
+  height: calc(
+    100% - 36rem + 2.5rem
+  ); // this - div(-mt-[36rem]) + smooth-experience(rounded-t-[2.5rem])
+
+  // padding-bottom: 0.5rem; // smooth-experience(rounded-t-[2.5rem]) - 2rem
+
+  & > :nth-child(1) {
+    @apply grid h-full w-full
+      place-content-center
+      gap-16;
+
+    & > h1 {
+      @apply lounas-logo-full text-6xl;
+    }
+
+    & > :nth-child(2) {
+      @apply grid justify-items-center gap-2;
+
+      & > a {
+        @apply app-link;
+      }
+
+      & > :nth-child(2) {
+        @apply grid text-xs font-semibold;
+
+        color: var.$secondary;
+      }
+    }
+  }
+}
+
+.smooth-experience {
+  @apply relative grid
+    content-start justify-items-center gap-10
+    overflow-clip rounded-t-[2.5rem]
+    pb-28 pt-10;
+
+  width: 100%;
+  height: 32rem;
+  background: conic-gradient(from 90deg, var.$lime 0, var.$blue 40%, var.$cyan 60%, var.$lime 100%);
+
+  &::before {
+    @apply absolute inset-0;
+
+    content: "";
+    background-color: rgb(255 255 255 / 20%);
+    backdrop-filter: brightness(1.1) blur(8px);
+  }
+
+  & > :nth-child(n) {
+    @apply z-10;
+
+    &:nth-child(1) {
+      @apply grid justify-items-center gap-5;
+
+      & > h2 {
+        @apply text-center text-4xl font-bold;
+
+        color: var.$primary;
+      }
+
+      & > h3 {
+        @apply text-center text-sm font-medium;
+
+        color: var.$tertiary;
+      }
+    }
+
+    &:nth-child(2) {
+      @apply grid justify-items-center gap-8;
+
+      & > :nth-child(n) {
+        @apply grid justify-items-center gap-8;
+
+        & > :nth-child(n) {
+          & > :nth-child(n) {
+            @apply border-round-icon;
+
+            width: fit-content;
+          }
+        }
+      }
+
+      & > :nth-child(1) {
+        @apply grid-cols-2;
+      }
+
+      & > :nth-child(2) {
+        @apply grid-cols-1;
+      }
+    }
+  }
+}
+
+.route-first {
+  @apply relative grid content-center justify-items-center gap-8;
+
+  width: 100%;
+  height: calc($slide-h + 5rem); // 53rem
+
+  // aspect-ratio: 16 / 10;
+  padding: 8.5rem 1rem 2rem 3rem; /* top | right | bottom | left */
+  margin-top: -8.5rem;
+  background: linear-gradient(to bottom, rgb(255 255 255 / 0%) 0, rgb(255 255 255 / 100%) 5rem);
+
+  &::before {
+    @apply absolute inset-y-0 left-6 top-24
+        my-auto rounded-full;
+
+    width: 6px;
+    height: 77.5%;
+    content: "";
+    background: linear-gradient(#0031ff, #009efd, #2af598);
+  }
+
+  & > :nth-child(1) {
+    @apply grid place-content-center gap-3;
+
+    & > :nth-child(n of span) {
+      @apply text-lg font-bold;
+
+      color: var.$primary;
+    }
+
+    & > :nth-child(n of h3) {
+      @apply grid gap-4
+          font-bold;
+
+      font-size: 2.5rem;
+      line-height: 1;
+
+      & > :nth-child(1) {
+        color: var.$cyan;
+      }
+
+      & > :nth-child(2) {
+        color: #0014ff;
+      }
+    }
+  }
+}
+
+.route-second {
+  @apply relative;
+
+  width: 100%;
+  height: $slide-h;
+
+  // aspect-ratio: 16 / 10;
+  background-image: url("/images/route.webp");
+  background-repeat: no-repeat;
+  background-position: 40% 80%;
+  background-size: cover;
+
+  & > :nth-child(1) {
+    @apply absolute inset-0
+      grid place-content-center gap-8
+      overflow-clip pb-12
+      backdrop-blur backdrop-brightness-90;
+
+    & > :nth-child(1 of h3) {
+      @apply grid justify-items-center gap-4
+        font-bold;
+
+      color: #fff;
+
+      & > :nth-child(1) {
+        @apply text-3xl;
+      }
+
+      & > :nth-child(2) {
+        @apply text-6xl;
+      }
+    }
+
+    & > :nth-child(1 of div) {
+      margin-bottom: -15rem;
+    }
+  }
+}
+
+.lunch-time {
+  @apply relative grid content-center gap-4;
+
+  width: 100%;
+  height: calc($slide-h * 1.1);
+
+  // aspect-ratio: 16 / 10;
+  background-color: var.$bg-primary;
+
+  & > :nth-child(1) {
+    @apply relative overflow-clip;
+
+    width: 100%;
+    height: calc($slide-h * 1.1 * 0.5);
+
+    & > :nth-child(1) {
+      @apply absolute inset-0 my-auto blur;
+
+      width: 100%;
+      aspect-ratio: 1 / 1;
+
+      & > :nth-child(n of svg) {
+        @apply h-full w-full;
+      }
+    }
+
+    & > :nth-child(2) {
+      @apply grid content-center justify-items-center gap-3;
+
+      width: 100%;
+      height: calc(100% - 2rem);
+
+      & > :nth-child(n of span) {
+        @apply z-10 text-2xl font-bold;
+
+        color: var.$primary;
+      }
+
+      & > :nth-child(1 of h3) {
+        @apply z-10 text-5xl font-bold;
+
+        color: var.$primary;
+
+        & span {
+          color: #f0c;
+        }
+      }
+    }
+  }
+
+  & > :nth-child(2) {
+    @apply neumo
+      relative mx-auto
+      grid gap-4
+      rounded-[3rem] bg-neutral-50 px-4 py-8;
+
+    width: 95%;
+    height: 100%;
+
+    & > h4 {
+      @apply text-center text-xl font-bold;
+
+      color: var.$primary;
+    }
+
+    & > :nth-child(2) {
+      @apply absolute left-0 rounded-e-full;
+
+      bottom: calc(35% - 2px);
+      width: 75%;
+      height: 22px;
+      content: "";
+      background: linear-gradient(to right, #0014ff, #07f);
+      mix-blend-mode: hard-light;
+    }
+
+    & > :nth-child(3) {
+      @apply relative grid grid-cols-2;
+
+      & > :nth-child(n) {
+        @apply grid justify-items-center gap-3;
+
+        & > :nth-child(1) {
+          @apply grid content-center justify-items-center gap-1;
+
+          height: 75px; // image height
+
+          & > img {
+            @apply rounded-2xl;
+          }
+
+          & > :nth-child(n of span) {
+            @apply text-sm font-semibold;
+
+            color: var.$primary;
+          }
+
+          & svg {
+            @apply -my-3 max-h-12;
+          }
+        }
+
+        & > :nth-child(2) {
+          @apply z-10
+            grid place-content-center
+            rounded-full;
+
+          height: 9rem;
+          aspect-ratio: 1 / 1;
+
+          & > :nth-child(1) {
+            @apply text-center text-lg font-bold;
+
+            color: var.$tertiary;
+          }
+
+          & > :nth-child(2) {
+            @apply text-center font-bold;
+
+            font-size: 1.75rem;
+            line-height: 2.125rem;
+            color: var.$primary;
+          }
+        }
+
+        & > :nth-child(n of span) {
+          @apply text-center font-semibold;
+
+          color: var.$tertiary;
+        }
+      }
+
+      & > :nth-child(1) {
+        & > :nth-child(2) {
+          background-color: var.$cyan;
+        }
+      }
+
+      & > :nth-child(2) {
+        & > :nth-child(2) {
+          background-color: var.$lime;
+        }
+      }
+    }
+  }
+}
+
+.recommend-first {
+  @apply relative;
+
+  width: 100%;
+  height: $slide-h;
+
+  // aspect-ratio: 16 / 9;
+
+  & > :nth-child(1 of div) {
+    @apply relative mx-auto max-w-md blur-md;
+
+    height: 100%;
+
+    & > :nth-child(n of span) {
+      @apply absolute
+        grid place-content-center
+        rounded-full font-semibold;
+
+      aspect-ratio: 1 / 1;
+    }
+
+    & > :nth-child(1) {
+      @apply text-4xl;
+
+      top: 22.5%;
+      left: 5%;
+      width: 12rem;
+      color: #fff;
+      background: linear-gradient(180deg, #f5576c, #f093fb);
+    }
+
+    & > :nth-child(2) {
+      @apply text-3xl;
+
+      top: 55%;
+      left: 17.5%;
+      width: 10rem;
+      color: #fff;
+      background: linear-gradient(180deg, #36ba64, #04e67e);
+    }
+
+    & > :nth-child(3) {
+      @apply text-2xl;
+
+      top: 40%;
+      left: 60%;
+      width: 8rem;
+      color: #fff;
+      background: linear-gradient(0deg, #0d32ff, #667eea);
+    }
+
+    & > :nth-child(4) {
+      @apply relative text-sm;
+
+      top: 72%;
+      left: 65%;
+      width: 5rem;
+      color: var.$tertiary;
+
+      &::before {
+        @apply absolute -z-10
+          h-full w-full
+          rounded-full;
+
+        aspect-ratio: 1 / 1;
+        content: "";
+        background: linear-gradient(to right, var.$lime, var.$cyan, var.$blue);
+        transform: scale(1.1);
+      }
+
+      &::after {
+        @apply absolute -z-10
+          h-full w-full
+          rounded-full;
+
+        aspect-ratio: 1 / 1;
+        content: "";
+        background-color: #fff;
+      }
+    }
+  }
+
+  & > :nth-child(1 of h3) {
+    @apply absolute inset-0
+        grid place-content-center gap-4
+        text-center;
+
+    height: 100%;
+
+    & > :nth-child(1) {
+      @apply text-3xl font-bold;
+
+      color: var.$secondary;
+    }
+
+    & > :nth-child(2) {
+      @apply text-6xl font-bold;
+
+      color: var.$primary;
+    }
+  }
+}
+
+.recommend-second {
+  @apply mx-auto grid max-w-md gap-8;
+
+  width: 100%;
+  height: 100%;
+
+  // aspect-ratio: 16 / 9;
+
+  & > :nth-child(1) {
+    @apply text-center text-5xl font-bold;
+
+    color: var.$secondary;
+  }
+
+  & > :nth-child(2) {
+    @apply relative;
+
+    width: 100%;
+    height: calc($slide-h - 6rem);
+
+    & > :nth-child(1) {
+      @apply absolute inset-0
+        grid content-between justify-items-center
+        font-bold;
+
+      height: calc($slide-h - 6rem);
+      margin-top: -1.5rem;
+      font-size: 24rem;
+      line-height: 0.75;
+      color: var.$primary;
+    }
+
+    & > :nth-child(n + 1) {
+      @apply z-10;
+    }
+
+    & > :nth-child(2) {
+      @apply absolute right-1.5 top-0;
+    }
+
+    & > :nth-child(3) {
+      @apply absolute left-1.5 top-0;
+
+      margin-top: 45%;
+    }
+
+    & > :nth-child(4) {
+      @apply absolute right-1.5 top-0;
+
+      margin-top: 90%;
+    }
+  }
+}
+
+.recommend-eyecatch {
+  @apply grid place-content-center;
+
+  width: 100%;
+  height: calc($slide-h * 0.25);
+
+  // aspect-ratio: 4 / 1;
+
+  & > :nth-child(1) {
+    @apply flex items-center justify-center
+      text-center font-bold;
+
+    font-size: 1.75rem;
+    line-height: 2rem;
+    color: var.$secondary;
+  }
+}
+
+.recommend-third {
+  @apply relative mx-auto max-w-md pb-12;
+
+  width: 100%;
+  height: 100%;
+
+  // aspect-ratio: 16 / 9;
+
+  & > :nth-child(1) {
+    @apply absolute inset-0;
+
+    & > div {
+      @apply relative overflow-y-clip;
+
+      width: 100%;
+      height: 100%;
+
+      & > :nth-child(1 of svg) {
+        @apply absolute;
+
+        right: -40%;
+        bottom: -40%;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  & > :nth-child(2) {
+    @apply relative z-10 grid gap-6;
+
+    & > :nth-child(1 of h3) {
+      @apply grid gap-2;
+
+      & > :nth-child(n of span) {
+        @apply text-center text-3xl font-bold;
+
+        color: var.$primary;
+      }
+    }
+
+    & > :nth-child(1 of div) {
+      @apply relative flex items-center;
+
+      margin-left: 12.5%;
+
+      & > :nth-child(2) {
+        @apply absolute;
+
+        bottom: 0;
+        left: 35%;
+      }
+    }
+  }
+}
+
+.our-mission {
+  @apply relative overflow-clip;
+
+  width: 100%;
+  height: $slide-h;
+
+  // aspect-ratio: 9 / 10;
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  & > img {
+    width: 100%;
+    object-fit: cover;
+    object-position: 45% 22.5%;
+    background-color: rgb(0 0 0 / 60%);
+    filter: blur(12px) brightness(0.8);
+    scale: 1.2;
+  }
+
+  & > :nth-child(1 of div) {
+    @apply absolute inset-0 grid place-content-center gap-14;
+
+    & p {
+      @apply text-center text-xs font-semibold;
+
+      color: #fff;
+    }
+
+    & > :nth-child(n) {
+      @apply grid gap-12;
+
+      & > :nth-child(n of div) {
+        @apply grid gap-5;
+      }
+    }
+  }
+}
+
+.next-niki {
+  @apply relative overflow-clip;
+
+  width: 100%;
+  height: calc($slide-h - 2rem);
+
+  // aspect-ratio: 16 / 10;
+  background-color: var.$bg-primary;
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  & > h2 {
+    @apply absolute inset-x-0
+      text-center text-2xl font-bold;
+
+    top: 2.75rem;
+    width: 100%;
+    color: var.$primary;
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    &::after {
+      @apply absolute inset-x-0 -bottom-3;
+
+      width: 100%;
+      height: 6px;
+      content: "";
+      background: linear-gradient(to right, #0031ff, #009efd, #2af598);
+    }
+  }
+
+  & > :nth-child(1 of div) {
+    @apply absolute inset-x-0 bottom-6 m-auto grid max-w-md gap-6;
+
+    & > :nth-child(1) {
+      @apply py-1;
+
+      & > h3 {
+        @apply ms-4 flex items-center justify-center
+        space-x-0 text-2xl font-bold;
+
+        height: 2.5rem;
+
+        & > :nth-child(1 of span) {
+          @apply lounas-logo-full;
+
+          width: 7rem;
+        }
+
+        & > :nth-child(2 of span) {
+          padding-top: 0.5px;
+          margin-top: 0.75rem;
+          color: var.$primary;
+        }
+      }
+    }
+
+    & > :nth-child(2) {
+      @apply relative mx-auto grid gap-5;
+
+      width: 90%;
+
+      & > :nth-child(n) {
+        @apply grid grid-cols-2 p-3;
+
+        width: 60%;
+        aspect-ratio: 1.618 / 1;
+        background-color: #fff;
+        border-radius: 2rem;
+
+        & > span {
+          @apply py-2 text-center text-base font-semibold;
+
+          height: fit-content;
+          color: var.$tertiary;
+        }
+      }
+
+      & > :nth-child(1) {
+        margin-right: auto;
+      }
+
+      & > :nth-child(2) {
+        margin-left: auto;
+      }
+    }
+
+    & > :nth-child(3) {
+      @apply mx-auto;
+
+      width: fit-content;
+
+      & > p {
+        @apply text-center text-base font-bold;
+
+        color: var.$secondary;
+
+        & > a {
+          @apply text-blue-600;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  @apply mx-auto grid gap-6
+    bg-neutral-300 px-0.5 pb-4 pt-8;
+
+  width: 100%;
+  height: 100%;
+
+  & > :nth-child(1) {
+    @apply grid gap-8;
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    & > h2 {
+      @apply grid justify-items-center gap-3
+          py-2 text-sm;
+
+      & > :nth-child(1) {
+        @apply lounas-logo-full -my-2
+            text-5xl;
+      }
+
+      & > :nth-child(2) {
+        @apply font-bold;
+
+        color: var.$secondary;
+      }
+    }
+  }
+
+  & > :nth-child(2) {
+    @apply grid grid-cols-2 gap-6 pe-1.5;
+
+    & > :nth-child(1 of div) {
+      @apply grid justify-items-center gap-6 self-center;
+
+      & > :nth-child(1 of div) {
+        @apply relative grid gap-5;
+
+        width: fit-content;
+
+        // &::before {
+        //   @apply absolute inset-y-0 my-auto rounded-full bg-neutral-500;
+
+        //   left: -1rem;
+        //   width: 2px;
+        //   height: 101%;
+        //   content: "";
+        // }
+
+        & > h4 > a {
+          @apply flex items-center justify-stretch space-x-2.5;
+
+          & > :nth-child(n of span) {
+            @apply text-base;
+
+            color: var.$secondary;
+          }
+        }
+      }
+    }
+
+    & > :nth-child(2 of div) {
+      @apply grid place-content-center gap-2 self-center;
+
+      /* stylelint-disable-next-line no-descending-specificity */
+      & > a {
+        @apply app-link mx-auto;
+
+        & > h3 {
+          @apply text-sm;
+        }
+      }
+
+      div {
+        @apply grid text-xs font-medium;
+
+        line-height: 1.5;
+        color: var.$secondary;
+
+        ul {
+          @apply mx-auto font-medium;
+
+          width: 80%;
+          font-size: 0.75em;
+          list-style: circle;
+        }
+      }
+    }
+  }
+
+  & > :nth-child(3) {
+    @apply grid justify-items-center gap-5 py-2;
+
+    & > :nth-child(1 of div) {
+      @apply flex items-center divide-x divide-neutral-400;
+
+      width: fit-content;
+
+      h5 {
+        @apply px-8 text-xs font-semibold text-blue-600;
+      }
+    }
+
+    h6 {
+      @apply text-sm;
+
+      color: var.$secondary;
+    }
+  }
+}

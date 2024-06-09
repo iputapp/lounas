@@ -1,0 +1,80 @@
+@use "variables" as var;
+
+@keyframes gradient-slide {
+  from {
+    background-position: left;
+  }
+
+  to {
+    background-position: right;
+  }
+}
+
+.container {
+  @apply grid h-full w-full
+    place-content-center
+    gap-12;
+
+  & > .title {
+    @apply w-fit
+      text-4xl font-bold;
+
+    color: transparent;
+    background: linear-gradient(135deg, #fff 50%, var.$primary 50%);
+    background-clip: text;
+    background-size: 250% auto;
+    animation: gradient-slide 2.5s infinite alternate both cubic-bezier(0.83, 0, 0.17, 1); // easeInOutQuint
+  }
+
+  .panel {
+    @apply mx-auto grid
+      h-40
+      content-between
+      rounded-3xl px-5 py-3
+      shadow-lg;
+
+    aspect-ratio: 1.85 / 1;
+    background-color: #fff;
+
+    .date {
+      @apply select-none text-xl font-bold;
+
+      color: var.$tertiary;
+    }
+
+    .exp {
+      @apply mx-auto grid
+        w-11/12 gap-2;
+
+      .text {
+        @apply flex
+          select-none items-center
+          justify-between font-semibold;
+
+        color: var.$primary;
+      }
+    }
+  }
+
+  .content {
+    @apply grid w-full gap-6;
+
+    .title {
+      @apply mx-auto select-none;
+
+      color: var.$primary;
+    }
+
+    .description {
+      @apply mx-auto w-10/12
+        select-none
+        text-center text-base;
+
+      color: var.$tertiary;
+    }
+
+    .button {
+      @apply mx-auto w-5/12;
+    }
+  }
+}

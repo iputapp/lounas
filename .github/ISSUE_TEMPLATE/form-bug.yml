@@ -1,0 +1,49 @@
+name: Bug Report Form 🚨
+description: "Please use this form typically."
+title: "[Bug] "
+labels: ["report"]
+# assignees:
+#   - username
+body:
+  - type: markdown
+    attributes:
+      value: |
+        😇
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Bug details
+      description: For visual bugs, please also provide images.
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: Browser types
+      description: Multiple selections allowed.
+      multiple: true
+      options:
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Firefox
+        - Brave
+        - Opera
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Browser version
+      placeholder: e.g. Chrome Version 114.0.5735.199 (Official Build) (64-bit)
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: I acknowledge that by submitting this report form, I agree to the [Code of Conduct](https://github.com/iputapp/lounas/blob/develop/.github/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to the Code of Conduct.
+          required: true

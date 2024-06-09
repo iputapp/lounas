@@ -1,0 +1,8 @@
+@use "variables" as var;
+
+.main {
+  @apply min-h-screen w-full px-5;
+
+  padding-top: var.$safe-area-top;
+  padding-bottom: calc(var.$safe-area-nav-bar + 1.375rem); // + 22px
+}

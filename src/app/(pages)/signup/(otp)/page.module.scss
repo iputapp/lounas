@@ -1,0 +1,155 @@
+@use "variables" as var;
+
+@keyframes hologram-arrow {
+  0% {
+    left: 4rem; // (w-44(11rem) - 2 * arrow(1.5rem)) / 2
+    width: 3rem; // arrow(1.5rem) * 2
+    transform: scaleY(0);
+  }
+
+  20% {
+    left: 4rem;
+    width: 3rem;
+    transform: scaleY(1);
+  }
+
+  35% {
+    left: 0;
+    width: 11rem; // w-44
+    transform: scaleY(1);
+  }
+
+  65% {
+    left: 0;
+    width: 11rem;
+    transform: scaleY(1);
+  }
+
+  80% {
+    left: 4rem;
+    width: 3rem;
+    transform: scaleY(1);
+  }
+
+  100% {
+    left: 4rem;
+    width: 3rem;
+    transform: scaleY(0);
+  }
+}
+
+@keyframes hologram-text {
+  0% {
+    transform: scaleX(0);
+  }
+
+  25% {
+    transform: scaleX(0);
+  }
+
+  35% {
+    transform: scaleX(1);
+  }
+
+  65% {
+    transform: scaleX(1);
+  }
+
+  75% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+.container {
+  @apply grid h-full w-full
+    content-center
+    gap-8 pt-12;
+
+  .head {
+    @apply grid w-full
+      justify-items-center
+      gap-1.5;
+
+    .title {
+      @apply text-4xl font-bold;
+
+      color: var.$primary;
+
+      & > .logo {
+        @apply text-9xl;
+
+        & > svg {
+          @apply h-full;
+
+          aspect-ratio: 7 / 2.125;
+        }
+      }
+    }
+
+    & > .description {
+      @apply text-center
+          text-xs;
+
+      color: var.$tertiary;
+    }
+  }
+
+  .form {
+    @apply mx-auto
+      grid max-w-sm
+      justify-items-center
+      gap-6;
+
+    width: 80%;
+  }
+
+  .additional {
+    @apply grid w-full
+      justify-items-center
+      gap-4;
+
+    & > .main {
+      @apply w-fit
+        text-center
+        text-base
+        underline decoration-solid;
+
+      color: var.$secondary;
+    }
+  }
+
+  .tos {
+    @apply w-full;
+
+    & > a {
+      @apply relative
+        mx-auto block h-6 w-44
+        text-base text-blue-600;
+
+      & > div {
+        @apply absolute
+          flex items-center justify-between 
+          overflow-clip;
+
+        transform-origin: center bottom;
+        animation: hologram-arrow 3.8s cubic-bezier(0.83, 0, 0.17, 1) infinite both; // easeInOutQuint
+        will-change: transform, width, left; // for performance
+        backface-visibility: hidden; // for performance
+      }
+
+      & > span {
+        @apply absolute left-6
+          h-6
+          overflow-clip;
+
+        width: 8rem; // w-44(11rem) - 2 * arrow(1.5rem)
+        transform-origin: center bottom;
+        animation: hologram-text 3.8s cubic-bezier(0.83, 0, 0.17, 1) infinite both; // easeInOutQuint
+      }
+    }
+  }
+}

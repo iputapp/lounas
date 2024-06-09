@@ -1,0 +1,9 @@
+@use "variables" as var;
+
+.main {
+  @apply min-h-screen w-full px-5;
+
+  padding-top: var.$safe-area-scroll-top;
+  padding-bottom: var.$safe-area-bottom;
+  background-color: var.$bg-primary;
+}
