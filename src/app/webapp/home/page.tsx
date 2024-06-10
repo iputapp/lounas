@@ -19,9 +19,19 @@ import styles from "./page.module.scss";
 export default function Page() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+   // ローカルストレージから "isPopupshown" を取得して、ポップアップを表示するかどうかを判断する
   useEffect(() => {
+    const isPopupshown = localStorage.getItem("isPopupshown");
+    if (!isPopupshown) { // "isPopupshown" が存在しないとき
     setIsDialogOpen(true);
+    }
   }, []);
+
+  // ダイアログが閉じられた際に、ローカルストレージに "isPopupshown" を設定する
+  const  handleCloseDialog = () => {
+    localStorage.setItem("isPopupshown", "true");
+    setIsDialogOpen(false);
+  };
 
   const router = useRouter();
 
@@ -76,7 +86,7 @@ export default function Page() {
           </div>
         </section>
       </div>
-      <DialogInfo title="利用者アンケートのお願い" isOpen={isDialogOpen} setIsOpen={setIsDialogOpen}>
+      <DialogInfo title="利用者アンケートのお願い" isOpen={isDialogOpen} setIsOpen={handleCloseDialog}>
         <article className="grid gap-6 text-sm">
           <section>lounas（本サービス）を運営しておりますIPUTアプリ開発サークルは、本サービスを学会へ論文提出を行う予定です。
           </section>
