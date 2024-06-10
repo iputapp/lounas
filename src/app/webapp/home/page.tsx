@@ -25,7 +25,7 @@ export default function Page() {
       // "isPopupshown" が存在しないとき
       setIsDialogOpen(true);
     }
-  }, []);
+  }, [isDialogOpen]);
 
   // ダイアログが閉じられた際に、ローカルストレージに "isPopupshown" を設定する
   const handleCloseDialog = () => {
