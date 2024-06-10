@@ -76,5 +76,14 @@
     .button {
       @apply mx-auto w-5/12;
     }
+
+    .banner{
+      @apply mx-auto w-9/12;
+      
+    }
+
+    .image-container {
+      @apply w-full h-auto;
+    }
   }
 }

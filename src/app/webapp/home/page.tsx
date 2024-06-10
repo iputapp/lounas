@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -86,6 +87,13 @@ export default function Page() {
               GO!
             </BorderCircleButton>
           </div>
+          <Link className={styles.banner} href="https://forms.gle/WNWMt9W7WDK27Ltr8" target="_blank" >
+            <Image 
+            className={styles.imageContainer}
+            src="/images/survey-banner.jpg" 
+            alt="アンケートバナー" 
+            width={200} height={50} />
+          </Link>
         </section>
       </div>
       <DialogInfo
