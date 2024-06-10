@@ -77,13 +77,12 @@
       @apply mx-auto w-5/12;
     }
 
-    .banner{
+    .banner {
       @apply mx-auto w-9/12;
-      
     }
 
     .image-container {
-      @apply w-full h-auto;
+      @apply h-auto w-full;
     }
   }
 }
