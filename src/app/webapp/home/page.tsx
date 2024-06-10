@@ -95,15 +95,15 @@ export default function Page() {
       >
         <article className="grid gap-6 text-sm">
           <section>
-            lounas（本サービス）を運営しておりますIPUTアプリ開発サークルは、本サービスを学会へ論文提出を行う予定です。
+            lounas（以下、本サービス）を運営しておりますアプリ開発サークル@IPUTは、本サービスを外部イベントに出展する準備を進めています。その一環として論文を執筆する予定です。
           </section>
           <section>
-            <span>もしよろしければ、アンケートへのご協力をお願いいたします。</span>
+            <span>もしよろしければ、アンケートへのご協力をお願い申し上げます。</span>
           </section>
           <section className="mx-auto">
             <div className={styles.button}>
               <RectButton color="blue">
-                <Link href="https://forms.gle/7SfNuUHnnLkMNqcT6" target="_blank">
+                <Link href="https://forms.gle/WNWMt9W7WDK27Ltr8" target="_blank">
                   アンケートフォーム
                 </Link>
               </RectButton>
