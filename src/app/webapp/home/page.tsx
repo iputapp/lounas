@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import {useRouter} from "next/navigation";
-import {useEffect,useState} from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import useSWR from "swr";
 
 import { VisitsCount } from "@/app/api/v-beta/user/visits-count";
@@ -15,20 +15,20 @@ import { fetcher } from "@/lib/swr";
 
 import styles from "./page.module.scss";
 
-
 export default function Page() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-   // ローカルストレージから "isPopupshown" を取得して、ポップアップを表示するかどうかを判断する
+  // ローカルストレージから "isPopupshown" を取得して、ポップアップを表示するかどうかを判断する
   useEffect(() => {
     const isPopupshown = localStorage.getItem("isPopupshown");
-    if (!isPopupshown) { // "isPopupshown" が存在しないとき
-    setIsDialogOpen(true);
+    if (!isPopupshown) {
+      // "isPopupshown" が存在しないとき
+      setIsDialogOpen(true);
     }
   }, []);
 
   // ダイアログが閉じられた際に、ローカルストレージに "isPopupshown" を設定する
-  const  handleCloseDialog = () => {
+  const handleCloseDialog = () => {
     localStorage.setItem("isPopupshown", "true");
     setIsDialogOpen(false);
   };
@@ -66,7 +66,9 @@ export default function Page() {
           <div className={styles.exp}>
             <div className={styles.text}>
               <span>今月の開拓数：</span>
-              <span>{isLoading && !data ? (!error ? "読み込み中..." : "エラー") : `${data}件`}</span>
+              <span>
+                {isLoading && !data ? (!error ? "読み込み中..." : "エラー") : `${data}件`}
+              </span>
             </div>
             <BasicLinearProgress value={percent(data ?? 0)} />
           </div>
@@ -86,9 +88,14 @@ export default function Page() {
           </div>
         </section>
       </div>
-      <DialogInfo title="利用者アンケートのお願い" isOpen={isDialogOpen} setIsOpen={handleCloseDialog}>
+      <DialogInfo
+        title="利用者アンケートのお願い"
+        isOpen={isDialogOpen}
+        setIsOpen={handleCloseDialog}
+      >
         <article className="grid gap-6 text-sm">
-          <section>lounas（本サービス）を運営しておりますIPUTアプリ開発サークルは、本サービスを学会へ論文提出を行う予定です。
+          <section>
+            lounas（本サービス）を運営しておりますIPUTアプリ開発サークルは、本サービスを学会へ論文提出を行う予定です。
           </section>
           <section>
             <span>もしよろしければ、アンケートへのご協力をお願いいたします。</span>
