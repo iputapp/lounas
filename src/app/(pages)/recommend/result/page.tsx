@@ -11,17 +11,17 @@ import { PaymentShort } from "@/components/lists/PaymentShort";
 import styles from "./page.module.scss";
 
 /** @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config} */
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"; //動的に変更
 
-async function getRecommend(params: URLSearchParams) {
+async function getRecommend(params: URLSearchParams) { //URLSearchParamsを引数に取り、おすすめを取得する
   const recommends = (await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/v-beta/recommend?${params.toString()}`,
     {
       method: "GET",
     }
   )
-    .then((res) => res.json())
-    .catch((err) => {
+    .then((res) => res.json()) //成功した場合にjsonを返す
+    .catch((err) => { //失敗した場合にエラーを返す
       console.error(err);
       return notFound();
     })) as RecommendResponseF[];
@@ -58,9 +58,9 @@ export default async function Page({
       <div className={styles.header}>
         <h1 className={styles.title}>あなたへのおすすめ</h1>
       </div>
-      {recommends.length ? (
+      {recommends.length ? ( //recpmmendsが空ではない場合
         <div className={styles.content}>
-          {recommends.map((recommend, index) => (
+          {recommends.map((recommend, index) => ( //数分CardHorizontalを表示
             <CardHorizontal
               key={recommend.dish.id}
               url={`/dish/${recommend.dish.id}`}

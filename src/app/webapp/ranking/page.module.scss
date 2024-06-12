@@ -1,31 +1,25 @@
 @use "variables" as var;
 
 .container {
-  @apply grid h-full w-full;
+  @apply grid h-full w-full gap-12;
 
-  .image-parent {
-    @apply fixed inset-0
-      mx-auto
-      h-screen max-w-md
-      overflow-clip;
+  .header {
+    @apply w-full;
 
-    & > .image {
-      @apply absolute object-cover;
+    .title {
+      @apply w-fit
+        text-3xl font-bold;
+
+      color: var.$primary;
     }
   }
-}
-
-.overlay {
-  @apply fixed inset-0 z-30
-    h-screen w-full
-    bg-black/30;
-
-  & > .panel {
-    @apply absolute inset-0
-      m-auto grid
-      h-full max-w-md
-      place-items-center;
-
-    width: 86%;
+  
+  .content {
+    @apply grid
+      grid-cols-1
+      content-start
+      gap-7
+      px-1
+      md:grid-cols-2;
   }
 }

@@ -1,7 +1,6 @@
 "use client";
 
-import Calendar from "@icons/calendar.svg";
-import Crown from "@icons/crown.svg";
+import Search from "@icons/search.svg";
 import LogoFill from "@icons/logo-fill.svg";
 import LogoOutline from "@icons/logo-outline.svg";
 import User from "@icons/user.svg";
@@ -60,23 +59,15 @@ export function BottomNavigationBar() {
         <BottomNavigationAction
           value="ranking"
           icon={
-            <span className="text-2xl">
-              <Crown />
-            </span>
-          }
-        />
-        <BottomNavigationAction
-          value="diary"
-          icon={
             <span className="text-xl">
-              <Calendar />
+              <Search />
             </span>
           }
         />
         <BottomNavigationAction
           value="user"
           icon={
-            <span className="text-xl">
+            <span className="text-2xl">
               <User />
             </span>
           }
