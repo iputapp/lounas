@@ -42,7 +42,7 @@ If you have an idea for a new feature or an enhancement to an existing one, we'd
    ```
 > [!IMPORTANT]
 >
-> `<type>` must be as follows:
+> Commit message must be as follows:
 > ```
 > <type>(<scope>): <short summary>
 >   │       │             │
@@ -167,7 +167,7 @@ Thank you for your contributions! 🐧
    ```
 > [!IMPORTANT]
 >
-> `<type>`は次の形式でなければなりません:
+> コミットメッセージは次の形式でなければなりません:
 > ```
 > <type>(<scope>): <short summary>
 >   │       │             │
