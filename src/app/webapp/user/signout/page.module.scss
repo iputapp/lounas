@@ -11,13 +11,10 @@
 }
 
 .container {
-  @apply mx-auto grid h-full w-full max-w-md
-    content-center
-    gap-12;
+  @apply mx-auto grid h-full w-full max-w-md content-center gap-12;
 
   & > .title {
-    @apply w-fit
-      text-4xl font-bold;
+    @apply w-fit text-4xl font-bold;
 
     color: transparent;
     background: linear-gradient(-135deg, #fff 50%, var.$primary 50%);
@@ -27,9 +24,7 @@
   }
 
   .sub {
-    @apply mx-auto grid w-full
-      justify-items-center
-      gap-2.5;
+    @apply mx-auto grid w-full justify-items-center gap-2.5;
 
     .text {
       @apply text-lg font-semibold;
@@ -46,10 +41,7 @@
       width: 14.25rem;
 
       & > button {
-        @apply mx-auto w-full
-          select-none
-          overflow-clip rounded-full
-          py-3.5 text-2xl font-semibold text-white;
+        @apply mx-auto w-full select-none overflow-clip rounded-full py-3.5 text-2xl font-semibold text-white;
 
         background-color: #000;
       }
@@ -63,18 +55,12 @@
     min-height: 48dvh;
 
     & > article {
-      @apply grid w-full
-      divide-y divide-white/40
-      rounded-xl
-      backdrop-blur-md;
+      @apply grid w-full divide-y divide-white/40 rounded-xl backdrop-blur-md;
 
       background-color: rgb(255 255 255 / 30%);
 
       & > * {
-        @apply flex w-full
-          items-center justify-between
-          p-4
-          text-base;
+        @apply flex w-full items-center justify-between p-4 text-base;
 
         color: var.$primary;
 

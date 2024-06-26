@@ -1,9 +1,7 @@
 @use "variables" as var;
 
 .card {
-  @apply w-full
-    overflow-clip rounded-3xl
-    bg-white shadow-lg;
+  @apply w-full overflow-clip rounded-3xl bg-white shadow-lg;
 
   & .image-parent {
     @apply relative w-full;
@@ -19,9 +17,7 @@
   }
 
   & .description {
-    @apply flex w-full flex-col
-      px-5 py-3
-      font-semibold;
+    @apply flex w-full flex-col px-5 py-3 font-semibold;
 
     color: var.$primary;
   }

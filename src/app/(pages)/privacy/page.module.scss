@@ -1,10 +1,7 @@
 @use "variables" as var;
 
 .container {
-  @apply grid h-full w-full
-    place-content-center
-    place-items-center
-    gap-8;
+  @apply grid h-full w-full place-content-center place-items-center gap-8;
 
   .title {
     @apply text-4xl font-bold;
@@ -16,9 +13,7 @@
     @apply grid place-items-center gap-4 font-semibold;
 
     & > p {
-      @apply text-center
-        text-sm font-semibold
-        leading-6;
+      @apply text-center text-sm font-semibold leading-6;
 
       color: var.$secondary;
     }
@@ -47,10 +42,7 @@
     @apply grid gap-6;
 
     .query {
-      @apply grid
-        place-items-center text-center
-        text-base font-semibold
-        sm:text-lg;
+      @apply grid place-items-center text-center text-base font-semibold sm:text-lg;
 
       color: var.$primary;
     }
@@ -60,8 +52,7 @@
     }
 
     .status {
-      @apply mx-auto
-        font-semibold;
+      @apply mx-auto font-semibold;
 
       & > .text {
         color: var.$secondary;

@@ -2,9 +2,7 @@
 
 // common styles
 .message {
-  @apply mx-auto flex
-    items-center
-    space-x-1.5;
+  @apply mx-auto flex items-center space-x-1.5;
 
   .text {
     @apply text-sm font-bold;
@@ -19,15 +17,10 @@
 
 // page styles
 .container {
-  @apply mx-auto grid
-    w-full max-w-3xl
-    gap-12;
+  @apply mx-auto grid w-full max-w-3xl gap-12;
 
   .header {
-    @apply sticky top-0 z-30
-      grid w-full
-      gap-5 px-5 py-[1.125rem]
-      shadow-lg;
+    @apply sticky top-0 z-30 grid w-full gap-5 px-5 py-[1.125rem] shadow-lg;
 
     background-color: var.$bg-primary;
 
@@ -38,42 +31,31 @@
     }
 
     .info {
-      @apply grid w-full
-        grid-cols-5;
+      @apply grid w-full grid-cols-5;
 
       // left side (distance & route)
       & > :nth-child(1) {
-        @apply col-span-3
-          grid
-          justify-items-start
-          gap-4;
+        @apply col-span-3 grid justify-items-start gap-4;
 
         // time & distance
         .distance {
-          @apply flex
-            items-center justify-between
-            space-x-1
-            text-2xl;
+          @apply flex items-center justify-between space-x-1 text-2xl;
 
           color: var.$primary;
         }
 
         // origin & destination
         .route {
-          @apply grid min-h-[5rem]
-            content-between justify-items-center
-            gap-2;
+          @apply grid min-h-[5rem] content-between justify-items-center gap-2;
 
           .origin {
-            @apply text-center
-              text-sm font-semibold;
+            @apply text-center text-sm font-semibold;
 
             color: var.$secondary;
           }
 
           .destination {
-            @apply text-center
-              text-sm font-semibold;
+            @apply text-center text-sm font-semibold;
 
             color: var.$secondary;
           }
@@ -95,28 +77,20 @@
 
       // right side (map & link)
       & > :nth-child(2) {
-        @apply col-span-2
-          grid content-end
-          justify-items-center gap-1;
+        @apply col-span-2 grid content-end justify-items-center gap-1;
 
         .map-parent {
-          @apply relative w-full
-            overflow-clip rounded-lg;
+          @apply relative w-full overflow-clip rounded-lg;
 
           aspect-ratio: 5 / 4;
           border: 2px solid rgb(255 255 255 / 80%);
 
           .map {
-            @apply absolute
-              scale-105
-              object-cover
-              blur-sm brightness-50;
+            @apply absolute scale-105 object-cover blur-sm brightness-50;
           }
 
           .preview {
-            @apply absolute inset-0
-              m-auto h-fit w-fit
-              font-semibold text-white;
+            @apply absolute inset-0 m-auto h-fit w-fit font-semibold text-white;
           }
         }
 
@@ -132,10 +106,7 @@
 
   // cards
   .main {
-    @apply grid w-full
-      grid-cols-1
-      gap-8 px-6
-      md:grid-cols-2;
+    @apply grid w-full grid-cols-1 gap-8 px-6 md:grid-cols-2;
   }
 
   // button

@@ -5,9 +5,7 @@ $cyan-size: 30dvh;
 $green-size: 28dvh;
 
 .bg {
-  @apply fixed inset-0
-    h-screen w-full
-    overflow-clip;
+  @apply fixed inset-0 h-screen w-full overflow-clip;
 
   .circle {
     @apply absolute;

@@ -1,12 +1,9 @@
 .overlay {
-  @apply fixed inset-0 z-40
-    h-screen w-full
-    backdrop-blur-sm;
+  @apply fixed inset-0 z-40 h-screen w-full backdrop-blur-sm;
 
   transition: all 0.3s ease-in-out;
 
   & > * {
-    @apply absolute bottom-6 left-6
-      h-auto w-16;
+    @apply absolute bottom-6 left-6 h-auto w-16;
   }
 }

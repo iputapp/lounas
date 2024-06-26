@@ -4,32 +4,23 @@
   @apply grid h-full w-full;
 
   .bg {
-    @apply fixed inset-0 -z-50
-      h-screen w-full;
+    @apply fixed inset-0 -z-50 h-screen w-full;
 
     background-color: var.$bg-primary;
   }
 
   .overlay {
-    @apply fixed inset-0 z-30
-      h-screen w-full
-      bg-black/30;
+    @apply fixed inset-0 z-30 h-screen w-full bg-black/30;
 
     & > .panel {
-      @apply absolute inset-0
-        m-auto grid
-        h-full max-w-md
-        place-items-center;
+      @apply absolute inset-0 m-auto grid h-full max-w-md place-items-center;
 
       width: 86%;
     }
   }
 
   .image-parent {
-    @apply fixed inset-0
-      mx-auto
-      h-screen max-w-md
-      overflow-clip;
+    @apply fixed inset-0 mx-auto h-screen max-w-md overflow-clip;
 
     & > .image {
       @apply absolute object-cover;
