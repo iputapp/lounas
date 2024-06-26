@@ -7,27 +7,18 @@
     @apply w-full;
 
     .title {
-      @apply w-fit
-        text-3xl font-bold;
+      @apply w-fit text-3xl font-bold;
 
       color: var.$primary;
     }
   }
 
   .content {
-    @apply grid
-      grid-cols-1
-      content-start
-      gap-7
-      px-1
-      md:grid-cols-2;
+    @apply grid grid-cols-1 content-start gap-7 px-1 md:grid-cols-2;
   }
 
   .zero {
-    @apply grid
-      w-full
-      content-between
-      justify-items-center gap-8;
+    @apply grid w-full content-between justify-items-center gap-8;
 
     .head {
       @apply grid justify-items-center gap-6;
@@ -55,8 +46,7 @@
       }
 
       .parent {
-        @apply relative mx-auto
-          w-3/4 overflow-clip;
+        @apply relative mx-auto w-3/4 overflow-clip;
 
         aspect-ratio: 1 / 1;
 

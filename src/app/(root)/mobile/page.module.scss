@@ -31,9 +31,7 @@ $slide-h: 48rem; /* 768px */
 }
 
 .app-link {
-  @apply w-fit select-none
-    rounded-full px-5
-    py-3.5 font-bold;
+  @apply w-fit select-none rounded-full px-5 py-3.5 font-bold;
 
   color: #fff;
   background-color: var.$blue;
@@ -94,8 +92,7 @@ $slide-h: 48rem; /* 768px */
 }
 
 .bg-demo-overlay {
-  @apply absolute inset-y-0 left-0
-    backdrop-blur-lg;
+  @apply absolute inset-y-0 left-0 backdrop-blur-lg;
 
   width: 100%;
   height: calc(
@@ -105,9 +102,7 @@ $slide-h: 48rem; /* 768px */
   // padding-bottom: 0.5rem; // smooth-experience(rounded-t-[2.5rem]) - 2rem
 
   & > :nth-child(1) {
-    @apply grid h-full w-full
-      place-content-center
-      gap-16;
+    @apply grid h-full w-full place-content-center gap-16;
 
     & > h1 {
       @apply lounas-logo-full text-6xl;
@@ -130,10 +125,7 @@ $slide-h: 48rem; /* 768px */
 }
 
 .smooth-experience {
-  @apply relative grid
-    content-start justify-items-center gap-10
-    overflow-clip rounded-t-[2.5rem]
-    pb-28 pt-10;
+  @apply relative grid content-start justify-items-center gap-10 overflow-clip rounded-t-[2.5rem] pb-28 pt-10;
 
   width: 100%;
   height: 32rem;
@@ -204,8 +196,7 @@ $slide-h: 48rem; /* 768px */
   background: linear-gradient(to bottom, rgb(255 255 255 / 0%) 0, rgb(255 255 255 / 100%) 5rem);
 
   &::before {
-    @apply absolute inset-y-0 left-6 top-24
-        my-auto rounded-full;
+    @apply absolute inset-y-0 left-6 top-24 my-auto rounded-full;
 
     width: 6px;
     height: 77.5%;
@@ -223,8 +214,7 @@ $slide-h: 48rem; /* 768px */
     }
 
     & > :nth-child(n of h3) {
-      @apply grid gap-4
-          font-bold;
+      @apply grid gap-4 font-bold;
 
       font-size: 2.5rem;
       line-height: 1;
@@ -253,14 +243,10 @@ $slide-h: 48rem; /* 768px */
   background-size: cover;
 
   & > :nth-child(1) {
-    @apply absolute inset-0
-      grid place-content-center gap-8
-      overflow-clip pb-12
-      backdrop-blur backdrop-brightness-90;
+    @apply absolute inset-0 grid place-content-center gap-8 overflow-clip pb-12 backdrop-blur backdrop-brightness-90;
 
     & > :nth-child(1 of h3) {
-      @apply grid justify-items-center gap-4
-        font-bold;
+      @apply grid justify-items-center gap-4 font-bold;
 
       color: #fff;
 
@@ -330,10 +316,7 @@ $slide-h: 48rem; /* 768px */
   }
 
   & > :nth-child(2) {
-    @apply neumo
-      relative mx-auto
-      grid gap-4
-      rounded-[3rem] bg-neutral-50 px-4 py-8;
+    @apply neumo relative mx-auto grid gap-4 rounded-[3rem] bg-neutral-50 px-4 py-8;
 
     width: 95%;
     height: 100%;
@@ -382,9 +365,7 @@ $slide-h: 48rem; /* 768px */
         }
 
         & > :nth-child(2) {
-          @apply z-10
-            grid place-content-center
-            rounded-full;
+          @apply z-10 grid place-content-center rounded-full;
 
           height: 9rem;
           aspect-ratio: 1 / 1;
@@ -440,9 +421,7 @@ $slide-h: 48rem; /* 768px */
     height: 100%;
 
     & > :nth-child(n of span) {
-      @apply absolute
-        grid place-content-center
-        rounded-full font-semibold;
+      @apply absolute grid place-content-center rounded-full font-semibold;
 
       aspect-ratio: 1 / 1;
     }
@@ -486,9 +465,7 @@ $slide-h: 48rem; /* 768px */
       color: var.$tertiary;
 
       &::before {
-        @apply absolute -z-10
-          h-full w-full
-          rounded-full;
+        @apply absolute -z-10 h-full w-full rounded-full;
 
         aspect-ratio: 1 / 1;
         content: "";
@@ -497,9 +474,7 @@ $slide-h: 48rem; /* 768px */
       }
 
       &::after {
-        @apply absolute -z-10
-          h-full w-full
-          rounded-full;
+        @apply absolute -z-10 h-full w-full rounded-full;
 
         aspect-ratio: 1 / 1;
         content: "";
@@ -509,9 +484,7 @@ $slide-h: 48rem; /* 768px */
   }
 
   & > :nth-child(1 of h3) {
-    @apply absolute inset-0
-        grid place-content-center gap-4
-        text-center;
+    @apply absolute inset-0 grid place-content-center gap-4 text-center;
 
     height: 100%;
 
@@ -550,9 +523,7 @@ $slide-h: 48rem; /* 768px */
     height: calc($slide-h - 6rem);
 
     & > :nth-child(1) {
-      @apply absolute inset-0
-        grid content-between justify-items-center
-        font-bold;
+      @apply absolute inset-0 grid content-between justify-items-center font-bold;
 
       height: calc($slide-h - 6rem);
       margin-top: -1.5rem;
@@ -592,8 +563,7 @@ $slide-h: 48rem; /* 768px */
   // aspect-ratio: 4 / 1;
 
   & > :nth-child(1) {
-    @apply flex items-center justify-center
-      text-center font-bold;
+    @apply flex items-center justify-center text-center font-bold;
 
     font-size: 1.75rem;
     line-height: 2rem;
@@ -705,8 +675,7 @@ $slide-h: 48rem; /* 768px */
 
   /* stylelint-disable-next-line no-descending-specificity */
   & > h2 {
-    @apply absolute inset-x-0
-      text-center text-2xl font-bold;
+    @apply absolute inset-x-0 text-center text-2xl font-bold;
 
     top: 2.75rem;
     width: 100%;
@@ -730,8 +699,7 @@ $slide-h: 48rem; /* 768px */
       @apply py-1;
 
       & > h3 {
-        @apply ms-4 flex items-center justify-center
-        space-x-0 text-2xl font-bold;
+        @apply ms-4 flex items-center justify-center space-x-0 text-2xl font-bold;
 
         height: 2.5rem;
 
@@ -798,8 +766,7 @@ $slide-h: 48rem; /* 768px */
 }
 
 .footer {
-  @apply mx-auto grid gap-6
-    bg-neutral-300 px-0.5 pb-4 pt-8;
+  @apply mx-auto grid gap-6 bg-neutral-300 px-0.5 pb-4 pt-8;
 
   width: 100%;
   height: 100%;
@@ -809,12 +776,10 @@ $slide-h: 48rem; /* 768px */
 
     /* stylelint-disable-next-line no-descending-specificity */
     & > h2 {
-      @apply grid justify-items-center gap-3
-          py-2 text-sm;
+      @apply grid justify-items-center gap-3 py-2 text-sm;
 
       & > :nth-child(1) {
-        @apply lounas-logo-full -my-2
-            text-5xl;
+        @apply lounas-logo-full -my-2 text-5xl;
       }
 
       & > :nth-child(2) {

@@ -4,10 +4,7 @@ $triangle-width: 100vw;
 $center: 50%;
 
 .bg {
-  @apply fixed inset-0 -z-50
-    h-screen w-full
-    scale-105 overflow-clip
-    blur-xl brightness-[1.175];
+  @apply fixed inset-0 -z-50 h-screen w-full scale-105 overflow-clip blur-xl brightness-[1.175];
 
   .triangle {
     @apply absolute;

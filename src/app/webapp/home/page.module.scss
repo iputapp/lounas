@@ -11,13 +11,10 @@
 }
 
 .container {
-  @apply grid h-full w-full
-    place-content-center
-    gap-12;
+  @apply grid h-full w-full place-content-center gap-12;
 
   & > .title {
-    @apply w-fit
-      text-4xl font-bold;
+    @apply w-fit text-4xl font-bold;
 
     color: transparent;
     background: linear-gradient(135deg, #fff 50%, var.$primary 50%);
@@ -27,11 +24,7 @@
   }
 
   .panel {
-    @apply mx-auto grid
-      h-40
-      content-between
-      rounded-3xl px-5 py-3
-      shadow-lg;
+    @apply mx-auto grid h-40 content-between rounded-3xl px-5 py-3 shadow-lg;
 
     aspect-ratio: 1.85 / 1;
     background-color: #fff;
@@ -43,13 +36,10 @@
     }
 
     .exp {
-      @apply mx-auto grid
-        w-11/12 gap-2;
+      @apply mx-auto grid w-11/12 gap-2;
 
       .text {
-        @apply flex
-          select-none items-center
-          justify-between font-semibold;
+        @apply flex select-none items-center justify-between font-semibold;
 
         color: var.$primary;
       }
@@ -66,9 +56,7 @@
     }
 
     .description {
-      @apply mx-auto w-10/12
-        select-none
-        text-center text-base;
+      @apply mx-auto w-10/12 select-none text-center text-base;
 
       color: var.$tertiary;
     }

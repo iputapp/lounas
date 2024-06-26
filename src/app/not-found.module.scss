@@ -1,10 +1,7 @@
 @use "variables" as var;
 
 .container {
-  @apply grid h-screen w-full
-    place-content-center
-    place-items-center
-    gap-12 pb-8;
+  @apply grid h-screen w-full place-content-center place-items-center gap-12 pb-8;
 
   background-color: var.$bg-primary;
 
@@ -15,10 +12,7 @@
   }
 
   .balloon {
-    @apply relative mx-auto
-      rounded-3xl
-      px-4 py-5
-      text-center;
+    @apply relative mx-auto rounded-3xl px-4 py-5 text-center;
 
     width: 96%;
     min-width: fit-content;

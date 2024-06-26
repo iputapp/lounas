@@ -34,35 +34,34 @@ If you have an idea for a new feature or an enhancement to an existing one, we'd
    ```bash
    git switch -c <type>/x-y-z
    ```
-> [!TIP]
->
-> `<type>` like be as follows:
-> - `feature` or `feat`: A new feature
-> - `bugfix`: A known bug fix (commit to the `develop` branch)
-> - `hotfix`: A critical bug fix (committed directly to the `main` branch)
-> - `docs`: Documentation only changes
-> - `refactor`: A code change that neither fixes a bug nor adds a feature
-> - `test`: Adding missing or correcting existing tests
-> - `chore`: Changes to the build process or auxiliary tools and libraries such as documentation generation
->
-> These examples are taken from [Angular's docs][angular-develop-docs]
 3. Make your changes.
 4. Ensure your changes adhere to the project's coding style and conventions.
 5. Commit your changes with a clear and descriptive commit message:
    ```bash
-   git commit -m "<type>(<scope>): <subject>"
+   git commit -m "<type>(<scope>): <short summary>"
    ```
 > [!IMPORTANT]
 >
+> Commit message must be as follows:
+> ```
+> <type>(<scope>): <short summary>
+>   │       │             │
+>   │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
+>   │       │
+>   │       └─⫸ Commit Scope: e.g. card|button|dish
+>   │
+>   └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
+> ```
+>
 > `<type>` must be as follows:
+> - build: Changes that affect the build system or external dependencies (example scopes: npm)
+> - ci: Changes to our CI configuration files and scripts (examples: GitHub Actions)
+> - docs: Documentation only changes
 > - feat: A new feature
 > - fix: A bug fix
-> - docs: Documentation only changes
-> - style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-> - refactor: A code change that neither fixes a bug nor adds a feature
 > - perf: A code change that improves performance
-> - test: Adding missing or correcting existing tests
-> - chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+> - refactor: A code change that neither fixes a bug nor adds a feature
+> - test: Adding missing tests or correcting existing tests
 >
 > These `<type>`s are taken from [Angular's docs][angular-develop-docs].
 6. Push your branch to your fork:
@@ -160,18 +159,6 @@ Thank you for your contributions! 🐧
    ```bash
    git switch -c <type>/x-y-z
    ```
-> [!TIP]
->
-> `<type>`は以下のようになります:
-> - `feature` または `feat`: 新しい機能
-> - `bugfix`: 既知のバグ修正（`develop`ブランチにコミット）
-> - `hotfix`: 重大なバグ修正（`main`ブランチに直接コミット）
-> - `docs`: ドキュメントの変更のみ
-> - `refactor`: バグ修正や機能追加ではないコードの変更
-> - `test`: 欠落しているテストの追加や既存テストの修正
-> - `chore`: ドキュメント生成などのビルドプロセスや補助ツール、ライブラリの変更
->
-> これらの例は[Angularのドキュメント][angular-develop-docs]から引用しています。
 3. 変更を行います。
 4. 変更がプロジェクトのコーディングスタイルと規約に従っていることを確認します。
 5. 明確で簡潔なコミットメッセージで変更をコミットします:
@@ -180,15 +167,26 @@ Thank you for your contributions! 🐧
    ```
 > [!IMPORTANT]
 >
-> `<type>`は以下のようになります:
-> - feat: 新しい機能
+> コミットメッセージは次の形式でなければなりません:
+> ```
+> <type>(<scope>): <short summary>
+>   │       │             │
+>   │       │             └─⫸ 短い説明を現在形で記述。先頭は小文字。最後に句点は付けない。
+>   │       │
+>   │       └─⫸ コミットのスコープ: 例）card|button|dish
+>   │
+>   └─⫸ コミットのタイプ: build|ci|docs|feat|fix|perf|refactor|test
+> ```
+>
+> `<type>`は次のいずれかでなければなりません:
+> - build: ビルドシステムまたは外部依存関係に影響を与える変更（例: npm）
+> - ci: CI設定ファイルとスクリプトへの変更（例: GitHub Actions）
+> - docs: ドキュメントのみの変更
+> - feat: 新機能
 > - fix: バグ修正
-> - docs: ドキュメントの変更のみ
-> - style: コードの意味に影響を与えない変更（ホワイトスペース、フォーマット、セミコロンの欠落など）
-> - refactor: バグ修正や機能追加ではないコードの変更
-> - perf: パフォーマンスを改善するコードの変更
-> - test: 欠落しているテストの追加や既存テストの修正
-> - chore: ドキュメント生成などのビルドプロセスや補助ツール、ライブラリの変更
+> - perf: パフォーマンスを向上させるコード変更
+> - refactor: バグ修正でも機能追加でもないコード変更
+> - test: 不足しているテストの追加または既存テストの修正
 >
 > これらの`<type>`は[Angular のドキュメント][angular-develop-docs]から引用しています。
 6. フォークしたリポジトリにブランチをプッシュします:
@@ -257,4 +255,4 @@ npm test
 [github-discussions]: https://github.com/iputapp/lounas/discussions
 [github-bug-report-form]: https://github.com/iputapp/lounas/issues/new?template=form-bug.yml&title=%5BBug%5D+&labels=report
 [github-code-of-conduct]: https://github.com/iputapp/lounas/blob/develop/.github/CODE_OF_CONDUCT.md
-[angular-develop-docs]: https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type
+[angular-develop-docs]: https://github.com/angular/angular/blob/main/CONTRIBUTING.md

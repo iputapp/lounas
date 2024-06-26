@@ -1,9 +1,7 @@
 @use "variables" as var;
 
 .bg {
-  @apply fixed inset-0 -z-50
-    h-screen w-full
-    overflow-clip;
+  @apply fixed inset-0 -z-50 h-screen w-full overflow-clip;
 
   background-color: var.$bg-primary;
 }

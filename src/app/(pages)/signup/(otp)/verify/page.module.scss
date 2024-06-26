@@ -1,14 +1,10 @@
 @use "variables" as var;
 
 .container {
-  @apply grid h-full w-full
-    content-center
-    gap-10 pb-14;
+  @apply grid h-full w-full content-center gap-10 pb-14;
 
   .header {
-    @apply mx-auto
-      grid w-fit
-      gap-5;
+    @apply mx-auto grid w-fit gap-5;
 
     .title {
       @apply text-3xl font-bold;
@@ -17,18 +13,14 @@
     }
 
     .description {
-      @apply grid gap-0.5
-        text-center
-        text-base;
+      @apply grid gap-0.5 text-center text-base;
 
       color: var.$tertiary;
     }
   }
 
   .form {
-    @apply mx-auto
-      grid max-w-sm
-      gap-[1.875rem];
+    @apply mx-auto grid max-w-sm gap-[1.875rem];
 
     width: 80%;
 
