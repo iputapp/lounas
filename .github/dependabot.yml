@@ -14,3 +14,22 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 10
     target-branch: "develop"
+    groups:
+      minor-and-patch:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+        exclude-patterns:
+          - "next"
+          - "@next/*"
+      next-minor-and-patch:
+        applies-to: version-updates
+        patterns:
+          - "next"
+          - "@next/*"
+        update-types:
+          - "minor"
+          - "patch"
