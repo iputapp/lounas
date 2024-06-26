@@ -178,7 +178,7 @@ Thank you for your contributions! 🐧
 >   └─⫸ コミットのタイプ: build|ci|docs|feat|fix|perf|refactor|test
 > ```
 >
-> `<type>`は次のいずれかでなければなりません：
+> `<type>`は次のいずれかでなければなりません:
 > - build: ビルドシステムまたは外部依存関係に影響を与える変更（例: npm）
 > - ci: CI設定ファイルとスクリプトへの変更（例: GitHub Actions）
 > - docs: ドキュメントのみの変更
