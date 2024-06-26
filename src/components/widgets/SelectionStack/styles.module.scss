@@ -16,20 +16,13 @@
 }
 
 .container {
-  @apply fixed inset-x-0 bottom-12 z-30
-    mx-auto max-w-sm
-    overflow-clip rounded-full
-    backdrop-blur;
+  @apply fixed inset-x-0 bottom-12 z-30 mx-auto max-w-sm overflow-clip rounded-full backdrop-blur;
 
   width: 80%;
   aspect-ratio: 3.64 / 1;
   background-color: rgb(var.$bg-primary, 80%);
 
   & > .spacer {
-    @apply grid h-full w-full
-      grid-cols-3
-      place-items-center
-      py-2
-      text-xl;
+    @apply grid h-full w-full grid-cols-3 place-items-center py-2 text-xl;
   }
 }

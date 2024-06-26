@@ -1,8 +1,7 @@
 @use "variables" as var;
 
 .title {
-  @apply relative flex w-fit
-    items-center justify-center;
+  @apply relative flex w-fit items-center justify-center;
 }
 
 .title::after {

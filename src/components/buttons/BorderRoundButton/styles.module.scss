@@ -1,8 +1,7 @@
 @use "variables" as var;
 
 .container {
-  @apply relative h-fit w-full
-    overflow-clip;
+  @apply relative h-fit w-full overflow-clip;
 
   padding: 0.25em; // p-1
   background: linear-gradient(to right, var.$lime, var.$cyan, var.$blue);

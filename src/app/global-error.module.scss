@@ -1,10 +1,7 @@
 @use "variables" as var;
 
 .container {
-  @apply grid h-full w-full
-    place-content-center
-    place-items-center
-    gap-8;
+  @apply grid h-full w-full place-content-center place-items-center gap-8;
 
   .title {
     @apply text-4xl font-bold;
@@ -28,16 +25,13 @@
     @apply grid gap-10;
 
     .secondary {
-      @apply text-center
-        text-base font-semibold;
+      @apply text-center text-base font-semibold;
 
       color: var.$secondary;
     }
 
     .primary {
-      @apply text-center
-        text-xl font-semibold
-        sm:text-2xl;
+      @apply text-center text-xl font-semibold sm:text-2xl;
 
       color: var.$primary;
     }

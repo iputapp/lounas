@@ -1,18 +1,13 @@
 @use "variables" as var;
 
 .container {
-  @apply mx-auto grid
-    h-full w-full max-w-lg;
+  @apply mx-auto grid h-full w-full max-w-lg;
 
   .header {
-    @apply relative z-10
-      w-full
-      self-start;
+    @apply relative z-10 w-full self-start;
 
     .button {
-      @apply absolute left-0 top-0
-        flex h-full items-center
-        text-3xl;
+      @apply absolute left-0 top-0 flex h-full items-center text-3xl;
 
       .icon {
         font-size: 0.625em;
@@ -25,8 +20,6 @@
   }
 
   .circles {
-    @apply fixed inset-0
-      h-full w-full
-      overflow-clip;
+    @apply fixed inset-0 h-full w-full overflow-clip;
   }
 }

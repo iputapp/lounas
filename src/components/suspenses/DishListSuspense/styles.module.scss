@@ -15,19 +15,15 @@
 }
 
 .container {
-  @apply grid h-full w-full
-    place-content-center
-    gap-20 pb-20;
+  @apply grid h-full w-full place-content-center gap-20 pb-20;
 
   .title {
-    @apply mx-auto
-      text-center;
+    @apply mx-auto text-center;
 
     color: var.$primary;
 
     & > h1 {
-      @apply grid
-        place-items-center;
+      @apply grid place-items-center;
     }
   }
 

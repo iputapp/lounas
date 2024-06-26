@@ -1,29 +1,24 @@
 @use "variables" as var;
 
 .circle {
-  @apply flex select-none items-center
-    justify-center rounded-full;
+  @apply flex select-none items-center justify-center rounded-full;
 
   aspect-ratio: 1 / 1;
 
   & .title {
-    @apply text-center
-      font-semibold text-white;
+    @apply text-center font-semibold text-white;
 
     font-size: 0.75em;
   }
 }
 
 .circle-border {
-  @apply flex items-center
-    justify-center rounded-full;
+  @apply flex items-center justify-center rounded-full;
 
   aspect-ratio: 1 / 1;
 
   &::before {
-    @apply absolute -z-10
-      h-full w-full
-      rounded-full;
+    @apply absolute -z-10 h-full w-full rounded-full;
 
     aspect-ratio: 1 / 1;
     content: "";
@@ -32,9 +27,7 @@
   }
 
   &::after {
-    @apply absolute -z-10
-      h-full w-full
-      rounded-full;
+    @apply absolute -z-10 h-full w-full rounded-full;
 
     aspect-ratio: 1 / 1;
     content: "";
@@ -42,8 +35,7 @@
   }
 
   & .title {
-    @apply text-center
-      font-semibold;
+    @apply text-center font-semibold;
 
     font-size: 0.75em;
     color: var.$tertiary;
