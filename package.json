@@ -1,6 +1,6 @@
 {
   "name": "lounas",
-  "version": "0.2.1",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -31,7 +31,7 @@
     "@supabase/supabase-js": "^2",
     "@vercel/analytics": "^1",
     "framer-motion": "^11",
-    "next": "^14",
+    "next": "^14.2",
     "next-cloudinary": "^6",
     "react": "^18",
     "react-dom": "^18",
@@ -50,7 +50,7 @@
     "autoprefixer": "^10",
     "dotenv-cli": "^7",
     "eslint": "^8",
-    "eslint-config-next": "^14",
+    "eslint-config-next": "^14.2",
     "eslint-config-prettier": "^9",
     "eslint-plugin-import": "^2",
     "eslint-plugin-simple-import-sort": "^12",
