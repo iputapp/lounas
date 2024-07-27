@@ -65,15 +65,15 @@ export async function middleware(request: NextRequest) {
 
   /** @see {@link https://nextjs.org/docs/messages/middleware-parse-user-agent} */
   const { device } = userAgent(request);
-  console.log("device", device);
+  // console.log("device", device);
 
   /** signined */
   if (auth.data.user && !auth.error) {
     /** log */
-    console.log("auth", {
-      email: auth.data.user.email,
-      expiredIn: (await supabase.auth.getSession()).data.session?.expires_in,
-    });
+    // console.log("auth", {
+    //   email: auth.data.user.email,
+    //   expiredIn: (await supabase.auth.getSession()).data.session?.expires_in,
+    // });
 
     /** root */
     if (requestPath === "/") {
