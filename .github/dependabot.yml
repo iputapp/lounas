@@ -29,6 +29,14 @@ updates:
           - "patch"
         patterns:
           - "@supabase/*"
+      prisma-patch:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+        patterns:
+          - "@prisma/*"
+          - "prisma"
+          - "zod-prisma-types"
       ui-patch:
         applies-to: version-updates
         update-types:
@@ -39,19 +47,22 @@ updates:
           - "@mui/*"
           - "framer-motion"
           - "next-cloudinary"
+          - "tailwindcss"
+          - "prettier-plugin-tailwindcss"
+          - "tailwind-merge"
+          - "autoprefixer"
       lint-patch:
         applies-to: version-updates
         update-types:
           - "patch"
         patterns:
-          - "eslint"
-          - "eslint-*"
-          - "prettier"
-          - "prettier-*"
-          - "stylelint"
-          - "stylelint-*"
+          - "@typescript-eslint/*"
+          - "eslint*"
+          - "prettier*"
+          - "stylelint*"
         exclude-patterns:
           - "eslint-config-next"
+          - "prettier-plugin-tailwindcss"
       deps-patch:
         applies-to: version-updates
         update-types:
@@ -64,17 +75,22 @@ updates:
           - "next"
           - "eslint-config-next"
           - "@supabase/*"
+          - "@prisma/*"
+          - "prisma"
+          - "zod-prisma-types"
           - "@emotion/*"
           - "@lottiefiles/*"
           - "@mui/*"
           - "framer-motion"
           - "next-cloudinary"
-          - "eslint"
-          - "eslint-*"
-          - "prettier"
-          - "prettier-*"
-          - "stylelint"
-          - "stylelint-*"
+          - "tailwindcss"
+          - "prettier-plugin-tailwindcss"
+          - "tailwind-merge"
+          - "autoprefixer"
+          - "@typescript-eslint/*"
+          - "eslint*"
+          - "prettier*"
+          - "stylelint*"
       dev-deps-patch:
         applies-to: version-updates
         update-types:
@@ -87,14 +103,19 @@ updates:
           - "next"
           - "eslint-config-next"
           - "@supabase/*"
+          - "@prisma/*"
+          - "prisma"
+          - "zod-prisma-types"
           - "@emotion/*"
           - "@lottiefiles/*"
           - "@mui/*"
           - "framer-motion"
           - "next-cloudinary"
-          - "eslint"
-          - "eslint-*"
-          - "prettier"
-          - "prettier-*"
-          - "stylelint"
-          - "stylelint-*"
+          - "tailwindcss"
+          - "prettier-plugin-tailwindcss"
+          - "tailwind-merge"
+          - "autoprefixer"
+          - "@typescript-eslint/*"
+          - "eslint*"
+          - "prettier*"
+          - "stylelint*"
