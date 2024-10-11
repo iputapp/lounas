@@ -24,7 +24,7 @@
     "@emotion/styled": "^11",
     "@hookform/resolvers": "^3",
     "@lottiefiles/react-lottie-player": "^3",
-    "@mui/material": "^5",
+    "@mui/material": "^6",
     "@next/third-parties": "^14",
     "@prisma/client": "^5",
     "@supabase/ssr": "^0",
