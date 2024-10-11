@@ -15,10 +15,86 @@ updates:
     open-pull-requests-limit: 10
     target-branch: "develop"
     groups:
-      minor-and-patch:
+      next-patch:
         applies-to: version-updates
+        update-types:
+          - "patch"
+        patterns:
+          - "@next/*"
+          - "next"
+          - "eslint-config-next"
+      supabase-patch:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+        patterns:
+          - "@supabase/*"
+      ui-patch:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+        patterns:
+          - "@emotion/*"
+          - "@lottiefiles/*"
+          - "@mui/*"
+          - "framer-motion"
+          - "next-cloudinary"
+      lint-patch:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+        patterns:
+          - "eslint"
+          - "eslint-*"
+          - "prettier"
+          - "prettier-*"
+          - "stylelint"
+          - "stylelint-*"
+        exclude-patterns:
+          - "eslint-config-next"
+      deps-patch:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+        dependency-type: production
         patterns:
           - "*"
+        exclude-patterns:
+          - "@next/*"
+          - "next"
+          - "eslint-config-next"
+          - "@supabase/*"
+          - "@emotion/*"
+          - "@lottiefiles/*"
+          - "@mui/*"
+          - "framer-motion"
+          - "next-cloudinary"
+          - "eslint"
+          - "eslint-*"
+          - "prettier"
+          - "prettier-*"
+          - "stylelint"
+          - "stylelint-*"
+      dev-deps-patch:
+        applies-to: version-updates
         update-types:
-          - "minor"
           - "patch"
+        dependency-type: development
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "@next/*"
+          - "next"
+          - "eslint-config-next"
+          - "@supabase/*"
+          - "@emotion/*"
+          - "@lottiefiles/*"
+          - "@mui/*"
+          - "framer-motion"
+          - "next-cloudinary"
+          - "eslint"
+          - "eslint-*"
+          - "prettier"
+          - "prettier-*"
+          - "stylelint"
+          - "stylelint-*"
