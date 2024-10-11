@@ -15,32 +15,36 @@ updates:
     open-pull-requests-limit: 10
     target-branch: "develop"
     groups:
-      next-patch:
+      next:
         applies-to: version-updates
         update-types:
           - "patch"
+          - "minor"
         patterns:
           - "@next/*"
           - "next"
           - "eslint-config-next"
-      supabase-patch:
+      supabase:
         applies-to: version-updates
         update-types:
           - "patch"
+          - "minor"
         patterns:
           - "@supabase/*"
-      prisma-patch:
+      prisma:
         applies-to: version-updates
         update-types:
           - "patch"
+          - "minor"
         patterns:
           - "@prisma/*"
           - "prisma"
           - "zod-prisma-types"
-      ui-patch:
+      ui:
         applies-to: version-updates
         update-types:
           - "patch"
+          - "minor"
         patterns:
           - "@emotion/*"
           - "@lottiefiles/*"
@@ -51,10 +55,11 @@ updates:
           - "prettier-plugin-tailwindcss"
           - "tailwind-merge"
           - "autoprefixer"
-      lint-patch:
+      lint:
         applies-to: version-updates
         update-types:
           - "patch"
+          - "minor"
         patterns:
           - "@typescript-eslint/*"
           - "eslint*"
@@ -63,10 +68,11 @@ updates:
         exclude-patterns:
           - "eslint-config-next"
           - "prettier-plugin-tailwindcss"
-      deps-patch:
+      deps:
         applies-to: version-updates
         update-types:
           - "patch"
+          - "minor"
         dependency-type: production
         patterns:
           - "*"
@@ -91,10 +97,11 @@ updates:
           - "eslint*"
           - "prettier*"
           - "stylelint*"
-      dev-deps-patch:
+      dev-deps:
         applies-to: version-updates
         update-types:
           - "patch"
+          - "minor"
         dependency-type: development
         patterns:
           - "*"
