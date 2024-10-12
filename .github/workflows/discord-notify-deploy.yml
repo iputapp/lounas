@@ -14,7 +14,11 @@ jobs:
         uses: tsickert/discord-webhook@v6.0.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL_WORKFLOW }}
-          embed-title: "[${{ github.repository }}] 🛠️ Deploy ${{ github.event.deployment.environment }}"
-          embed-description: "Target: ${{ github.repository }}/${{ github.event.workflow_run.head_branch }}\nDeploy: ${{ github.event.deployment.environment }} ${{ github.event.workflow_run.conclusion }}${{ job.status == 'success' && '✅' || job.status == 'failure' && '🛑' || '🟨' }}\nCreator: ${{ github.event.deployment.creator.name }}\n${{github.event.deployment.description}}"
+          embed-title: "🛠️ [${{ github.repository }}] Deploy ${{ github.event.deployment.environment }}"
+          embed-description: "Repository: ${{ github.repository }}\nDeploy: ${{ github.event.deployment.environment }}\nStatus: ${{ job.status }} ${{ job.status == 'success' && '✅' || job.status == 'failure' && '🛑' || '🟨' }}\n${{github.event.deployment.description}}"
           embed-color: ${{ job.status == 'success' && '2278750' || job.status == 'failure' && '15680580' || '15381256' }}
           embed-author-icon-url: ${{ github.event.deployment.creator.avatar_url }}
+          embed-author-name: ${{ github.event.deployment.creator.name }}
+          embed-author-url: ${{ github.event.deployment.creator.html_url }}
+          embed-url: ${{ github.event.deployment.url }}
+          embed-image-url: ${{ github.event.deployment.environment == 'Production' && 'https://www.lounas.jp' || github.event.deployment.environment == 'Preview' && secrets.PREVIEW_DEPLOY_URL }}/images/og/top.jpg
