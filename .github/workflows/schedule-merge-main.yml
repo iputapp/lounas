@@ -11,8 +11,6 @@ permissions:
 jobs:
   merge:
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -21,22 +19,28 @@ jobs:
           ref: develop
       - name: Diff develop and main
         id: diff
-        run: |
-          git diff origin/main origin/develop --exit-code
+        run: git diff origin/main origin/develop --exit-code
         continue-on-error: true
-      - name: Set current datetime as env variable
-        env:
-          TZ: "Asia/Tokyo"
-        run: echo "CURRENT_DATETIME=$(date+'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
       - name: Create a PR
         id: pull-request
         # If diff is exist, create a PR
         if: ${{ steps.diff.outcome == 'failure' }}
         run: |
-          PULL_REQUEST_URI=$(gh pr create -B main -t "release(prod): weekly merge from develop into main" -l 'Type: Release' -b "Regular merge every Monday at 00:00.")
-          echo "PULL_REQUEST_URI=$PULL_REQUEST_URI" >> "$GITHUB_OUTPUT"
-      - name: Merge a PR
+          PR_URL=$(gh pr create -B main -t "release(prod): weekly merge from develop into main" -l 'Type: Release' -b "Regular merge every Monday at 00:00.")
+          echo "PR_URL=$PR_URL" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Approve a PR
+        # Only approve if PR has diff
+        if: ${{ steps.diff.outcome == 'failure' }}
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{ steps.pull-request.outputs.PR_URL }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Enable auto-merge for PRs
         # Only merge if PR has diff
         if: ${{ steps.diff.outcome == 'failure' }}
-        run: |
-          gh pr merge ${{ steps.pull-request.outputs.PULL_REQUEST_URI }} --merge
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ steps.pull-request.outputs.PR_URL }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
