@@ -8,20 +8,6 @@ The lunch recommendation app. 🍽️
 - [Code of Conduct](.github/CODE_OF_CONDUCT.md)
 - [Security Policy](.github/SECURITY.md)
 
-Pull request templates.
-
-```
-template=develop.md
-```
-
-```
-template=main.md
-```
-
-> [!TIP]
->
-> Please refer to the [GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request) for details.
-
 ## Development
 
 Install packages.
@@ -53,10 +39,6 @@ NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=YourId
 # google analytics
 NEXT_PUBLIC_GA_TRACKING_ID=TrackingId
 ```
-
-### Code formatter
-
-You have to run `npm run format` before PR.
 
 #### VS Code Extentions
 

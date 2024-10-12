@@ -11,14 +11,121 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     open-pull-requests-limit: 10
     target-branch: "develop"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
     groups:
-      minor-and-patch:
+      next:
         applies-to: version-updates
+        update-types:
+          - "patch"
+          - "minor"
+        patterns:
+          - "@next/*"
+          - "next"
+          - "eslint-config-next"
+      supabase:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+          - "minor"
+        patterns:
+          - "@supabase/*"
+      prisma:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+          - "minor"
+        patterns:
+          - "@prisma/*"
+          - "prisma"
+          - "zod-prisma-types"
+      ui:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+          - "minor"
+        patterns:
+          - "@emotion/*"
+          - "@lottiefiles/*"
+          - "@mui/*"
+          - "framer-motion"
+          - "next-cloudinary"
+          - "tailwindcss"
+          - "prettier-plugin-tailwindcss"
+          - "tailwind-merge"
+          - "autoprefixer"
+      lint:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+          - "minor"
+        patterns:
+          - "@typescript-eslint/*"
+          - "eslint*"
+          - "prettier*"
+          - "stylelint*"
+        exclude-patterns:
+          - "eslint-config-next"
+          - "prettier-plugin-tailwindcss"
+      deps:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+          - "minor"
+        dependency-type: production
         patterns:
           - "*"
+        exclude-patterns:
+          - "@next/*"
+          - "next"
+          - "eslint-config-next"
+          - "@supabase/*"
+          - "@prisma/*"
+          - "prisma"
+          - "zod-prisma-types"
+          - "@emotion/*"
+          - "@lottiefiles/*"
+          - "@mui/*"
+          - "framer-motion"
+          - "next-cloudinary"
+          - "tailwindcss"
+          - "prettier-plugin-tailwindcss"
+          - "tailwind-merge"
+          - "autoprefixer"
+          - "@typescript-eslint/*"
+          - "eslint*"
+          - "prettier*"
+          - "stylelint*"
+      dev-deps:
+        applies-to: version-updates
         update-types:
-          - "minor"
           - "patch"
+          - "minor"
+        dependency-type: development
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "@next/*"
+          - "next"
+          - "eslint-config-next"
+          - "@supabase/*"
+          - "@prisma/*"
+          - "prisma"
+          - "zod-prisma-types"
+          - "@emotion/*"
+          - "@lottiefiles/*"
+          - "@mui/*"
+          - "framer-motion"
+          - "next-cloudinary"
+          - "tailwindcss"
+          - "prettier-plugin-tailwindcss"
+          - "tailwind-merge"
+          - "autoprefixer"
+          - "@typescript-eslint/*"
+          - "eslint*"
+          - "prettier*"
+          - "stylelint*"
