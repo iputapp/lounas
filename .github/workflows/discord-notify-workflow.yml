@@ -1,0 +1,24 @@
+# https://github.com/marketplace/actions/discord-webhook-action
+
+name: Discord Notify Workflow
+on:
+  workflow_run:
+    workflows: ["Lint"]
+    types: [requested, completed]
+    branches:
+      - "*"
+
+jobs:
+  discord-notify-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Discord Webhook Action
+        uses: tsickert/discord-webhook@v6.0.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL_WORKFLOW }}
+          embed-title: "[${{ github.repository }}] Workflow ${{ github.event.workflow_run.name }} ${{ github.event.workflow_run.conclusion }}: ${{ github.event.workflow_run.pull_requests.number || github.event.workflow_run.head_branch }}"
+          embed-description: "Target: ${{ github.repository }}/${{ github.event.workflow_run.head_branch }}\nWorkflow: ${{ github.event.workflow_run.name }} | ${{ github.event.workflow_run.conclusion }} ${{ job.status == 'success' && '✅' || job.status == 'failure' && '🛑' || '🟨' }}\nEvent: ${{ github.event.workflow_run.event }}\nActor: ${{ github.event.workflow_run.actor }}"
+          embed-color: ${{ job.status == 'success' && '2278750' || job.status == 'failure' && '15680580' || '15381256' }}
