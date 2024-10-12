@@ -2,7 +2,7 @@
 
 ![contributor-covenant-v2.1-logo]
 
-日本語版は[最後](#行動規範)にあります。
+| [日本語](#行動規範) |
 
 ## Our Pledge
 
@@ -21,23 +21,23 @@ diverse, inclusive, and healthy community.
 Examples of behavior that contributes to a positive environment for our
 community include:
 
-* Demonstrating empathy and kindness toward other people
-* Being respectful of differing opinions, viewpoints, and experiences
-* Giving and gracefully accepting constructive feedback
-* Accepting responsibility and apologizing to those affected by our mistakes,
+- Demonstrating empathy and kindness toward other people
+- Being respectful of differing opinions, viewpoints, and experiences
+- Giving and gracefully accepting constructive feedback
+- Accepting responsibility and apologizing to those affected by our mistakes,
   and learning from the experience
-* Focusing on what is best not just for us as individuals, but for the overall
+- Focusing on what is best not just for us as individuals, but for the overall
   community
 
 Examples of unacceptable behavior include:
 
-* The use of sexualized language or imagery, and sexual attention or advances of
+- The use of sexualized language or imagery, and sexual attention or advances of
   any kind
-* Trolling, insulting or derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or email address,
+- Trolling, insulting or derogatory comments, and personal or political attacks
+- Public or private harassment
+- Publishing others' private information, such as a physical or email address,
   without their explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
+- Other conduct which could reasonably be considered inappropriate in a
   professional setting
 
 ## Enforcement Responsibilities
@@ -64,7 +64,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-[App Dev. Co. @ IPUT][iputapp-contact].
+[App Dev. Co. @IPUT][iputapp-contact].
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
@@ -125,6 +125,10 @@ Community Impact Guidelines were inspired by [Mozilla's code of conduct enforcem
 For answers to common questions about this code of conduct, see the [Contributor Covenant FAQ][contributor-covenant-faq].
 Translations are available at [Contributor Covenant Translations][contributor-covenant-translations].
 
+🐧
+
+---
+
 # 行動規範
 
 ![contributor-covenant-v2.1-logo]
@@ -137,21 +141,21 @@ Translations are available at [Contributor Covenant Translations][contributor-co
 
 ## 私たちの標準
 
-前向きな環境を作り上げることに貢献する行動の例:
+前向きな環境を作り上げることに貢献する行動の例：
 
-* 他人への共感と優しさを示す
-* 異なる意見、視点、経験を尊重する
-* 建設的なフィードバックを与え、礼儀正しく受け入れる
-* 私たちの過ちの影響を受けた人々に責任を受け入れ、謝罪し、そしてその経験から学ぶ
-* 個人としてだけでなく、コミュニティ全体にとっても最善であることに焦点を当てる
+- 他人への共感と優しさを示す
+- 異なる意見、視点、経験を尊重する
+- 建設的なフィードバックを与え、礼儀正しく受け入れる
+- 私たちの過ちの影響を受けた人々に責任を受け入れ、謝罪し、そしてその経験から学ぶ
+- 個人としてだけでなく、コミュニティ全体にとっても最善であることに焦点を当てる
 
-許容できない行動の例は次のとおりです:
+許容できない行動の例は次のとおりです：
 
-* 性的な言葉や画像の使用、および性的な注意またはその他あらゆる種類の問題行為
-* トローリング、侮辱的または中傷的なコメント、個人的または政治的攻撃
-* 公的またはプライベートの嫌がらせ
-* 明示的な許可なしに、住所や電子メールアドレスなど、他者の個人情報を公開する
-* 職業上不適切と合理的に考えられるその他の行為
+- 性的な言葉や画像の使用、および性的な注意またはその他あらゆる種類の問題行為
+- トローリング、侮辱的または中傷的なコメント、個人的または政治的攻撃
+- 公的またはプライベートの嫌がらせ
+- 明示的な許可なしに、住所や電子メールアドレスなど、他者の個人情報を公開する
+- 職業上不適切と合理的に考えられるその他の行為
 
 ## 執行責任
 
@@ -165,37 +169,37 @@ Translations are available at [Contributor Covenant Translations][contributor-co
 
 ## 執行
 
-虐待的、嫌がらせ、またはその他の許容できない行動の事例は、執行を担当するコミュニティリーダーに対して[App Dev. Co. @ IPUT][iputapp-contact]で報告される場合があります。すべての苦情は迅速かつ公正にレビューおよび調査されます。
+虐待的、嫌がらせ、またはその他の許容できない行動の事例は、執行を担当するコミュニティリーダーに対して[App Dev. Co. @IPUT][iputapp-contact]で報告される場合があります。すべての苦情は迅速かつ公正にレビューおよび調査されます。
 
 すべてのコミュニティリーダーは、問題の報告者のプライバシーとセキュリティを尊重する義務があります。
 
 ## 執行ガイドライン
 
-コミュニティリーダーは、この行動規範に違反していると見なした行動への帰結を判断する際に、これらのコミュニティガイドラインに従います:
+コミュニティリーダーは、この行動規範に違反していると見なした行動への帰結を判断する際に、これらのコミュニティガイドラインに従います：
 
 ### 1. 更生
 
-**コミュニティへの影響**: コミュニティで専門家にふさわしくない、または歓迎されないと思われる不適切な言葉の使用やその他の不適切な行動をすること。
+**コミュニティへの影響**： コミュニティで専門家にふさわしくない、または歓迎されないと思われる不適切な言葉の使用やその他の不適切な行動をすること。
 
-**帰結**: コミュニティリーダーからの非公開の書面による警告。違反の理由を明確にし、行動が不適切だった理由を説明します。公の謝罪が要求される場合があります。
+**帰結**： コミュニティリーダーからの非公開の書面による警告。違反の理由を明確にし、行動が不適切だった理由を説明します。公の謝罪が要求される場合があります。
 
 ### 2. 警告
 
-**コミュニティへの影響**: 単一の出来事または一連の動作による違反。
+**コミュニティへの影響**： 単一の出来事または一連の動作による違反。
 
-**帰結**: 持続的な行動の結果を伴う警告。指定された期間、行動規範の実施者との一方的な対話を含め、関係者との対話はありません。これには、コミュニティスペースやソーシャルメディアなどの外部チャネルでの相互作用の回避が含まれます。これらの条件に違反すると、一時的または永続的に禁止される場合があります。
+**帰結**： 持続的な行動の結果を伴う警告。指定された期間、行動規範の実施者との一方的な対話を含め、関係者との対話はありません。これには、コミュニティスペースやソーシャルメディアなどの外部チャネルでの相互作用の回避が含まれます。これらの条件に違反すると、一時的または永続的に禁止される場合があります。
 
 ### 3. 一時的な禁止
 
-**コミュニティへの影響**: 持続的で不適切な行動を含む、コミュニティ標準の重大な違反。
+**コミュニティへの影響**： 持続的で不適切な行動を含む、コミュニティ標準の重大な違反。
 
-**帰結**: 指定された期間のコミュニティとのあらゆる種類の相互関係または公的なコミュニケーションの一時的な禁止。この期間中、行動規範を実施する人々との一方的な対話を含め、関係する人々との公的または私的な対話は許可されません。これらの条件に違反すると、永久的に禁止される場合があります。
+**帰結**： 指定された期間のコミュニティとのあらゆる種類の相互関係または公的なコミュニケーションの一時的な禁止。この期間中、行動規範を実施する人々との一方的な対話を含め、関係する人々との公的または私的な対話は許可されません。これらの条件に違反すると、永久的に禁止される場合があります。
 
 ### 4. 永久的な禁止
 
-**コミュニティへの影響**: 連続的な不適切な行動、個人への嫌がらせ、または個人の集団に対する攻撃または名誉毀損を含む、コミュニティの標準への違反のパターンを示す。
+**コミュニティへの影響**： 連続的な不適切な行動、個人への嫌がらせ、または個人の集団に対する攻撃または名誉毀損を含む、コミュニティの標準への違反のパターンを示す。
 
-**帰結**: コミュニティ内でのあらゆる種類の公的な相互関係の永久的な禁止。
+**帰結**： コミュニティ内でのあらゆる種類の公的な相互関係の永久的な禁止。
 
 ## 帰属
 
@@ -204,8 +208,6 @@ Translations are available at [Contributor Covenant Translations][contributor-co
 コミュニティへの影響ガイドラインは[Mozilla's code of conduct enforcement ladder][mozilla-coc]に適合しています。
 
 この行動規範に関する一般的な質問への回答については、[Contributor Covenant FAQ][contributor-covenant-faq]を参照してください。翻訳は[Contributor Covenant Translations][contributor-covenant-translations]で入手できます。
-
----
 
 🐧
 
