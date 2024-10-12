@@ -21,3 +21,4 @@ jobs:
           embed-author-name: ${{ github.event.deployment.creator.name }}
           embed-author-url: ${{ github.event.deployment.creator.html_url }}
           embed-url: ${{ github.event.deployment.url }}
+          embed-image-url: ${{ github.event.deployment.environment == 'Production' && 'https://www.lounas.jp' || github.event.deployment.environment == 'Preview' && secrets.PREVIEW_DEPLOY_URL }}/images/og/top.jpg
