@@ -1,16 +1,18 @@
 # Contributing
 
-日本語版は[最後](#コントリビューション)にあります。
+| [日本語](#コントリビューション) |
 
 First off, thanks for taking the time to contribute! 🎉
 
-The following is a set of guidelines for contributing to [lounas][github-repo], which is hosted in the [App Dev. Co. @ IPUT][github-org] on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+The following is a set of guidelines for contributing to [lounas][github-repo], which is hosted in the [App Dev. Co. @IPUT][github-org] on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## How to Contribute
 
 ### Reporting Bugs
 
-If you find a bug, please report it by opening an issue in the repository. Be sure to include the following details:
+If you find a bug, please report it by opening an issue in the repository.
+Be sure to include the following details:
+
 - A clear and descriptive title.
 - A detailed description of the issue.
 - Steps to reproduce the issue.
@@ -22,7 +24,9 @@ If you find a bug, please report it by opening an issue in the repository. Be su
 
 ### Suggesting Enhancements
 
-If you have an idea for a new feature or an enhancement to an existing one, we'd love to hear about it! Open an issue and include:
+If you have an idea for a new feature or an enhancement to an existing one, we'd love to hear about it!
+Open an issue and include:
+
 - A clear and descriptive title.
 - A detailed description of the proposed enhancement.
 - Why you believe this enhancement would be useful.
@@ -40,9 +44,11 @@ If you have an idea for a new feature or an enhancement to an existing one, we'd
    ```bash
    git commit -m "<type>(<scope>): <short summary>"
    ```
+
 > [!IMPORTANT]
 >
 > Commit message must be as follows:
+>
 > ```
 > <type>(<scope>): <short summary>
 >   │       │             │
@@ -54,6 +60,7 @@ If you have an idea for a new feature or an enhancement to an existing one, we'd
 > ```
 >
 > `<type>` must be as follows:
+>
 > - build: Changes that affect the build system or external dependencies (example scopes: npm)
 > - ci: Changes to our CI configuration files and scripts (examples: GitHub Actions)
 > - docs: Documentation only changes
@@ -64,30 +71,28 @@ If you have an idea for a new feature or an enhancement to an existing one, we'd
 > - test: Adding missing tests or correcting existing tests
 >
 > These `<type>`s are taken from [Angular's docs][angular-develop-docs].
+
 6. Push your branch to your fork:
    ```bash
    git push origin <type>/x-y-z
    ```
 7. Open a pull request in the repository.
+
 > [!WARNING]
 >
 > Please make a pull request in **Draft Status** while you are working.
 
-> [!NOTE]
->
-> You can use the template by adding the following query parameters to the URL:
-> ```
-> template=develop.md
-> ```
-
 ### Coding Standards
 
 - Follow the coding style guidelines defined in the project (e.g., use Prettier for code formatting).
+
 > [!TIP]
 >
 > The respective commands for Lint and format are as follows:
+>
 > - lint: `npm run lint`
 > - format: `npm run format`
+
 - Write clear, concise comments where necessary.
 - Include tests for new features and bug fixes where applicable.
 - Ensure that your code does not introduce new linting issues or warnings.
@@ -99,6 +104,7 @@ If you have an idea for a new feature or an enhancement to an existing one, we'd
 > Under construction 🚧
 
 The command to run the test is:
+
 ```bash
 npm test
 ```
@@ -121,21 +127,25 @@ This project and everyone participating in it is governed by the [lounas][github
 
 If you have questions or need further assistance, feel free to join our [Slack/Discord] channel, or open an [discussion][github-discussions].
 
----
+Thank you for your contributions!
 
-Thank you for your contributions! 🐧
+🐧
+
+---
 
 # コントリビューション
 
 まず初めに、コントリビューションしていただきありがとうございます！🎉
 
-以下は、GitHubの[App Dev. Co. @ IPUT][github-org]組織の[lounas][github-repo]へのコントリビューションに関するガイドラインです。これはあくまでガイドラインであり、規則ではありません。最良の判断を行い、このドキュメントに変更を提案したい場合はプルリクエストを送ってください。
+以下は、GitHubの[App Dev. Co. @IPUT][github-org]組織の[lounas][github-repo]へのコントリビューションに関するガイドラインです。これはあくまでガイドラインであり、規則ではありません。最良の判断を行い、このドキュメントに変更を提案したい場合はプルリクエストを送ってください。
 
 ## コントリビューション方法
 
 ### バグの報告
 
-バグを発見した場合は、リポジトリにissueを作成して報告してください。以下の詳細を含めてください:
+バグを発見した場合は、リポジトリにissueを作成して報告してください。
+以下の詳細を含めてください：
+
 - 明確で簡潔なタイトル。
 - 問題の詳細な説明。
 - 問題を再現する手順。
@@ -147,7 +157,9 @@ Thank you for your contributions! 🐧
 
 ### 改善提案
 
-新機能や既存の機能の改善アイデアがある場合、ぜひお知らせください！ issueを作成し、以下を含めてください:
+新機能や既存の機能の改善アイデアがある場合、ぜひお知らせください！
+issueを作成し、以下を含めてください：
+
 - 明確で簡潔なタイトル。
 - 提案する改善の詳細な説明。
 - なぜこの改善が有用であると思うか。
@@ -155,19 +167,21 @@ Thank you for your contributions! 🐧
 ### コードのコントリビューション
 
 1. リポジトリをフォークします。
-2. `develop`ブランチから新しいブランチを作成します:
+2. `develop`ブランチから新しいブランチを作成します：
    ```bash
    git switch -c <type>/x-y-z
    ```
 3. 変更を行います。
 4. 変更がプロジェクトのコーディングスタイルと規約に従っていることを確認します。
-5. 明確で簡潔なコミットメッセージで変更をコミットします:
+5. 明確で簡潔なコミットメッセージで変更をコミットします：
    ```bash
    git commit -m "<type>(<scope>): <subject>"
    ```
+
 > [!IMPORTANT]
 >
-> コミットメッセージは次の形式でなければなりません:
+> コミットメッセージは次の形式でなければなりません：
+>
 > ```
 > <type>(<scope>): <short summary>
 >   │       │             │
@@ -178,9 +192,10 @@ Thank you for your contributions! 🐧
 >   └─⫸ コミットのタイプ: build|ci|docs|feat|fix|perf|refactor|test
 > ```
 >
-> `<type>`は次のいずれかでなければなりません:
-> - build: ビルドシステムまたは外部依存関係に影響を与える変更（例: npm）
-> - ci: CI設定ファイルとスクリプトへの変更（例: GitHub Actions）
+> `<type>`は次のいずれかでなければなりません：
+>
+> - build: ビルドシステムまたは外部依存関係に影響を与える変更（例：npm）
+> - ci: CI設定ファイルとスクリプトへの変更（例：GitHub Actions）
 > - docs: ドキュメントのみの変更
 > - feat: 新機能
 > - fix: バグ修正
@@ -189,30 +204,28 @@ Thank you for your contributions! 🐧
 > - test: 不足しているテストの追加または既存テストの修正
 >
 > これらの`<type>`は[Angular のドキュメント][angular-develop-docs]から引用しています。
-6. フォークしたリポジトリにブランチをプッシュします:
+
+6. フォークしたリポジトリにブランチをプッシュします：
    ```bash
    git push origin <type>/x-y-z
    ```
 7. リポジトリにプルリクエストを作成します。
+
 > [!WARNING]
 >
 > 作業中はプルリクエストを**Draft Status**で作成してください。
 
-> [!NOTE]
->
-> URLに以下のクエリパラメータを追加することでテンプレートを使用できます:
-> ```
-> template=develop.md
-> ```
-
 ### コーディングスタンダード
 
-- プロジェクトで定義されたコーディングスタイルガイドラインに従います（例: コードフォーマットに Prettier を使用）。
+- プロジェクトで定義されたコーディングスタイルガイドラインに従います（例：コードフォーマットに Prettier を使用）。
+
 > [!TIP]
 >
-> Lint とフォーマットの各コマンドは以下の通りです:
+> Lint とフォーマットの各コマンドは以下の通りです：
+>
 > - lint: `npm run lint`
 > - format: `npm run format`
+
 - 必要に応じて、明確で簡潔なコメントを書いてください。
 - 新しい機能やバグ修正にはテストを含めてください。
 - コードが新たなLintの問題や警告を引き起こさないようにしてください。
@@ -223,7 +236,8 @@ Thank you for your contributions! 🐧
 >
 > 工事中 🚧
 
-テストを実行するコマンドは以下の通りです:
+テストを実行するコマンドは以下の通りです：
+
 ```bash
 npm test
 ```
@@ -246,9 +260,9 @@ npm test
 
 質問やさらにサポートが必要な場合は、[Slack/Discord]チャンネルに参加するか、[ディスカッション][github-discussions]を開いてください。
 
----
+貢献に感謝します！
 
-貢献に感謝します！ 🐧
+🐧
 
 [github-org]: https://github.com/iputapp
 [github-repo]: https://github.com/iputapp/lounas
