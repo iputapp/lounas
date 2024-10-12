@@ -1,0 +1,42 @@
+name: Schedule merge from develop into main
+on:
+  schedule:
+    - cron: "0 15 * * 0" # Every Monday at 00:00 JST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: develop
+      - name: Diff develop and main
+        id: diff
+        run: |
+          git diff origin/main origin/develop --exit-code
+        continue-on-error: true
+      - name: Set current datetime as env variable
+        env:
+          TZ: "Asia/Tokyo"
+        run: echo "CURRENT_DATETIME=$(date+'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
+      - name: Create a PR
+        id: pull-request
+        # If diff is exist, create a PR
+        if: ${{ steps.diff.outcome == 'failure' }}
+        run: |
+          PULL_REQUEST_URI=$(gh pr create -B main -t "release(prod): weekly merge from develop into main" -l 'Type: Release' -b "Regular merge every Monday at 00:00.")
+          echo "PULL_REQUEST_URI=$PULL_REQUEST_URI" >> "$GITHUB_OUTPUT"
+      - name: Merge a PR
+        # Only merge if PR has diff
+        if: ${{ steps.diff.outcome == 'failure' }}
+        run: |
+          gh pr merge ${{ steps.pull-request.outputs.PULL_REQUEST_URI }} --merge
