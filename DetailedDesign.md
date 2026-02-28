@@ -380,16 +380,16 @@ Dish ─────────────── DishScore ──────�
 ### ERD (概略)
 
 ```
-                                                ┌─── DishTag (カテゴリタグ, 多対多)
-                                                │※スコアリング系: DishTagとは無関係
-                                                │
+                                            ┌─── DishTag (カテゴリタグ, 多対多)
+                                            │※スコアリング系: DishTagとは無関係
+                                            │
 Organization ──< User ──< VisitHistory >── Dish ──< Restaurant
-                                                │
-                                                │    
-                                                │
-                                           DishScore ──> DishTrait (特性マスタ)
-                                  (中間テーブル)    name: amount / commonality ...
-                                  @@unique(dishId, traitId)
+                                            │
+                                            │    
+                                            │
+                                       DishScore ──> DishTrait (特性マスタ)
+                                (中間テーブル)    name: amount / commonality ...
+                                @@unique(dishId, traitId)
 
 Restaurant
     ├──< RestaurantOpen >── WeekType
