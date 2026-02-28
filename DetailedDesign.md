@@ -111,9 +111,17 @@
 
 | IDパターン | 形式 | 例 |
 |---|---|---|
-| 主要エンティティ (Restaurant, Dish) | `^[A-Z0-9]+$` 8文字 | `AB12CD34` |
+| 主要エンティティ (Restaurant, Dish) | `^[A-Z0-9]{8}$` (8文字) | `AB12CD34` |
 | Route | `^[A-Z0-9]{8}\d{4}[A-Z0-9]{8}$` | `AB12CD34` + `0001` + `EF56GH78` |
 | その他 | UUID v4 | `xxxxxxxx-xxxx-...` |
+
+**主要エンティティに短縮IDを採用した理由**
+
+Restaurant と Dish の ID は `/restaurant/AB12CD34` や `/dish/AB12CD34` のようにURLパスに直接使用される。ユーザー同士がリンクを共有することを想定しており、UUIDのような長い文字列より短く視認性の高い形式が適していると判断した。
+
+将来的にユーザー投稿による料理・店舗データの追加も想定していたが、**審査制**を前提とするためデータ件数は限定的に増加する見込みであり、PKとURLパスを一致させる単純な設計が成立すると判断した。審査なしで大量データが登録されるケースでは、PKとURLパスを分離する設計を検討する必要がある。
+
+その他のテーブル (中間テーブル・マスタ・ユーザー等) はURLに露出しないため、通常の UUID v4 を採用している。
 
 ### Restaurant (`restaurants`)
 
@@ -142,6 +150,7 @@
 ### RestaurantTag (`restaurant_tags`)
 
 店舗に付与するタグ。Restaurant と多対多。
+DishScoreと同様、DB上にデータは入っていない。将来的に料理カテゴリ（和食, 中華, イタリアン, etc.）ごとのタグ付け/検索を想定していた。
 
 | フィールド | 型 | 説明 |
 |---|---|---|
@@ -254,7 +263,9 @@
 
 ### DishTag (`dish_tags`)
 
-料理に付与するタグ。Dish と多対多。
+料理のカテゴリ分類タグ。Dish と多対多のリレーション。
+
+> **注意**: DishTag は料理のカテゴリ付けのみを目的としており、後述の **DishScore / DishTrait (レコメンドスコアリング)** とは完全に独立した仕組みである。また、RestaurantTagと同様、DB上にデータは入っていない。将来的に料理カテゴリ（和食, 中華, イタリアン, etc.）ごとのタグ付け/検索を想定していた。
 
 | フィールド | 型 | 説明 |
 |---|---|---|
@@ -264,24 +275,41 @@
 
 ---
 
-### DishScore (`dish_scores`)
+### DishScore (`dish_scores`) · DishTrait (`dish_traits`)
 
-料理の特性スコア。料理ごとに特性（DishTrait）別のスコアを持つ。
+> この2つのテーブルはセットで理解する必要がある。
+
+**概念**
+
+`DishTrait` はレコメンドのフィルタリング軸（特性）を定義するマスタテーブルである。現在 `amount`（量）・`commonality`（定番度）の2種類が登録されている。
+
+`DishScore` は `Dish` と `DishTrait` を結ぶ**中間テーブル**であり、「ある料理がある特性についていくつのスコアを持つか」を記録する。すなわち **Dish (マスタ) × DishTrait (マスタ) = DishScore (スコア値)** という構造になっている。
+
+```
+Dish ─────────────── DishScore ─────────────── DishTrait
+(料理マスタ)     (中間テーブル: score値を保持)   (特性マスタ)
+
+例:
+"カルボナーラ" × "amount"      → score: 60  (medium相当)
+"カルボナーラ" × "commonality" → score: 30  (common相当)
+"冷やし中華"   × "amount"      → score: 45  (small相当)
+"冷やし中華"   × "commonality" → score: 70  (unique相当)
+```
+
+`@@unique([dishId, traitId])` 制約により、**1つの料理は各特性につき必ず1レコードのみ**持つ。
+
+**DishScore (`dish_scores`)**
 
 | フィールド | 型 | 制約 | 説明 |
 |---|---|---|---|
 | `id` | String (UUID) | PK | |
-| `score` | Int | - | スコア (0〜100) |
+| `score` | Int | - | 特性スコア値 (運用上 0〜100 の範囲) |
 | `dishId` | String | FK → Dish | 料理ID |
 | `traitId` | String (UUID) | FK → DishTrait | 特性ID |
 
-**ユニーク制約**: `(dishId, traitId)`
+**ユニーク制約**: `(dishId, traitId)` — 料理×特性の組み合わせは一意
 
----
-
-### DishTrait (`dish_traits`)
-
-料理の特性マスタ。レコメンドのフィルタリング軸。
+**DishTrait (`dish_traits`)**
 
 | フィールド | 型 | 説明 |
 |---|---|---|
@@ -289,9 +317,15 @@
 | `name` | String | 特性名 (例: `amount`, `commonality`) |
 | `description` | String? | 説明 |
 
-**現在使用している特性**:
-- `amount`: 量 (small: 0-50 / medium: 50-75 / large: 75-100)
-- `commonality`: 定番度 (common: 0-45 / unique: 45-100)
+**現在登録されている特性と、レコメンドAPIでのスコア範囲マッピング**:
+
+| 特性名 | 意味 | APIパラメータ値 | scoreMin | scoreMax |
+|---|---|---|---|---|
+| `amount` | 量 | `small` | 0 | 50 |
+| `amount` | 量 | `medium` | 50 | 75 |
+| `amount` | 量 | `large` | 75 | 100 |
+| `commonality` | 定番度 | `common` | 0 | 45 |
+| `commonality` | 定番度 | `unique` | 45 | 100 |
 
 ---
 
@@ -346,16 +380,22 @@
 ### ERD (概略)
 
 ```
-Organization ──< User ──< VisitHistory >── Dish >──< DishTag
+                                                ┌─── DishTag (カテゴリタグ, 多対多)
+                                                │※スコアリング系: DishTagとは無関係
                                                 │
-                                           DishScore >── DishTrait
+Organization ──< User ──< VisitHistory >── Dish ──< Restaurant
                                                 │
-Restaurant ──────────────────────────────────── ┘
-    │
+                                                │    
+                                                │
+                                           DishScore ──> DishTrait (特性マスタ)
+                                  (中間テーブル)    name: amount / commonality ...
+                                  @@unique(dishId, traitId)
+
+Restaurant
     ├──< RestaurantOpen >── WeekType
     ├──< Payment >── PaymentType
     ├──< Route >── RouteType
-    └──>── RestaurantTag (多対多)
+    └──>── RestaurantTag (カテゴリタグ, 多対多)
 ```
 
 ---
@@ -449,7 +489,7 @@ Prisma クエリ
 ]
 ```
 
-**スコアフィルタリング詳細**
+**スコアフィルタリング詳細** (DishScore・DishTrait の仕組みについては[データモデル定義 > DishScore / DishTrait](#dishscore-dish_scores--dishtrait-dish_traits)を参照)
 
 | amount | scoreMin | scoreMax |
 |---|---|---|
@@ -463,6 +503,55 @@ Prisma クエリ
 | `common` | 0 | 45 |
 | `unique` | 45 | 100 |
 | `any` | 0 | 100 |
+
+---
+
+#### 技術的判断: raw SQL採用の理由
+
+**問題**: Prisma ORM は内部的にすべての `DateTime` / `Timetz` 値を **UTC** として扱う。`RestaurantOpen.timeOpen` / `timeClose` は `Timetz` 型で JST の営業時間を格納しているが、Prisma 経由で取得・比較すると UTC として解釈されてしまい、JSTと最大9時間ズレた誤った営業時間フィルタリングになる。
+
+**解決策**: `prisma.$queryRaw` を使用して PostgreSQL の `timezone()` 関数を直接利用し、DB側で JST 変換を完結させる。Prisma が JST をサポートした時点で通常のORM構文に戻す予定 (`@todo` コメントあり)。
+
+#### raw SQLの要点 (`src/app/api/v-beta/recommend/route.ts`)
+
+**JOINの構成**
+
+```
+dishes (d)
+  LEFT JOIN restaurants (r)           ON d.restaurant_id = r.id
+  LEFT JOIN restaurant_opens (ro)     ON r.id = ro.restaurant_id
+  LEFT JOIN payments (p)              ON r.id = p.restaurant_id
+  LEFT JOIN payment_types (pt)        ON p.payment_type_id = pt.id
+  LEFT JOIN dish_scores (ds)          ON d.id = ds.dish_id
+  LEFT JOIN dish_traits (dt)          ON ds.trait_id = dt.id
+```
+
+> 支払い方法が複数ある場合、同一料理が支払い方法の数だけ重複して返る (フラットな行)。アプリ側で `reduce` により `payments[]` 配列に集約する。
+
+**WHEREの絞り込み条件**
+
+| 条件 | SQL抜粋 | 説明 |
+|---|---|---|
+| 価格上限 | `d.price <= $price` | リクエストの price 以下 |
+| 現在の曜日 (JST) | `ro.week_type_id = extract(dow from date (timezone('Asia/Tokyo', now()::date)))` | `now()` を JST 日付に変換してから曜日 (0=日〜6=土) を抽出 |
+| 営業時間内 (JST) | `timezone('Asia/Tokyo', now()::timetz) BETWEEN timezone('Asia/Tokyo', ro.time_open) AND timezone('Asia/Tokyo', ro.time_close)` | 現在時刻・開閉店時刻をともに JST に変換して比較 |
+| 特性スコア①<br>(メイン JOIN) | `dt.name = $trait1 AND ds.score >= $min AND ds.score < $max` | 1つ目の特性 (`amount`) をメインの JOIN で絞り込む |
+| 特性スコア②<br>(サブクエリ) | `d.id IN (SELECT ds.dish_id FROM dish_scores ... WHERE dt.name = $trait2 ...)` | 2つ目の特性 (`commonality`) はサブクエリで絞り込む (メインJOINと同じ `ds` エイリアスを使えないため) |
+
+**アプリ側の後処理**
+
+```
+raw SQL結果 (フラット行: 支払い方法×料理の行数)
+    │
+reduce() → 料理IDをキーにしたオブジェクトに集約し payments[] を構築
+    │
+map() → レスポンス形式に整形 (camelCase変換、不要フィールドの除外)
+    │
+filter() → 昼休み45分以内に物理的に可能な料理のみ残す
+           条件: restaurant.travelTime × 2 + dish.eatTime ≦ 2700秒
+    │
+shuffleArray() → ランダムシャッフル → 先頭5件を返却
+```
 
 ---
 
@@ -595,24 +684,24 @@ Supabaseからの認証コールバック。セッションCookieを設定する
 
 `src/components/` 以下をUIの種類で分類:
 
-| ディレクトリ | 内容 |
-|---|---|
-| `backgrounds/` | 装飾的背景コンポーネント (CirclesTopLeft, TrianglesBottom, TrianglesCover) |
-| `buttons/` | ボタン系 (BackButton, CircleButton, BorderCircleButton, BorderRoundButton, RectButton) |
-| `cards/` | カード系 (Card, CardFull, CardHorizontal) |
-| `dialogs/` | ダイアログ (DialogAlert, DialogInfo) ※MUI使用 |
-| `forms/` | フォーム (BasicTextField, BasicCheckbox, otp/SignupForm, otp/VerificationForm) |
-| `headers/` | ヘッダー (BorderTitle) |
-| `image/` | 画像 (CldImg: Cloudinaryラッパー) |
-| `layouts/` | レイアウト (AnimatePresenceLayer, ExpandablePanel, DummyPanel) |
-| `lists/` | リスト (PaymentShort, PaymentLong: 支払い方法表示) |
-| `lottie/` | Lottieアニメーション (Navigation, Privacy, Error) |
-| `navigations/` | ナビゲーション (BottomNavigationBar: webapp用底部ナビ) |
-| `overlays/` | オーバーレイ (LoadingLayer) |
-| `progresses/` | プログレス (BasicLinearProgress) |
-| `skeletons/` | スケルトン (BasicSkeleton) |
-| `suspenses/` | Suspenseフォールバック (DishListSuspense) |
-| `widgets/` | ウィジェット (FavButton, ShareButton, SelectionStack) |
+| ディレクトリ | 名称 | 役割 |
+|---|---|---|
+| `backgrounds/` | CirclesTopLeft, TrianglesBottom, TrianglesCover | 装飾的背景SVGコンポーネント |
+| `buttons/` | BackButton, CircleButton, BorderCircleButton, BorderRoundButton, RectButton | ボタン各種 |
+| `cards/` | Card, CardFull, CardHorizontal | 情報表示カード各種 |
+| `dialogs/` | DialogAlert, DialogInfo | ダイアログ (MUI使用) |
+| `forms/` | BasicTextField, BasicCheckbox, otp/SignupForm, otp/VerificationForm | フォーム入力コンポーネント各種 |
+| `headers/` | BorderTitle | セクション見出し |
+| `image/` | CldImg | Cloudinary画像表示ラッパー |
+| `layouts/` | AnimatePresenceLayer, ExpandablePanel, DummyPanel | レイアウト・アニメーション制御 |
+| `lists/` | PaymentShort, PaymentLong | 支払い方法の一覧表示 |
+| `lottie/` | Navigation, Privacy, Error | Lottieアニメーション |
+| `navigations/` | BottomNavigationBar | webapp用底部ナビゲーションバー |
+| `overlays/` | LoadingLayer | ローディングオーバーレイ |
+| `progresses/` | BasicLinearProgress | 進捗バー |
+| `skeletons/` | BasicSkeleton | データ読み込み中のスケルトン |
+| `suspenses/` | DishListSuspense | Suspenseのフォールバック |
+| `widgets/` | FavButton, ShareButton, SelectionStack | 単独機能の小型ウィジェット |
 
 ---
 
